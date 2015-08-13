@@ -6,6 +6,7 @@ import java.util.Date;
 
 import net.hoyoung.webmagic.pipeline.DBPipeline;
 import net.hoyoung.wfp.core.service.CompanyInfoService;
+import net.hoyoung.wfp.core.utils.StringUtils;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -36,6 +37,7 @@ public class CompanyInfoSpiderPageProcessor implements PageProcessor
 	}
     public static void main( String[] args )
     {
+    	long start = System.currentTimeMillis();
         DBPipeline dBPipeline = new DBPipeline(APP_CONTEXT.getBean(CompanyInfoService.class));
         Spider.create(new CompanyInfoSpiderPageProcessor())
         .addPipeline(dBPipeline)
@@ -43,6 +45,7 @@ public class CompanyInfoSpiderPageProcessor implements PageProcessor
         .addUrl(STOCKLIST_URL[1])
         .thread(10)
         .run();
+        System.out.println("耗时:"+(System.currentTimeMillis()-start)/1000+"秒");
     }
     private int count = 0;
 	@Override
@@ -112,7 +115,7 @@ public class CompanyInfoSpiderPageProcessor implements PageProcessor
 //    	System.out.println(industry);
     	
     	String webSite = table.xpath("/table/tbody/tr[12]/td[2]/text()").get();
-    	page.putField("webSite", webSite);
+    	page.putField("webSite", StringUtils.clearEmptyStr(webSite));
 //    	System.out.println(webSite);
     	
     	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

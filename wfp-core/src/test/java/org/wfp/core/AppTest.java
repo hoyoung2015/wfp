@@ -3,6 +3,7 @@ package org.wfp.core;
 import java.security.NoSuchAlgorithmException;
 
 import net.hoyoung.wfp.core.utils.Md5Util;
+import net.hoyoung.wfp.core.utils.StringUtils;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -36,12 +37,9 @@ public class AppTest
      */
     public void testApp()
     {
-    	try {
-			System.out.println(Md5Util.encryptPasswordMD5("xbfnetyy-123456"));
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    	String s = "\u00A0hello world";
+    	System.out.println(s);
+    	System.out.println(StringUtils.clearEmptyStr(s));
         assertTrue( true );
     }
 }

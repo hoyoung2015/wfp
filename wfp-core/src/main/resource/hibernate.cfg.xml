@@ -14,5 +14,6 @@
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
        <mapping class="net.hoyoung.wfp.core.entity.CompanyInfo"/>
+       <mapping class="net.hoyoung.wfp.core.entity.TagMeta"/>
     </session-factory>
 </hibernate-configuration>

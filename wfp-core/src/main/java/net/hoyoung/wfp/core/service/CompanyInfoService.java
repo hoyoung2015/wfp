@@ -14,4 +14,7 @@ public class CompanyInfoService {
 	public void add(CompanyInfo companyInfo){
 		companyInfoDao.add(companyInfo);
 	}
+	public void updateByStockCode(CompanyInfo companyInfo){
+		companyInfoDao.updateByStockCode(companyInfo);
+	}
 }

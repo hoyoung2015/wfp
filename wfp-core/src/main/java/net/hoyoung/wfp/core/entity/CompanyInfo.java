@@ -19,9 +19,10 @@ public class CompanyInfo {
 	@GeneratedValue
 	private int id;
 	
-	@Column(name="stock_code")
+	@Column(name="stock_code",updatable=false)
 	private String stockCode;//股票号
 	
+	@Column(updatable=false)
 	private String market;
 	
 	@Index(name="ix_name")
@@ -157,15 +158,26 @@ public class CompanyInfo {
 		this.market = market;
 	}
 
+	public CompanyInfo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public CompanyInfo(int id, String stockCode, String webSite) {
+		super();
+		this.id = id;
+		this.stockCode = stockCode;
+		this.webSite = webSite;
+	}
+
 	@Override
 	public String toString() {
-		return "CompanyInfo [id=" + id + ", stockCode=" + stockCode + ", name="
-				+ name + ", ename=" + ename + ", sname=" + sname + ", addr="
-				+ addr + ", regCapital=" + regCapital + ", industry="
-				+ industry + ", webSite=" + webSite + ", listingDate="
-				+ listingDate + ", offerDate=" + offerDate + ", createDate="
-				+ createDate + "]";
+		return "CompanyInfo [id=" + id + ", stockCode=" + stockCode
+				+ ", market=" + market + ", name=" + name + ", ename=" + ename
+				+ ", sname=" + sname + ", addr=" + addr + ", regCapital="
+				+ regCapital + ", industry=" + industry + ", webSite="
+				+ webSite + ", listingDate=" + listingDate + ", offerDate="
+				+ offerDate + ", createDate=" + createDate + "]";
 	}
-	
 	
 }
