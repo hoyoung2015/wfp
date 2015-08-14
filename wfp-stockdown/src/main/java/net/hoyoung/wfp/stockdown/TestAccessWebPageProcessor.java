@@ -17,8 +17,12 @@ import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.SpiderListener;
 import us.codecraft.webmagic.processor.PageProcessor;
-
-public class TestPageProcessor{
+/**
+ * 探测网址是否可访问
+ * @author hoyoung
+ *不可访问的网址对应的记录被删除，同时删除的记录存储在tag_meta的数据表中
+ */
+public class TestAccessWebPageProcessor{
 	public static void main(String[] args) {
 		List<SpiderListener> spiderListeners = new ArrayList<SpiderListener>();
 		spiderListeners.add(new SpiderListener() {

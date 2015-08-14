@@ -19,7 +19,8 @@ import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Selectable;
 
 /**
- * Hello world!
+ * 企业基础信息爬取主类
+ * @author hoyoung
  *
  */
 public class CompanyInfoSpiderPageProcessor implements PageProcessor

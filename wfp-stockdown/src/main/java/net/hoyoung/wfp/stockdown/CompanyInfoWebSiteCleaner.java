@@ -13,10 +13,15 @@ import java.util.List;
 import net.hoyoung.wfp.core.entity.CompanyInfo;
 import net.hoyoung.wfp.core.utils.HibernateUtils;
 import net.hoyoung.wfp.core.utils.RegexUtils;
-import net.hoyoung.wfp.core.utils.StringUtils;
 
 import org.hibernate.Session;
-
+/**
+ * 上市公司网址整理主类
+ * @author hoyoung
+ *1.删除网址为空串的记录
+ *2.从web_site_fix.txt中读取修正过的网址，修正数据库中的网址
+ *3.校验网址是否符合标准url，不符合的写入web_site.txt文件进行人工检验，检验修正后的录入web_site_fix.txt文件中
+ */
 public class CompanyInfoWebSiteCleaner {
 	public static void main(String[] args) throws IOException {
 		Session session = HibernateUtils.openSession();

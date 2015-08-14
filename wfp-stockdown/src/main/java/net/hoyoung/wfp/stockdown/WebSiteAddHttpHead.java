@@ -7,9 +7,9 @@ import org.hibernate.Session;
 import net.hoyoung.wfp.core.entity.CompanyInfo;
 import net.hoyoung.wfp.core.utils.HibernateUtils;
 /**
- * 执行之前必须进行url合法性验证和修正
- * @author Administrator
- *
+ *给网址添加http://前缀，是网址符合标准的url格式
+ * @author hoyoung
+ *注： 执行之前必须进行url合法性验证和修正
  */
 public class WebSiteAddHttpHead {
 
