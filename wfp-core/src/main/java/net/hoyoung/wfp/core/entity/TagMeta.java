@@ -21,10 +21,30 @@ public class TagMeta {
 	private int id;
 	private String tag;
 	
+	public TagMeta() {
+		super();
+	}
+	
+	public TagMeta(int id, String tag, String value, Date createDate) {
+		super();
+		this.id = id;
+		this.tag = tag;
+		this.value = value;
+		this.createDate = createDate;
+	}
+
+	public TagMeta(String tag, String value, Date createDate) {
+		super();
+		this.tag = tag;
+		this.value = value;
+		this.createDate = createDate;
+	}
+
 	@Column(name="tag_value")
 	private String value;
 	
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="create_date")
 	private Date createDate;
 
 	public int getId() {

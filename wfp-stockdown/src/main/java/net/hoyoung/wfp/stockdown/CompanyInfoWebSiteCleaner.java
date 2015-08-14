@@ -12,6 +12,7 @@ import java.util.List;
 
 import net.hoyoung.wfp.core.entity.CompanyInfo;
 import net.hoyoung.wfp.core.utils.HibernateUtils;
+import net.hoyoung.wfp.core.utils.RegexUtils;
 import net.hoyoung.wfp.core.utils.StringUtils;
 
 import org.hibernate.Session;
@@ -57,7 +58,8 @@ public class CompanyInfoWebSiteCleaner {
 		
 		List<CompanyInfo> list = session.createQuery("select new CompanyInfo(id,stockCode,webSite) from CompanyInfo").list();
 		for (CompanyInfo companyInfo : list) {
-			if(!StringUtils.isUrlCorrect(companyInfo.getWebSite())){
+			System.err.println(RegexUtils.checkURL(companyInfo.getWebSite())+" | "+companyInfo.getWebSite());
+			if(!RegexUtils.checkURL(companyInfo.getWebSite())){
 				bfw.write(companyInfo.getStockCode()+"="+companyInfo.getWebSite()+"\n");
 			}
 		}

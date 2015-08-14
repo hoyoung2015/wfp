@@ -37,8 +37,9 @@ public class AppTest
     {
 //    	String s = StringUtils.addHttpHead("hoyoung.net/h.html");
 //    	System.out.println(s);
-    	
-    	System.out.println(RegexUtils.checkURL("www.xxx-a.com?name=ggg"));
+    	System.out.println(RegexUtils.checkURL("http://www.xxx.com"));
+    	System.out.println(RegexUtils.checkURL("http://www.xxx-a.com"));
+    	System.out.println(RegexUtils.checkURL("http://www.xxx-a.com/?name=ggg"));
         assertTrue( true );
     }
 }
