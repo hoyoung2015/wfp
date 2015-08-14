@@ -23,4 +23,14 @@ public class CompanyInfoDao extends BaseDao{
 			}
 		}
 	}
+	/**
+	 * 根据股票号查询公司
+	 * @param stockCode
+	 * @return
+	 */
+	public CompanyInfo getByStockCode(String stockCode) {
+		return (CompanyInfo) getSession().createQuery("from CompanyInfo where stockCode=?")
+				.setParameter(0, stockCode)
+				.uniqueResult();
+	}
 }

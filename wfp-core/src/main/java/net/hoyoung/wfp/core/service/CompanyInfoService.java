@@ -17,4 +17,7 @@ public class CompanyInfoService {
 	public void updateByStockCode(CompanyInfo companyInfo){
 		companyInfoDao.updateByStockCode(companyInfo);
 	}
+	public CompanyInfo getByStockCode(String stockCode){
+		return companyInfoDao.getByStockCode(stockCode);
+	}
 }
