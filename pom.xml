@@ -12,5 +12,6 @@
   <modules>
     <module>wfp-core</module>
     <module>wfp-stockdown</module>
+    <module>wfp-searcher</module>
   </modules>
 </project>
