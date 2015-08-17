@@ -27,6 +27,9 @@ public class WfpPageProcessor implements PageProcessor {
 			".ppt",
 			".pptx",
 			".swf",
+			".exe",
+			".tar",
+			".tar.gz",
 			".xls"
 	};
 	@Override

@@ -47,12 +47,14 @@ public class HtmlUnitDownloader implements Downloader,Closeable {
 		}
 		logger.info("downloading page " + request.getUrl());
 		HtmlPage htmlPage = null;
+		Page page = new Page();
 		try {
 			htmlPage = webClient.getPage(request.getUrl());
 		} catch (FailingHttpStatusCodeException | IOException e) {
 			e.printStackTrace();
+			page.setStatusCode(404);
 		}
-		Page page = new Page();
+		
 		page.setStatusCode(htmlPage.getWebResponse().getStatusCode());
 		 String content = htmlPage.getWebResponse().getContentAsString();
 		 page.setUrl(new PlainText(request.getUrl()));
