@@ -33,6 +33,9 @@ public class AppTest
      */
     public void testApp()
     {
+    	String s = "hoyoung.net";
+    	System.out.println(s.length());
+    	System.out.println(s.substring(0, 11));
         assertTrue( true );
     }
 }

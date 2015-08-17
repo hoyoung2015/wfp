@@ -8,7 +8,6 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.WebDriver;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
@@ -48,6 +47,7 @@ public class WebClientPool {
 				webClient.getOptions().setThrowExceptionOnScriptError(false);
 		        webClient.getOptions().setCssEnabled(false);
 		        webClient.getOptions().setJavaScriptEnabled(false);
+		        webClient.getOptions().setTimeout(5000);
 //		        webClient.getOptions().setUseInsecureSSL(false);
 				innerQueue.add(webClient);
 				webClientList.add(webClient);
