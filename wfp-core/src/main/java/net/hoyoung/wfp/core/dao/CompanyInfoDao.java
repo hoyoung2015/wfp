@@ -1,5 +1,7 @@
 package net.hoyoung.wfp.core.dao;
 
+import java.util.List;
+
 import net.hoyoung.wfp.core.entity.CompanyInfo;
 
 import org.hibernate.Session;
@@ -32,5 +34,8 @@ public class CompanyInfoDao extends BaseDao{
 		return (CompanyInfo) getSession().createQuery("from CompanyInfo where stockCode=?")
 				.setParameter(0, stockCode)
 				.uniqueResult();
+	}
+	public List<CompanyInfo> findAll() {
+		return getSession().createCriteria(CompanyInfo.class).list();
 	}
 }

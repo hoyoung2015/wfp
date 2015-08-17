@@ -4,33 +4,31 @@ import net.hoyoung.wfp.core.service.NewItemService;
 import net.hoyoung.wfp.searcher.pageprocessor.impl.SearchPageProcessor;
 import net.hoyoung.wfp.searcher.pipeline.impl.DataBasePipeline;
 
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
 
 @Component
-public class HtmlDownloader implements ApplicationContextAware{
+public class HtmlDownloader{
 	private Spider spider;
-	private ApplicationContext applicationContext;
+	@Autowired
+	private NewItemService newItemService;
 	public HtmlDownloader() {
 		spider = Spider.create(new SearchPageProcessor());
 	}
 	public void addUrl(String url){
 		spider.addUrl(url);
 	}
+	public void addRequest(Request request){
+		spider.addRequest(request);
+	}
 	public void run(){
 		DataBasePipeline pipeline = new DataBasePipeline();
-		pipeline.setNewItemService(applicationContext.getBean(NewItemService.class));
+		pipeline.setNewItemService(newItemService);
 		spider.addPipeline(pipeline);
 		spider.thread(5).run();
 		System.out.println("webmagic 爬虫启动......");
-	}
-	@Override
-	public void setApplicationContext(ApplicationContext applicationContext)
-			throws BeansException {
-		this.applicationContext = applicationContext;
 	}
 }

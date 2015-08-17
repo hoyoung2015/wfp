@@ -16,8 +16,8 @@ public class DataBasePipeline implements Pipeline {
 	@Override
 	public void process(ResultItems resultItems, Task task) {
 		NewItem newItem = new NewItem();
-		newItem.setStockCode((String) resultItems.getRequest().getExtra("stockCode"));
+		newItem.setTargetUrl(resultItems.getRequest().getUrl());
 		newItem.setTargetHtml(resultItems.get("body").toString());
-		newItemService.updateByStockCode(newItem);
+		newItemService.updateByTargetUrl(newItem);
 	}
 }

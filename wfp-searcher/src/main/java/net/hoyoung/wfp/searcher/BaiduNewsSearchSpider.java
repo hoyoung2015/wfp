@@ -15,12 +15,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * Hello world!
  *
  */
-public class App 
+public class BaiduNewsSearchSpider 
 {
 	private static String[] config = { "classpath*:spring-core.xml" };
 	private static ApplicationContext context;
 	static {
-//		context = new FileSystemXmlApplicationContext(config);
 		context = new ClassPathXmlApplicationContext(config);
 	}
 	public static void main(String[] args) {

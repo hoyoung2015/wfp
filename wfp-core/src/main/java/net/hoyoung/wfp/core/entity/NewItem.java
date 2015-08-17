@@ -25,12 +25,15 @@ public class NewItem {
 	
 	private String query;//搜索关键词
 	
+	@Index(name="ix_title")
 	private String title;
 	
 	@Column(columnDefinition="TEXT")
+	@Index(name="ix_summary")
 	private String summary;
 	
 	@Column(name="target_url",unique=true)
+	@Index(name="ix_target_url")
 	private String targetUrl;
 	
 	@Basic(fetch=FetchType.LAZY)

@@ -36,4 +36,18 @@ public class NewItemDao extends BaseDao {
 			}
 		}
 	}
+	public void updateByTargetUrl(NewItem newItem) {
+		Session session = getSession();
+		NewItem n = (NewItem) session.createQuery("from NewItem where targetUrl=?")
+				.setParameter(0, newItem.getTargetUrl())
+				.uniqueResult();
+		if(n!=null){
+			if(newItem.getTargetHtml()!=null){
+				n.setTargetHtml(newItem.getTargetHtml());
+			}
+		}
+	}
+	public List<NewItem> findAll() {
+		return getSession().createCriteria(NewItem.class).list();
+	}
 }

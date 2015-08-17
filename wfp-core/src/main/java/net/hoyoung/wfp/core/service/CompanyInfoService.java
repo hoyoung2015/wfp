@@ -1,5 +1,7 @@
 package net.hoyoung.wfp.core.service;
 
+import java.util.List;
+
 import net.hoyoung.wfp.core.dao.CompanyInfoDao;
 import net.hoyoung.wfp.core.entity.CompanyInfo;
 
@@ -19,5 +21,8 @@ public class CompanyInfoService {
 	}
 	public CompanyInfo getByStockCode(String stockCode){
 		return companyInfoDao.getByStockCode(stockCode);
+	}
+	public List<CompanyInfo> findAll(){
+		return companyInfoDao.findAll();
 	}
 }
