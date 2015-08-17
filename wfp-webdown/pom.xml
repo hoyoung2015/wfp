@@ -8,9 +8,8 @@
 		<artifactId>wfp</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>wfp-searcher</artifactId>
-	<name>wfp-searcher</name>
-	<url>http://maven.apache.org</url>
+	<artifactId>wfp-webdown</artifactId>
+	<name>wfp-webdown</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -19,6 +18,11 @@
 			<groupId>net.hoyoung</groupId>
 			<artifactId>wfp-core</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>2.45.0</version>
 		</dependency>
 		<dependency>
 			<groupId>net.sourceforge.htmlunit</groupId>

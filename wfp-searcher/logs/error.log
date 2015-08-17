@@ -2063,3 +2063,23 @@ Caused by: java.net.URISyntaxException: Illegal character in query at index 62: 
 	at java.net.URI.<init>(URI.java:588)
 	at java.net.URI.create(URI.java:850)
 	... 9 more
+2015-08-17 16:39:20  [ pool-1-thread-3:20118 ] - [ ERROR ]  process request Request{url='http://www.bocichina.com/boci/f10/f10Content.jsp?tn=gsyw&guid={B269CF5B-AEA2-4030-98FA-F67E0A4A131A}', method='null', extras={stockCode=600006, statusCode=0}, priority=0} error
+java.lang.IllegalArgumentException: Illegal character in query at index 62: http://www.bocichina.com/boci/f10/f10Content.jsp?tn=gsyw&guid={B269CF5B-AEA2-4030-98FA-F67E0A4A131A}
+	at java.net.URI.create(URI.java:852)
+	at org.apache.http.client.methods.RequestBuilder.setUri(RequestBuilder.java:175)
+	at us.codecraft.webmagic.downloader.HttpClientDownloader.getHttpUriRequest(HttpClientDownloader.java:133)
+	at us.codecraft.webmagic.downloader.HttpClientDownloader.download(HttpClientDownloader.java:91)
+	at us.codecraft.webmagic.Spider.processRequest(Spider.java:408)
+	at us.codecraft.webmagic.Spider$1.run(Spider.java:322)
+	at us.codecraft.webmagic.selector.thread.CountableThreadPool$1.run(CountableThreadPool.java:74)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.net.URISyntaxException: Illegal character in query at index 62: http://www.bocichina.com/boci/f10/f10Content.jsp?tn=gsyw&guid={B269CF5B-AEA2-4030-98FA-F67E0A4A131A}
+	at java.net.URI$Parser.fail(URI.java:2848)
+	at java.net.URI$Parser.checkChars(URI.java:3021)
+	at java.net.URI$Parser.parseHierarchical(URI.java:3111)
+	at java.net.URI$Parser.parse(URI.java:3053)
+	at java.net.URI.<init>(URI.java:588)
+	at java.net.URI.create(URI.java:850)
+	... 9 more
