@@ -16,8 +16,8 @@ public class CompanyFileReaderUtil {
 		super();
 		this.file = new File(filePath);
 	}
-	public List<CompanyInfo> read(){
-		List<CompanyInfo> list = new ArrayList<CompanyInfo>();
+	public List<String> read(){
+		List<String> list = new ArrayList<String>();
 		
 		try {
 			FileInputStream fs = new FileInputStream(file);
@@ -26,9 +26,7 @@ public class CompanyFileReaderUtil {
 			String temp = null;
 			
 			while ((temp = br.readLine()) != null) {
-				CompanyInfo c = new CompanyInfo();
-				c.setStockCode(temp.replace(" ", ""));
-				list.add(c);
+				list.add(temp.replace(" ", ""));
 			}
 			
 			fs.close();

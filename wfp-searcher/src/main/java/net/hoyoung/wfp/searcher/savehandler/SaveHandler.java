@@ -1,9 +1,6 @@
 package net.hoyoung.wfp.searcher.savehandler;
-import java.util.List;
-
-import net.hoyoung.wfp.searcher.entity.NewItem;
-import us.codecraft.webmagic.selector.Html;
+import net.hoyoung.wfp.searcher.SearchRequest;
 
 public interface SaveHandler {
-	public List<NewItem> save(Html html);
+	public void save(SearchRequest searchRequest);
 }

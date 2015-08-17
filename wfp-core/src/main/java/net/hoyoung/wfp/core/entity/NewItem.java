@@ -23,12 +23,14 @@ public class NewItem {
 	@Column(name="stock_code")
 	private String stockCode;//股票号
 	
+	private String query;//搜索关键词
+	
 	private String title;
 	
 	@Column(columnDefinition="TEXT")
 	private String summary;
 	
-	@Column(name="target_url")
+	@Column(name="target_url",unique=true)
 	private String targetUrl;
 	
 	@Basic(fetch=FetchType.LAZY)
@@ -66,6 +68,13 @@ public class NewItem {
 	}
 	public void setSourceName(String sourceName) {
 		this.sourceName = sourceName;
+	}
+	
+	public String getQuery() {
+		return query;
+	}
+	public void setQuery(String query) {
+		this.query = query;
 	}
 	public int getId() {
 		return id;

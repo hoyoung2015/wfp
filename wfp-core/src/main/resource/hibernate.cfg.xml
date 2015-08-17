@@ -6,7 +6,7 @@
     <session-factory>
         <property name="javax.persistence.validation.mode">none</property> 
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://192.168.163.129:3306/wfp?useUnicode=true&amp;characterEncoding=UTF-8</property>
+        <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/wfp?useUnicode=true&amp;characterEncoding=UTF-8</property>
         <property name="connection.username">root</property>  
 		<property name="connection.password"></property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>

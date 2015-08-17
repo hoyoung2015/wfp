@@ -1,6 +1,6 @@
 package net.hoyoung.wfp.searcher;
 
-import net.hoyoung.wfp.core.dao.NewItemDao;
+import net.hoyoung.wfp.core.service.NewItemService;
 import net.hoyoung.wfp.searcher.pageprocessor.impl.SearchPageProcessor;
 import net.hoyoung.wfp.searcher.pipeline.impl.DataBasePipeline;
 
@@ -23,7 +23,7 @@ public class HtmlDownloader implements ApplicationContextAware{
 	}
 	public void run(){
 		DataBasePipeline pipeline = new DataBasePipeline();
-		pipeline.setNewItemDao(applicationContext.getBean(NewItemDao.class));
+		pipeline.setNewItemService(applicationContext.getBean(NewItemService.class));
 		spider.addPipeline(pipeline);
 		spider.thread(5).run();
 		System.out.println("webmagic 爬虫启动......");

@@ -6,24 +6,24 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import net.hoyoung.wfp.searcher.dao.NewItemDao;
-import net.hoyoung.wfp.searcher.entity.NewItem;
+import net.hoyoung.wfp.core.entity.CompanyInfo;
+import net.hoyoung.wfp.core.entity.NewItem;
+import net.hoyoung.wfp.core.service.NewItemService;
+import net.hoyoung.wfp.searcher.SearchRequest;
 import net.hoyoung.wfp.searcher.savehandler.SaveHandler;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.Selectable;
 @Component
-@Scope("prototype")
 public class DbSaveHandler implements SaveHandler {
 	@Autowired
-	private NewItemDao newItemDao;
+	private NewItemService newItemService;
 	@Override
-	public List<NewItem> save(Html html) {
-		Html resultHtml = html;
+	public void save(SearchRequest searchRequest) {
+		Html resultHtml = searchRequest.getHtml();
 		List<NewItem> list = new ArrayList<NewItem>();
 		//开线程来保存
 		
@@ -54,10 +54,14 @@ public class DbSaveHandler implements SaveHandler {
 			newItem.setTargetUrl(targetUrl);
 			newItem.setTitle(title);
 			newItem.setSummary(summary);
-			newItemDao.save(newItem);
+			
+			CompanyInfo companyInfo = (CompanyInfo) searchRequest.getExtra("company");
+			
+			newItem.setStockCode(companyInfo.getStockCode());
+			newItem.setQuery(searchRequest.getQuery());
+			newItemService.save(newItem);
 			list.add(newItem);
 		}
-		return list;
 	}
 
 }

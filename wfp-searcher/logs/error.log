@@ -1,2 +1,4 @@
-2015-08-14 15:01:59  [ main:807 ] - [ ERROR ]  HHH000389: Unsuccessful: create index html_index on new_item (target_html)
-2015-08-14 15:01:59  [ main:808 ] - [ ERROR ]  BLOB/TEXT column 'target_html' used in key specification without a key length
+2015-08-17 09:53:54  [ main:919 ] - [ ERROR ]  HHH000389: Unsuccessful: create index html_index on new_item (target_html)
+2015-08-17 09:53:54  [ main:924 ] - [ ERROR ]  BLOB/TEXT column 'target_html' used in key specification without a key length
+2015-08-17 10:38:59  [ main:949 ] - [ ERROR ]  HHH000389: Unsuccessful: create index html_index on new_item (target_html)
+2015-08-17 10:38:59  [ main:950 ] - [ ERROR ]  BLOB/TEXT column 'target_html' used in key specification without a key length

@@ -2,7 +2,6 @@ package net.hoyoung.wfp.core.dao;
 
 import java.util.List;
 
-import net.hoyoung.wfp.core.entity.CompanyInfo;
 import net.hoyoung.wfp.core.entity.NewItem;
 
 import org.hibernate.Session;
