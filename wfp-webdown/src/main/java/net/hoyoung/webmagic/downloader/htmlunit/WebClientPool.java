@@ -47,7 +47,7 @@ public class WebClientPool {
 				webClient.getOptions().setThrowExceptionOnScriptError(false);
 		        webClient.getOptions().setCssEnabled(false);
 		        webClient.getOptions().setJavaScriptEnabled(false);
-		        webClient.getOptions().setTimeout(5000);
+		        webClient.getOptions().setTimeout(50000);
 //		        webClient.getOptions().setUseInsecureSSL(false);
 				innerQueue.add(webClient);
 				webClientList.add(webClient);
