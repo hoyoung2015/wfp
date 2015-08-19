@@ -39,7 +39,7 @@ public class AppTest
     {
     	String s = "<a href=jhy-8355.shtml target=\"_blank\">银行业（IV）</a>";
 //    	System.out.println(new SmartContentSelector().select(s));
-    	System.out.println(new XpathSelector("//a/text()").select(s).replaceAll(" ", ""));
+    	System.out.println(new XpathSelector("//a/@href").select(s));
         assertTrue( true );
     }
 }

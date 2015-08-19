@@ -440,3 +440,19 @@ java.lang.NullPointerException
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
 	at java.lang.Thread.run(Thread.java:745)
+2015-08-19 15:54:45  [ pool-1-thread-1:2770 ] - [ ERROR ]  process request Request{url='http://stockdata.stock.hexun.com/zrbg/data/zrbList.aspx?date=2014-12-31&count=20&page=1', method='null', extras={publishDate=2014-12-31, statusCode=200}, priority=0} error
+java.util.regex.PatternSyntaxException: Unexpected internal error near index 1
+\
+ ^
+	at java.util.regex.Pattern.error(Pattern.java:1955)
+	at java.util.regex.Pattern.compile(Pattern.java:1702)
+	at java.util.regex.Pattern.<init>(Pattern.java:1351)
+	at java.util.regex.Pattern.compile(Pattern.java:1028)
+	at java.lang.String.replaceAll(String.java:2211)
+	at net.hoyoung.wfp.stockdown.CompanySocialReportSprderPageProcessor.process(CompanySocialReportSprderPageProcessor.java:80)
+	at us.codecraft.webmagic.Spider.processRequest(Spider.java:420)
+	at us.codecraft.webmagic.Spider$1.run(Spider.java:322)
+	at us.codecraft.webmagic.selector.thread.CountableThreadPool$1.run(CountableThreadPool.java:74)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)

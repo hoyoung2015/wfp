@@ -20,7 +20,7 @@ public class SocialReport {
 	@Id
 	@GeneratedValue
 	private int id;
-	@Column(name="stock_code")
+	@Column(name="stock_code",unique=true)
 	private String stockCode;
 	@Column(name="publish_date")
 	private String publishDate;
@@ -40,7 +40,7 @@ public class SocialReport {
 	@Column(columnDefinition="TEXT",name="social_resp")
 	private String socialResp;// 社会
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="create_date")
 	private Date createDate;
 	
