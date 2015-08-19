@@ -1,5 +1,7 @@
 package net.hoyoung.wfp.stockdown;
 
+import us.codecraft.webmagic.selector.SmartContentSelector;
+import us.codecraft.webmagic.selector.XpathSelector;
 import net.hoyoung.wfp.core.utils.RegexUtils;
 import net.hoyoung.wfp.core.utils.StringUtils;
 import junit.framework.Test;
@@ -35,11 +37,9 @@ public class AppTest
      */
     public void testApp()
     {
-//    	String s = StringUtils.addHttpHead("hoyoung.net/h.html");
-//    	System.out.println(s);
-    	System.out.println(RegexUtils.checkURL("http://www.xxx.com"));
-    	System.out.println(RegexUtils.checkURL("http://www.xxx-a.com"));
-    	System.out.println(RegexUtils.checkURL("http://www.xxx-a.com/?name=ggg"));
+    	String s = "<a href=jhy-8355.shtml target=\"_blank\">银行业（IV）</a>";
+//    	System.out.println(new SmartContentSelector().select(s));
+    	System.out.println(new XpathSelector("//a/text()").select(s).replaceAll(" ", ""));
         assertTrue( true );
     }
 }

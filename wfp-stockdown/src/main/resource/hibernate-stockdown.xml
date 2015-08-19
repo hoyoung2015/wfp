@@ -13,9 +13,7 @@
         <property name="hbm2ddl.auto">update</property>
         <property name="show_sql">false</property>
         <property name="format_sql">true</property>
-       <mapping class="net.hoyoung.wfp.core.entity.CompanyInfo"/>
-       <mapping class="net.hoyoung.wfp.core.entity.TagMeta"/>
-       <mapping class="net.hoyoung.wfp.core.entity.NewItem"/>
        <mapping class="net.hoyoung.wfp.core.entity.SocialReport"/>
+       <mapping class="net.hoyoung.wfp.core.entity.SocialReportSyn"/>
     </session-factory>
 </hibernate-configuration>

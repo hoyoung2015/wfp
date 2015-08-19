@@ -22,6 +22,7 @@ public class DBPipeline implements Pipeline {
 	@Override
 	public void process(ResultItems resultItems, Task task) {
 		Map<String,Object> map = resultItems.getAll();
+		System.out.println(map.toString());
 		if(map.isEmpty()){
 			return;
 		}
@@ -30,8 +31,24 @@ public class DBPipeline implements Pipeline {
 		c.setCreateDate(new Date());
 		for (Entry<String, Object> data : map.entrySet()) {
 //			System.out.println(data.getKey()+":"+data.getValue());
+			
+			if("statusCode".equals(data.getKey())){
+				continue;
+			}
+			
 			try {
-				Method method = CompanyInfo.class.getMethod("set"+captureName(data.getKey()), data.getValue().getClass());
+				Method method = null;
+				if (data.getValue() instanceof Float) {
+					method = CompanyInfo.class.getMethod("set"+captureName(data.getKey()), float.class);
+				}else if (data.getValue() instanceof Double) {
+					method = CompanyInfo.class.getMethod("set"+captureName(data.getKey()), double.class);
+				}else if (data.getValue() instanceof Long) {
+					method = CompanyInfo.class.getMethod("set"+captureName(data.getKey()), long.class);
+				}else if (data.getValue() instanceof Integer) {
+					method = CompanyInfo.class.getMethod("set"+captureName(data.getKey()), int.class);
+				}else{
+					method = CompanyInfo.class.getMethod("set"+captureName(data.getKey()), data.getValue().getClass());
+				}
 				method.invoke(c, data.getValue());
 			} catch (Exception e) {
 				e.printStackTrace();

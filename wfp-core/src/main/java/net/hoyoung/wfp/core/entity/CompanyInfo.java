@@ -19,8 +19,11 @@ public class CompanyInfo {
 	@GeneratedValue
 	private int id;
 	
-	@Column(name="stock_code",updatable=false)
+	@Column(name="stock_code",updatable=false,unique=true)
 	private String stockCode;//股票号
+	
+	@Column(name="stock_type")
+	private String stockType;
 	
 	@Column(updatable=false)
 	private String market;
@@ -30,15 +33,63 @@ public class CompanyInfo {
 	
 	private String ename;//英文名称
 	
+	@Index(name="ix_sname")
 	private String sname;//简称
 	
+	@Index(name="ix_addr")
 	private String addr;//地址
 	
-	@Column(name="reg_capital")
-	private long regCapital;//注册资本
+	private float lootchips;//流通股本（亿股）
 	
+	private double institutional;//注册资本，单位万元
+	
+	private float pricelimit;//总股本（亿股）
+	
+	private float shareholders;//流通市值（亿元）
+	
+	@Index(name="ix_industry")
 	private String industry;//行业
 	
+	public float getLootchips() {
+		return lootchips;
+	}
+
+	public void setLootchips(float lootchips) {
+		this.lootchips = lootchips;
+	}
+
+	public double getInstitutional() {
+		return institutional;
+	}
+
+	public void setInstitutional(double institutional) {
+		this.institutional = institutional;
+	}
+
+	public String getStockType() {
+		return stockType;
+	}
+
+	public void setStockType(String stockType) {
+		this.stockType = stockType;
+	}
+
+	public float getPricelimit() {
+		return pricelimit;
+	}
+
+	public void setPricelimit(float pricelimit) {
+		this.pricelimit = pricelimit;
+	}
+
+	public float getShareholders() {
+		return shareholders;
+	}
+
+	public void setShareholders(float shareholders) {
+		this.shareholders = shareholders;
+	}
+
 	@Column(name="web_site")
 	private String webSite;//网址
 	
@@ -53,6 +104,28 @@ public class CompanyInfo {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="create_date")
 	private Date createDate;//录入时间
+	
+	private String area;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="register_date")
+	private Date registerDate;
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public Date getRegisterDate() {
+		return registerDate;
+	}
+
+	public void setRegisterDate(Date registerDate) {
+		this.registerDate = registerDate;
+	}
 
 	public int getId() {
 		return id;
@@ -102,13 +175,6 @@ public class CompanyInfo {
 		this.addr = addr;
 	}
 
-	public long getRegCapital() {
-		return regCapital;
-	}
-
-	public void setRegCapital(Long regCapital) {
-		this.regCapital = regCapital;
-	}
 
 	public String getIndustry() {
 		return industry;
@@ -160,7 +226,6 @@ public class CompanyInfo {
 
 	public CompanyInfo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public CompanyInfo(int id, String stockCode, String webSite) {
@@ -174,10 +239,13 @@ public class CompanyInfo {
 	public String toString() {
 		return "CompanyInfo [id=" + id + ", stockCode=" + stockCode
 				+ ", market=" + market + ", name=" + name + ", ename=" + ename
-				+ ", sname=" + sname + ", addr=" + addr + ", regCapital="
-				+ regCapital + ", industry=" + industry + ", webSite="
+				+ ", sname=" + sname + ", addr=" + addr + ", lootchips="
+				+ lootchips + ", institutional=" + institutional
+				+ ", pricelimit=" + pricelimit + ", shareholders="
+				+ shareholders + ", industry=" + industry + ", webSite="
 				+ webSite + ", listingDate=" + listingDate + ", offerDate="
-				+ offerDate + ", createDate=" + createDate + "]";
+				+ offerDate + ", createDate=" + createDate + ", area=" + area
+				+ ", registerDate=" + registerDate + "]";
 	}
 	
 }
