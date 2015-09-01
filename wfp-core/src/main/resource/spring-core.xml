@@ -4,10 +4,13 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	 xmlns:aop="http://www.springframework.org/schema/aop"
      xmlns:tx="http://www.springframework.org/schema/tx"
+     xmlns:mongo="http://www.springframework.org/schema/data/mongo"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 			 http://www.springframework.org/schema/beans/spring-beans.xsd
 			 http://www.springframework.org/schema/context 
 			 http://www.springframework.org/schema/context/spring-context.xsd
+			 http://www.springframework.org/schema/data/mongo
+			 http://www.springframework.org/schema/data/mongo/spring-mongo-1.5.xsd
 			 http://www.springframework.org/schema/aop  
              http://www.springframework.org/schema/aop/spring-aop-4.1.xsd  
              http://www.springframework.org/schema/tx   
@@ -51,6 +54,26 @@
 		class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
 		<property name="properties" ref="config" />
 	</bean>
+	
+	
+	<!-- mongodb -->
+	<mongo:db-factory host="${mongo.host}" port="${mongo.port}" dbname="${mongo.dbname}" />
+	<!-- mongo模板操作对象 -->
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
+    </bean>
+	<!-- MongoDB GridFS Template 支持，操作mongodb存放的文件 -->
+    <mongo:mapping-converter id="converter" db-factory-ref="mongoDbFactory"/>
+    <bean id="gridFsTemplate" class="org.springframework.data.mongodb.gridfs.GridFsTemplate">
+      <constructor-arg ref="mongoDbFactory"/>
+      <constructor-arg ref="converter"/>
+    </bean>
+	
+	
+	
+	
+	
+	
 	<!-- 事务配置 -->
     <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">     
           <property name="dataSource" ref="dataSource"></property>

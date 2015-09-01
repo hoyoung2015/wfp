@@ -1,5 +1,7 @@
 package net.hoyoung.wfp.core.service;
 
+import java.util.List;
+
 import net.hoyoung.wfp.core.dao.SocialReportSynDao;
 import net.hoyoung.wfp.core.entity.SocialReportSyn;
 
@@ -12,5 +14,8 @@ public class SocialReportSynService {
 	private SocialReportSynDao socialReportSynDao;
 	public void add(SocialReportSyn socialReportSyn){
 		socialReportSynDao.add(socialReportSyn);
+	}
+	public List<SocialReportSyn> findAll(){
+		return socialReportSynDao.findAll();
 	}
 }

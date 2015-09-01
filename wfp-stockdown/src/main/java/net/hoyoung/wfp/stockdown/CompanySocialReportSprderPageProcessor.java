@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.management.JMException;
 
+import net.hoyoung.webmagic.downloader.HtmlUnitDownloader;
 import net.hoyoung.webmagic.pipeline.SocialReportPipeline;
 import net.hoyoung.wfp.core.entity.SocialReportSyn;
 import net.hoyoung.wfp.core.service.SocialReportService;
