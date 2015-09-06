@@ -25,7 +25,7 @@ public class SocialReportDetailPipeline implements Pipeline {
 		System.err.println("===========================================------------------------------------------------");
 		BasicDBObject dbo = resultItems.get("dbo");
 		System.err.println(dbo.toString());
-		mongoTemplate.getCollection("zrbg").insert(dbo);
+		mongoTemplate.getCollection("zrbg_flat").insert(dbo);
 	}
 
 }
