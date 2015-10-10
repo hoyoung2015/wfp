@@ -1,5 +1,9 @@
 package net.hoyoung.wfp.core.service;
 
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
 import net.hoyoung.wfp.core.dao.CompanyPatentsDao;
 import net.hoyoung.wfp.core.entity.CompanyPatents;
 
@@ -13,5 +17,16 @@ public class CompanyPatentsService {
 	
 	public void add(CompanyPatents companyPatents){
 		companyPatentsDao.add(companyPatents);
+	}
+	
+	public void updateGreen(Map<String,String> patents){
+		
+		
+		
+		companyPatentsDao.updateGreen(patents);
+		
+		
+		
+		
 	}
 }

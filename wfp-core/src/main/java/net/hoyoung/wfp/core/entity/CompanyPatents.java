@@ -26,8 +26,22 @@ public class CompanyPatents {
 	private String patStdmode;//分类号
 	
 	
+	private boolean green;//是否为绿色专利
 	private String source;
+	private String remarks;
 	
+	public String getRemarks() {
+		return remarks;
+	}
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+	public boolean isGreen() {
+		return green;
+	}
+	public void setGreen(boolean green) {
+		this.green = green;
+	}
 	public String getSource() {
 		return source;
 	}

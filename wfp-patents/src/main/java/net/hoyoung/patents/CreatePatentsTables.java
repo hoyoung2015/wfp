@@ -8,7 +8,7 @@ import org.hibernate.tool.hbm2ddl.SchemaExport;
  * Hello world!
  *
  */
-public class App 
+public class CreatePatentsTables 
 {
     public static void main( String[] args )
     {

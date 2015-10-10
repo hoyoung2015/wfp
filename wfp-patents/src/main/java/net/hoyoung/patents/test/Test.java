@@ -1,4 +1,4 @@
-package net.hoyoung.patents;
+package net.hoyoung.patents.test;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

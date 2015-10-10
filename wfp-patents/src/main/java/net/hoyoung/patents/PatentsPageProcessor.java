@@ -47,7 +47,6 @@ public class PatentsPageProcessor implements PageProcessor{
 		String url = URL_PATTERN.replace("[page]", page+"");
 		CompanyPatentsService companyPatentsService = APP_CONTEXT.getBean(CompanyPatentsService.class);
 		
-		
 		Spider spider = Spider.create(new PatentsPageProcessor())
 				.addPipeline(new PatentsPipeline(companyPatentsService))
 				.setDownloader(new HtmlUnitDownloader())
@@ -58,9 +57,6 @@ public class PatentsPageProcessor implements PageProcessor{
 	}
 
 	public void process(Page page) {
-		
-		
-		
 		Selectable pageLink = page.getUrl().regex("^http://d.g.wanfangdata.com.cn/Patent_CN.*.aspx$");
 		if(pageLink.nodes().size()==0){//当前页是分页列表，提取详情链接和分页
 			System.err.println("---------------------->>>列表页处理");

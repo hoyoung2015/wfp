@@ -1,4 +1,4 @@
-package net.hoyoung.patents;
+package net.hoyoung.patents.test;
 
 import java.io.File;
 import java.io.IOException;
