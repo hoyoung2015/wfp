@@ -28,9 +28,16 @@ public class PatentsPageProcessor implements PageProcessor{
 	public static ApplicationContext APP_CONTEXT;
 	
 	
-	private static String QUERY = "专利—专利权人:(\"武汉钢铁(集团)公司\") * Date:-2015";
+	private static String COMPANY;
+	private static String STOCK_CODE;
+	private static String QUERY = "专利—专利权人:(\"[company]\") * Date:-2015";
 	private static String URL_PATTERN = "http://librarian.wanfangdata.com.cn/Patent.aspx?dbhit=&q=[query]&db=patent&p=[page]";
-	static {
+	
+	public static void main(String[] args) throws UnsupportedEncodingException {
+		
+		COMPANY = "天马微电子股份有限公司";
+		STOCK_CODE = "";
+		QUERY = QUERY.replace("[company]", COMPANY);
 		APP_CONTEXT = new FileSystemXmlApplicationContext(config);
 		
 		try {
@@ -39,9 +46,7 @@ public class PatentsPageProcessor implements PageProcessor{
 			e.printStackTrace();
 		}
 		URL_PATTERN = URL_PATTERN.replace("[query]", QUERY);
-	}
-	
-	public static void main(String[] args) throws UnsupportedEncodingException {
+		
 		long start = System.currentTimeMillis();
 		int page = 1;
 		String url = URL_PATTERN.replace("[page]", page+"");
@@ -84,8 +89,8 @@ public class PatentsPageProcessor implements PageProcessor{
 			String patName =  html.xpath("//h1/text()").get();
 			page.putField("patName", patName);
 //			System.err.println(patName);
-			String comName =  tbody.xpath("/tbody/tr[8]/td/text()").get();
-			page.putField("comName", comName);
+//			String comName =  tbody.xpath("/tbody/tr[8]/td/text()").get();
+			page.putField("comName", COMPANY);
 //			System.err.println(comName);
 			String patCode =  tbody.xpath("/tbody/tr[2]/td/text()").get();
 			page.putField("patCode", patCode);

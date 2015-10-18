@@ -19,7 +19,7 @@ public class CompanyPatentsDao extends BaseDao {
 		Set<Entry<String, String>> sets = patents.entrySet();
 		for (Entry<String, String> entry : sets) {
 //			System.err.println(entry.getKey()+"|"+entry.getValue());
-			session.createQuery("update CompanyPatents cp set cp.green=true where cp.patMainStdmode like '%"+entry.getKey()+"%'")
+			session.createQuery("update CompanyPatents cp set cp.green=true where cp.green != 1 and cp.patMainStdmode like '%"+entry.getKey()+"%'")
 			.executeUpdate();
 		}
 		

@@ -16,6 +16,7 @@ public class CompanyPatents {
 	private int patentsId;
 	private String patCode;//专利号
 	private String comName;
+	private String stockCode;//股票号
 	private String patName;
 	
 	@Column(columnDefinition="TEXT")
@@ -30,6 +31,13 @@ public class CompanyPatents {
 	private String source;
 	private String remarks;
 	
+	
+	public String getStockCode() {
+		return stockCode;
+	}
+	public void setStockCode(String stockCode) {
+		this.stockCode = stockCode;
+	}
 	public String getRemarks() {
 		return remarks;
 	}
