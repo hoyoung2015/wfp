@@ -33,24 +33,7 @@ public class TestAccessWebPageProcessor{
 			}
 			@Override
 			public void onError(Request request) {
-				System.out.println(request);
-				Session session = HibernateUtils.openSession();
-				//不通，删除
-				org.hibernate.Transaction tx = session.beginTransaction(); //保证是同一个事物
-				CompanyInfo c = new CompanyInfo();
-				c.setId((int)(request.getExtra("cid")));
-				c.setStockCode((String) request.getExtra("stockCode"));
-				session.delete(c);
-				//记录删除项
-				if((Integer)request.getExtra("statusCode")==500){
-					session.save(new TagMeta("500_error_url_"+c.getStockCode(), request.getUrl(), new Date()));
-				}else{
-					session.save(new TagMeta("error_url_"+c.getStockCode(), request.getUrl(), new Date()));
-				}
-				
-				tx.commit();
-				System.err.println(request);
-				System.err.println(c.getStockCode()+" 不通");
+
 			}
 		});
 		Spider spider = Spider.create(new PageProcessor(){

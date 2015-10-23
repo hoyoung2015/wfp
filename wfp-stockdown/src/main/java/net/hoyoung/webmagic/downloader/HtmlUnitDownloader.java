@@ -49,7 +49,7 @@ public class HtmlUnitDownloader implements Downloader,Closeable {
 		HtmlPage htmlPage = null;
 		try {
 			htmlPage = webClient.getPage(request.getUrl());
-		} catch (FailingHttpStatusCodeException | IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		Page page = new Page();
