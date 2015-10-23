@@ -10,7 +10,7 @@ import us.codecraft.webmagic.scheduler.FileCacheQueueScheduler;
  */
 public class App 
 {
-	private static String REQ_URL = "http://www.baosteel.com/group/index.htm";
+	private static String REQ_URL = "http://www.01.cn/news.asp";
     public static void main( String[] args )
     {
     	Spider.create(new WfpPageProcessor())
