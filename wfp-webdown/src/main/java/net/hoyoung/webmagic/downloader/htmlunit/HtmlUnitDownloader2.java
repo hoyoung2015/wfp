@@ -51,7 +51,7 @@ public class HtmlUnitDownloader2 implements Downloader,Closeable {
 		HtmlPage htmlPage = null;
 		try {
 			htmlPage = webClient.getPage(request.getUrl());
-		} catch (FailingHttpStatusCodeException | IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		List<HtmlAnchor> anchors = htmlPage.getAnchors();

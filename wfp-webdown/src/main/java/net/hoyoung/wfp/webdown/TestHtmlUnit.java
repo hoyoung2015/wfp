@@ -26,7 +26,7 @@ public class TestHtmlUnit {
 				HtmlPage htmlPage = null;
 				try {
 					htmlPage = webClient.getPage(url[1]);
-				} catch (FailingHttpStatusCodeException | IOException e1) {
+				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
 				List<HtmlAnchor> anchors = htmlPage.getAnchors();
