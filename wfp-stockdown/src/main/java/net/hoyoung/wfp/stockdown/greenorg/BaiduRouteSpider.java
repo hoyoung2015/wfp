@@ -124,7 +124,7 @@ public class BaiduRouteSpider implements PageProcessor{
     }
     private Site site = Site.me()
             .setRetryTimes(5)
-            .setSleepTime(200)
+            .setSleepTime(100)
 //            .addHeader("Host", "api.map.baidu.com")
             .addHeader(
                     "User-Agent",
