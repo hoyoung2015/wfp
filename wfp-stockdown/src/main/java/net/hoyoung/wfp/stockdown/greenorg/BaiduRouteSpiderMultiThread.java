@@ -14,19 +14,18 @@ import java.util.Map;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Created by Administrator on 2015/10/27.
  */
-public class BaiduRouteSpider implements PageProcessor{
+public class BaiduRouteSpiderMultiThread implements PageProcessor{
     static String AK = "i39t59l7L6nzXlOZCfzwUFsK";
     JdbcTemplate jdbcTemplate;
     BlockingDeque<Map<String, Object>> comQueue = new LinkedBlockingDeque<Map<String, Object>>();
     BlockingDeque<Map<String,Object>> orgQueue = new LinkedBlockingDeque<Map<String, Object>>();
     Map<String, Object> currentCom;
     Map<String, Object> currentOrg;
-    public BaiduRouteSpider() {
+    public BaiduRouteSpiderMultiThread() {
         jdbcTemplate = JDBCHelper.createMysqlTemplate("mysql1",
                 "jdbc:mysql://localhost/wfp?useUnicode=true&characterEncoding=utf8",
                 "root", "", 5, 30);
@@ -142,7 +141,7 @@ public class BaiduRouteSpider implements PageProcessor{
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        BaiduRouteSpider baiduRouteSpider = new BaiduRouteSpider();
+        BaiduRouteSpiderMultiThread baiduRouteSpider = new BaiduRouteSpiderMultiThread();
         Spider.create(baiduRouteSpider)
                 .addRequest(baiduRouteSpider.genereteReq())
                 .thread(1)
