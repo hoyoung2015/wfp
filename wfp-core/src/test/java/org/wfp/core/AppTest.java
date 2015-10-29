@@ -1,12 +1,17 @@
 package org.wfp.core;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
+import net.hoyoung.wfp.core.entity.ComOrg;
+import net.hoyoung.wfp.core.utils.HibernateUtils;
 import net.hoyoung.wfp.core.utils.Md5Util;
 import net.hoyoung.wfp.core.utils.StringUtils;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 
 /**
  * Unit test for simple App.
@@ -37,9 +42,6 @@ public class AppTest
      */
     public void testApp()
     {
-    	String s = "\u00A0hello world";
-    	System.out.println(s);
-    	System.out.println(StringUtils.clearEmptyStr(s));
-        assertTrue( true );
+
     }
 }

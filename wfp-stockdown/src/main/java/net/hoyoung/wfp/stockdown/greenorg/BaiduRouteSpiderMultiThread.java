@@ -28,7 +28,7 @@ public class BaiduRouteSpiderMultiThread implements PageProcessor{
     public BaiduRouteSpiderMultiThread() {
         jdbcTemplate = JDBCHelper.createMysqlTemplate("mysql1",
                 "jdbc:mysql://localhost/wfp?useUnicode=true&characterEncoding=utf8",
-                "root", "", 5, 30);
+                "root", "", 20, 100);
         //加载企业队列
         List<Map<String, Object>> list = jdbcTemplate.queryForList("select stock_code,sname,area,pos_x as lng,pos_y as lat from company_info where stock_code in (select stock_code from com_org group by stock_code)");
         System.out.println("load all stock_code");
@@ -120,12 +120,12 @@ public class BaiduRouteSpiderMultiThread implements PageProcessor{
                     stockCode,
                     orgIds.get(i));
         }
-        Request req = genereteReq();
-        if(req != null){
-            page.addTargetRequest(req);
-        }else {
-            return;
-        }
+//        Request req = genereteReq();
+//        if(req != null){
+//            page.addTargetRequest(req);
+//        }else {
+//            return;
+//        }
     }
     private Site site = Site.me()
             .setRetryTimes(5)
@@ -140,11 +140,19 @@ public class BaiduRouteSpiderMultiThread implements PageProcessor{
     }
 
     public static void main(String[] args) {
+        int total = 0;
+        if(args.length==0){
+            total = 5000;
+        }else {
+            total = Integer.valueOf(args[0]);
+        }
         long start = System.currentTimeMillis();
         BaiduRouteSpiderMultiThread baiduRouteSpider = new BaiduRouteSpiderMultiThread();
-        Spider.create(baiduRouteSpider)
-                .addRequest(baiduRouteSpider.genereteReq())
-                .thread(1)
+        Spider spider = Spider.create(baiduRouteSpider);
+        for (int i = 0; i < total; i++) {
+            spider .addRequest(baiduRouteSpider.genereteReq());
+        }
+        spider.thread(20)
                 .run();
         System.out.println("cost " + (System.currentTimeMillis() - start) / 1000
                 + " seconds");

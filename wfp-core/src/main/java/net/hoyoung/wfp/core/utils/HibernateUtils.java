@@ -10,9 +10,13 @@ public class HibernateUtils {
 	private static SessionFactory sessionFactory;
 	public static SessionFactory getSessionFactory(){
 		if(sessionFactory==null){
-			Configuration configuration = new Configuration().configure("hibernate.cfg.xml");  
-	        ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();  
-	        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+            synchronized (HibernateUtils.class){
+                if(sessionFactory==null){
+                    Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+                    ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
+                    sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+                }
+            }
 		}
 		return sessionFactory;
 	}
@@ -21,5 +25,11 @@ public class HibernateUtils {
 			getSessionFactory();
 		}
 		return sessionFactory.openSession();
+	}
+    public static Session getCurrentSession(){
+		if(sessionFactory==null){
+			getSessionFactory();
+		}
+		return sessionFactory.getCurrentSession();
 	}
 }
