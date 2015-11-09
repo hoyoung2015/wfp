@@ -149,9 +149,15 @@ public class BaiduRouteSpiderMultiThread implements PageProcessor{
         long start = System.currentTimeMillis();
         BaiduRouteSpiderMultiThread baiduRouteSpider = new BaiduRouteSpiderMultiThread();
         Spider spider = Spider.create(baiduRouteSpider);
-        for (int i = 0; i < total; i++) {
-            spider .addRequest(baiduRouteSpider.genereteReq());
+        int i = 0;
+        for (; i < total; i++) {
+            Request req = baiduRouteSpider.genereteReq();
+            if(req==null){
+                break;
+            }
+            spider .addRequest(req);
         }
+        System.out.println("inject "+i+" requests");
         spider.thread(20)
                 .run();
         System.out.println("cost " + (System.currentTimeMillis() - start) / 1000
