@@ -14,6 +14,8 @@
         <property name="format_sql">true</property>
         <property name="current_session_context_class">thread</property>
         <property name="connection.username">root</property>
+        <property name="c3p0.max_size">30</property>
+        <property name="c3p0.min_size">1</property>
         <!--<mapping class="net.hoyoung.wfp.core.entity.TagMeta"/>-->
        <!--<mapping class="net.hoyoung.wfp.core.entity.NewItem"/>-->
        <!--<mapping class="net.hoyoung.wfp.core.entity.SocialReport"/>-->
