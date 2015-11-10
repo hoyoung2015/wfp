@@ -47,8 +47,11 @@ public class HibernateUtils {
     public static void closeSession() {
         Session s = (Session) session.get();// 获取当前线程下的SESSION
         if (s != null) {
-            // s.close();//这里无需将Session关闭，因为该Session是保存在当前线程//中的，线程执行完毕Session自然会销毁
+            if (s.isOpen()){
+                s.close();//这里无需将Session关闭，因为该Session是保存在当前线程//中的，线程执行完毕Session自然会销毁
+            }
             session.set(null);// 将当前线程中的会话清除
+
         }
     }
 }

@@ -36,7 +36,7 @@
 		</dependency>
 		
 	</dependencies>
-    <build>
+    <!--<build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -50,7 +50,7 @@
                     <archive>
                         <manifest>
                             <mainClass>net.hoyoung.wfp.stockdown.greenorg.BaiduRouteSpiderMultiThread</mainClass>
-                            <!--<mainClass>net.hoyoung.wfp.envirorg.spider.HporgDistanceSpider</mainClass>-->
+                            &lt;!&ndash;<mainClass>net.hoyoung.wfp.envirorg.spider.HporgDistanceSpider</mainClass>&ndash;&gt;
                         </manifest>
                     </archive>
                 </configuration>
@@ -65,5 +65,5 @@
                 </executions>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
 </project>
