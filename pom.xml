@@ -15,5 +15,7 @@
     <module>wfp-searcher</module>
     <module>wfp-webdown</module>
     <module>wfp-patents</module>
+      <module>wfp-envirorg</module>
   </modules>
+
 </project>

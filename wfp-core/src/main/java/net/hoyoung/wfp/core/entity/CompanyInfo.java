@@ -1,251 +1,392 @@
 package net.hoyoung.wfp.core.entity;
 
-import java.util.Date;
-
-import javax.persistence.Column;
+import javax.persistence.Basic;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import java.math.BigDecimal;
+import java.sql.Date;
 
-import org.hibernate.annotations.Index;
-
+/**
+ * Created by Administrator on 2015/11/10.
+ */
 @Entity
-@Table(name="company_info")
+@javax.persistence.Table(name = "company_info", schema = "", catalog = "wfp")
 public class CompanyInfo {
-	@Id
-	@GeneratedValue
-	private int id;
-	
-	@Column(name="stock_code",updatable=false,unique=true)
-	private String stockCode;//股票号
-	
-	@Column(name="stock_type")
-	private String stockType;
-	
-	@Column(updatable=false)
-	private String market;
-	
-	@Index(name="ix_name")
-	private String name;//中文全称
-	
-	private String ename;//英文名称
-	
-	@Index(name="ix_sname")
-	private String sname;//简称
-	
-	@Index(name="ix_addr")
-	private String addr;//地址
-	
-	private float lootchips;//流通股本（亿股）
-	
-	private double institutional;//注册资本，单位万元
-	
-	private float pricelimit;//总股本（亿股）
-	
-	private float shareholders;//流通市值（亿元）
-	
-	@Index(name="ix_industry")
-	private String industry;//行业
-	
-	public float getLootchips() {
-		return lootchips;
-	}
+    private String stockCode;
 
-	public void setLootchips(float lootchips) {
-		this.lootchips = lootchips;
-	}
+    public CompanyInfo() {
 
-	public double getInstitutional() {
-		return institutional;
-	}
+    }
 
-	public void setInstitutional(double institutional) {
-		this.institutional = institutional;
-	}
+    public CompanyInfo(String stockCode, Float posX, Float posY) {
+        this.stockCode = stockCode;
+        this.posX = posX;
+        this.posY = posY;
+    }
 
-	public String getStockType() {
-		return stockType;
-	}
+    @Id
+    @javax.persistence.Column(name = "stock_code")
+    public String getStockCode() {
+        return stockCode;
+    }
 
-	public void setStockType(String stockType) {
-		this.stockType = stockType;
-	}
+    public void setStockCode(String stockCode) {
+        this.stockCode = stockCode;
+    }
 
-	public float getPricelimit() {
-		return pricelimit;
-	}
+    private String sname;
 
-	public void setPricelimit(float pricelimit) {
-		this.pricelimit = pricelimit;
-	}
+    @Basic
+    @javax.persistence.Column(name = "sname")
+    public String getSname() {
+        return sname;
+    }
 
-	public float getShareholders() {
-		return shareholders;
-	}
+    public void setSname(String sname) {
+        this.sname = sname;
+    }
 
-	public void setShareholders(float shareholders) {
-		this.shareholders = shareholders;
-	}
+    private String area;
 
-	@Column(name="web_site")
-	private String webSite;//网址
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name="listing_date")
-	private Date listingDate;//上市日期
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name="offer_date")
-	private Date offerDate;//招股日期
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="create_date")
-	private Date createDate;//录入时间
-	
-	private String area;
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name="register_date")
-	private Date registerDate;
+    @Basic
+    @javax.persistence.Column(name = "area")
+    public String getArea() {
+        return area;
+    }
 
-	public String getArea() {
-		return area;
-	}
+    public void setArea(String area) {
+        this.area = area;
+    }
 
-	public void setArea(String area) {
-		this.area = area;
-	}
+    private Float posX;
 
-	public Date getRegisterDate() {
-		return registerDate;
-	}
+    @Basic
+    @javax.persistence.Column(name = "pos_x")
+    public Float getPosX() {
+        return posX;
+    }
 
-	public void setRegisterDate(Date registerDate) {
-		this.registerDate = registerDate;
-	}
+    public void setPosX(Float posX) {
+        this.posX = posX;
+    }
 
-	public int getId() {
-		return id;
-	}
+    private Float posY;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    @Basic
+    @javax.persistence.Column(name = "pos_y")
+    public Float getPosY() {
+        return posY;
+    }
 
-	public String getStockCode() {
-		return stockCode;
-	}
+    public void setPosY(Float posY) {
+        this.posY = posY;
+    }
 
-	public void setStockCode(String stockCode) {
-		this.stockCode = stockCode;
-	}
+    private String industry;
 
-	public String getName() {
-		return name;
-	}
+    @Basic
+    @javax.persistence.Column(name = "industry")
+    public String getIndustry() {
+        return industry;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setIndustry(String industry) {
+        this.industry = industry;
+    }
 
-	public String getEname() {
-		return ename;
-	}
+    private BigDecimal institutional;
 
-	public void setEname(String ename) {
-		this.ename = ename;
-	}
+    @Override
+    public String toString() {
+        return "CompanyInfo{" +
+                "stockCode='" + stockCode + '\'' +
+                ", sname='" + sname + '\'' +
+                ", area='" + area + '\'' +
+                ", posX=" + posX +
+                ", posY=" + posY +
+                ", industry='" + industry + '\'' +
+                ", institutional=" + institutional +
+                ", lootchips=" + lootchips +
+                ", pricelimit=" + pricelimit +
+                ", shareholders=" + shareholders +
+                ", name='" + name + '\'' +
+                ", ename='" + ename + '\'' +
+                ", registerDate=" + registerDate +
+                ", addrReg='" + addrReg + '\'' +
+                ", addrWork='" + addrWork + '\'' +
+                ", market='" + market + '\'' +
+                ", listingDate=" + listingDate +
+                ", offerDate=" + offerDate +
+                ", stockType='" + stockType + '\'' +
+                ", id=" + id +
+                ", addr='" + addr + '\'' +
+                ", createDate=" + createDate +
+                ", webSite='" + webSite + '\'' +
+                '}';
+    }
 
-	public String getSname() {
-		return sname;
-	}
+    @Basic
+    @javax.persistence.Column(name = "institutional")
+    public BigDecimal getInstitutional() {
+        return institutional;
+    }
 
-	public void setSname(String sname) {
-		this.sname = sname;
-	}
+    public void setInstitutional(BigDecimal institutional) {
+        this.institutional = institutional;
+    }
 
-	public String getAddr() {
-		return addr;
-	}
+    private BigDecimal lootchips;
 
-	public void setAddr(String addr) {
-		this.addr = addr;
-	}
+    @Basic
+    @javax.persistence.Column(name = "lootchips")
+    public BigDecimal getLootchips() {
+        return lootchips;
+    }
 
+    public void setLootchips(BigDecimal lootchips) {
+        this.lootchips = lootchips;
+    }
 
-	public String getIndustry() {
-		return industry;
-	}
+    private BigDecimal pricelimit;
 
-	public void setIndustry(String industry) {
-		this.industry = industry;
-	}
+    @Basic
+    @javax.persistence.Column(name = "pricelimit")
+    public BigDecimal getPricelimit() {
+        return pricelimit;
+    }
 
-	public String getWebSite() {
-		return webSite;
-	}
+    public void setPricelimit(BigDecimal pricelimit) {
+        this.pricelimit = pricelimit;
+    }
 
-	public void setWebSite(String webSite) {
-		this.webSite = webSite;
-	}
+    private BigDecimal shareholders;
 
-	public Date getListingDate() {
-		return listingDate;
-	}
+    @Basic
+    @javax.persistence.Column(name = "shareholders")
+    public BigDecimal getShareholders() {
+        return shareholders;
+    }
 
-	public void setListingDate(Date listingDate) {
-		this.listingDate = listingDate;
-	}
+    public void setShareholders(BigDecimal shareholders) {
+        this.shareholders = shareholders;
+    }
 
-	public Date getOfferDate() {
-		return offerDate;
-	}
+    private String name;
 
-	public void setOfferDate(Date offerDate) {
-		this.offerDate = offerDate;
-	}
+    @Basic
+    @javax.persistence.Column(name = "name")
+    public String getName() {
+        return name;
+    }
 
-	public Date getCreateDate() {
-		return createDate;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
+    private String ename;
 
-	public String getMarket() {
-		return market;
-	}
+    @Basic
+    @javax.persistence.Column(name = "ename")
+    public String getEname() {
+        return ename;
+    }
 
-	public void setMarket(String market) {
-		this.market = market;
-	}
+    public void setEname(String ename) {
+        this.ename = ename;
+    }
 
-	public CompanyInfo() {
-		super();
-	}
+    private Date registerDate;
 
-	public CompanyInfo(int id, String stockCode, String webSite) {
-		super();
-		this.id = id;
-		this.stockCode = stockCode;
-		this.webSite = webSite;
-	}
+    @Basic
+    @javax.persistence.Column(name = "register_date")
+    public Date getRegisterDate() {
+        return registerDate;
+    }
 
-	@Override
-	public String toString() {
-		return "CompanyInfo [id=" + id + ", stockCode=" + stockCode
-				+ ", market=" + market + ", name=" + name + ", ename=" + ename
-				+ ", sname=" + sname + ", addr=" + addr + ", lootchips="
-				+ lootchips + ", institutional=" + institutional
-				+ ", pricelimit=" + pricelimit + ", shareholders="
-				+ shareholders + ", industry=" + industry + ", webSite="
-				+ webSite + ", listingDate=" + listingDate + ", offerDate="
-				+ offerDate + ", createDate=" + createDate + ", area=" + area
-				+ ", registerDate=" + registerDate + "]";
-	}
-	
+    public void setRegisterDate(Date registerDate) {
+        this.registerDate = registerDate;
+    }
+
+    private String addrReg;
+
+    @Basic
+    @javax.persistence.Column(name = "addr_reg")
+    public String getAddrReg() {
+        return addrReg;
+    }
+
+    public void setAddrReg(String addrReg) {
+        this.addrReg = addrReg;
+    }
+
+    private String addrWork;
+
+    @Basic
+    @javax.persistence.Column(name = "addr_work")
+    public String getAddrWork() {
+        return addrWork;
+    }
+
+    public void setAddrWork(String addrWork) {
+        this.addrWork = addrWork;
+    }
+
+    private String market;
+
+    @Basic
+    @javax.persistence.Column(name = "market")
+    public String getMarket() {
+        return market;
+    }
+
+    public void setMarket(String market) {
+        this.market = market;
+    }
+
+    private java.util.Date listingDate;
+
+    @Basic
+    @javax.persistence.Column(name = "listing_date")
+    public java.util.Date getListingDate() {
+        return listingDate;
+    }
+
+    public void setListingDate(java.util.Date listingDate) {
+        this.listingDate = listingDate;
+    }
+
+    private java.util.Date offerDate;
+
+    @Basic
+    @javax.persistence.Column(name = "offer_date")
+    public java.util.Date getOfferDate() {
+        return offerDate;
+    }
+
+    public void setOfferDate(java.util.Date offerDate) {
+        this.offerDate = offerDate;
+    }
+
+    private String stockType;
+
+    @Basic
+    @javax.persistence.Column(name = "stock_type")
+    public String getStockType() {
+        return stockType;
+    }
+
+    public void setStockType(String stockType) {
+        this.stockType = stockType;
+    }
+
+    private int id;
+
+    @Basic
+    @javax.persistence.Column(name = "id")
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private String addr;
+
+    @Basic
+    @javax.persistence.Column(name = "addr")
+    public String getAddr() {
+        return addr;
+    }
+
+    public void setAddr(String addr) {
+        this.addr = addr;
+    }
+
+    private java.util.Date createDate;
+
+    @Basic
+    @javax.persistence.Column(name = "create_date")
+    public java.util.Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(java.util.Date createDate) {
+        this.createDate = createDate;
+    }
+
+    private String webSite;
+
+    @Basic
+    @javax.persistence.Column(name = "web_site")
+    public String getWebSite() {
+        return webSite;
+    }
+
+    public void setWebSite(String webSite) {
+        this.webSite = webSite;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CompanyInfo that = (CompanyInfo) o;
+
+        if (id != that.id) return false;
+        if (addr != null ? !addr.equals(that.addr) : that.addr != null) return false;
+        if (addrReg != null ? !addrReg.equals(that.addrReg) : that.addrReg != null) return false;
+        if (addrWork != null ? !addrWork.equals(that.addrWork) : that.addrWork != null) return false;
+        if (area != null ? !area.equals(that.area) : that.area != null) return false;
+        if (createDate != null ? !createDate.equals(that.createDate) : that.createDate != null) return false;
+        if (ename != null ? !ename.equals(that.ename) : that.ename != null) return false;
+        if (industry != null ? !industry.equals(that.industry) : that.industry != null) return false;
+        if (institutional != null ? !institutional.equals(that.institutional) : that.institutional != null)
+            return false;
+        if (listingDate != null ? !listingDate.equals(that.listingDate) : that.listingDate != null) return false;
+        if (lootchips != null ? !lootchips.equals(that.lootchips) : that.lootchips != null) return false;
+        if (market != null ? !market.equals(that.market) : that.market != null) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (offerDate != null ? !offerDate.equals(that.offerDate) : that.offerDate != null) return false;
+        if (posX != null ? !posX.equals(that.posX) : that.posX != null) return false;
+        if (posY != null ? !posY.equals(that.posY) : that.posY != null) return false;
+        if (pricelimit != null ? !pricelimit.equals(that.pricelimit) : that.pricelimit != null) return false;
+        if (registerDate != null ? !registerDate.equals(that.registerDate) : that.registerDate != null) return false;
+        if (shareholders != null ? !shareholders.equals(that.shareholders) : that.shareholders != null) return false;
+        if (sname != null ? !sname.equals(that.sname) : that.sname != null) return false;
+        if (stockCode != null ? !stockCode.equals(that.stockCode) : that.stockCode != null) return false;
+        if (stockType != null ? !stockType.equals(that.stockType) : that.stockType != null) return false;
+        if (webSite != null ? !webSite.equals(that.webSite) : that.webSite != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = stockCode != null ? stockCode.hashCode() : 0;
+        result = 31 * result + (sname != null ? sname.hashCode() : 0);
+        result = 31 * result + (area != null ? area.hashCode() : 0);
+        result = 31 * result + (posX != null ? posX.hashCode() : 0);
+        result = 31 * result + (posY != null ? posY.hashCode() : 0);
+        result = 31 * result + (industry != null ? industry.hashCode() : 0);
+        result = 31 * result + (institutional != null ? institutional.hashCode() : 0);
+        result = 31 * result + (lootchips != null ? lootchips.hashCode() : 0);
+        result = 31 * result + (pricelimit != null ? pricelimit.hashCode() : 0);
+        result = 31 * result + (shareholders != null ? shareholders.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (ename != null ? ename.hashCode() : 0);
+        result = 31 * result + (registerDate != null ? registerDate.hashCode() : 0);
+        result = 31 * result + (addrReg != null ? addrReg.hashCode() : 0);
+        result = 31 * result + (addrWork != null ? addrWork.hashCode() : 0);
+        result = 31 * result + (market != null ? market.hashCode() : 0);
+        result = 31 * result + (listingDate != null ? listingDate.hashCode() : 0);
+        result = 31 * result + (offerDate != null ? offerDate.hashCode() : 0);
+        result = 31 * result + (stockType != null ? stockType.hashCode() : 0);
+        result = 31 * result + id;
+        result = 31 * result + (addr != null ? addr.hashCode() : 0);
+        result = 31 * result + (createDate != null ? createDate.hashCode() : 0);
+        result = 31 * result + (webSite != null ? webSite.hashCode() : 0);
+        return result;
+    }
 }

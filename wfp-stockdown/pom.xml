@@ -50,6 +50,7 @@
                     <archive>
                         <manifest>
                             <mainClass>net.hoyoung.wfp.stockdown.greenorg.BaiduRouteSpiderMultiThread</mainClass>
+                            <!--<mainClass>net.hoyoung.wfp.envirorg.spider.HporgDistanceSpider</mainClass>-->
                         </manifest>
                     </archive>
                 </configuration>

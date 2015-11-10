@@ -42,6 +42,7 @@ public class AppTest
      */
     public void testApp()
     {
+//        Session session = HibernateUtils.openSession();
 
     }
 }

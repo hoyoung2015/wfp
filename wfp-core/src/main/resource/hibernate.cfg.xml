@@ -7,18 +7,19 @@
 
         <property name="javax.persistence.validation.mode">none</property> 
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/wfp</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password"></property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/wfp?characterEncoding=UTF-8</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hbm2ddl.auto">update</property>
         <property name="show_sql">false</property>
         <property name="format_sql">true</property>
         <property name="current_session_context_class">thread</property>
-       <!--<mapping class="net.hoyoung.wfp.core.entity.CompanyInfo"/>-->
-       <!--<mapping class="net.hoyoung.wfp.core.entity.TagMeta"/>-->
+        <property name="connection.username">root</property>
+        <!--<mapping class="net.hoyoung.wfp.core.entity.TagMeta"/>-->
        <!--<mapping class="net.hoyoung.wfp.core.entity.NewItem"/>-->
        <!--<mapping class="net.hoyoung.wfp.core.entity.SocialReport"/>-->
+        <mapping class="net.hoyoung.wfp.core.entity.CompanyInfo"/>
         <mapping class="net.hoyoung.wfp.core.entity.ComOrg"/>
+        <mapping class="net.hoyoung.wfp.core.entity.ComHporg"/>
+        <mapping class="net.hoyoung.wfp.core.entity.Hporg"/>
     </session-factory>
 </hibernate-configuration>
