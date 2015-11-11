@@ -25,15 +25,21 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class ComHporgScheduler implements Scheduler {
     protected Logger logger = LoggerFactory.getLogger(getClass());
+    /**
+     * 如果超过并发限制，停一会儿可以可以接着调用接口
+     * 当发现查过限制的时候，全局休息
+     */
+    public static volatile boolean isTrack = false;
     BlockingQueue<CompanyInfo> comQueue;
     CompanyInfo companyInfo;
     BlockingQueue<Hporg> hpQueue;
+    Session session;
 
     public ComHporgScheduler() {
         comQueue = new LinkedBlockingQueue<CompanyInfo>();
         hpQueue = new LinkedBlockingQueue<Hporg>();
-        Session session = HibernateUtils.openSession();
-        List<String> list = (List<String>) session.createSQLQuery("SELECT distinct(stock_code) as stock_code FROM wfp.com_hporg where distance2 is null")
+        session = HibernateUtils.openSession();
+        List<String> list = (List<String>) session.createSQLQuery("SELECT distinct(stock_code) as stock_code FROM wfp.com_hporg where distance2 is null  order by stock_code desc")
                 .list();
 
         List coms = session.createQuery("select new CompanyInfo(stockCode,posX,posY) from CompanyInfo where stockCode in(:alist)")
@@ -41,53 +47,72 @@ public class ComHporgScheduler implements Scheduler {
                 .list();
         comQueue.addAll(coms);
         logger.info("companies inject complete");
-        session.close();
     }
 
     @Override
-    public void push(Request request, Task task) {
-        Spider spider;
+    public synchronized void push(Request request, Task task) {
+        List<Hporg> hporgs = (List<Hporg>) request.getExtra("hporgs");
+
+        try {
+            for (Hporg hporg : hporgs) {
+                hpQueue.put(hporg);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
     public Request poll(Task task) {
         if (hpQueue.isEmpty()) {
             companyInfo = comQueue.poll();
-            if (companyInfo == null){
+            if (companyInfo == null) {
                 logger.info("there is no company");
                 return null;//没有企业了
             }
 
-            Session session = HibernateUtils.openSession();
             //1:先查出hporg
             List<Integer> list = session.createCriteria(ComHporg.class)
                     .setProjection(Projections.projectionList()
-                    .add(Property.forName("hporgId")))
-                    .add(Restrictions.eq("stockCode",companyInfo.getStockCode()))
+                            .add(Property.forName("hporgId")))
+                    .add(Restrictions.eq("stockCode", companyInfo.getStockCode()))
                     .list();//理论上不可能为空
             List<Hporg> hporgs = session.createQuery("select new Hporg(id,posX,posY) from Hporg where id in (:alist)")
                     .setParameterList("alist", list)
                     .list();
             hpQueue.addAll(hporgs);
             logger.info("new Hporg inject complete");
-            session.close();
         }
-        String origins = companyInfo.getPosY()+","+companyInfo.getPosX();
+        if (isTrack) {
+            try {
+                logger.info("Exceeding the limit, sleeps 15 seconds");
+                for (int i = 0; i < 20; i++) {
+                    logger.info("sleep " + (i + 1));
+                    Thread.sleep(1000);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            isTrack = false;
+        }
+
+        String origins = companyInfo.getPosY() + "," + companyInfo.getPosX();
         StringBuffer destinations = new StringBuffer("");
         List<Hporg> hporgs = new ArrayList<Hporg>();
         for (int i = 0; i < hpQueue.size() && i < 5; i++) {
             Hporg hporg = hpQueue.poll();
             hporgs.add(hporg);
-            if(i>0){
+            if (i > 0) {
                 destinations.append("%7C");
             }
-            destinations.append(hporg.getPosY()+","+hporg.getPosX());
+            destinations.append(hporg.getPosY() + "," + hporg.getPosX());
         }
-        String url = "http://api.map.baidu.com/direction/v1/routematrix?output=json&origins="+origins+"&destinations="+destinations.toString()+"&ak="+ HporgDistanceSpider.AK;
+        String url = "http://api.map.baidu.com/direction/v1/routematrix?output=json&origins=" + origins + "&destinations=" + destinations.toString() + "&ak=" + HporgDistanceSpider.AK;
 
         Request req = new Request(url);
-        req.putExtra("companyInfo",companyInfo);
-        req.putExtra("hporgs",hporgs);
+        req.putExtra("companyInfo", companyInfo);
+        req.putExtra("hporgs", hporgs);
         return req;
     }
 }
