@@ -31,5 +31,6 @@
         <mapping class="net.hoyoung.wfp.core.entity.ComOrg"/>
         <mapping class="net.hoyoung.wfp.core.entity.ComHporg"/>
         <mapping class="net.hoyoung.wfp.core.entity.Hporg"/>
+        <mapping class="net.hoyoung.wfp.core.entity.GreenOrg"/>
     </session-factory>
 </hibernate-configuration>

@@ -28,7 +28,8 @@ public class HporgDistanceSpider implements PageProcessor {
 //    public static final String AK = "lfLs8Vvqo7LL1CoLnojXR81E";
     @Override
     public void process(Page page) {
-
+        Session session = HibernateUtils.getLocalThreadSession();
+        session.beginTransaction();
         try{
 
             List<String> distanceList = page.getJson().jsonPath("$.result.elements[*].distance.value").all();
@@ -36,8 +37,7 @@ public class HporgDistanceSpider implements PageProcessor {
             List<Hporg> hporgs = (List<Hporg>) page.getRequest().getExtra("hporgs");
 
 
-            Session session = HibernateUtils.getLocalThreadSession();
-            session.beginTransaction();
+
             for (int i=0;i<distanceList.size();i++){
                 session.createQuery("update ComHporg set distance2=? where stockCode=? and hporgId=?")
                         .setParameter(0,Float.valueOf(distanceList.get(i)))
@@ -45,8 +45,7 @@ public class HporgDistanceSpider implements PageProcessor {
                         .setParameter(2,hporgs.get(i).getId())
                         .executeUpdate();
             }
-            session.getTransaction().commit();
-            HibernateUtils.closeSession();
+
         }catch (InvalidPathException e){
             e.printStackTrace();
             logger.error(page.getRawText());
@@ -54,10 +53,15 @@ public class HporgDistanceSpider implements PageProcessor {
                 ComHporgScheduler.isTrack = true;//通知调度器暂停
             }
             //重新加入队列
-            Request req = new Request(page.getRequest().getUrl());
-            req.putExtra("companyInfo",page.getRequest().getExtra("companyInfo"));
-            req.putExtra("hporgs",page.getRequest().getExtra("hporgs"));
-            page.addTargetRequest(req);
+//            Request req = new Request(page.getRequest().getUrl());
+//            req.putExtra("companyInfo",page.getRequest().getExtra("companyInfo"));
+//            req.putExtra("hporgs",page.getRequest().getExtra("hporgs"));
+//            page.addTargetRequest(req);
+        }finally {
+            if(session!=null && session.isOpen()){
+                session.getTransaction().commit();
+            }
+            HibernateUtils.closeSession();
         }
     }
 

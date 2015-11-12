@@ -39,7 +39,7 @@ public class ComHporgScheduler implements Scheduler {
         comQueue = new LinkedBlockingQueue<CompanyInfo>();
         hpQueue = new LinkedBlockingQueue<Hporg>();
         session = HibernateUtils.openSession();
-        List<String> list = (List<String>) session.createSQLQuery("SELECT distinct(stock_code) as stock_code FROM wfp.com_hporg where distance2 is null  order by stock_code desc")
+        List<String> list = (List<String>) session.createSQLQuery("SELECT distinct(stock_code) as stock_code FROM wfp.com_hporg where distance2 is null")
                 .list();
 
         List coms = session.createQuery("select new CompanyInfo(stockCode,posX,posY) from CompanyInfo where stockCode in(:alist)")
