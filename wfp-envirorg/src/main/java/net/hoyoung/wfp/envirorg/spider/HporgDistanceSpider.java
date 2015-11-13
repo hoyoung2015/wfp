@@ -83,7 +83,7 @@ public class HporgDistanceSpider implements PageProcessor {
         Spider.create(new HporgDistanceSpider())
 //                .setDownloader(new MyHttpClientDownloader())
                 .setScheduler(new ComHporgScheduler())
-                .thread(5)
+                .thread(8)
                 .run();
     }
 }
