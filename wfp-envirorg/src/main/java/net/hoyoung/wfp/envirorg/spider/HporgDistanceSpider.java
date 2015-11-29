@@ -28,6 +28,9 @@ public class HporgDistanceSpider implements PageProcessor {
 //    public static final String AK = "lfLs8Vvqo7LL1CoLnojXR81E";
     @Override
     public void process(Page page) {
+
+
+
         Session session = HibernateUtils.getLocalThreadSession();
         session.beginTransaction();
         try{
@@ -83,7 +86,7 @@ public class HporgDistanceSpider implements PageProcessor {
         Spider.create(new HporgDistanceSpider())
 //                .setDownloader(new MyHttpClientDownloader())
                 .setScheduler(new ComHporgScheduler())
-                .thread(5)
+                .thread(8)
                 .run();
     }
 }

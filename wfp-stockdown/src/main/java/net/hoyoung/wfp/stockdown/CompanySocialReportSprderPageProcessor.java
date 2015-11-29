@@ -1,8 +1,6 @@
 package net.hoyoung.wfp.stockdown;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import javax.management.JMException;
 
@@ -33,7 +31,7 @@ import us.codecraft.webmagic.selector.XpathSelector;
  */
 
 public class CompanySocialReportSprderPageProcessor implements PageProcessor {
-	private Site site = Site.me().setRetryTimes(5).setSleepTime(200);
+	private Site site = Site.me().setRetryTimes(5).setSleepTime(1000);
 	
 	JsonPathSelector industry_jps = new JsonPathSelector("$.industry");//股票号
 	JsonPathSelector industryrate_jps = new JsonPathSelector("$.industryrate");//总得分
@@ -46,57 +44,47 @@ public class CompanySocialReportSprderPageProcessor implements PageProcessor {
 	JsonPathSelector StockNameLink_jps = new JsonPathSelector("$.StockNameLink");	//
 	@Override
 	public void process(Page page) {
-		if (page.getUrl().regex( ".*zrbg/data/zrbList.aspx.*").match()) { //total 列表
-			String jsonStr = page.getRawText();
-			jsonStr = jsonStr.substring(13, jsonStr.length() - 1);
-			
-			String publishDate = (String) page.getRequest().getExtra("publishDate");
-			
-			List<String> comList = new JsonPathSelector("$.list")
-					.selectList(jsonStr);
-			
-			List<SocialReportSyn> srsynList = new ArrayList<SocialReportSyn>();
-			for (String s : comList) {
-				SocialReportSyn srsyn = new SocialReportSyn();
-				srsyn.setPublishDate(publishDate);//发布日期
-				srsyn.setCreateDate(new Date());//创建日期
-				String str = industry_jps.select(s);
-				
-				srsyn.setStockCode(str.substring(str.indexOf("(")+1, str.length()-1));//股票号
-				
-				//总得分
-				srsyn.setTotalScore(getFloat(industryrate_jps.select(s)));
-				//等级
-				srsyn.setLevel(Pricelimit_jps.select(s));
-				//股东责任
-				srsyn.setGdScore(getFloat(stockNumber_jps.select(s)));
-				//员工责任
-				srsyn.setEmpScore(getFloat(lootingchips_jps.select(s)));
-				//权益责任
-				srsyn.setEquityScore(getFloat(Scramble_jps.select(s)));
-				//环境责任
-				srsyn.setHjScore(getFloat(rscramble_jps.select(s)));
-				//社会责任
-				srsyn.setSocialScore(getFloat(Strongstock_jps.select(s)));
-				//pdf下载路径
-				srsyn.setReportFileUrl(new XpathSelector("//a/@href").select(s.replaceAll("\\\\", "")));
-				srsynList.add(srsyn);
-				
-				Request req = new Request(ZRBG_URL+StockNameLink_jps.select(s));
-				req.putExtra("stockCode", srsyn.getStockCode());
-				req.putExtra("publishDate", srsyn.getPublishDate());
+		String jsonStr = page.getRawText();
+		jsonStr = jsonStr.substring(13, jsonStr.length() - 1);
+
+		String publishDate = (String) page.getRequest().getExtra("publishDate");
+
+		List<String> comList = new JsonPathSelector("$.list")
+				.selectList(jsonStr);
+
+		List<SocialReportSyn> srsynList = new ArrayList<SocialReportSyn>();
+		for (String s : comList) {
+			SocialReportSyn srsyn = new SocialReportSyn();
+			srsyn.setPublishDate(publishDate);//发布日期
+			srsyn.setCreateDate(new Date());//创建日期
+			String str = industry_jps.select(s);
+
+			srsyn.setStockCode(str.substring(str.indexOf("(")+1, str.length()-1));//股票号
+
+			//总得分
+			srsyn.setTotalScore(getFloat(industryrate_jps.select(s)));
+			//等级
+			srsyn.setLevel(Pricelimit_jps.select(s));
+			//股东责任
+			srsyn.setGdScore(getFloat(stockNumber_jps.select(s)));
+			//员工责任
+			srsyn.setEmpScore(getFloat(lootingchips_jps.select(s)));
+			//权益责任
+			srsyn.setEquityScore(getFloat(Scramble_jps.select(s)));
+			//环境责任
+			srsyn.setHjScore(getFloat(rscramble_jps.select(s)));
+			//社会责任
+			srsyn.setSocialScore(getFloat(Strongstock_jps.select(s)));
+			//pdf下载路径
+			srsyn.setReportFileUrl(new XpathSelector("//a/@href").select(s.replaceAll("\\\\", "")));
+			srsynList.add(srsyn);
+
+			Request req = new Request(ZRBG_URL+StockNameLink_jps.select(s));
+			req.putExtra("stockCode", srsyn.getStockCode());
+			req.putExtra("publishDate", srsyn.getPublishDate());
 //				page.addTargetRequest(req);
-			}
-			page.putField("srsynList", srsynList);
-		}else{
-			Selectable div = page.getHtml().xpath("//div[@class='w680']");
-			List<Selectable> aSection = div.xpath("/div/div[@class='a_section']").nodes();
-			for (Selectable section : aSection) {
-				String title = section.xpath("/div/p[@class='as_title']/text()").get();
-				
-				
-			}
 		}
+		page.putField("srsynList", srsynList);
 	}
 
 	@Override
@@ -108,38 +96,37 @@ public class CompanySocialReportSprderPageProcessor implements PageProcessor {
 		return site;
 	}
 
-	private static String[] config = { "classpath:spring-core.xml" };
-	public static ApplicationContext APP_CONTEXT;
-	private static String REPORT_URL = "http://stockdata.stock.hexun.com/zrbg/data/zrbList.aspx?date=[date]&count=20&page=[page]";
+	private static String REPORT_URL = "http://stockdata.stock.hexun.com/zrbg/data/zrbList.aspx?date=%s&count=20&page=%s";
 	private static String ZRBG_URL = "http://stockdata.stock.hexun.com/zrbg/";
 	private static int PAGE_START = 1;
-	private static int PAGE_END = 141;// 141
-	private static String[] PUBLISH_DATE = {
-		"2014-12-31"
-	};
+
+	private static Map<String,Integer> PAGE_INFO;
 	static {
-		APP_CONTEXT = new FileSystemXmlApplicationContext(config);
+		PAGE_INFO = new HashMap<String,Integer>();
+//		PAGE_INFO.put("2014-12-31",141);
+//		PAGE_INFO.put("2013-12-31",141);
+//		PAGE_INFO.put("2012-12-31",142);
+		PAGE_INFO.put("2011-12-31",133);
+		PAGE_INFO.put("2010-12-31",120);
 	}
 
 	public static void main(String[] args) throws JMException {
 		//http://stockdata.stock.hexun.com/zrbg/#
 		long start = System.currentTimeMillis();
-		SocialReportPipeline socialReportPipeline = new SocialReportPipeline(
-				APP_CONTEXT.getBean(SocialReportService.class),
-				APP_CONTEXT.getBean(SocialReportSynService.class));
 		;
 		Spider spider = Spider
 				.create(new CompanySocialReportSprderPageProcessor())
-				.addPipeline(socialReportPipeline);
-		for (String pubDate : PUBLISH_DATE) {
-			for (int i = PAGE_START; i <= PAGE_END; i++) {
-				Request req = new Request(REPORT_URL.replace("[date]", pubDate).replace("[page]", ""+i));
-				req.putExtra("publishDate", pubDate);
+				.addPipeline(new SocialReportPipeline());
+
+		for (Map.Entry<String,Integer> entry : PAGE_INFO.entrySet()) {
+			for (int i = 1; i <= entry.getValue(); i++) {
+				Request req = new Request(String.format(REPORT_URL, entry.getKey(), i));
+				req.putExtra("publishDate", entry.getKey());
 				spider.addRequest(req);
 			}
 		}
 		SpiderMonitor.instance().register(spider);//爬虫监控
-		spider.thread(6).run();
+		spider.thread(3).run();
 		System.out.println("耗时:" + (System.currentTimeMillis() - start) / 1000
 				+ "秒");
 	}

@@ -10,7 +10,7 @@ import java.sql.Date;
  * Created by Administrator on 2015/11/10.
  */
 @Entity
-@javax.persistence.Table(name = "company_info", schema = "", catalog = "wfp")
+@javax.persistence.Table(name = "company_info")
 public class CompanyInfo {
     private String stockCode;
 
@@ -118,7 +118,6 @@ public class CompanyInfo {
                 ", listingDate=" + listingDate +
                 ", offerDate=" + offerDate +
                 ", stockType='" + stockType + '\'' +
-                ", id=" + id +
                 ", addr='" + addr + '\'' +
                 ", createDate=" + createDate +
                 ", webSite='" + webSite + '\'' +
@@ -279,17 +278,7 @@ public class CompanyInfo {
         this.stockType = stockType;
     }
 
-    private int id;
 
-    @Basic
-    @javax.persistence.Column(name = "id")
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     private String addr;
 
@@ -334,7 +323,6 @@ public class CompanyInfo {
 
         CompanyInfo that = (CompanyInfo) o;
 
-        if (id != that.id) return false;
         if (addr != null ? !addr.equals(that.addr) : that.addr != null) return false;
         if (addrReg != null ? !addrReg.equals(that.addrReg) : that.addrReg != null) return false;
         if (addrWork != null ? !addrWork.equals(that.addrWork) : that.addrWork != null) return false;
@@ -383,7 +371,6 @@ public class CompanyInfo {
         result = 31 * result + (listingDate != null ? listingDate.hashCode() : 0);
         result = 31 * result + (offerDate != null ? offerDate.hashCode() : 0);
         result = 31 * result + (stockType != null ? stockType.hashCode() : 0);
-        result = 31 * result + id;
         result = 31 * result + (addr != null ? addr.hashCode() : 0);
         result = 31 * result + (createDate != null ? createDate.hashCode() : 0);
         result = 31 * result + (webSite != null ? webSite.hashCode() : 0);

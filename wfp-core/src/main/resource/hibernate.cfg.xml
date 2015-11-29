@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC   
-        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"  
-        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">   
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
 
-        <property name="javax.persistence.validation.mode">none</property> 
+        <property name="javax.persistence.validation.mode">none</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/wfp?characterEncoding=UTF-8</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -25,12 +25,13 @@
         <property name="c3p0.idleConnectionTestPeriod">18000</property>
         <property name="c3p0.maxIdleTime">25000</property>
         <!--<mapping class="net.hoyoung.wfp.core.entity.TagMeta"/>-->
-       <!--<mapping class="net.hoyoung.wfp.core.entity.NewItem"/>-->
-       <!--<mapping class="net.hoyoung.wfp.core.entity.SocialReport"/>-->
+        <!--<mapping class="net.hoyoung.wfp.core.entity.NewItem"/>-->
+        <!--<mapping class="net.hoyoung.wfp.core.entity.SocialReport"/>-->
         <mapping class="net.hoyoung.wfp.core.entity.CompanyInfo"/>
         <mapping class="net.hoyoung.wfp.core.entity.ComOrg"/>
         <mapping class="net.hoyoung.wfp.core.entity.ComHporg"/>
         <mapping class="net.hoyoung.wfp.core.entity.Hporg"/>
         <mapping class="net.hoyoung.wfp.core.entity.GreenOrg"/>
+        <mapping class="net.hoyoung.wfp.core.entity.SocialReportSyn"/>
     </session-factory>
 </hibernate-configuration>

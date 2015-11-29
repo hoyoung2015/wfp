@@ -60,7 +60,7 @@ public class TestAccessWebPageProcessor{
 		List<CompanyInfo> list = session.createQuery("select new CompanyInfo(id,stockCode,webSite) from CompanyInfo").list();
 		for (CompanyInfo companyInfo : list) {
 			Request req = new Request(companyInfo.getWebSite());
-			req.putExtra("cid", companyInfo.getId());//用来记录所属企业，如果连不通，则将该记录删除
+//			req.putExtra("cid", companyInfo.getId());//用来记录所属企业，如果连不通，则将该记录删除
 			req.putExtra("stockCode", companyInfo.getStockCode());
 			spider.addRequest(req);
 		}

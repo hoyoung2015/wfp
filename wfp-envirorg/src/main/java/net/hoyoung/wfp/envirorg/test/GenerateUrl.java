@@ -37,6 +37,7 @@ public class GenerateUrl {
         CloseableHttpClient client = HttpClientBuilder.create().build();
         List<String> list = new ArrayList<String>();
         for (ComHporg comHporg:comHporgs){
+            System.out.println(comHporg);
             CompanyInfo companyInfo = (CompanyInfo) session.createQuery("from CompanyInfo where stockCode=?")
                     .setParameter(0,comHporg.getStockCode())
                     .uniqueResult();

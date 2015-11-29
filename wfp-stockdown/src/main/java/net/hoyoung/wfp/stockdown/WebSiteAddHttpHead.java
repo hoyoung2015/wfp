@@ -23,7 +23,7 @@ public class WebSiteAddHttpHead {
 				session.beginTransaction();
 				session.createQuery("update CompanyInfo set webSite=? where id=?")
 				.setParameter(0, "http://"+companyInfo.getWebSite())
-				.setParameter(1, companyInfo.getId())
+//				.setParameter(1, companyInfo.getId())
 				.executeUpdate();
 				session.getTransaction().commit();
 			}
