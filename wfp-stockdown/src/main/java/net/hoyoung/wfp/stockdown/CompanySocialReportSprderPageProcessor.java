@@ -32,6 +32,17 @@ import us.codecraft.webmagic.selector.XpathSelector;
 
 public class CompanySocialReportSprderPageProcessor implements PageProcessor {
 	private Site site = Site.me().setRetryTimes(5).setSleepTime(1000);
+	{
+		site.addHeader("Host", "stockdata.stock.hexun.com");
+		site.setRetryTimes(5)
+				.setCycleRetryTimes(5)
+				.setTimeOut(10000)
+				.setSleepTime(500)
+				.addHeader(
+						"User-Agent",
+						"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36");
+
+	}
 	
 	JsonPathSelector industry_jps = new JsonPathSelector("$.industry");//股票号
 	JsonPathSelector industryrate_jps = new JsonPathSelector("$.industryrate");//总得分
@@ -89,10 +100,6 @@ public class CompanySocialReportSprderPageProcessor implements PageProcessor {
 
 	@Override
 	public Site getSite() {
-		site.addHeader("Host", "stockdata.stock.hexun.com");
-		site.addHeader(
-				"User-Agent",
-				"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36");
 		return site;
 	}
 
@@ -103,11 +110,11 @@ public class CompanySocialReportSprderPageProcessor implements PageProcessor {
 	private static Map<String,Integer> PAGE_INFO;
 	static {
 		PAGE_INFO = new HashMap<String,Integer>();
-//		PAGE_INFO.put("2014-12-31",141);
-//		PAGE_INFO.put("2013-12-31",141);
-//		PAGE_INFO.put("2012-12-31",142);
-		PAGE_INFO.put("2011-12-31",133);
-		PAGE_INFO.put("2010-12-31",120);
+		PAGE_INFO.put("2014-12-31",143);//2860
+		PAGE_INFO.put("2013-12-31",143);//2857
+//		PAGE_INFO.put("2012-12-31",142);//2838
+//		PAGE_INFO.put("2011-12-31",133);//2657
+//		PAGE_INFO.put("2010-12-31",120);//2390
 	}
 
 	public static void main(String[] args) throws JMException {

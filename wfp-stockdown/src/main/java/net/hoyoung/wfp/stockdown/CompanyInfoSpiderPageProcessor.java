@@ -115,7 +115,7 @@ public class CompanyInfoSpiderPageProcessor implements PageProcessor {
 	}
     private Site site = Site.me()
             .setRetryTimes(5)
-            .setSleepTime(300)
+            .setSleepTime(1000)
             .addHeader("Host", "stockdata.stock.hexun.com")
             .addHeader(
                     "User-Agent",

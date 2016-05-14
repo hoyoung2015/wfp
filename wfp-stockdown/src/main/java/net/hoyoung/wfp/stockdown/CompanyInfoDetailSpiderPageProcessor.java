@@ -39,15 +39,15 @@ public class CompanyInfoDetailSpiderPageProcessor implements PageProcessor {
 		Spider spider = Spider.create(new CompanyInfoDetailSpiderPageProcessor())
                 .setScheduler(new FileCacheQueueScheduler("urls_cache"));
 
-//        List<String> list = jdbcTemplate.queryForList("SELECT stock_code FROM company_info", String.class);
-        List<String> list = new ArrayList<String>();
-        list.add("601601");
-        list.add("601009");
-        list.add("601898");
-        list.add("601608");
-        list.add("600867");
-        list.add("600023");
-        list.add("600291");
+        List<String> list = jdbcTemplate.queryForList("SELECT stock_code FROM company_info where name is NULL", String.class);
+//        List<String> list = new ArrayList<String>();
+//        list.add("601601");
+//        list.add("601009");
+//        list.add("601898");
+//        list.add("601608");
+//        list.add("600867");
+//        list.add("600023");
+//        list.add("600291");
 
         for (String stock_code : list){
             Request req = new Request("http://stockdata.stock.hexun.com/gszl/s"+stock_code+".shtml");
@@ -130,7 +130,7 @@ public class CompanyInfoDetailSpiderPageProcessor implements PageProcessor {
     }
     private Site site = Site.me()
             .setRetryTimes(5)
-            .setSleepTime(300)
+            .setSleepTime(1000)
             .addHeader("Host", "stockdata.stock.hexun.com")
             .addHeader(
                     "User-Agent",
