@@ -1,18 +1,10 @@
-package net.hoyoung.wfp.core.entity;
-
-import java.util.Date;
-
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+package net.hoyoung.wfp.searcher.vo;
 
 import org.hibernate.annotations.Index;
+
+import javax.persistence.*;
+import java.util.Date;
+
 @Entity
 @Table(name="new_item")
 public class NewItem {
@@ -20,25 +12,26 @@ public class NewItem {
 	@GeneratedValue
 	private int id;
 	
-	@Column(name="stock_code")
+	@Column(name="stock_code",length = 10)
+	@Index(name = "idx_stock_code")
 	private String stockCode;//股票号
-	
+	@Index(name = "idx_query")
 	private String query;//搜索关键词
 	
-	@Index(name="ix_title")
 	private String title;
 	
 	@Column(columnDefinition="TEXT")
-	@Index(name="ix_summary")
 	private String summary;
 	
-	@Column(name="target_url",unique=true)
-	@Index(name="ix_target_url")
+	@Column(name="target_url")
+	@Index(name="idx_target_url")
 	private String targetUrl;
+
+	@Index(name = "idx_keyword")
+	private String keyword;
 	
 	@Basic(fetch=FetchType.LAZY)
 	@Column(name="target_html",length=16777215)
-	@Index(name="html_index")//创建索引
 	private String targetHtml;
 	
 	//创建时间
@@ -56,10 +49,22 @@ public class NewItem {
 	@Column(name="publish_date")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date publishDate;
+
+	@Column(name = "publish_date_str")
+	private String publishDateStr;
 	
 	//新闻来源
+	@Column(name = "source_name")
 	private String sourceName;
-	
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	public Date getPublishDate() {
 		return publishDate;
 	}
@@ -115,5 +120,12 @@ public class NewItem {
 	public void setStockCode(String stockCode) {
 		this.stockCode = stockCode;
 	}
-	
+
+	public String getPublishDateStr() {
+		return publishDateStr;
+	}
+
+	public void setPublishDateStr(String publishDateStr) {
+		this.publishDateStr = publishDateStr;
+	}
 }

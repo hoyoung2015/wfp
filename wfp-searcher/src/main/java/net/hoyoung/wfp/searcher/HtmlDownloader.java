@@ -1,20 +1,13 @@
 package net.hoyoung.wfp.searcher;
 
-import net.hoyoung.wfp.core.service.NewItemService;
 import net.hoyoung.wfp.searcher.pageprocessor.impl.SearchPageProcessor;
 import net.hoyoung.wfp.searcher.pipeline.impl.DataBasePipeline;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
 
-@Component
 public class HtmlDownloader{
 	private Spider spider;
-	@Autowired
-	private NewItemService newItemService;
 	public HtmlDownloader() {
 		spider = Spider.create(new SearchPageProcessor());
 	}
@@ -26,9 +19,9 @@ public class HtmlDownloader{
 	}
 	public void run(){
 		DataBasePipeline pipeline = new DataBasePipeline();
-		pipeline.setNewItemService(newItemService);
 		spider.addPipeline(pipeline);
 		spider.thread(5).run();
+		//18500986197
 		System.out.println("webmagic 爬虫启动......");
 	}
 }

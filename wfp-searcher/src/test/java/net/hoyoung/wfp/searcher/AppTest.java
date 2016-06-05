@@ -3,6 +3,7 @@ package net.hoyoung.wfp.searcher;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import net.hoyoung.wfp.core.utils.HibernateUtils;
 
 /**
  * Unit test for simple App.
@@ -33,6 +34,5 @@ public class AppTest
      */
     public void testApp()
     {
-        assertTrue( true );
     }
 }

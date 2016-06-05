@@ -37,4 +37,15 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<build>
+		<resources>
+			<!--配置主资源位置
+			比如core下又hibernate.cfg.xml，searcher下也有hibernate.cfg.xml，那么以当前
+			项目为准
+			-->
+			<resource>
+				<directory>src/main/resource</directory>
+			</resource>
+		</resources>
+	</build>
 </project>
