@@ -16,6 +16,7 @@
     <module>wfp-webdown</module>
     <module>wfp-patents</module>
       <module>wfp-envirorg</module>
+    <module>wfp-hbase</module>
   </modules>
 
 </project>

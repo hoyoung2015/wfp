@@ -40,5 +40,12 @@
 			<version>4.10</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- http://mvnrepository.com/artifact/org.apache.hbase/hbase-client -->
+		<dependency>
+			<groupId>org.apache.hbase</groupId>
+			<artifactId>hbase-client</artifactId>
+			<version>0.98.8-hadoop2</version>
+		</dependency>
+
 	</dependencies>
 </project>
