@@ -1,0 +1,20 @@
+location包调用百度定位api根据企业地址获取坐标
+
+spider包中有四个采集器，每个采集器都是一个可以执行的main函数
+1.初始什么都没有，采集录入上市企业基本信息
+  Class:CompanyInfoSpiderPageProcessor
+  数据在这个页面中http://stockdata.stock.hexun.com/gszl/jbgk.aspx
+  通过json传输
+2.在上一个采集器的基础上，采集企业其他的基本信息，就是上个页面点击“详情”进入的页面
+  Class:CompanyInfoDetailSpiderPageProcessor
+  例如http://stockdata.stock.hexun.com/gszl/s601398.shtml
+
+3.采集年度社会责任报告
+  Class:CompanySocialReportSprderPageProcessor
+  http://stockdata.stock.hexun.com/zrbg/
+4.在企业年度综合社会责任报告的基础上爬去明细的报告
+  Class:CompanySocialReportDetailSprderPageProcessor
+  例如http://stockdata.stock.hexun.com/zrbg/stock_bg.aspx?code=000895&date=2014-12-31
+
+
+dataprocess包中是数据处理器

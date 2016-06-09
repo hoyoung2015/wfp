@@ -1,7 +1,9 @@
-package net.hoyoung.wfp.stockdown;
+package net.hoyoung.wfp.stockdown.location;
 
 import net.hoyoung.wfp.core.utils.JDBCHelper;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
@@ -15,12 +17,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 企业基础信息爬取主类
+ * 根据企业名称调用百度定位api获取企业坐标
  *
  * @author hoyoung
  *
  */
-public class CompanyInfoLocationSpiderPageProcessor3 implements PageProcessor {
+public class CompanyInfoLocationSpiderPageProcessor implements PageProcessor {
+    static Logger logger = LoggerFactory.getLogger(CompanyInfoLocationSpiderPageProcessor.class);
     static JdbcTemplate jdbcTemplate;
     static {
         jdbcTemplate = JDBCHelper.createMysqlTemplate("mysql1",
@@ -30,24 +33,23 @@ public class CompanyInfoLocationSpiderPageProcessor3 implements PageProcessor {
 
     public static void main(String[] args) throws JMException {
         long start = System.currentTimeMillis();
-        Spider spider = Spider.create(new CompanyInfoLocationSpiderPageProcessor3())
+        Spider spider = Spider.create(new CompanyInfoLocationSpiderPageProcessor())
                 .setScheduler(new FileCacheQueueScheduler("urls_cache"));
 
-        List<Map<String, Object>> list = jdbcTemplate.queryForList("SELECT stock_code,name,addr_work,area FROM company_info WHERE pos_x is null");
+        List<Map<String, Object>> list = jdbcTemplate.queryForList("SELECT stock_code,name,addr_reg,area FROM company_info");
 
         for (Map<String,Object> com : list){
-            String addr_work = (String) com.get("addr_work");
+            String addr_reg = (String) com.get("addr_reg");
             String name = (String) com.get("name");
             String area = (String) com.get("area");
-            if(!StringUtils.isEmpty(addr_work)){
-                Request req = new Request("http://api.map.baidu.com/place/v2/search?q="+addr_work+"&region="+area+"&output=json&ak=i39t59l7L6nzXlOZCfzwUFsK");
+            if(!StringUtils.isEmpty(name)){
+                Request req = new Request("http://api.map.baidu.com/place/v2/search?q="+name+"&region="+area+"&output=json&ak=i39t59l7L6nzXlOZCfzwUFsK");
                 req.putExtra("stock_code",com.get("stock_code"));
                 spider.addRequest(req);
             }
-//            break;
         }
         spider.thread(10).run();
-        System.out.println("耗时:" + (System.currentTimeMillis() - start) / 1000
+        logger.info("耗时:" + (System.currentTimeMillis() - start) / 1000
                 + "秒");
     }
 
@@ -65,7 +67,7 @@ public class CompanyInfoLocationSpiderPageProcessor3 implements PageProcessor {
                     pos_y,
                     stock_code);
             if(rs==1){
-                System.out.println(">>>>>>>>>>> "+stock_code+" "+1+" update success");
+                logger.info(stock_code+" "+1+" update success");
             }
         }
     }
@@ -76,7 +78,7 @@ public class CompanyInfoLocationSpiderPageProcessor3 implements PageProcessor {
             .addHeader(
                     "User-Agent",
                     "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36");
-    //    @Override
+    @Override
     public Site getSite() {
         return site;
     }

@@ -449,7 +449,7 @@ java.util.regex.PatternSyntaxException: Unexpected internal error near index 1
 	at java.util.regex.Pattern.<init>(Pattern.java:1351)
 	at java.util.regex.Pattern.compile(Pattern.java:1028)
 	at java.lang.String.replaceAll(String.java:2211)
-	at net.hoyoung.wfp.stockdown.CompanySocialReportSprderPageProcessor.process(CompanySocialReportSprderPageProcessor.java:80)
+	at net.hoyoung.wfp.stockdown.spider.CompanySocialReportSprderPageProcessor.process(CompanySocialReportSprderPageProcessor.java:80)
 	at us.codecraft.webmagic.Spider.processRequest(Spider.java:420)
 	at us.codecraft.webmagic.Spider$1.run(Spider.java:322)
 	at us.codecraft.webmagic.selector.thread.CountableThreadPool$1.run(CountableThreadPool.java:74)

@@ -1,4 +1,4 @@
-package net.hoyoung.wfp.stockdown;
+package net.hoyoung.wfp.stockdown.spider;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -8,9 +8,7 @@ import javax.management.JMException;
 
 import net.hoyoung.webmagic.downloader.HtmlUnitDownloader;
 import net.hoyoung.webmagic.pipeline.SocialReportDetailPipeline;
-import net.hoyoung.wfp.core.entity.CompanyInfo;
 import net.hoyoung.wfp.core.entity.SocialReportSyn;
-import net.hoyoung.wfp.core.service.CompanyInfoService;
 import net.hoyoung.wfp.core.service.SocialReportSynService;
 import net.hoyoung.wfp.core.utils.StringUtils;
 
@@ -30,7 +28,8 @@ import us.codecraft.webmagic.selector.Selectable;
 
 /**
  * 员工社会责任报告明细爬虫
- * 
+ * 在企业年度综合社会责任报告的基础上爬去明细的报告
+ * 由于数据项太多，存储在mongodb中
  * @author hoyoung
  *
  */
@@ -72,6 +71,7 @@ public class CompanySocialReportDetailSprderPageProcessor implements PageProcess
 				}
 			}
 		}
+
 		System.err.println(dbo.toString());
 		page.putField("dbo", dbo);
 	}

@@ -1,17 +1,11 @@
-package net.hoyoung.wfp.stockdown;
+package net.hoyoung.wfp.stockdown.spider;
 
 import java.util.*;
 
 import javax.management.JMException;
 
-import net.hoyoung.webmagic.downloader.HtmlUnitDownloader;
 import net.hoyoung.webmagic.pipeline.SocialReportPipeline;
 import net.hoyoung.wfp.core.entity.SocialReportSyn;
-import net.hoyoung.wfp.core.service.SocialReportService;
-import net.hoyoung.wfp.core.service.SocialReportSynService;
-
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
@@ -20,12 +14,11 @@ import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.monitor.SpiderMonitor;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.JsonPathSelector;
-import us.codecraft.webmagic.selector.Selectable;
 import us.codecraft.webmagic.selector.XpathSelector;
 
 /**
  * 员工社会责任报告爬虫
- * 
+ * 抓取此页面http://stockdata.stock.hexun.com/zrbg/中的年度企业综合社会责任报告
  * @author hoyoung
  *
  */

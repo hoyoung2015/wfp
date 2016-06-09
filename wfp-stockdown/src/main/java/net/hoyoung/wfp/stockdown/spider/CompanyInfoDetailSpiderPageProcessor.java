@@ -1,7 +1,9 @@
-package net.hoyoung.wfp.stockdown;
+package net.hoyoung.wfp.stockdown.spider;
 
 import net.hoyoung.wfp.core.utils.JDBCHelper;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
@@ -22,11 +24,22 @@ import java.util.List;
 
 /**
  * 企业基础信息爬取主类
- * 
+ name,
+ ename,
+ register_date,
+ area,
+ addr_reg,
+ addr_work,
+ market,
+ listing_date,
+ offer_date,
+ stock_type,
+ stock_code
  * @author hoyoung
  *
  */
 public class CompanyInfoDetailSpiderPageProcessor implements PageProcessor {
+    static Logger logger = LoggerFactory.getLogger(CompanyInfoDetailSpiderPageProcessor.class);
     static JdbcTemplate jdbcTemplate;
     static {
         jdbcTemplate = JDBCHelper.createMysqlTemplate("mysql1",
@@ -41,12 +54,6 @@ public class CompanyInfoDetailSpiderPageProcessor implements PageProcessor {
 
         List<String> list = jdbcTemplate.queryForList("SELECT stock_code FROM company_info where name is NULL", String.class);
 //        List<String> list = new ArrayList<String>();
-//        list.add("601601");
-//        list.add("601009");
-//        list.add("601898");
-//        list.add("601608");
-//        list.add("600867");
-//        list.add("600023");
 //        list.add("600291");
 
         for (String stock_code : list){
@@ -56,8 +63,8 @@ public class CompanyInfoDetailSpiderPageProcessor implements PageProcessor {
 //            break;
         }
 		spider.thread(6).run();
-		System.out.println("耗时:" + (System.currentTimeMillis() - start) / 1000
-				+ "秒");
+        logger.info("耗时:" + (System.currentTimeMillis() - start) / 1000
+                + "秒");
 	}
 
 	@Override
@@ -125,7 +132,7 @@ public class CompanyInfoDetailSpiderPageProcessor implements PageProcessor {
                 stock_type,
                 stock_code);
         if(status==1){
-            System.out.println(">>>>>>>>>>> "+stock_code+" "+name+" update success");
+            logger.info(stock_code+" "+name+" update success");
         }
     }
     private Site site = Site.me()

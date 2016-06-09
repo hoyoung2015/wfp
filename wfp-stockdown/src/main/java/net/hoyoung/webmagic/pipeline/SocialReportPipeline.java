@@ -15,7 +15,7 @@ import us.codecraft.webmagic.pipeline.Pipeline;
 public class SocialReportPipeline implements Pipeline {
 	@Override
 	public void process(ResultItems resultItems, Task task) {
-		Session session = HibernateUtils.getLocalThreadSession();
+		Session session = HibernateUtils.getCurrentSession();
 		if(Pattern.matches(".*zrbg/data/zrbList.aspx.*", resultItems.getRequest().getUrl())){
 			List<SocialReportSyn> srsynList = resultItems.get("srsynList");
 			session.beginTransaction();

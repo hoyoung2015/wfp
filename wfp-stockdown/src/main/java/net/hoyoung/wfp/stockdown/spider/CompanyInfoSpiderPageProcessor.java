@@ -1,4 +1,4 @@
-package net.hoyoung.wfp.stockdown;
+package net.hoyoung.wfp.stockdown.spider;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,6 +12,8 @@ import net.hoyoung.webmagic.pipeline.DBPipeline;
 import net.hoyoung.wfp.core.service.CompanyInfoService;
 
 import net.hoyoung.wfp.core.utils.JDBCHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -35,6 +37,7 @@ import us.codecraft.webmagic.selector.XpathSelector;
  *
  */
 public class CompanyInfoSpiderPageProcessor implements PageProcessor {
+    static Logger logger = LoggerFactory.getLogger(CompanyInfoSpiderPageProcessor.class);
 	// 1-141
 	private static String JSON_LIST_URL = "http://stockdata.stock.hexun.com/gszl/data/jsondata/jbgk.ashx?count=20&page=";
 
@@ -109,7 +112,7 @@ public class CompanyInfoSpiderPageProcessor implements PageProcessor {
                     pricelimit,
                     shareholders);
             if(status==1){
-                System.out.println(">>>>>>>>>>>>>>>>>> "+stock_code+" insert successful");
+                logger.info(stock_code+" insert successful");
             }
         }
 	}

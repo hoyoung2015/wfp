@@ -1,4 +1,4 @@
-package net.hoyoung.wfp.stockdown;
+package net.hoyoung.wfp.stockdown.dataprocess;
 
 import java.util.ArrayList;
 import java.util.Date;
