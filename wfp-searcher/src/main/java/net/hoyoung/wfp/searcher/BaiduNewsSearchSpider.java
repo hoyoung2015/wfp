@@ -1,5 +1,8 @@
 package net.hoyoung.wfp.searcher;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,63 +31,46 @@ public class BaiduNewsSearchSpider
 {
 	static Logger logger = LoggerFactory.getLogger(BaiduNewsSearchSpider.class);
 	public static void main(String[] args) {
-		List<String> stockCodeList = new ArrayList<String>();
-		HtmlDownloader downloader = new HtmlDownloader();
-		SaveHandler saveHandler = new DbSaveHandler();
-		Searcher searcher = new Searcher(saveHandler,downloader);
-		
-		//读取关键词列表
-		List<String> keywords = new KeywordsFileReaderUtil("/home/hoyoung/workspace/Intellij/wfp/wfp-searcher/data/keywords.txt").read();
-		logger.info("读取"+keywords.size()+"个关键词");
-		for (String keyword : keywords){
-			logger.info(keyword);
-		}
-		System.out.println();
-		//读取股票号
-		stockCodeList = new CompanyFileReaderUtil("/home/hoyoung/workspace/Intellij/wfp/wfp-searcher/data/company.txt").read();
-		logger.info("读取"+stockCodeList.size()+"个股票号");
-		for (String code : stockCodeList){
-			logger.info(code);
+
+		if(args==null||args.length!=2){
+			logger.warn("正确参数为: <企业股票号文本文件> <关键词文本文件>");
+			System.exit(1);
 		}
 
+
+		//读取关键词列表
+		List<String> keywords = readListString(args[1]);
+		logger.info("读取"+keywords.size()+"个关键词");
+		//读取股票号
+		List<String> stockCodeList = readListString(args[0]);
+		logger.info("读取"+stockCodeList.size()+"个股票号");
 
 		//根据股票号从数据库中读取企业信息
 		for (String stockCode : stockCodeList) {//遍历待搜索企业
-			Session session = HibernateUtils.getCurrentSession();
-			session.beginTransaction();
-			CompanyInfo companyInfo = (CompanyInfo) session.get(CompanyInfo.class, stockCode);
-			session.getTransaction().commit();
-			logger.info(companyInfo.toString());
-			if(companyInfo!=null){
-				for (String keyword : keywords) {//遍历关键词
-					SearchRequest sr = new SearchRequest();
-					sr.putExtra("company", companyInfo);
-					sr.putExtra("keyword",keyword);
-					sr.addKeyword("+"+keyword)//加号表示这个关键词一定出现
-							.addKeyword("\"" + companyInfo.getSname() + "\"");//加上双引号避免被分词
-					/**
-					 * 校验股票号+关键词是否已经搜索
-					 */
-					session = HibernateUtils.getCurrentSession();
-					session.beginTransaction();
-					Long count = (Long)session.createCriteria(NewItem.class)
-							.setProjection(Projections.rowCount())
-							.add(Restrictions.eq("stockCode", companyInfo.getStockCode()))
-							.add(Restrictions.eq("keyword", keyword))
-							.uniqueResult();
-					session.getTransaction().commit();
-					if(count>0){
-						logger.info(sr.getQuery()+" 已经采集过");
-						continue;
-					}
-
-					
-					searcher.setSearchRequest(sr);
-
-					searcher.run();
-				}
+			for (String keyword : keywords) {//遍历关键词
+				BaiduNewsSpider.fetch(stockCode,keyword);
 			}
 		}
-		searcher.close();
+	}
+	public static List<String> readListString(String filePath){
+		List<String> list = new ArrayList<String>();
+
+		try {
+			FileInputStream fs = new FileInputStream(filePath);
+			InputStreamReader isr = new InputStreamReader(fs, "UTF-8");
+			BufferedReader br = new BufferedReader(isr);
+			String temp = null;
+
+			while ((temp = br.readLine()) != null) {
+				list.add(temp.replace(" ", ""));
+			}
+
+			fs.close();
+			isr.close();
+			br.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 }
