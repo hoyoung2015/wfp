@@ -3,6 +3,14 @@ package net.hoyoung.wfp.webdown;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.apache.tika.Tika;
+import org.apache.tika.exception.TikaException;
+import org.apache.tika.metadata.Metadata;
+import org.apache.tika.parser.pdf.PDFParser;
+import org.bouncycastle.asn1.cms.MetaData;
+
+import java.io.FileInputStream;
+import java.io.IOException;
 
 /**
  * Unit test for simple App.
@@ -33,9 +41,15 @@ public class AppTest
      */
     public void testApp()
     {
-    	String s = "hoyoung.net";
-    	System.out.println(s.length());
-    	System.out.println(s.substring(0, 11));
-        assertTrue( true );
+        Tika tika = new Tika();
+        Metadata metadata = new Metadata();
+        try {
+            String content = tika.parseToString(new FileInputStream("D:\\04.pdf"),metadata);
+            System.out.println(content);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TikaException e) {
+            e.printStackTrace();
+        }
     }
 }

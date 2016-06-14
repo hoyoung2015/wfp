@@ -46,6 +46,10 @@
 			<artifactId>hbase-client</artifactId>
 			<version>0.98.8-hadoop2</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.apache.tika</groupId>
+			<artifactId>tika-parsers</artifactId>
+			<version>1.13</version>
+		</dependency>
 	</dependencies>
 </project>
