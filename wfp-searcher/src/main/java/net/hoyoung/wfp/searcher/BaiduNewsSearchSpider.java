@@ -6,22 +6,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.hoyoung.wfp.core.entity.CompanyInfo;
-import net.hoyoung.wfp.core.service.CompanyInfoService;
-import net.hoyoung.wfp.core.utils.HibernateUtils;
-import net.hoyoung.wfp.searcher.savehandler.SaveHandler;
-import net.hoyoung.wfp.searcher.savehandler.impl.DbSaveHandler;
-import net.hoyoung.wfp.searcher.utils.CompanyFileReaderUtil;
-import net.hoyoung.wfp.searcher.utils.KeywordsFileReaderUtil;
-
-import net.hoyoung.wfp.searcher.vo.NewItem;
-import org.hibernate.Session;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Hello world!
