@@ -17,6 +17,9 @@
     <module>wfp-patents</module>
       <module>wfp-envirorg</module>
     <module>wfp-hbase</module>
+    <module>webo-crawler</module>
+    <module>wfp-webo</module>
+    <module>wfp-weibo</module>
   </modules>
   <dependencies>
     <dependency>
@@ -24,7 +27,7 @@
       <artifactId>commons-lang</artifactId>
       <version>2.6</version>
     </dependency>
-
+	
   </dependencies>
   <build>
     <plugins>
