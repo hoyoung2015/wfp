@@ -47,6 +47,7 @@
 		<property name="locations">
 			<list>
 				<value>classpath:config.properties</value>
+				<value>classpath:mongodb.properties</value>
 			</list>
 		</property>
 	</bean>
