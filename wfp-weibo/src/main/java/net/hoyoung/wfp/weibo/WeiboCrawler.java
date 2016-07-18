@@ -1,9 +1,6 @@
 package net.hoyoung.wfp.weibo;
 
-import java.io.File;
-import java.io.IOException;
-
-import org.apache.commons.io.FileUtils;
+import org.jsoup.select.Elements;
 
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatum;
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatums;
@@ -36,14 +33,8 @@ public class WeiboCrawler extends BreadthCrawler {
 
 	@Override
 	public void visit(Page page, CrawlDatums next) {
-			
-		try {
-			FileUtils.write(new File("demo.html"), page.getHtml());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-			int a = 1;
+			Elements title = page.doc().getElementsByTag("title");
+			System.out.println(title);
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -53,6 +44,7 @@ public class WeiboCrawler extends BreadthCrawler {
 		crawler.addSeed(new CrawlDatum(
 				"http://m.weibo.cn/page/tpl?containerid=1005051746221281_-_WEIBO_SECOND_PROFILE_WEIBO&itemid=&title=%E5%85%A8%E9%83%A8%E5%BE%AE%E5%8D%9A"));
 		crawler.start(1);
+		System.out.println("over");
 	}
 
 }
