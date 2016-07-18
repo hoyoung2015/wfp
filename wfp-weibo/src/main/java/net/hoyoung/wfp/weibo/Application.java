@@ -1,23 +1,25 @@
 package net.hoyoung.wfp.weibo;
 
-import java.util.Map;
-
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ApplicationContext;
-import org.springframework.data.mongodb.MongoDbFactory;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-import com.alibaba.fastjson.JSON;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
+import net.hoyoung.wfp.weibo.entity.User;
 
-@SpringBootApplication(scanBasePackages = { "net.hoyoung.wfp.weibo" })
+@Configuration  
+@ComponentScan  
+@EnableAutoConfiguration
 public class Application {
 
 	public static void main(String[] args) {
 
 		ApplicationContext ctx = SpringApplication.run(Application.class, args);
+		User wc1 = ctx.getBean(User.class);
+		User wc2 = ctx.getBean(User.class);
+		System.out.println(">>>>>>>>"+(wc1==wc2));
+		/*
 		MongoDbFactory mongo = ctx.getBean(MongoDbFactory.class);
 		DB db = mongo.getDb("wfp");
 
@@ -25,6 +27,7 @@ public class Application {
 		String json = "{\"name\":\"lucy\",\"age\":18}";
 		Map<String, Object> map = JSON.parseObject(json);
 		collec.insert(new BasicDBObject(map));
+		*/
 	}
 
 }

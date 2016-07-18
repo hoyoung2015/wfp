@@ -17,8 +17,6 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 
-import net.hoyoung.wfp.weibo.spring.ApplicationConfig;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = ApplicationConfig.class, loader = AnnotationConfigContextLoader.class)
 public class BaseTest {

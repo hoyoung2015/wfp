@@ -1,5 +1,9 @@
 package net.hoyoung.wfp.weibo;
 
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONPath;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -33,6 +37,17 @@ public class AppTest
      */
     public void testApp()
     {
-        assertTrue( true );
+    	String json = "{\"ok\":1}";
+    	
+    	Integer o = (Integer) JSONPath.compile("$.ok").eval(JSON.parseObject(json));
+		System.out.println(o);
     }
+    public void testApp2()
+    {
+    	String json = "{\"ok\":1,\"count\":5053,\"cards\":[{\"mod_type\":\"mod/empty\",\"msg\":\"没有内容\"}]}";
+    	
+    	String o = (String) JSONPath.compile("$.cards[0].mod_type").eval(JSON.parseObject(json));
+		System.out.println(o);
+    }
+    
 }

@@ -1,6 +1,10 @@
 package net.hoyoung.wfp.weibo;
 
-import org.jsoup.select.Elements;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONPath;
 
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatum;
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatums;
@@ -14,6 +18,7 @@ import cn.edu.hfut.dmic.webcollector.plugin.berkeley.BreadthCrawler;
  * 
  * @author hu
  */
+//@Scope("prototype")
 public class WeiboCrawler extends BreadthCrawler {
 
 	String cookie;
@@ -21,7 +26,7 @@ public class WeiboCrawler extends BreadthCrawler {
 	public WeiboCrawler(String crawlPath, boolean autoParse) throws Exception {
 		super(crawlPath, autoParse);
 		/* 获取新浪微博的cookie，账号密码以明文形式传输，请使用小号 */
-		cookie = WeiboCN.getSinaCookie("shoman@sina.cn", "19920609qwer@");
+//		cookie = WeiboCN.getSinaCookie("shoman@sina.cn", "19920609qwer@");
 	}
 
 	@Override
@@ -33,8 +38,8 @@ public class WeiboCrawler extends BreadthCrawler {
 
 	@Override
 	public void visit(Page page, CrawlDatums next) {
-			Elements title = page.doc().getElementsByTag("title");
-			System.out.println(title);
+		Integer o = (Integer) JSONPath.compile("$.ok").eval(JSON.parseObject(page.getHtml()));
+		System.out.println(o);
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -42,7 +47,7 @@ public class WeiboCrawler extends BreadthCrawler {
 		crawler.setThreads(1);
 		/* 对某人微博前5页进行爬取 */
 		crawler.addSeed(new CrawlDatum(
-				"http://m.weibo.cn/page/tpl?containerid=1005051746221281_-_WEIBO_SECOND_PROFILE_WEIBO&itemid=&title=%E5%85%A8%E9%83%A8%E5%BE%AE%E5%8D%9A"));
+				"http://m.weibo.cn/page/json?containerid=1005051746221281_-_WEIBO_SECOND_PROFILE_WEIBO&page=2"));
 		crawler.start(1);
 		System.out.println("over");
 	}
