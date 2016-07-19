@@ -1,5 +1,7 @@
 package net.hoyoung.wfp.weibo;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -43,9 +45,11 @@ public class CrawlService {
 			weiboCrawler.setThreads(threads);
 			weiboCrawler.setExecuteInterval(executeInterval);
 			weiboCrawler.setUserAgent(env.getProperty("webcollector.userAgent",String.class));
+			weiboCrawler.setResumable(true);
 		}
 		weiboCrawler.setDbCollection(mongo.getDb(env.getProperty("mongodb.dbname", String.class)).getCollection(stockCode));
-		CrawlDatum crawlDatum = new CrawlDatum(url + "&page=1").meta("page","1");
+		CrawlDatum crawlDatum = new CrawlDatum(url + "&page=1&r="+new Date().getTime()).meta("page","1");
+		System.out.println(crawlDatum.getUrl());
 		weiboCrawler.addSeed(crawlDatum);
 		try {
 			weiboCrawler.start(env.getProperty("webcollector.depth",Integer.class));

@@ -1,5 +1,6 @@
 package net.hoyoung.wfp.weibo;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,6 +22,9 @@ import cn.edu.hfut.dmic.webcollector.plugin.berkeley.BreadthCrawler;
 public class WeiboCrawler extends BreadthCrawler {
 
 
+    static final int MAX_RETYR_TIME = 5;
+	private int retryTime = 0;
+	
 	private String userAgent;
 	private String cookie;
 
@@ -60,7 +64,13 @@ public class WeiboCrawler extends BreadthCrawler {
 		Integer ok = (Integer) JSONPath.compile("$.ok").eval(JSON.parseObject(json));
 		String mod = (String) JSONPath.compile("$.cards[0].mod_type").eval(JSON.parseObject(json));
 
+		LOG.info("Json:"+page.getHtml());
 		if (ok == 1 && "mod/pagelist".equals(mod)) {
+			if(this.retryTime>0){
+				LOG.info("异常恢复");
+				this.retryTime = 0;
+			}
+			LOG.info("准备提取数据...");
 			/**
 			 * 提取数据
 			 */
@@ -79,12 +89,26 @@ public class WeiboCrawler extends BreadthCrawler {
 			/**
 			 * 继续下一页
 			 */
-			String nextPageNum = pageNum + 1 + "";
-			String nextUrl = page.getUrl().replaceAll("\\d+$", nextPageNum);
+			int nextPageNum = pageNum + 1;
+			
+			String nextUrl = page.getUrl().replaceAll("page=\\d+", "page="+nextPageNum);
+//			String nextUrl = page.getUrl();
+			/**
+			 * 防止去重
+			 */
+			nextUrl = nextUrl.replaceAll("r=\\d+", "r="+new Date().getTime());
 			try {
-				next.add(new CrawlDatum(nextUrl).meta("page", nextPageNum));
+				next.add(new CrawlDatum(nextUrl).meta("page", nextPageNum+""));
 			} catch (Exception e) {
 				e.printStackTrace();
+			}
+		}else {
+			LOG.info("数据异常 - "+this.retryTime+",准备重试");
+			if(this.retryTime++<MAX_RETYR_TIME){
+				/**
+				 * 替换时间戳防止去重
+				 */
+				next.add(new CrawlDatum(page.getUrl().replaceAll("r=\\d+", "r="+new Date().getTime())).meta("page", page.getMetaData().get("page")));
 			}
 		}
 	}

@@ -28,7 +28,7 @@ public class Application {
 
 		ApplicationContext ctx = SpringApplication.run(Application.class, args);
 		CrawlService crawlService = ctx.getBean(CrawlService.class);
-		crawlService.startJob("110110",
+		crawlService.startJob("110112",
 				"http://m.weibo.cn/page/json?containerid=1005051746221281_-_WEIBO_SECOND_PROFILE_WEIBO");
 	}
 
