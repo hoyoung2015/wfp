@@ -18,7 +18,7 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = ApplicationConfig.class, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = Application.class, loader = AnnotationConfigContextLoader.class)
 public class BaseTest {
 
 	@Autowired

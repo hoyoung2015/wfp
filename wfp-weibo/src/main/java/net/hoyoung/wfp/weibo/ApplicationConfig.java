@@ -3,6 +3,7 @@ package net.hoyoung.wfp.weibo;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 import net.hoyoung.wfp.weibo.entity.User;
@@ -20,8 +21,9 @@ public class ApplicationConfig {
 		return new WeiboCrawler("test",false);
 	}*/
 	@Bean
+	@Scope("prototype")
 	public User user() {
-		return new User(18);
+		return new User(Math.round(Math.random()*100));
 	}
 	/*
 	@Autowired

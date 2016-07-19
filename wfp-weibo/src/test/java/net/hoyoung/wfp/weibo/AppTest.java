@@ -1,8 +1,16 @@
 package net.hoyoung.wfp.weibo;
 
 
+import java.io.File;
+
+import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.MongoDbFactory;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONPath;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -37,10 +45,8 @@ public class AppTest
      */
     public void testApp()
     {
-    	String json = "{\"ok\":1}";
-    	
-    	Integer o = (Integer) JSONPath.compile("$.ok").eval(JSON.parseObject(json));
-		System.out.println(o);
+    	String url = "apple=232&page=88";
+    	System.out.println(url.replaceAll("\\d+$", "2"));
     }
     public void testApp2()
     {
@@ -48,6 +54,12 @@ public class AppTest
     	
     	String o = (String) JSONPath.compile("$.cards[0].mod_type").eval(JSON.parseObject(json));
 		System.out.println(o);
+    }
+    
+    public void testApp3()
+    {
+    	
+    			
     }
     
 }

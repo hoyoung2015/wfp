@@ -110,7 +110,8 @@ public class WeiboCN {
 			int startx = (dim.width - width) / 2;
 			int starty = (dim.height - height) / 2;
 			frame.setBounds(startx, starty, width, height);
-			frame.setSize(260, 70);
+//			frame.setSize(260, 70);
+			frame.setSize(300, 80);
 			
 			Container container = frame.getContentPane();
 			

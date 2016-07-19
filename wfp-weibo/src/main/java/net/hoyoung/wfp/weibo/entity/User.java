@@ -1,19 +1,19 @@
 package net.hoyoung.wfp.weibo.entity;
 
 public class User {
-private int age;
+private long age;
 
-public int getAge() {
+public long getAge() {
 	return age;
 }
 
-public void setAge(int age) {
+public void setAge(long age) {
 	this.age = age;
 }
 
-public User(int age) {
+public User(long l) {
 	super();
-	this.age = age;
+	this.age = l;
 }
 
 }

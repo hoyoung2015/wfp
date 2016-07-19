@@ -1,33 +1,35 @@
 package net.hoyoung.wfp.weibo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
-import net.hoyoung.wfp.weibo.entity.User;
-
-@Configuration  
-@ComponentScan  
+@PropertySource("classpath:config.properties")
+@Configuration
+@ComponentScan
 @EnableAutoConfiguration
 public class Application {
 
-	public static void main(String[] args) {
+	Logger LOG = LoggerFactory.getLogger(this.getClass());
+
+	@Bean
+	public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
+		return new PropertySourcesPlaceholderConfigurer();
+	}
+
+	public static void main(String[] args) throws Exception {
 
 		ApplicationContext ctx = SpringApplication.run(Application.class, args);
-		User wc1 = ctx.getBean(User.class);
-		User wc2 = ctx.getBean(User.class);
-		System.out.println(">>>>>>>>"+(wc1==wc2));
-		/*
-		MongoDbFactory mongo = ctx.getBean(MongoDbFactory.class);
-		DB db = mongo.getDb("wfp");
-
-		DBCollection collec = db.getCollection("wfp");
-		String json = "{\"name\":\"lucy\",\"age\":18}";
-		Map<String, Object> map = JSON.parseObject(json);
-		collec.insert(new BasicDBObject(map));
-		*/
+		CrawlService crawlService = ctx.getBean(CrawlService.class);
+		crawlService.startJob("110110",
+				"http://m.weibo.cn/page/json?containerid=1005051746221281_-_WEIBO_SECOND_PROFILE_WEIBO");
 	}
 
 }
