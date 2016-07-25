@@ -6,7 +6,6 @@ import us.codecraft.webmagic.pipeline.Pipeline;
 
 public class DataBasePipeline implements Pipeline {
 
-	@Override
 	public void process(ResultItems resultItems, Task task) {
 
 	}

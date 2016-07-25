@@ -23,7 +23,6 @@ import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.Selectable;
 public class DbSaveHandler implements SaveHandler {
 	private Logger logger = LoggerFactory.getLogger(getClass());
-	@Override
 	public void save(SearchRequest searchRequest) {
 		Html resultHtml = searchRequest.getHtml();
 		List<NewItem> list = new ArrayList<NewItem>();

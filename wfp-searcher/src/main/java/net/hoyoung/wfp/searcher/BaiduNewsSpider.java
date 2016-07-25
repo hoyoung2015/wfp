@@ -1,19 +1,17 @@
 package net.hoyoung.wfp.searcher;
 
-import net.hoyoung.wfp.core.entity.CompanyInfo;
-import net.hoyoung.wfp.core.utils.HibernateUtils;
-import net.hoyoung.wfp.searcher.savehandler.SaveHandler;
-import net.hoyoung.wfp.searcher.savehandler.impl.DbSaveHandler;
-import net.hoyoung.wfp.searcher.vo.NewItem;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Session;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
+import net.hoyoung.wfp.core.entity.CompanyInfo;
+import net.hoyoung.wfp.core.utils.HibernateUtils;
+import net.hoyoung.wfp.searcher.savehandler.SaveHandler;
+import net.hoyoung.wfp.searcher.savehandler.impl.DbSaveHandler;
+import net.hoyoung.wfp.searcher.vo.NewItem;
 
 /**
  * Created by v_huyang01 on 2016/6/13.
