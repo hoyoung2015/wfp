@@ -5,19 +5,20 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.springframework.data.mongodb.core.MongoTemplate;
+
 import net.hoyoung.wfp.core.entity.CompanyInfo;
-import net.hoyoung.wfp.core.service.CompanyInfoService;
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
 
 public class DBPipeline implements Pipeline {
 
-	private CompanyInfoService companyInfoService;
+	private MongoTemplate mongoTemplate;
 	
-	public DBPipeline(CompanyInfoService companyInfoService) {
+	public DBPipeline(MongoTemplate mongoTemplate) {
 		super();
-		this.companyInfoService = companyInfoService;
+		this.mongoTemplate = mongoTemplate;
 	}
 	@Override
 	public void process(ResultItems resultItems, Task task) {
@@ -54,11 +55,7 @@ public class DBPipeline implements Pipeline {
 				e.printStackTrace();
 			}
 		}
-		companyInfoService.add(c);
-//		System.out.println(c.toString());
-	}
-	public void setCompanyInfoService(CompanyInfoService companyInfoService) {
-		this.companyInfoService = companyInfoService;
+		mongoTemplate.insert(c);
 	}
 	private  String captureName(String name) {
        return  name.substring(0, 1).toUpperCase() + name.substring(1);

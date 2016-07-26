@@ -6,18 +6,14 @@ import java.util.regex.Pattern;
 
 import javax.management.JMException;
 
-import net.hoyoung.webmagic.downloader.HtmlUnitDownloader;
-import net.hoyoung.webmagic.pipeline.SocialReportDetailPipeline;
-import net.hoyoung.wfp.core.entity.SocialReportSyn;
-import net.hoyoung.wfp.core.service.SocialReportSynService;
-import net.hoyoung.wfp.core.utils.StringUtils;
-
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 import com.mongodb.BasicDBObject;
 
+import net.hoyoung.webmagic.downloader.HtmlUnitDownloader;
+import net.hoyoung.webmagic.pipeline.SocialReportDetailPipeline;
+import net.hoyoung.wfp.core.entity.SocialReportSyn;
+import net.hoyoung.wfp.core.utils.StringUtils;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
@@ -81,23 +77,18 @@ public class CompanySocialReportDetailSprderPageProcessor implements PageProcess
 		site.addHeader("Host", "stockdata.stock.hexun.com");
 		return site;
 	}
-	private static String[] config = { "classpath:spring-core.xml" };
-	public static ApplicationContext APP_CONTEXT;
 	private static String REPORT_URL = "http://stockdata.stock.hexun.com/zrbg/stock_bg.aspx?code=[code]&date=[date]";
 	private static String[] PUBLISH_DATE = {
 		"2014-12-31"
 	};
-	static {
-		APP_CONTEXT = new FileSystemXmlApplicationContext(config);
-	}
 
 	public static void main(String[] args) throws JMException {
 		long start = System.currentTimeMillis();
+		MongoTemplate mongoTemplate = null;
+//		List<SocialReportSyn> companies = socialReportSynService.findAll();
+		List<SocialReportSyn> companies = null;
 		
-		SocialReportSynService socialReportSynService = APP_CONTEXT.getBean(SocialReportSynService.class);
-		List<SocialReportSyn> companies = socialReportSynService.findAll();
-		
-		SocialReportDetailPipeline socialReportDetailPipeline = new SocialReportDetailPipeline(APP_CONTEXT.getBean(MongoTemplate.class));
+		SocialReportDetailPipeline socialReportDetailPipeline = new SocialReportDetailPipeline(mongoTemplate);
 		Spider spider = Spider
 				.create(new CompanySocialReportDetailSprderPageProcessor())
 				.addPipeline(socialReportDetailPipeline)

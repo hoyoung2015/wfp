@@ -1,26 +1,12 @@
 package net.hoyoung.wfp.core.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import org.hibernate.annotations.Index;
-
-@Entity
-@Table(name="company_patents")
 public class CompanyPatents {
-	@Id
-	@GeneratedValue
 	private int patentsId;
 	private String patCode;//专利号
 	private String comName;
 	private String stockCode;//股票号
 	private String patName;
 	
-	@Column(columnDefinition="TEXT")
-	@Index(name="ix_pat_info")
 	private String patInfo;
 	
 	private String patMainStdmode;//主分类号

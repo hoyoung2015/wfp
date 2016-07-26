@@ -1,33 +1,20 @@
 package net.hoyoung.wfp.stockdown.spider;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Map.Entry;
 
 import javax.management.JMException;
 
-import net.hoyoung.webmagic.pipeline.DBPipeline;
-import net.hoyoung.wfp.core.service.CompanyInfoService;
-
-import net.hoyoung.wfp.core.utils.JDBCHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.data.mongodb.core.MongoTemplate;
 
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
+import net.hoyoung.wfp.core.entity.CompanyInfo;
 import us.codecraft.webmagic.Page;
-import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.monitor.SpiderMonitor;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.scheduler.FileCacheQueueScheduler;
 import us.codecraft.webmagic.selector.JsonPathSelector;
-import us.codecraft.webmagic.selector.Selectable;
 import us.codecraft.webmagic.selector.XpathSelector;
 
 /**
@@ -44,12 +31,7 @@ public class CompanyInfoSpiderPageProcessor implements PageProcessor {
 	private static int PAGE_START = 1;
 	private static int PAGE_END = 141;// 141
 
-    static JdbcTemplate jdbcTemplate;
-    static {
-        jdbcTemplate = JDBCHelper.createMysqlTemplate("mysql1",
-                "jdbc:mysql://localhost/wfp?useUnicode=true&characterEncoding=utf8",
-                "root", "", 5, 30);
-    }
+    static MongoTemplate mongoTemplate;
 
 	public static void main(String[] args) throws JMException {
 		long start = System.currentTimeMillis();
@@ -102,18 +84,16 @@ public class CompanyInfoSpiderPageProcessor implements PageProcessor {
             float pricelimit = getFloat(Pricelimit_jps.select(s));
             float shareholders = getFloat(shareholders_jps.select(s));
 
+            CompanyInfo c = new CompanyInfo();
+            c.setSname(sname);
+            c.setStockCode(stock_code);
+            c.setIndustry(industry);
+            c.setInstitutional(institutional);
+            c.setLootchips(Double.valueOf(Float.toString(lootchips)));
+            c.setPricelimit(Double.valueOf(Float.toString(pricelimit)));
+            c.setShareholders(Double.valueOf(Float.toString(shareholders)));
 
-            int status = jdbcTemplate.update("INSERT INTO company_info(sname,stock_code,industry,institutional,lootchips,pricelimit,shareholders) values(?,?,?,?,?,?,?)",
-                    sname,
-                    stock_code,
-                    industry,
-                    institutional,
-                    lootchips,
-                    pricelimit,
-                    shareholders);
-            if(status==1){
-                logger.info(stock_code+" insert successful");
-            }
+            mongoTemplate.insert(c);
         }
 	}
     private Site site = Site.me()

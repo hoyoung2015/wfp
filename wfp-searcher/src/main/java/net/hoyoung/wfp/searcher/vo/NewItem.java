@@ -1,42 +1,23 @@
 package net.hoyoung.wfp.searcher.vo;
 
-import org.hibernate.annotations.Index;
-
-import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table(name="new_item")
 public class NewItem {
-	@Id
-	@GeneratedValue
 	private int id;
 	
-	@Column(name="stock_code",length = 10)
-	@Index(name = "idx_stock_code")
 	private String stockCode;//股票号
-	@Index(name = "idx_query")
 	private String query;//搜索关键词
 	
 	private String title;
-	
-	@Column(columnDefinition="TEXT")
 	private String summary;
 	
-	@Column(name="target_url")
-	@Index(name="idx_target_url")
 	private String targetUrl;
 
-	@Index(name = "idx_keyword")
 	private String keyword;
 	
-	@Basic(fetch=FetchType.LAZY)
-	@Column(name="target_html",length=16777215)
 	private String targetHtml;
 	
 	//创建时间
-	@Column(name="create_date")
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
 	
 	public String getTargetHtml() {
@@ -46,15 +27,11 @@ public class NewItem {
 		this.targetHtml = targetHtml;
 	}
 	//新闻发布时间
-	@Column(name="publish_date")
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date publishDate;
 
-	@Column(name = "publish_date_str")
 	private String publishDateStr;
 	
 	//新闻来源
-	@Column(name = "source_name")
 	private String sourceName;
 
 	public String getKeyword() {

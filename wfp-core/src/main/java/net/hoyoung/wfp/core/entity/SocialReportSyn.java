@@ -1,14 +1,10 @@
 package net.hoyoung.wfp.core.entity;
 
-import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Created by hoyoung on 2015/11/29.
  */
-@Entity
-@Table(name = "social_report_syn", schema = "", catalog = "wfp")
-@IdClass(SocialReportSynPK.class)
 public class SocialReportSyn {
     private String stockCode;
     private Float empScore;
@@ -22,8 +18,6 @@ public class SocialReportSyn {
     private Float totalScore;
     private Date createDate;
 
-    @Id
-    @Column(name = "stock_code")
     public String getStockCode() {
         return stockCode;
     }
@@ -32,8 +26,8 @@ public class SocialReportSyn {
         this.stockCode = stockCode;
     }
 
-    @Basic
-    @Column(name = "emp_score")
+    
+    
     public Float getEmpScore() {
         return empScore;
     }
@@ -42,8 +36,8 @@ public class SocialReportSyn {
         this.empScore = empScore;
     }
 
-    @Basic
-    @Column(name = "equity_score")
+    
+    
     public Float getEquityScore() {
         return equityScore;
     }
@@ -52,8 +46,8 @@ public class SocialReportSyn {
         this.equityScore = equityScore;
     }
 
-    @Basic
-    @Column(name = "gd_score")
+    
+    
     public Float getGdScore() {
         return gdScore;
     }
@@ -62,8 +56,8 @@ public class SocialReportSyn {
         this.gdScore = gdScore;
     }
 
-    @Basic
-    @Column(name = "hj_score")
+    
+    
     public Float getHjScore() {
         return hjScore;
     }
@@ -72,8 +66,8 @@ public class SocialReportSyn {
         this.hjScore = hjScore;
     }
 
-    @Basic
-    @Column(name = "level")
+    
+    
     public String getLevel() {
         return level;
     }
@@ -82,8 +76,6 @@ public class SocialReportSyn {
         this.level = level;
     }
 
-    @Id
-    @Column(name = "publish_date")
     public String getPublishDate() {
         return publishDate;
     }
@@ -92,8 +84,8 @@ public class SocialReportSyn {
         this.publishDate = publishDate;
     }
 
-    @Basic
-    @Column(name = "report_file_url")
+    
+    
     public String getReportFileUrl() {
         return reportFileUrl;
     }
@@ -102,8 +94,8 @@ public class SocialReportSyn {
         this.reportFileUrl = reportFileUrl;
     }
 
-    @Basic
-    @Column(name = "social_score")
+    
+    
     public Float getSocialScore() {
         return socialScore;
     }
@@ -112,8 +104,8 @@ public class SocialReportSyn {
         this.socialScore = socialScore;
     }
 
-    @Basic
-    @Column(name = "total_score")
+    
+    
     public Float getTotalScore() {
         return totalScore;
     }
@@ -122,8 +114,8 @@ public class SocialReportSyn {
         this.totalScore = totalScore;
     }
 
-    @Basic
-    @Column(name = "create_date")
+    
+    
     public Date getCreateDate() {
         return createDate;
     }

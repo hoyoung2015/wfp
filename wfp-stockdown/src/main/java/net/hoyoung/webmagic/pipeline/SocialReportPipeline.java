@@ -3,11 +3,10 @@ package net.hoyoung.webmagic.pipeline;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import net.hoyoung.wfp.core.entity.SocialReportSyn;
-import net.hoyoung.wfp.core.service.SocialReportService;
-import net.hoyoung.wfp.core.service.SocialReportSynService;
-import net.hoyoung.wfp.core.utils.HibernateUtils;
 import org.hibernate.Session;
+
+import net.hoyoung.wfp.core.entity.SocialReportSyn;
+import net.hoyoung.wfp.core.utils.HibernateUtils;
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;

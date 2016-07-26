@@ -1,14 +1,8 @@
 package net.hoyoung.wfp.core.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 /**
  * Created by Administrator on 2015/11/10.
  */
-@Entity
 public class Hporg {
     private int id;
     private String name;
@@ -28,8 +22,6 @@ public class Hporg {
     private Integer engineerNum;
     private Integer recordNum;
 
-    @Id
-    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -70,8 +62,8 @@ public class Hporg {
                 '}';
     }
 
-    @Basic
-    @Column(name = "name")
+    
+    
     public String getName() {
         return name;
     }
@@ -80,8 +72,8 @@ public class Hporg {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "province")
+    
+    
     public String getProvince() {
         return province;
     }
@@ -90,8 +82,8 @@ public class Hporg {
         this.province = province;
     }
 
-    @Basic
-    @Column(name = "city")
+    
+    
     public String getCity() {
         return city;
     }
@@ -100,8 +92,8 @@ public class Hporg {
         this.city = city;
     }
 
-    @Basic
-    @Column(name = "area")
+    
+    
     public String getArea() {
         return area;
     }
@@ -110,8 +102,8 @@ public class Hporg {
         this.area = area;
     }
 
-    @Basic
-    @Column(name = "pos_x")
+    
+    
     public Float getPosX() {
         return posX;
     }
@@ -120,8 +112,8 @@ public class Hporg {
         this.posX = posX;
     }
 
-    @Basic
-    @Column(name = "pos_y")
+    
+    
     public Float getPosY() {
         return posY;
     }
@@ -130,8 +122,8 @@ public class Hporg {
         this.posY = posY;
     }
 
-    @Basic
-    @Column(name = "addr")
+    
+    
     public String getAddr() {
         return addr;
     }
@@ -140,8 +132,8 @@ public class Hporg {
         this.addr = addr;
     }
 
-    @Basic
-    @Column(name = "cert_level")
+    
+    
     public String getCertLevel() {
         return certLevel;
     }
@@ -150,8 +142,8 @@ public class Hporg {
         this.certLevel = certLevel;
     }
 
-    @Basic
-    @Column(name = "cert_no")
+    
+    
     public String getCertNo() {
         return certNo;
     }
@@ -160,8 +152,8 @@ public class Hporg {
         this.certNo = certNo;
     }
 
-    @Basic
-    @Column(name = "eval_range")
+    
+    
     public String getEvalRange() {
         return evalRange;
     }
@@ -170,8 +162,8 @@ public class Hporg {
         this.evalRange = evalRange;
     }
 
-    @Basic
-    @Column(name = "tel")
+    
+    
     public String getTel() {
         return tel;
     }
@@ -180,8 +172,8 @@ public class Hporg {
         this.tel = tel;
     }
 
-    @Basic
-    @Column(name = "email")
+    
+    
     public String getEmail() {
         return email;
     }
@@ -190,8 +182,8 @@ public class Hporg {
         this.email = email;
     }
 
-    @Basic
-    @Column(name = "project_num")
+    
+    
     public Integer getProjectNum() {
         return projectNum;
     }
@@ -200,8 +192,8 @@ public class Hporg {
         this.projectNum = projectNum;
     }
 
-    @Basic
-    @Column(name = "permit_num")
+    
+    
     public Integer getPermitNum() {
         return permitNum;
     }
@@ -210,8 +202,8 @@ public class Hporg {
         this.permitNum = permitNum;
     }
 
-    @Basic
-    @Column(name = "engineer_num")
+    
+    
     public Integer getEngineerNum() {
         return engineerNum;
     }
@@ -220,8 +212,8 @@ public class Hporg {
         this.engineerNum = engineerNum;
     }
 
-    @Basic
-    @Column(name = "record_num")
+    
+    
     public Integer getRecordNum() {
         return recordNum;
     }

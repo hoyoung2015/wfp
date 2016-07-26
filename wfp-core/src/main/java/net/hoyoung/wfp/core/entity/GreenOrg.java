@@ -1,12 +1,8 @@
 package net.hoyoung.wfp.core.entity;
 
-import javax.persistence.*;
-
 /**
  * Created by Administrator on 2015/11/12.
  */
-@Entity
-@Table(name = "green_org", schema = "", catalog = "wfp")
 public class GreenOrg {
     private Integer id;
     private String title;
@@ -16,8 +12,6 @@ public class GreenOrg {
     private String city;
     private String area;
 
-    @Id
-    @Column(name = "id")
     public Integer getId() {
         return id;
     }
@@ -26,8 +20,6 @@ public class GreenOrg {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -36,8 +28,6 @@ public class GreenOrg {
         this.title = title;
     }
 
-    @Basic
-    @Column(name = "lng")
     public Float getLng() {
         return lng;
     }
@@ -46,8 +36,6 @@ public class GreenOrg {
         this.lng = lng;
     }
 
-    @Basic
-    @Column(name = "lat")
     public Float getLat() {
         return lat;
     }
@@ -56,8 +44,6 @@ public class GreenOrg {
         this.lat = lat;
     }
 
-    @Basic
-    @Column(name = "province")
     public String getProvince() {
         return province;
     }
@@ -66,8 +52,8 @@ public class GreenOrg {
         this.province = province;
     }
 
-    @Basic
-    @Column(name = "city")
+    
+    
     public String getCity() {
         return city;
     }
@@ -76,8 +62,8 @@ public class GreenOrg {
         this.city = city;
     }
 
-    @Basic
-    @Column(name = "area")
+    
+    
     public String getArea() {
         return area;
     }
