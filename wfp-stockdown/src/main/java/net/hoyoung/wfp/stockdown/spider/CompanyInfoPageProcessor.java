@@ -6,7 +6,9 @@ import javax.management.JMException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.stereotype.Component;
 
 import net.hoyoung.wfp.core.entity.CompanyInfo;
 import us.codecraft.webmagic.Page;
@@ -23,19 +25,21 @@ import us.codecraft.webmagic.selector.XpathSelector;
  * @author hoyoung
  *
  */
-public class CompanyInfoSpiderPageProcessor implements PageProcessor {
-    static Logger logger = LoggerFactory.getLogger(CompanyInfoSpiderPageProcessor.class);
+@Component
+public class CompanyInfoPageProcessor implements PageProcessor {
+	public static Logger logger = LoggerFactory.getLogger(CompanyInfoPageProcessor.class);
 	// 1-141
-	private static String JSON_LIST_URL = "http://stockdata.stock.hexun.com/gszl/data/jsondata/jbgk.ashx?count=20&page=";
+	public static String JSON_LIST_URL = "http://stockdata.stock.hexun.com/gszl/data/jsondata/jbgk.ashx?count=20&page=";
 
-	private static int PAGE_START = 1;
-	private static int PAGE_END = 141;// 141
+	public static int PAGE_START = 1;
+	public static int PAGE_END = 141;// 141
 
-    static MongoTemplate mongoTemplate;
+	@Autowired
+    MongoTemplate mongoTemplate;
 
 	public static void main(String[] args) throws JMException {
 		long start = System.currentTimeMillis();
-		Spider spider = Spider.create(new CompanyInfoSpiderPageProcessor())
+		Spider spider = Spider.create(new CompanyInfoPageProcessor())
                 .setScheduler(new FileCacheQueueScheduler("urls_cache"));
 		for (int i = PAGE_START; i <= PAGE_END; i++) {
 			spider.addUrl(JSON_LIST_URL + i);
