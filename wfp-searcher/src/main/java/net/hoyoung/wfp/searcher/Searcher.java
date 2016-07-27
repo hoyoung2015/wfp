@@ -1,11 +1,7 @@
 package net.hoyoung.wfp.searcher;
 
-import net.hoyoung.wfp.searcher.savehandler.SaveHandler;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.ElementNotFoundException;
@@ -15,10 +11,12 @@ import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlInput;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlSelect;
+
+import net.hoyoung.wfp.searcher.savehandler.SaveHandler;
 public class Searcher {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	private SearchRequest searchRequest;
-	private static String BAIDU_NEWS_URL = "http://news.baidu.com/advanced_news.html";
+	private static final String BAIDU_NEWS_URL = "http://news.baidu.com/advanced_news.html";
 	private WebClient webClient;
 	private SaveHandler saveHandler;
 	private HtmlDownloader htmlDownloader;
@@ -103,8 +101,8 @@ public class Searcher {
 						hasNextPage = false;
 					}
 
-					logger.info("休息3秒>>>>>>>>>>>>>>>>>>>>>>>>>");
-					Thread.sleep(3000);
+					logger.info("休息6秒>>>>>>>>>>>>>>>>>>>>>>>>>");
+					Thread.sleep(6000);
 
 					if(hasNextPage){//存在下一页，触发链接
 						resultPage = nextPageBtn.click();

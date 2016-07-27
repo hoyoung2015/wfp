@@ -2,8 +2,11 @@ package net.hoyoung.wfp.searcher.vo;
 
 import java.util.Date;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="new_item")
 public class NewItem {
-	private int id;
+	private String id;
 	
 	private String stockCode;//股票号
 	private String query;//搜索关键词
@@ -61,10 +64,10 @@ public class NewItem {
 	public void setQuery(String query) {
 		this.query = query;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getTitle() {

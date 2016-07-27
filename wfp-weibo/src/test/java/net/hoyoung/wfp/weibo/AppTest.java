@@ -1,16 +1,11 @@
 package net.hoyoung.wfp.weibo;
 
 
-import java.io.File;
-
-import org.apache.commons.io.FileUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.MongoDbFactory;
+import java.util.List;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPath;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -59,7 +54,6 @@ public class AppTest
     public void testApp3()
     {
     	
-    			
     }
     
 }

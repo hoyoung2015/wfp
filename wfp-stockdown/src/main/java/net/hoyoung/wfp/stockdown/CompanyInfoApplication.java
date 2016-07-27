@@ -13,6 +13,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 import net.hoyoung.wfp.stockdown.spider.CompanyInfoPageProcessor;
 import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.scheduler.FileCacheQueueScheduler;
 
 @PropertySource("classpath:application.properties")
 @Configuration
@@ -34,9 +35,8 @@ public class CompanyInfoApplication {
 		Spider spider = Spider.create(pageProcessor);
 		for (int i = CompanyInfoPageProcessor.PAGE_START; i <= CompanyInfoPageProcessor.PAGE_END; i++) {
 			spider.addUrl(CompanyInfoPageProcessor.JSON_LIST_URL + i);
-			break;
 		}
-		spider.thread(3).run();
+		spider.thread(1).run();
 		System.out.println("耗时:" + (System.currentTimeMillis() - start) / 1000 + "秒");
 	}
 

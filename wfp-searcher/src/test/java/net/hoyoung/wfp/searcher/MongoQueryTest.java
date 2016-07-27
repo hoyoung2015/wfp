@@ -45,4 +45,12 @@ public class MongoQueryTest extends BaseTest {
 				new Update().set("name", "小狗"), CompanyInfo.class);
 
 	}
+	@Test
+	public void test6() {
+		CompanyInfo c = new CompanyInfo();
+		c.setStockCode("002594");
+		CompanyInfo t = mongoTemplate.findOne(new Query().addCriteria(new Criteria("stockCode").is(c.getStockCode())), CompanyInfo.class);
+
+		System.out.println(ToStringBuilder.reflectionToString(t));
+	}
 }
