@@ -1,4 +1,4 @@
-package net.hoyoung.wfp.searcher;
+package net.hoyoung.wfp.searcher.baidu;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -10,7 +10,6 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
 import net.hoyoung.wfp.core.entity.CompanyInfo;
-import net.hoyoung.wfp.searcher.savehandler.SaveHandler;
 import net.hoyoung.wfp.searcher.vo.NewItem;
 
 /**
@@ -34,10 +33,8 @@ public class BaiduNewsSpider {
 		if (StringUtils.isEmpty(stockCode) || StringUtils.isEmpty(keyword)) {
 			return WRONG_ARGS;
 		}
-		// 创建下载器
-		HtmlDownloader downloader = new HtmlDownloader();
 		// 创建存储器
-		Searcher searcher = new Searcher(saveHandler, downloader);
+		Searcher searcher = new Searcher(saveHandler);
 
 		CompanyInfo companyInfo = mongoTemplate.findOne(new Query(new Criteria("stockCode").is(stockCode)), CompanyInfo.class);
 		if (companyInfo == null) {

@@ -17,6 +17,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
+import net.hoyoung.wfp.searcher.baidu.BaiduNewsSpider;
+
 @PropertySource("classpath:application.properties")
 @Configuration
 @ComponentScan
@@ -65,6 +67,7 @@ public class Application {
 			while ((temp = br.readLine()) != null) {
 				list.add(temp.replace(" ", ""));
 			}
+			
 
 			fs.close();
 			isr.close();

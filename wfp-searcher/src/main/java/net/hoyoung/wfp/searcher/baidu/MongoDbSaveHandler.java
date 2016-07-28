@@ -1,4 +1,4 @@
-package net.hoyoung.wfp.searcher.savehandler.impl;
+package net.hoyoung.wfp.searcher.baidu;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,15 +15,13 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
 import net.hoyoung.wfp.core.entity.CompanyInfo;
-import net.hoyoung.wfp.searcher.SearchRequest;
-import net.hoyoung.wfp.searcher.savehandler.SaveHandler;
+import net.hoyoung.wfp.core.utils.BaiduNewsTimeConverter;
 import net.hoyoung.wfp.searcher.vo.NewItem;
 import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.Selectable;
 
 @Component
-
-public class DbSaveHandler implements SaveHandler {
+public class MongoDbSaveHandler implements SaveHandler {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Autowired
@@ -62,9 +60,15 @@ public class DbSaveHandler implements SaveHandler {
 					publishDate = sdf.parse(ss[1]);
 					newItem.setPublishDate(publishDate);
 				} catch (ParseException e) {
-					logger.info(e.getMessage());
-					logger.info("解析发布时间出错，存储原始值");
-					newItem.setPublishDateStr(ss[1]);
+					logger.info("解析发布时间出错，尝试进行日期转换");
+					publishDate = BaiduNewsTimeConverter.convert(ss[1], new Date());
+					if(publishDate!=null){
+						newItem.setPublishDate(publishDate);
+					}else{
+						logger.info(e.getMessage());
+						logger.info("转换日期出错，存储原始值");
+						newItem.setPublishDateStr(ss[1]);
+					}
 				}
 			}
 

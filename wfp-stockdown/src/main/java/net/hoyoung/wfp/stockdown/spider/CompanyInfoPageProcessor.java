@@ -52,7 +52,12 @@ public class CompanyInfoPageProcessor implements PageProcessor {
 			String stock_code = Stockname.substring(t + 1, Stockname.length() - 1);
 			c.setSname(sname);
 			c.setStockCode(stock_code);
-			String industry = new XpathSelector("//a/text()").select(JSONPath.compile("$.deviation").eval(s).toString()).replaceAll(" ", "");
+			String tmps = JSONPath.compile("$.deviation").eval(s).toString();
+			String industry = null;
+			if(!"--".equals(tmps)){
+				industry = new XpathSelector("//a/text()").select(tmps).replaceAll(" ", "");
+			}
+			
 			c.setIndustry(industry);
 			String t_institutional = JSONPath.compile("$.Institutional").eval(s).toString();// 注册资本
 			double institutional = 0;

@@ -11,6 +11,8 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 
+import com.mongodb.WriteResult;
+
 import net.hoyoung.wfp.core.entity.CompanyInfo;
 
 public class MongoQueryTest extends BaseTest {
@@ -41,7 +43,7 @@ public class MongoQueryTest extends BaseTest {
 	public void test3() {
 		CompanyInfo c = new CompanyInfo();
 		c.setStockCode("666666");
-		mongoTemplate.updateFirst(new Query(new Criteria("stockCode").is(c.getStockCode())),
+		WriteResult rs = mongoTemplate.updateFirst(new Query(new Criteria("stockCode").is(c.getStockCode())),
 				new Update().set("name", "小狗"), CompanyInfo.class);
 
 	}

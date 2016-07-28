@@ -18,6 +18,8 @@ public class NewItem {
 
 	private String keyword;
 	
+	private String content;
+	
 	private String targetHtml;
 	
 	//创建时间
@@ -37,6 +39,14 @@ public class NewItem {
 	//新闻来源
 	private String sourceName;
 
+	
+	
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public String getKeyword() {
 		return keyword;
 	}

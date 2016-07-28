@@ -1,4 +1,4 @@
-package net.hoyoung.wfp.searcher;
+package net.hoyoung.wfp.searcher.baidu;
 
 import java.util.HashMap;
 import java.util.Iterator;

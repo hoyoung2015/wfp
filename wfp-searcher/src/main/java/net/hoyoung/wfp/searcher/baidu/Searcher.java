@@ -1,4 +1,4 @@
-package net.hoyoung.wfp.searcher;
+package net.hoyoung.wfp.searcher.baidu;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,19 +11,15 @@ import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlInput;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlSelect;
-
-import net.hoyoung.wfp.searcher.savehandler.SaveHandler;
 public class Searcher {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	private SearchRequest searchRequest;
 	private static final String BAIDU_NEWS_URL = "http://news.baidu.com/advanced_news.html";
 	private WebClient webClient;
 	private SaveHandler saveHandler;
-	private HtmlDownloader htmlDownloader;
-	public Searcher(SaveHandler saveHandler,HtmlDownloader htmlDownloader) {
+	public Searcher(SaveHandler saveHandler) {
 		super();
 		this.saveHandler = saveHandler;
-		this.htmlDownloader = htmlDownloader;
 		webClient = new WebClient(BrowserVersion.CHROME);
 		webClient.getOptions().setCssEnabled(false);
 		webClient.getOptions().setJavaScriptEnabled(false);
@@ -37,15 +33,6 @@ public class Searcher {
 	public void setSaveHandler(SaveHandler saveHandler) {
 		this.saveHandler = saveHandler;
 	}
-
-	public HtmlDownloader getHtmlDownloader() {
-		return htmlDownloader;
-	}
-
-	public void setHtmlDownloader(HtmlDownloader htmlDownloader) {
-		this.htmlDownloader = htmlDownloader;
-	}
-
 	public SearchRequest getSearchRequest() {
 		return searchRequest;
 	}
@@ -101,8 +88,8 @@ public class Searcher {
 						hasNextPage = false;
 					}
 
-					logger.info("休息6秒>>>>>>>>>>>>>>>>>>>>>>>>>");
-					Thread.sleep(6000);
+					logger.info("休息8秒>>>>>>>>>>>>>>>>>>>>>>>>>");
+					Thread.sleep(8000);
 
 					if(hasNextPage){//存在下一页，触发链接
 						resultPage = nextPageBtn.click();

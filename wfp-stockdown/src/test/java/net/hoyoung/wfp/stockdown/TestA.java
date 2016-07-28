@@ -1,5 +1,6 @@
 package net.hoyoung.wfp.stockdown;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -59,5 +60,12 @@ public class TestA {
 			r = 0f;
 		}
 		return r;
+	}
+	@Test
+	public void test3() throws InterruptedException{
+		Calendar a = Calendar.getInstance();
+		Thread.sleep(1000);
+		Calendar b = Calendar.getInstance();
+		System.out.println(a.hashCode()==b.hashCode());
 	}
 }
