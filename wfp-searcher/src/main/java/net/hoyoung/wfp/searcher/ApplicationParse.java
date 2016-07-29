@@ -53,7 +53,7 @@ public class ApplicationParse {
 					.setKey(newItem.getStockCode()+newItem.getTargetUrl());
 			logger.info(datum.getKey());
 			contentParser.addSeed(datum);
-			break;
+//			break;
 		}
 		contentParser.setThreads(3);
 		contentParser.start(99999999);

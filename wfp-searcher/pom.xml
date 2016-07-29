@@ -43,6 +43,10 @@
 					<artifactId>mongo-java-driver</artifactId>
 					<groupId>org.mongodb</groupId>
 				</exclusion>
+				<exclusion>
+					<artifactId>jsoup</artifactId>
+					<groupId>org.jsoup</groupId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>

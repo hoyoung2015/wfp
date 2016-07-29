@@ -44,7 +44,7 @@ public class BaiduNewsSpider {
 		SearchRequest sr = new SearchRequest();
 		sr.putExtra("company", companyInfo);
 		sr.putExtra("keyword", keyword);
-		sr.addKeyword("+" + keyword)// 加号表示这个关键词一定出现
+		sr.addKeyword("+\"" + keyword+"\"")// 加号表示这个关键词一定出现
 				.addKeyword("\"" + companyInfo.getSname() + "\"");// 加上双引号避免被分词
 		/**
 		 * 校验股票号+关键词是否已经搜索
