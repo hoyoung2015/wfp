@@ -33,7 +33,7 @@ public class CompanyInfoPageProcessor implements PageProcessor {
 	public static String JSON_LIST_URL = "http://stockdata.stock.hexun.com/gszl/data/jsondata/jbgk.ashx?count=20&page=";
 
 	public static int PAGE_START = 1;
-	public static int PAGE_END = 146;// 141
+	public static int PAGE_END = 149;// 141
 
 	@Autowired
 	private MongoTemplate mongoTemplate;

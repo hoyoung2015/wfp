@@ -19,7 +19,7 @@ import us.codecraft.webmagic.scheduler.FileCacheQueueScheduler;
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
-public class CompanyInfoApplication {
+public class CompanyInfoApp {
 
 	Logger LOG = LoggerFactory.getLogger(this.getClass());
 
@@ -29,7 +29,7 @@ public class CompanyInfoApplication {
 	}
 
 	public static void main(String[] args) throws Exception {
-		ApplicationContext ctx = SpringApplication.run(CompanyInfoApplication.class, args);
+		ApplicationContext ctx = SpringApplication.run(CompanyInfoApp.class, args);
 		CompanyInfoPageProcessor pageProcessor = ctx.getBean(CompanyInfoPageProcessor.class);
 		long start = System.currentTimeMillis();
 		Spider spider = Spider.create(pageProcessor);

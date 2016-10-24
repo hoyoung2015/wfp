@@ -5,23 +5,20 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.management.JMException;
-
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.stereotype.Component;
 
 import net.hoyoung.wfp.core.entity.CompanyInfo;
 import us.codecraft.webmagic.Page;
-import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
-import us.codecraft.webmagic.scheduler.FileCacheQueueScheduler;
 import us.codecraft.webmagic.selector.Selectable;
 
 /**
@@ -31,25 +28,11 @@ import us.codecraft.webmagic.selector.Selectable;
  * @author hoyoung
  *
  */
+@Component
 public class CompanyInfoDetailSpiderPageProcessor implements PageProcessor {
 	static Logger logger = LoggerFactory.getLogger(CompanyInfoDetailSpiderPageProcessor.class);
-	static MongoTemplate mongoTemplate;
-
-	public static void main(String[] args) throws JMException {
-		long start = System.currentTimeMillis();
-		Spider spider = Spider.create(new CompanyInfoDetailSpiderPageProcessor())
-				.setScheduler(new FileCacheQueueScheduler("urls_cache"));
-
-		List<CompanyInfo> list = mongoTemplate.find(new Query(new Criteria("name").is(null)), CompanyInfo.class);
-		for (CompanyInfo com : list) {
-			Request req = new Request("http://stockdata.stock.hexun.com/gszl/s" + com.getStockCode() + ".shtml");
-			req.putExtra("stock_code", com.getStockCode());
-			spider.addRequest(req);
-			// break;
-		}
-		spider.thread(6).run();
-		logger.info("耗时:" + (System.currentTimeMillis() - start) / 1000 + "秒");
-	}
+	@Autowired
+	private MongoTemplate mongoTemplate;
 
 	@Override
 	public void process(Page page) {
@@ -96,16 +79,24 @@ public class CompanyInfoDetailSpiderPageProcessor implements PageProcessor {
 			}
 		}
 		String stock_type = zqSelect.xpath("/table/tbody/tr[4]/td[2]/text()").get();
+
 		// 联系信息
 		Selectable contactSelect = tableSelector.get(3);
-		String web = contactSelect.xpath("/table/tbody/tr[4]/td[2]/a/@href").get();
+		String webSite = contactSelect.xpath("/table/tbody/tr[4]/td[2]/a/@href").get();
+		
 
 		String stock_code = (String) page.getRequest().getExtra("stock_code");
+		if (stock_type == null) {
+			logger.error("Request中必须携带stock_type");
+			System.exit(1);
+		}
 
+		
 		mongoTemplate.updateFirst(new Query(new Criteria("stockCode").is(stock_code)),
 				new Update().set("name", name).set("ename", ename).set("registerDate", register_date).set("area", area)
 						.set("addrReg", addr_reg).set("addrWork", addr_work).set("market", market)
-						.set("listingDate", listing_date).set("offerDate", offer_date),
+						.set("listingDate", listing_date).set("offerDate", offer_date)
+						.set("webSite", webSite),
 				CompanyInfo.class);
 	}
 
