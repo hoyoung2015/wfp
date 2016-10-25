@@ -36,6 +36,12 @@ public class CompanyInfoDetailSpiderPageProcessor implements PageProcessor {
 
 	@Override
 	public void process(Page page) {
+		String stock_code = (String) page.getRequest().getExtra("stock_code");
+		if (stock_code == null) {
+			logger.error("Request中必须携带stock_code");
+			System.exit(1);
+		}
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		List<Selectable> tableSelector = page.getHtml().xpath("//table[@class='tab_xtable']").nodes();
 		Selectable infoSelect = tableSelector.get(0);
@@ -83,21 +89,22 @@ public class CompanyInfoDetailSpiderPageProcessor implements PageProcessor {
 		// 联系信息
 		Selectable contactSelect = tableSelector.get(3);
 		String webSite = contactSelect.xpath("/table/tbody/tr[4]/td[2]/a/@href").get();
-		
-
-		String stock_code = (String) page.getRequest().getExtra("stock_code");
-		if (stock_type == null) {
-			logger.error("Request中必须携带stock_type");
-			System.exit(1);
-		}
 
 		
-		mongoTemplate.updateFirst(new Query(new Criteria("stockCode").is(stock_code)),
-				new Update().set("name", name).set("ename", ename).set("registerDate", register_date).set("area", area)
-						.set("addrReg", addr_reg).set("addrWork", addr_work).set("market", market)
-						.set("listingDate", listing_date).set("offerDate", offer_date)
-						.set("webSite", webSite),
-				CompanyInfo.class);
+		
+
+		mongoTemplate.upsert(new Query(new Criteria("stockCode").is(stock_code)),
+				new Update()
+				.set("name", name)
+				.set("ename", ename)
+				.set("registerDate", register_date)
+				.set("area", area)
+				.set("addrReg", addr_reg)
+				.set("addrWork", addr_work)
+				.set("market", market)
+				.set("listingDate", listing_date)
+				.set("offerDate", offer_date)
+				.set("webSite", webSite),CompanyInfo.class);
 	}
 
 	private Site site = Site.me().setRetryTimes(5).setSleepTime(1000).addHeader("Host", "stockdata.stock.hexun.com")

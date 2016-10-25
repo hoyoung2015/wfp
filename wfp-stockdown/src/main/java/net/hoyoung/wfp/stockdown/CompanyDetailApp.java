@@ -22,7 +22,6 @@ import net.hoyoung.wfp.stockdown.spider.CompanyInfoDetailSpiderPageProcessor;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
-import us.codecraft.webmagic.scheduler.FileCacheQueueScheduler;
 
 @PropertySource("classpath:application.properties")
 @Configuration
@@ -47,13 +46,12 @@ public class CompanyDetailApp {
 		 *  查询企业
 		 *  因为这里是对基本信息的补充，基本信息中的name是null所以以此为条件
 		 */
-		List<CompanyInfo> list = mongoTemplate.find(new Query(new Criteria("name").is(null)), CompanyInfo.class);
+		List<CompanyInfo> list = mongoTemplate.find(new Query(new Criteria("webSite").is(null)), CompanyInfo.class);
 		if(CollectionUtils.isEmpty(list)){
 			System.exit(0);
 		}
 		//创建爬虫
-		Spider spider = Spider.create(pageProcessor)
-				.setScheduler(new FileCacheQueueScheduler("urls_cache_company_detail"));
+		Spider spider = Spider.create(pageProcessor);
 		//导入url
 		for (CompanyInfo com : list) {
 			Request req = new Request("http://stockdata.stock.hexun.com/gszl/s" + com.getStockCode() + ".shtml");

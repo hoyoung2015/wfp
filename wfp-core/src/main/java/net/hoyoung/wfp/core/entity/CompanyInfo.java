@@ -1,6 +1,6 @@
 package net.hoyoung.wfp.core.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
