@@ -61,12 +61,16 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<resources>
-			<!--配置主资源位置 比如core下又hibernate.cfg.xml，searcher下也有hibernate.cfg.xml，那么以当前 
-				项目为准 -->
-			<resource>
-				<directory>src/main/resource</directory>
-			</resource>
-		</resources>
+		<plugins>
+			<plugin>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-maven-plugin</artifactId>
+              <configuration>
+              	<mainClass>net.hoyoung.wfp.searcher.Application</mainClass>
+              	<addResources>true</addResources>
+              	<jvmArguments>-Dfile.encoding=UTF-8</jvmArguments> 
+              </configuration>
+           </plugin>
+		</plugins>
 	</build>
 </project>
