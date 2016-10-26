@@ -47,7 +47,7 @@ public class ApplicationParse {
 		// 查询没有解析的条目
 		List<NewItem> list = mongoTemplate.find(new Query().addCriteria(new Criteria("content").is(null)),
 				NewItem.class);
-		System.out.println("需要解析"+list.size()+"个文档");
+		logger.info("需要解析"+list.size()+"个文档");
 		for (NewItem newItem : list) {
 			CrawlDatum datum = new CrawlDatum(newItem.getTargetUrl()).meta("stockCode", newItem.getStockCode())
 					.setKey(newItem.getStockCode()+newItem.getTargetUrl());
@@ -55,7 +55,7 @@ public class ApplicationParse {
 			contentParser.addSeed(datum);
 //			break;
 		}
-		contentParser.setThreads(3);
+		contentParser.setThreads(1);
 		contentParser.start(99999999);
 	}
 }
