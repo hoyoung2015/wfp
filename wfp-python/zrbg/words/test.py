@@ -5,6 +5,7 @@ http://stockdata.stock.hexun.com/zrbg/
 """
 import jieba
 import os
+import re
 from collections import OrderedDict
 
 dir = "/home/hoyoung/vm_share/txt/"
@@ -20,14 +21,28 @@ for file in os.listdir(dir):
         else:
             wordmap[word] = 1
 
+    print(count)
     count += 1
-    if count>100:
-        break
+    # if count>100:
+    #     break
 
 d = OrderedDict(wordmap)
 bar = OrderedDict(sorted(d.items(), key=lambda x: x[1]))
+
+
+print("read stopwords")
+stopwords_list = open("stopwords.txt","r").readlines()
+stopwords_set = set()
+for line in stopwords_list:
+    stopwords_set.add(line.strip('\n'))
+print(stopwords_set)
+wfile = open("words.txt","w")
 for key in bar.keys():
-    print(key+":"+str(bar[key]))
+    # 过滤停用词
+    if key in stopwords_set or re.match("[+-]?\d+$",key)!=None:
+        continue
+    wfile.writelines(key+"\t"+str(bar[key])+"\n")
+    print(key+"\t"+str(bar[key]))
 
 
 # content = open("/home/hoyoung/vm_share/txt/2015_三钢闽光_002110.txt").read()
