@@ -21,4 +21,10 @@ public class StringUtils {
 		}
 		return source;
 	}
+	public static String removeBrackets(String s){
+		return s==null?null:s.replaceAll("\\(.*\\)", "");
+	}
+	public static void main(String[] args) {
+		System.out.println(removeBrackets("房价开始大(fsdfsdf)"));
+	}
 }

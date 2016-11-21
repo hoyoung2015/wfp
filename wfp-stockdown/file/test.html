@@ -1,0 +1,652 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+	<title>双汇发展-上市公司社会责任报告- 和讯网</title>
+	<link href="css/zerenbaogao.css" rel="stylesheet" />
+
+
+	<script language="javascript" src="js/Common.js"></script>
+	<script language="javascript" src="js/GGQuote.js"></script>
+
+	<script src="http://img.hexun.com/news/2012lh/js/hx_base.min.js"
+		language="javascript" type="text/javascript"></script>
+</head>
+<body onload="GGQuoteRequest.interval();">
+	<div class="wrap">
+		<!--专题头-->
+		<!-- head -->
+		<!DOCTYPE html>
+		<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+	<title></title>
+</head>
+<body>
+
+	<!--专题头-->
+	<div id="zt_head2010">
+		<link rel="stylesheet" type="text/css"
+			href="http://img.hexun.com/2010/zt/zthead2010.css" />
+		<script src="http://img.hexun.com/js/hexunjs.js"></script>
+		<form action="http://search.hexun.com/search_result.jsp" method="post"
+			name="hexunsearch" target="_blank" id="hexunsearch" style="margin: 0">
+			<input type="hidden" name="searchID" value="128" /> <input
+				type="hidden" name="wf" value="2" /> <input type="hidden"
+				name="stockid" id="stockid" value="" /> <input type="hidden"
+				name="Dboard" value="-1" /> <input type="hidden" name="Dtime"
+				value="3m" /> <input type="hidden" name="Dkeytype" value="1" /> <input
+				type="hidden" name="Ttext" value="" /> <input type="hidden"
+				name="sw" value="" /> <input type="hidden" name="msn_stockid"
+				value="" /> <input type="hidden" name="fund_code" value="" />
+			<div class="ztlogo">
+				<a href="http://www.hexun.com" target="_blank"><img
+					src="http://img.hexun.com/2010/logo/zt_logo.gif" alt="和讯"
+					border="0" /></a><a href="http://www.hexun.com" target="_blank"
+					id="subChannelLogo"><img
+					src="http://img.hexun.com/images2008/emp.gif" alt="" border="0" /></a>
+			</div>
+			<div class="ztlink">
+				<a href="http://www.hexun.com/">和讯首页</a> | <a
+					href="http://futures.hexun.com/" id=hexunChannel>期货首页</a>
+			</div>
+			<div class="ztsea">
+				<input type="radio" name="whichDB" value="stock" id="rdstock"
+					onclick="wrDefault(this)" checked />&nbsp;股票/基金&nbsp; <input
+					type="radio" name="whichDB" value="guba" id="rdguba"
+					onclick="wrDefault(this)" />&nbsp;微博&nbsp; <input type="radio"
+					name="whichDB" value="info" id="rdinfo" onclick="wrDefault(this)" />&nbsp;新闻&nbsp;
+				<input type="radio" name="whichDB" value="blog" id="rdblog"
+					onclick="wrDefault(this)" />&nbsp;个人门户&nbsp; <input
+					id="textMessage" value="代码/名称/拼音" type="text" name="tempsw"
+					onfocus="clearDefault(this)"
+					onkeydown="if(event.keyCode==13){submitForm_x();return false;}" />
+				<a onclick="submitForm_x()"><img
+					src="http://img.hexun.com/2010/zt/nztbut.gif" border="0"
+					align="absmiddle" alt="search2"></a>
+			</div>
+		</form>
+	</div>
+	<!--股票输入提示-->
+	<div id="standStockPanel"></div>
+	<script language="javascript"
+		src="http://img.hexun.com/js/standSearchVerify.js"></script>
+	<script language="javascript" type="text/javascript">
+		new hxSuggest('textMessage',
+				'http://data.stock.hexun.com/include/AjaxSearch2011.ashx', {
+					contrainer : document.getElementById('standStockPanel')
+				});
+	</script>
+	<!--股票输入提示over-->
+	<!--专题头end-->
+	<p class="banner"></p>
+
+
+</body>
+		</html>
+
+		<!-- /head END -->
+		<!--专题头 END-->
+		<!--header-->
+		<div class="header">
+			<p class="h_nav">
+				<a href="Plate.aspx" target="_blank">上市公司社会责任报告</a> > <span>双汇发展社会责任报告</span>
+			</p>
+			<div class="h_section1">
+				<div class="h_title">
+					<form id=form1 target=_blank>
+						<span>上市公司社会责任报告</span> <input id="textMessage2"
+							class="searchInput" type="text" value="代码/名称/拼音"
+							autocomplete="off" /> <input class="inputBtn1" type="button"
+							onclick="submitFormComm()" /> <input class="inputBtn2"
+							type="button" value=""
+							onclick="try { window.external.addFavorite(window.location.href, document.title); } catch (e) { try { window.sidebar.addPanel(document.title, window.location.href, ''); } catch (e) { alert('不支持您所使用的浏览器，请使用Ctrl+D进行添加'); } } return false;" />
+						<input type=hidden name=code id=code value="" />
+					</form>
+					<div id="standStockPanel1"></div>
+					<script type="text/javascript"
+						src="http://quote.test.hexun.com/zrbg/js/suggest.js"></script>
+					<script language="javascript" type="text/javascript">
+						var hxs = new hxSuggestNew(
+								'textMessage2',
+								'http://vol.stock.hexun.com/Data/SearchStock.ashx',
+								'代码/名称/拼音', {
+									contrainer : document
+											.getElementById('standStockPanel1')
+								});
+						hxs.txtStr = "textMessage2";
+						hxs.theForm = "form1";
+
+						function submitFormComm() {
+							var submit_info = document
+									.getElementById(hxs.txtStr).value;
+							if (hxSuggestNew.util.trim(submit_info) != '')
+								submit_info = hxSuggestNew.submitValue;
+							var my_form = document.getElementById(hxs.theForm);
+							my_form.action = "stock_bg.aspx";
+							my_form.code.value = submit_info;
+							var text = document.getElementById(hxs.txtStr).value;
+							if (text == "代码/名称/拼音") {
+								alert('请填写查询信息');
+								return false;
+							}
+							if (submit_info == "") {
+								alert('没有查询信息');
+								return false;
+							}
+							my_form.submit();
+						}
+					</script>
+				</div>
+			</div>
+
+			<div class="h_section2">
+				<ul>
+					<li class="fixIE1"><span class="bold f22 HeiTi" id="q_sname"></span><span
+						class="f16" id="q_scode"></span></li>
+					<li><span>评级得分：</span><span class="c990000">82.21</span></li>
+					<li><span>行业整体评级得分：</span><span class="c990000">19.76 </span></li>
+					<li><span>全市场整体评级得分：</span><span class="c990000">20.41</span></li>
+
+					<li class="fixIE2" id="q_current"></li>
+					<li><span>行业内得分排名：</span><span class="c990000">(1/115)</span></li>
+					<li><span>全市场得分排名：</span><span class="c990000">(1/2808)</span></li>
+				</ul>
+
+				<input class="btn1" type="button" value="" onclick="addGStock()" />
+				<input class="btn2" type="button" value="" onclick="addIStock()" />
+
+				<a
+					href="http://www.cninfo.com.cn/finalpage/2015-03-26/1200741446.PDF"
+					target="_blank"> <img src="img/table_btn1.gif" alt="报告全文"
+					title="报告全文"/ ></a>
+			</div>
+		</div>
+
+		<!--header END-->
+		<!--article-->
+		<div class="article w680">
+			<div class="a_header">
+				<span>双汇发展社会责任报告得分概况</span>
+				<p>
+					<label for="selectTime">选择时间 </label> <select name="selectTime"
+						onchange="setDate(this.value)">
+
+						<option value="2014-12-31" selected="selected">2014年度</option>
+						<option value="2013-12-31">2013年度</option>
+						<option value="2012-12-31">2012年度</option>
+						<option value="2011-12-31">2011年度</option>
+						<option value="2010-12-31">2010年度</option>
+					</select>
+				</p>
+				<div class="clear"></div>
+			</div>
+			<div class="a_section">
+				<p class="as_title w150">
+					股东责任(18.52分)<span class="blue_jt"></span>
+				</p>
+				<div class="as_list">
+					<p class="c666666 bold">盈利(9.16分)</p>
+					<ul>
+						<li>净资产收益率：26.06%(2.00分)</li>
+						<li>总资产收益率：18.38%(2.00分)</li>
+						<li>主营业务利润率：11.18%(1.51分)</li>
+						<li>每股收益：1.84(2.00分)</li>
+						<li>每股未分配利润：4.19(1.00分)</li>
+						<li>成本费用利润率：13.25%(0.65分)</li>
+					</ul>
+				</div>
+				<div class="as_list">
+					<p class="c666666 bold">偿债(1.36分)</p>
+					<ul>
+						<li>速动比率：86.38%(0.17分)</li>
+						<li>流动比率：153.17%(0.22分)</li>
+						<li>现金比率：52.58%(0.22分)</li>
+						<li>股东权益比率：70.53%(0.40分)</li>
+						<li>资产负债率：25.57%(0.35分)</li>
+					</ul>
+				</div>
+				<div class="as_list">
+					<p class="c666666 bold">回报(8.00分)</p>
+					<ul>
+						<li>分红融资比：8.35%(2.00分)</li>
+						<li>股息率：28.01%(3.00分)</li>
+						<li>分红占可分配利润比：11.43%(3.00分)</li>
+					</ul>
+				</div>
+				<br><br><br><br><br><br><br><br><div
+													class="as_list">
+													<p class="c666666 bold">信批(5.00分)</p>
+													<ul>
+														<li>交易所对公司和相关责任人处罚次数：0(5.00分)</li>
+													</ul>
+												</div>
+												<div class="as_list">
+													<p class="c666666 bold">创新(3.00分)</p>
+													<ul>
+														<li>产品开发支出：--(0分)</li>
+														<li>技术创新理念：是(1.00分)</li>
+														<li>技术创新项目数：0(2.00分)</li>
+													</ul>
+												</div>
+												<div class="clear"></div>
+			</div>
+			<div class="a_section">
+				<p class="as_title w150">
+					员工责任(8.07分)<span class="blue_jt"></span>
+				</p>
+				<div class="as_list">
+					<p class="c666666 bold">绩效(2.07分)</p>
+					<ul>
+						<li>职工人均收入：--(1.07分)</li>
+						<li>员工培训：是(1.00分)</li>
+					</ul>
+				</div>
+				<div class="as_list">
+					<p class="c666666 bold">安全(3.00分)</p>
+					<ul>
+						<li>安全检查：是(1.00分)</li>
+						<li>安全培训：是(2.00分)</li>
+					</ul>
+				</div>
+				<div class="as_list">
+					<p class="c666666 bold">关爱员工(3.00分)</p>
+					<ul>
+						<li>慰问意识：是(1.00分)</li>
+						<li>慰问人：是(1.00分)</li>
+						<li>慰问金：是(1.00分)</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="a_section">
+				<p class="as_title w150">
+					供应商、客户和消费者权益责任(20.00分)<span class="blue_jt"></span>
+				</p>
+				<div class="as_list">
+					<p class="c666666 bold">产品质量(9.00分)</p>
+					<ul>
+						<li>质量管理意识：是(5.00分)</li>
+						<li>质量管理体系证书：是(4.00分)</li>
+					</ul>
+				</div>
+				<div class="as_list">
+					<p class="c666666 bold">售后服务(4.00分)</p>
+					<ul>
+						<li>客户满意度调查：是(4.00分)</li>
+					</ul>
+				</div>
+				<div class="as_list">
+					<p class="c666666 bold">诚信互惠(7.00分)</p>
+					<ul>
+						<li>供应商公平竞争：是(4.00分)</li>
+						<li>反商业贿赂培训：是(3.00分)</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="a_section">
+				<p class="as_title w217">
+					环境责任(20.00分)<span class="blue_jt"></span>
+				</p>
+				<div class="as_list">
+					<p class="c666666 bold">环境治理(20.00分)</p>
+					<ul>
+						<li>环保意识：是(2.00分)</li>
+						<li>环境管理体系认证：是(3.00分)</li>
+						<li>环保投入金额：8150.00万(5.00分)</li>
+						<li>排污种类数：3(5.00分)</li>
+						<li>节约能源种类数：3(5.00分)</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="a_section">
+				<p class="as_title w217">
+					社会责任(15.62分)<span class="blue_jt"></span>
+				</p>
+				<div class="as_list">
+					<p class="c666666 bold">贡献价值(15.62分)</p>
+					<ul>
+						<li>所得税占利润总额比：21.54%(7.62分)</li>
+						<li>公益捐赠金额：300.00万(8.00分)</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+
+
+			<p class="line"></p>
+			<div class="chart">
+				<p class="ac_title">双汇发展社会责任报告得分走势图</p>
+				<div>
+					<img src="Chart.aspx?corp_id=10000895" />
+				</div>
+			</div>
+			<p class="line"></p>
+			<div class="weibo">
+				<p class="aw_title">双汇发展微博</p>
+				<iframe width="680" height="155" style="margin-top: 10px;"
+					frameborder="0" allowtransparency="true"
+					src="http://t.hexun.com/special/postiframe.aspx?q=双汇发展&w=680&impliedid=32"></iframe>
+				<iframe scrolling="no" frameborder="0" marginwidth="0"
+					marginheight="0"
+					src="http://t.hexun.com/special/scrolliframe.aspx?w=680&h=700&q=000895"
+					style="width: 680px; height: 300px"></iframe>
+			</div>
+		</div>
+		<!--article END-->
+		<!--sidebar-->
+		<div class="sidebar">
+			<div class="s_section">
+				<div class="s_header">
+					<span class="YaHei">社会责任报告分行业排行</span>
+				</div>
+				<div class="list1">
+					<ul class="ss_title">
+						<li class="w54">排名</li>
+						<li class="w150">行业名称</li>
+						<li>总得分</li>
+					</ul>
+					<table border="0">
+						<thead>
+							<tr>
+								<td class="w54 center">1</td>
+								<td class="w160"><a
+									href="plate_Detail.aspx?typename=普通金融服务&type=1&date=2014-12-31"
+									target="_blank">普通金融服务</a></td>
+								<td>36.14</td>
+							</tr>
+						</thead>
+						<tr>
+							<td class="center">2</td>
+							<td><a
+								href="plate_Detail.aspx?typename=银行业（III）&type=1&date=2014-12-31"
+								target="_blank">银行业（III）</a></td>
+							<td>33.59</td>
+						</tr>
+						<tr>
+							<td class="center">3</td>
+							<td><a
+								href="plate_Detail.aspx?typename=金融服务业&type=1&date=2014-12-31"
+								target="_blank">金融服务业</a></td>
+							<td>32.61</td>
+						</tr>
+						<tr>
+							<td class="center">4</td>
+							<td><a
+								href="plate_Detail.aspx?typename=人寿保险（III）&type=1&date=2014-12-31"
+								target="_blank">人寿保险（III）</a></td>
+							<td>29.39</td>
+						</tr>
+						<tr>
+							<td class="center">5</td>
+							<td><a
+								href="plate_Detail.aspx?typename=不动产&type=1&date=2014-12-31"
+								target="_blank">不动产</a></td>
+							<td>27.13</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="s_section">
+				<div class="s_header">
+					<span class="YaHei">社会责任报告分概念排行</span>
+				</div>
+				<div class="list1">
+					<ul class="ss_title">
+						<li class="w54">排名</li>
+						<li class="w150">概念名称</li>
+						<li>总得分</li>
+					</ul>
+					<table border="0">
+						<thead>
+							<tr>
+								<td class="w54 center">1</td>
+								<td class="w160"><a
+									href="plate_Detail.aspx?typename=基因芯片&type=3&date=2014-12-31"
+									target="_blank">基因芯片</a></td>
+								<td>33.39</td>
+							</tr>
+						</thead>
+						<tr>
+							<td class="center">2</td>
+							<td><a
+								href="plate_Detail.aspx?typename=草甘膦&type=3&date=2014-12-31"
+								target="_blank">草甘膦</a></td>
+							<td>32.90</td>
+						</tr>
+						<tr>
+							<td class="center">3</td>
+							<td><a
+								href="plate_Detail.aspx?typename=基金重仓&type=3&date=2014-12-31"
+								target="_blank">基金重仓</a></td>
+							<td>31.86</td>
+						</tr>
+						<tr>
+							<td class="center">4</td>
+							<td><a
+								href="plate_Detail.aspx?typename=前海概念&type=3&date=2014-12-31"
+								target="_blank">前海概念</a></td>
+							<td>31.31</td>
+						</tr>
+						<tr>
+							<td class="center">5</td>
+							<td><a
+								href="plate_Detail.aspx?typename=保险重仓&type=3&date=2014-12-31"
+								target="_blank">保险重仓</a></td>
+							<td>30.04</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="s_section">
+				<div class="s_header">
+					<span class="YaHei">社会责任报告分地域排行</span>
+				</div>
+				<div class="list1">
+					<ul class="ss_title">
+						<li class="w54">排名</li>
+						<li class="w150">地域名称</li>
+						<li>总得分</li>
+					</ul>
+					<table border="0">
+						<thead>
+							<tr>
+								<td class="w54 center">1</td>
+								<td class="w160"><a
+									href="plate_Detail.aspx?typename=福建&type=2&date=2014-12-31"
+									target="_blank">福建</a></td>
+								<td>26.64</td>
+							</tr>
+						</thead>
+						<tr>
+							<td class="center">2</td>
+							<td><a
+								href="plate_Detail.aspx?typename=青海&type=2&date=2014-12-31"
+								target="_blank">青海</a></td>
+							<td>26.19</td>
+						</tr>
+						<tr>
+							<td class="center">3</td>
+							<td><a
+								href="plate_Detail.aspx?typename=河南&type=2&date=2014-12-31"
+								target="_blank">河南</a></td>
+							<td>25.17</td>
+						</tr>
+						<tr>
+							<td class="center">4</td>
+							<td><a
+								href="plate_Detail.aspx?typename=北京&type=2&date=2014-12-31"
+								target="_blank">北京</a></td>
+							<td>23.86</td>
+						</tr>
+						<tr>
+							<td class="center">5</td>
+							<td><a
+								href="plate_Detail.aspx?typename=广东&type=2&date=2014-12-31"
+								target="_blank">广东</a></td>
+							<td>22.67</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="s_section">
+				<div class="s_header">
+					<span class="YaHei">相关资讯</span>
+				</div>
+				<div class="list2">
+					<ul>
+						<li><a
+							href="http://stock.hexun.com/2015-08-19/178431745.html"
+							target="_blank">操盘必读：8月19日股民内参 </a></li>
+						<li><a
+							href="http://stock.hexun.com/2015-08-19/178430588.html"
+							target="_blank">投资日历：上周新开户环比上升 券 </a></li>
+						<li><a
+							href="http://stock.hexun.com/2015-08-18/178422338.html"
+							target="_blank">社保中报持仓曝光：减持77股 出逃 </a></li>
+						<li><a
+							href="http://stock.hexun.com/2015-08-18/178420291.html"
+							target="_blank">干货！社保、QFII、券商最新动向曝 </a></li>
+						<li><a
+							href="http://stock.hexun.com/2015-08-18/178418108.html"
+							target="_blank">QFII中报持仓曝光：新进25股 增持 </a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="s_section">
+				<div class="s_header">
+					<span class="YaHei">联系方式</span>
+				</div>
+				<div class="list3">
+					<ul>
+						<li class="bg1">联系电话：010-85650749</li>
+						<li class="bg2">意见反馈：shuju@staff.hexun.com</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--sidebar END-->
+		<div class="clear"></div>
+		<!--footer-->
+		<div class="footer">
+			<div id="zt_foot2010">
+
+				<link rel="stylesheet" type="text/css"
+					href="http://img.hexun.com/2010/zt/ztfoot2010.css">
+					<div class="ztfl">
+						CopyRight @ <b>和讯网 和讯信息科技有限公司</b> All Rights Reserverd 版权所有 复制必究
+					</div>
+					<div class="ztfr">
+						<a href="http://www.hexun.com">返回和讯首页</a>&nbsp;
+					</div>
+			</div>
+		</div>
+		<!--footer END-->
+	</div>
+	<script language="javascript">
+		function setDate(value) {
+			window.location.href = 'stock_bg.aspx?date=' + value
+					+ '&code=000895';
+
+		}
+	</script>
+	<td align="center">
+		<!--登录注册-->
+		<div id="hexunMember_liveDisplay" style="display: none"></div>
+		<link
+			href='http://login.tool.hexun.com/OtherInterFace/style/newbase.css'
+			rel='stylesheet' type='text/css' /> <script
+			src=http://login.tool.hexun.com/OtherInterFace/js/popup.js
+			type="text/javascript" charset="gb2312"></script> <script
+			charset="gb2312" type="text/javascript" language="javascript">
+				var href = window.location.href;
+				hexunMember_loginSetup_signOutURL = href;//登出地址
+				hexunMember_loginSetup_noLoginDisplayMsg = ""; //没登陆的提示
+				hexunMember_loginSetup_noLoginDisplayFlag = "|";//登录和注册中间的分隔符号 或 用户名与登出中间的分隔符号，不需要分隔符可以为空
+				hexunMember_loginSetup_islogined_isDisplay = true;//如果是登陆状态，true=显示用户名和登出按钮等信息,flase=不显示任何信息
+				hexunMember_loginSetup_referrer = document.referrer;//请不要修改此项
+				hexunMember_loginSetup_MastLogin = 0;//如果需要不登陆就一直弹窗，在此设置一下弹窗时间间隔(秒)。如果等于0本项无效
+			</script> <script src="http://img.hexun.com/js/inc_2010.js?date=201002041519"></script>
+		<script src="http://utrack.hexun.com/track/track_hx.js"></script> <script
+			src="http://news.hexun.com/js/count.js?date=201203051100"></script> <script
+			src="http://login.tool.hexun.com/OtherInterFace/login_2010_Style02.aspx"
+			type="text/javascript" charset="gb2312"></script> <!--登录注册over-->
+	</td>
+	<script language=JavaScript>
+		var ycFlag = getParam("yc");
+		if (ycFlag != 0) {
+			document
+					.write('<a href="http://yuce.stock.hexun.com/" target="_blank" class="myButton1" style="color:red">价格预测</a>');
+		}
+		//新添加，加入自选股部分start
+		function getParam(qs) {
+			var s = location.href;
+			s = s.replace("?", "?&").split("&");
+			var re = "";
+			for (i = 1; i < s.length; i++)
+				if (s[i].indexOf(qs + "=") == 0)
+					re = s[i].replace(qs + "=", "");
+			return re;
+		}
+		function creatJS(js) {
+			var oHead = document.getElementsByTagName('HEAD').item(0);
+			var oScript = document.createElement("script");
+			oScript.type = "text/javascript";
+			oScript.src = js;
+			oHead.appendChild(oScript);
+		}
+
+		function isSucess(re) {
+			if (re == 1) {
+				alert("添加成功！");
+				return;
+			}
+			if (re == 0) {
+				alert("添加失败！");
+				return;
+			}
+			if (re == 2) {
+				popup(
+						'用户登录',
+						'http://login.tool.hexun.com/OtherInterFace/IFR_userLoginDialog_01.aspx?hexunMember_loginSetup_referrer='
+								+ hexunMember_loginSetup_referrer, '180');
+				return;
+			}
+		}
+
+		function addIStock() {
+			var icode = '000895';
+			var itype = '1';
+			//if(itype == "1") itype = "2";
+			//else if(itype == "2") itype = "1";
+			creatJS('http://mymoney.tool.hexun.com/2012/interface/mystockadd.aspx?code='
+					+ icode + '&codetype=' + itype + '&callback=isSucess');
+		}
+
+		function addGStock() {
+			var icode = '000895';
+			var itype = '1';
+
+			window.location.href = 'http://stockdata.stock.hexun.com/' + icode
+					+ '.shtml';
+
+		}
+		//end
+	</script>
+	<script type="text/javascript" id="GGQuoteRequest" src=""></script>
+	<script type="text/javascript">
+		GGQuoteRequest.stockcode = '000895';
+		GGQuoteRequest.Request();
+		window.onload = Common.Resize;
+		window.onresize = Common.Resize;
+	</script>
+
+
+
+</body>
+</html>

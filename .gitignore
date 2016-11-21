@@ -1,4 +1,9 @@
-.idea/
 .settings/
-.project
+.project/
 target/
+logs/
+*target/
+.idea/
+*.iml
+.classpath
+urls_cache*/

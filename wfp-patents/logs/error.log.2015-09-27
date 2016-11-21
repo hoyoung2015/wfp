@@ -1,0 +1,641 @@
+2015-09-27 14:30:50  [ pool-1-thread-2:5277 ] - [ ERROR ]  process request Request{url='http://d.g.wanfangdata.com.cn/Patent_CN201310382442.2.aspx', method='null', extras=null, priority=0} error
+java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.ArrayList.rangeCheck(ArrayList.java:635)
+	at java.util.ArrayList.get(ArrayList.java:411)
+	at net.hoyoung.patents.PatentsPageProcessor.process(PatentsPageProcessor.java:43)
+	at us.codecraft.webmagic.Spider.processRequest(Spider.java:420)
+	at us.codecraft.webmagic.Spider$1.run(Spider.java:322)
+	at us.codecraft.webmagic.selector.thread.CountableThreadPool$1.run(CountableThreadPool.java:74)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+2015-09-27 15:21:34  [ pool-1-thread-2:14123 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:21:35  [ pool-1-thread-2:14543 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:21:35  [ pool-1-thread-2:14557 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:35  [ pool-1-thread-1:14581 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:21:35  [ pool-1-thread-2:14583 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:35  [ pool-1-thread-1:14801 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:21:35  [ pool-1-thread-2:14835 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:35  [ pool-1-thread-1:14838 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:35  [ pool-1-thread-2:14848 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:35  [ pool-1-thread-1:14855 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:36  [ pool-1-thread-1:15811 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:36  [ pool-1-thread-1:15960 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:36  [ pool-1-thread-4:15969 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\xAE\x9E...' for column 'patInfo' at row 1
+2015-09-27 15:21:37  [ pool-1-thread-3:16715 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:21:37  [ pool-1-thread-4:16718 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\xAE\x9E...' for column 'patInfo' at row 1
+2015-09-27 15:21:37  [ pool-1-thread-3:16735 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:21:37  [ pool-1-thread-3:16750 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:37  [ pool-1-thread-2:16750 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:21:37  [ pool-1-thread-4:16752 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:37  [ pool-1-thread-2:16763 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:21:37  [ pool-1-thread-3:16767 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:37  [ pool-1-thread-4:16777 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:38  [ pool-1-thread-2:17402 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:38  [ pool-1-thread-3:17473 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:38  [ pool-1-thread-2:17499 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:38  [ pool-1-thread-2:17513 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:38  [ pool-1-thread-4:17513 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:38  [ pool-1-thread-3:17516 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:38  [ pool-1-thread-2:17850 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:38  [ pool-1-thread-4:17855 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:39  [ pool-1-thread-5:18201 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:21:39  [ pool-1-thread-5:18215 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:21:39  [ pool-1-thread-5:18228 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:39  [ pool-1-thread-5:18253 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:39  [ pool-1-thread-1:18260 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:21:39  [ pool-1-thread-5:18271 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:39  [ pool-1-thread-1:19080 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:21:39  [ pool-1-thread-5:19087 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:40  [ pool-1-thread-1:19318 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:40  [ pool-1-thread-1:19346 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:40  [ pool-1-thread-3:19356 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\xAE\x9E...' for column 'patInfo' at row 1
+2015-09-27 15:21:40  [ pool-1-thread-4:19357 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\xAE\x9E...' for column 'patInfo' at row 1
+2015-09-27 15:21:40  [ pool-1-thread-1:19362 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:40  [ pool-1-thread-3:19369 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\xAE\x9E...' for column 'patInfo' at row 1
+2015-09-27 15:21:41  [ pool-1-thread-1:20531 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:41  [ pool-1-thread-4:20578 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\xAE\x9E...' for column 'patInfo' at row 1
+2015-09-27 15:21:41  [ pool-1-thread-3:20580 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:41  [ pool-1-thread-2:20596 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:21:41  [ pool-1-thread-3:20958 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:41  [ pool-1-thread-4:20961 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:41  [ pool-1-thread-2:20990 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:21:41  [ pool-1-thread-3:21005 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:41  [ pool-1-thread-5:21010 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:21:41  [ pool-1-thread-4:21017 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:41  [ pool-1-thread-3:21033 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:41  [ pool-1-thread-5:21034 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:21:41  [ pool-1-thread-5:21050 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:41  [ pool-1-thread-5:21067 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:42  [ pool-1-thread-4:21652 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:42  [ pool-1-thread-2:21654 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:42  [ pool-1-thread-4:21705 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:42  [ pool-1-thread-2:21713 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:42  [ pool-1-thread-5:21721 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:42  [ pool-1-thread-2:21733 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:42  [ pool-1-thread-5:21925 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:42  [ pool-1-thread-2:22031 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:21:42  [ pool-1-thread-3:22035 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\xAE\x9E...' for column 'patInfo' at row 1
+2015-09-27 15:24:07  [ pool-1-thread-1:15408 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\xAE\x9E...' for column 'patInfo' at row 1
+2015-09-27 15:24:07  [ pool-1-thread-5:15410 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:07  [ pool-1-thread-2:15406 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:07  [ pool-1-thread-3:15412 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:07  [ pool-1-thread-2:15481 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:07  [ pool-1-thread-1:15489 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\xAE\x9E...' for column 'patInfo' at row 1
+2015-09-27 15:24:07  [ pool-1-thread-3:15492 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-5:15497 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-1:15511 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-2:15524 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-5:15531 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-3:15536 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-2:15544 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-3:15551 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-1:15707 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-5:15726 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-2:15737 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-3:15738 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-1:15741 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-5:15748 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-3:15769 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-1:15777 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-5:16142 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-2:16151 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-4:16157 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-4:16170 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-4:16183 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-4:16196 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-4:16208 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:08  [ pool-1-thread-4:16218 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:10  [ pool-1-thread-3:17525 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:10  [ pool-1-thread-3:17739 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:10  [ pool-1-thread-4:17750 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\xAE\x9E...' for column 'patInfo' at row 1
+2015-09-27 15:24:10  [ pool-1-thread-4:17765 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\xAE\x9E...' for column 'patInfo' at row 1
+2015-09-27 15:24:10  [ pool-1-thread-3:17765 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:10  [ pool-1-thread-4:17784 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:10  [ pool-1-thread-4:17803 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:10  [ pool-1-thread-3:17805 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:10  [ pool-1-thread-5:18441 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\xAE\x9E...' for column 'patInfo' at row 1
+2015-09-27 15:24:10  [ pool-1-thread-4:18488 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-5:18497 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\xAE\x9E...' for column 'patInfo' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-2:18514 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-4:18520 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-3:18524 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-5:18532 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-3:18537 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-5:18553 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-2:18924 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-1:18944 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-2:18963 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-5:18968 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-1:18967 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-5:18983 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-2:18983 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-1:18988 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-2:19006 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-1:19008 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-2:19369 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-1:19383 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:11  [ pool-1-thread-1:19425 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:12  [ pool-1-thread-3:19758 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\xAE\x9E...' for column 'patInfo' at row 1
+2015-09-27 15:24:12  [ pool-1-thread-4:19762 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:12  [ pool-1-thread-3:19776 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\xAE\x9E...' for column 'patInfo' at row 1
+2015-09-27 15:24:12  [ pool-1-thread-4:19776 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:12  [ pool-1-thread-4:19793 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:12  [ pool-1-thread-3:19791 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:13  [ pool-1-thread-3:20712 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:13  [ pool-1-thread-4:21256 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:13  [ pool-1-thread-5:21257 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\xAE\x9E...' for column 'patInfo' at row 1
+2015-09-27 15:24:13  [ pool-1-thread-3:21265 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:13  [ pool-1-thread-5:21273 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\xAE\x9E...' for column 'patInfo' at row 1
+2015-09-27 15:24:13  [ pool-1-thread-4:21281 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:13  [ pool-1-thread-3:21286 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:14  [ pool-1-thread-5:21572 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:14  [ pool-1-thread-4:21587 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:14  [ pool-1-thread-5:21591 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:14  [ pool-1-thread-2:21609 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:14  [ pool-1-thread-5:21615 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:14  [ pool-1-thread-5:22109 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:14  [ pool-1-thread-2:22112 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:14  [ pool-1-thread-2:22140 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:14  [ pool-1-thread-2:22167 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:14  [ pool-1-thread-2:22185 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:24:15  [ pool-1-thread-4:22768 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\xAE\x9E...' for column 'patInfo' at row 1
+2015-09-27 15:24:15  [ pool-1-thread-1:22785 ] - [ ERROR ]  Incorrect string value: '\xE6\x9C\xAC\xE5\x8F\x91...' for column 'patInfo' at row 1
+2015-09-27 15:24:15  [ pool-1-thread-2:22801 ] - [ ERROR ]  Incorrect string value: '\xE6\xAD\xA6\xE6\xB1\x89...' for column 'comName' at row 1
+2015-09-27 15:26:36  [ pool-1-thread-5:15665 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:36  [ pool-1-thread-5:15694 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:36  [ pool-1-thread-5:15723 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:36  [ pool-1-thread-5:15758 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:36  [ pool-1-thread-5:15788 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:36  [ pool-1-thread-5:15824 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:36  [ pool-1-thread-4:16123 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:36  [ pool-1-thread-4:16137 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:36  [ pool-1-thread-4:16154 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:37  [ pool-1-thread-4:17005 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:38  [ pool-1-thread-5:17633 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:38  [ pool-1-thread-2:17636 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:38  [ pool-1-thread-4:17651 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:38  [ pool-1-thread-2:17672 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:38  [ pool-1-thread-5:17673 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:38  [ pool-1-thread-3:17678 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:38  [ pool-1-thread-2:17691 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:38  [ pool-1-thread-4:17692 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:38  [ pool-1-thread-5:17701 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:38  [ pool-1-thread-2:17707 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:39  [ pool-1-thread-3:18690 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:39  [ pool-1-thread-3:18708 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:39  [ pool-1-thread-5:18710 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:39  [ pool-1-thread-2:18716 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:39  [ pool-1-thread-3:18727 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:39  [ pool-1-thread-5:18731 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:39  [ pool-1-thread-2:18736 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:39  [ pool-1-thread-3:18744 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:39  [ pool-1-thread-5:18755 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:39  [ pool-1-thread-3:18761 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:41  [ pool-1-thread-4:20565 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:41  [ pool-1-thread-1:20569 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:41  [ pool-1-thread-1:20591 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:41  [ pool-1-thread-4:20598 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:41  [ pool-1-thread-1:20619 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:41  [ pool-1-thread-4:20623 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:41  [ pool-1-thread-1:20729 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:41  [ pool-1-thread-4:20730 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:41  [ pool-1-thread-1:20769 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:41  [ pool-1-thread-4:20781 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:41  [ pool-1-thread-1:20794 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:42  [ pool-1-thread-4:21425 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:42  [ pool-1-thread-5:21540 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:42  [ pool-1-thread-5:21553 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:42  [ pool-1-thread-5:21570 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:42  [ pool-1-thread-5:21902 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:42  [ pool-1-thread-5:21922 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:42  [ pool-1-thread-5:21942 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:43  [ pool-1-thread-2:23062 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:43  [ pool-1-thread-3:23169 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:43  [ pool-1-thread-2:23188 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:43  [ pool-1-thread-3:23209 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:43  [ pool-1-thread-2:23216 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:44  [ pool-1-thread-3:23350 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:44  [ pool-1-thread-2:23356 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:44  [ pool-1-thread-3:23400 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:44  [ pool-1-thread-2:23401 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:44  [ pool-1-thread-5:23952 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:44  [ pool-1-thread-2:23972 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:44  [ pool-1-thread-4:23979 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:44  [ pool-1-thread-3:23981 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:44  [ pool-1-thread-5:23986 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:44  [ pool-1-thread-3:24021 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:44  [ pool-1-thread-5:24039 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:44  [ pool-1-thread-4:24048 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:44  [ pool-1-thread-5:24058 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:44  [ pool-1-thread-4:24071 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:45  [ pool-1-thread-5:24438 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:45  [ pool-1-thread-4:24450 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:45  [ pool-1-thread-5:24458 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:45  [ pool-1-thread-4:24466 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:45  [ pool-1-thread-4:24483 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:46  [ pool-1-thread-5:25438 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:46  [ pool-1-thread-5:25451 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:46  [ pool-1-thread-5:25463 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:46  [ pool-1-thread-5:25474 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:46  [ pool-1-thread-5:25486 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:46  [ pool-1-thread-5:25504 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:46  [ pool-1-thread-5:25830 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:46  [ pool-1-thread-5:25838 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:46  [ pool-1-thread-5:25847 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:46  [ pool-1-thread-5:25857 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:46  [ pool-1-thread-5:25866 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:46  [ pool-1-thread-5:25874 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:46  [ pool-1-thread-5:26162 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:46  [ pool-1-thread-5:26172 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:46  [ pool-1-thread-5:26183 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:46  [ pool-1-thread-5:26193 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:47  [ pool-1-thread-2:26392 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:47  [ pool-1-thread-5:26409 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:47  [ pool-1-thread-5:26444 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:47  [ pool-1-thread-2:26444 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:47  [ pool-1-thread-2:26455 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:47  [ pool-1-thread-2:26467 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:47  [ pool-1-thread-2:26480 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:47  [ pool-1-thread-2:26491 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:48  [ pool-1-thread-2:27498 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:48  [ pool-1-thread-2:27545 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:48  [ pool-1-thread-4:27550 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:48  [ pool-1-thread-2:27715 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:48  [ pool-1-thread-4:27746 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:48  [ pool-1-thread-2:27748 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:48  [ pool-1-thread-4:27775 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:48  [ pool-1-thread-2:27779 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:48  [ pool-1-thread-2:27795 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:48  [ pool-1-thread-4:27796 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:48  [ pool-1-thread-4:27815 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:48  [ pool-1-thread-4:28036 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:49  [ pool-1-thread-5:29110 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:49  [ pool-1-thread-5:29144 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:49  [ pool-1-thread-5:29159 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:49  [ pool-1-thread-4:29308 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:49  [ pool-1-thread-5:29316 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:49  [ pool-1-thread-4:29338 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:50  [ pool-1-thread-5:29345 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:50  [ pool-1-thread-4:30186 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:50  [ pool-1-thread-4:30239 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:50  [ pool-1-thread-3:30244 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:50  [ pool-1-thread-5:30250 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:50  [ pool-1-thread-4:30265 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:50  [ pool-1-thread-3:30266 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:50  [ pool-1-thread-3:30281 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:50  [ pool-1-thread-4:30282 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:51  [ pool-1-thread-3:31076 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:51  [ pool-1-thread-3:31093 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:51  [ pool-1-thread-3:31103 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:52  [ pool-1-thread-5:31558 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:52  [ pool-1-thread-5:31566 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:52  [ pool-1-thread-5:31573 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:52  [ pool-1-thread-5:31581 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:52  [ pool-1-thread-5:31594 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:53  [ pool-1-thread-5:32457 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:53  [ pool-1-thread-3:33071 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:53  [ pool-1-thread-3:33095 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:54  [ pool-1-thread-3:33463 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:54  [ pool-1-thread-4:33476 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:54  [ pool-1-thread-3:33694 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:54  [ pool-1-thread-4:33701 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:54  [ pool-1-thread-3:33720 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:54  [ pool-1-thread-5:33727 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:54  [ pool-1-thread-3:33734 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:54  [ pool-1-thread-4:33735 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-5:34463 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-4:34476 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-5:34483 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-4:34493 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-5:34496 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-2:34498 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-4:34512 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-2:34511 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-5:34533 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-5:34545 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-2:34547 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-2:34872 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-2:34882 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-2:34894 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-3:34899 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-3:34907 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-3:35202 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-3:35213 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-3:35221 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:55  [ pool-1-thread-3:35228 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:56  [ pool-1-thread-1:35913 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:56  [ pool-1-thread-1:35927 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:56  [ pool-1-thread-1:36208 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:56  [ pool-1-thread-1:36233 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:56  [ pool-1-thread-1:36258 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:56  [ pool-1-thread-1:36272 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:58  [ pool-1-thread-4:37568 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:58  [ pool-1-thread-4:37590 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:58  [ pool-1-thread-4:37673 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:58  [ pool-1-thread-4:37686 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:58  [ pool-1-thread-4:37704 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:58  [ pool-1-thread-4:37721 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:58  [ pool-1-thread-2:37944 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:58  [ pool-1-thread-2:37983 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:58  [ pool-1-thread-2:37999 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:59  [ pool-1-thread-2:38619 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:59  [ pool-1-thread-2:39176 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:59  [ pool-1-thread-5:39225 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:59  [ pool-1-thread-2:39270 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:26:59  [ pool-1-thread-3:39284 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:00  [ pool-1-thread-5:40065 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:00  [ pool-1-thread-3:40083 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:00  [ pool-1-thread-3:40124 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:00  [ pool-1-thread-5:40127 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:00  [ pool-1-thread-5:40141 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:01  [ pool-1-thread-3:40828 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:01  [ pool-1-thread-5:40839 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:01  [ pool-1-thread-3:40842 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:01  [ pool-1-thread-3:40881 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:01  [ pool-1-thread-5:40884 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:03  [ pool-1-thread-1:42488 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:03  [ pool-1-thread-1:42497 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:03  [ pool-1-thread-1:42506 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:03  [ pool-1-thread-1:42514 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:03  [ pool-1-thread-1:42590 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:03  [ pool-1-thread-5:42627 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:03  [ pool-1-thread-5:42644 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:03  [ pool-1-thread-1:42646 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:03  [ pool-1-thread-5:42662 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:03  [ pool-1-thread-5:42883 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:03  [ pool-1-thread-5:42908 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:03  [ pool-1-thread-5:42917 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:05  [ pool-1-thread-3:44489 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:05  [ pool-1-thread-3:44510 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:05  [ pool-1-thread-3:44525 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:05  [ pool-1-thread-3:44544 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:05  [ pool-1-thread-3:44630 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:05  [ pool-1-thread-3:44652 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:05  [ pool-1-thread-5:45194 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:05  [ pool-1-thread-5:45216 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:05  [ pool-1-thread-5:45238 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:05  [ pool-1-thread-5:45315 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:06  [ pool-1-thread-5:45696 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:06  [ pool-1-thread-5:45710 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:06  [ pool-1-thread-4:45713 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:06  [ pool-1-thread-4:45730 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:06  [ pool-1-thread-4:45746 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:06  [ pool-1-thread-4:46290 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:07  [ pool-1-thread-4:46362 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:07  [ pool-1-thread-4:46383 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:07  [ pool-1-thread-5:46748 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:07  [ pool-1-thread-5:46754 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:07  [ pool-1-thread-5:46762 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:07  [ pool-1-thread-5:46771 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:07  [ pool-1-thread-5:46787 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:07  [ pool-1-thread-5:47338 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:08  [ pool-1-thread-2:47380 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:09  [ pool-1-thread-2:48341 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:09  [ pool-1-thread-2:48405 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:09  [ pool-1-thread-2:48447 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:09  [ pool-1-thread-2:48851 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:09  [ pool-1-thread-1:48893 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:09  [ pool-1-thread-2:48903 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:10  [ pool-1-thread-1:49557 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:10  [ pool-1-thread-3:49594 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:10  [ pool-1-thread-1:49605 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:10  [ pool-1-thread-5:49606 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-3:50596 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-4:50604 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-5:50610 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-1:50610 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-3:50617 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-5:50625 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-4:50631 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-1:50632 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-3:50635 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-5:50648 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-4:50652 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-1:51248 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-3:50652 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-5:51259 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-4:51267 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-3:51269 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-5:51276 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-4:51280 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:11  [ pool-1-thread-4:51291 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:12  [ pool-1-thread-2:51530 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:12  [ pool-1-thread-2:51543 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:12  [ pool-1-thread-2:51550 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:12  [ pool-1-thread-2:51558 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:12  [ pool-1-thread-2:51565 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:12  [ pool-1-thread-2:51574 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:13  [ pool-1-thread-1:52880 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:13  [ pool-1-thread-1:52895 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:13  [ pool-1-thread-1:52912 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:13  [ pool-1-thread-1:52975 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:13  [ pool-1-thread-1:52997 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:13  [ pool-1-thread-1:53008 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:14  [ pool-1-thread-2:54171 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:14  [ pool-1-thread-2:54185 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:14  [ pool-1-thread-2:54196 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:14  [ pool-1-thread-2:54209 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:14  [ pool-1-thread-4:54210 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:14  [ pool-1-thread-2:54273 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:14  [ pool-1-thread-4:54278 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:14  [ pool-1-thread-2:54294 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:14  [ pool-1-thread-4:54302 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:14  [ pool-1-thread-4:54312 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:14  [ pool-1-thread-4:54320 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:14  [ pool-1-thread-4:54333 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:16  [ pool-1-thread-5:55556 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:16  [ pool-1-thread-5:55645 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:16  [ pool-1-thread-3:55648 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:16  [ pool-1-thread-5:55668 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:16  [ pool-1-thread-3:55674 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:16  [ pool-1-thread-5:55685 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:16  [ pool-1-thread-3:55692 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:16  [ pool-1-thread-5:55699 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:16  [ pool-1-thread-3:55704 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:16  [ pool-1-thread-5:55832 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:16  [ pool-1-thread-3:55836 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:16  [ pool-1-thread-3:55859 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:16  [ pool-1-thread-4:55869 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:16  [ pool-1-thread-4:55880 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:16  [ pool-1-thread-4:55886 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:16  [ pool-1-thread-4:55893 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:16  [ pool-1-thread-4:55899 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:16  [ pool-1-thread-4:55906 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:17  [ pool-1-thread-5:56641 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:17  [ pool-1-thread-5:56657 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:17  [ pool-1-thread-5:56668 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:17  [ pool-1-thread-5:56680 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:17  [ pool-1-thread-5:56694 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:17  [ pool-1-thread-5:56813 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:17  [ pool-1-thread-2:57161 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:17  [ pool-1-thread-2:57172 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:17  [ pool-1-thread-2:57181 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:17  [ pool-1-thread-2:57193 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:18  [ pool-1-thread-2:57575 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:18  [ pool-1-thread-2:57638 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:19  [ pool-1-thread-5:58649 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:19  [ pool-1-thread-5:58662 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:19  [ pool-1-thread-5:58675 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:19  [ pool-1-thread-5:58691 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:19  [ pool-1-thread-5:58710 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:19  [ pool-1-thread-5:58721 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:19  [ pool-1-thread-3:58970 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:19  [ pool-1-thread-3:58984 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:19  [ pool-1-thread-3:59192 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:19  [ pool-1-thread-3:59227 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:19  [ pool-1-thread-3:59238 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:19  [ pool-1-thread-3:59247 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:20  [ pool-1-thread-5:60046 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:20  [ pool-1-thread-5:60072 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:20  [ pool-1-thread-2:60074 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:20  [ pool-1-thread-5:60083 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:20  [ pool-1-thread-2:60086 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:20  [ pool-1-thread-5:60092 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:20  [ pool-1-thread-2:60095 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:20  [ pool-1-thread-5:60193 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:20  [ pool-1-thread-2:60199 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:20  [ pool-1-thread-5:60205 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:20  [ pool-1-thread-2:60212 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:20  [ pool-1-thread-2:60230 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:21  [ pool-1-thread-3:60638 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:21  [ pool-1-thread-3:60647 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:21  [ pool-1-thread-3:60656 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:21  [ pool-1-thread-3:60668 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:21  [ pool-1-thread-3:60680 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:21  [ pool-1-thread-3:60850 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:21  [ pool-1-thread-5:61042 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:21  [ pool-1-thread-2:61051 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:21  [ pool-1-thread-5:61057 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:21  [ pool-1-thread-2:61066 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:21  [ pool-1-thread-5:61070 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:21  [ pool-1-thread-2:61076 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:21  [ pool-1-thread-5:61079 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:22  [ pool-1-thread-2:61974 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:22  [ pool-1-thread-5:62015 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:22  [ pool-1-thread-2:62038 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:22  [ pool-1-thread-5:62058 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:22  [ pool-1-thread-2:62305 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:23  [ pool-1-thread-1:62357 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:23  [ pool-1-thread-1:62671 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:23  [ pool-1-thread-1:62685 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:23  [ pool-1-thread-1:62703 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:27:23  [ pool-1-thread-1:62715 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:25  [ pool-1-thread-5:15168 ] - [ ERROR ]  Incorrect string value: '\xE5\xB9\xB6\xE8\xAE\xA1...' for column 'patInfo' at row 1
+2015-09-27 15:29:25  [ pool-1-thread-2:15168 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:25  [ pool-1-thread-2:15294 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:25  [ pool-1-thread-5:15297 ] - [ ERROR ]  Incorrect string value: '\xE5\xB9\xB6\xE8\xAE\xA1...' for column 'patInfo' at row 1
+2015-09-27 15:29:25  [ pool-1-thread-5:15346 ] - [ ERROR ]  Incorrect string value: '\xE5\xB9\xB6\xE8\xAE\xA1...' for column 'patInfo' at row 1
+2015-09-27 15:29:25  [ pool-1-thread-2:15518 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:25  [ pool-1-thread-5:15593 ] - [ ERROR ]  Incorrect string value: '\xE5\xB9\xB6\xE8\xAE\xA1...' for column 'patInfo' at row 1
+2015-09-27 15:29:25  [ pool-1-thread-2:15610 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:25  [ pool-1-thread-5:15624 ] - [ ERROR ]  Incorrect string value: '\xE5\xB9\xB6\xE8\xAE\xA1...' for column 'patInfo' at row 1
+2015-09-27 15:29:25  [ pool-1-thread-5:15639 ] - [ ERROR ]  Incorrect string value: '\xE5\xB9\xB6\xE8\xAE\xA1...' for column 'patInfo' at row 1
+2015-09-27 15:29:25  [ pool-1-thread-2:15639 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:25  [ pool-1-thread-2:15878 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:25  [ pool-1-thread-3:15894 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:25  [ pool-1-thread-3:15913 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:25  [ pool-1-thread-3:15926 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:25  [ pool-1-thread-3:15939 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:26  [ pool-1-thread-3:16834 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:26  [ pool-1-thread-5:16852 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:26  [ pool-1-thread-3:16866 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:26  [ pool-1-thread-5:16876 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:26  [ pool-1-thread-5:16889 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:26  [ pool-1-thread-5:16900 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:26  [ pool-1-thread-5:16910 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:26  [ pool-1-thread-5:16930 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:27  [ pool-1-thread-2:17487 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 15:29:27  [ pool-1-thread-2:17507 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:48  [ pool-1-thread-1:12702 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:48  [ pool-1-thread-4:12702 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:48  [ pool-1-thread-4:12821 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:48  [ pool-1-thread-1:12887 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:48  [ pool-1-thread-4:12919 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:48  [ pool-1-thread-1:12933 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:48  [ pool-1-thread-1:13058 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:48  [ pool-1-thread-4:13206 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:48  [ pool-1-thread-1:13211 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:49  [ pool-1-thread-4:13259 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:49  [ pool-1-thread-1:13511 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:49  [ pool-1-thread-4:13597 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-3:14573 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-4:14627 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-4:14641 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-1:14671 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-4:14707 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-4:14732 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-4:14752 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-4:14765 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-1:14776 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-2:14782 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-1:14798 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-3:14804 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-2:14810 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-3:14822 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-1:14865 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-2:14870 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-3:14879 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-5:14885 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-1:14905 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-2:14914 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-3:14929 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-3:14944 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-2:14956 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-1:14957 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-5:14956 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-2:14970 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:50  [ pool-1-thread-5:15232 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:51  [ pool-1-thread-5:15246 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:51  [ pool-1-thread-5:15255 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:51  [ pool-1-thread-5:15267 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:52  [ pool-1-thread-3:16513 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:52  [ pool-1-thread-5:16626 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:52  [ pool-1-thread-3:16691 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:52  [ pool-1-thread-3:16712 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:52  [ pool-1-thread-3:16752 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:52  [ pool-1-thread-5:16756 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:52  [ pool-1-thread-3:16788 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:52  [ pool-1-thread-3:16803 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:52  [ pool-1-thread-5:16817 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:20:52  [ pool-1-thread-5:16954 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:57  [ pool-1-thread-4:10897 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:57  [ pool-1-thread-1:10906 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:57  [ pool-1-thread-1:10967 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:57  [ pool-1-thread-4:11006 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:57  [ pool-1-thread-1:11030 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:57  [ pool-1-thread-4:11036 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:57  [ pool-1-thread-1:11052 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:57  [ pool-1-thread-4:11071 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:58  [ pool-1-thread-1:11081 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:58  [ pool-1-thread-4:11089 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:58  [ pool-1-thread-1:11110 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:58  [ pool-1-thread-4:11115 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:58  [ pool-1-thread-4:11644 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:58  [ pool-1-thread-4:11668 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:58  [ pool-1-thread-4:11755 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:58  [ pool-1-thread-4:11804 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:58  [ pool-1-thread-4:11898 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:58  [ pool-1-thread-4:11957 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:59  [ pool-1-thread-2:12129 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:59  [ pool-1-thread-2:13066 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:21:59  [ pool-1-thread-1:12150 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:22:00  [ pool-1-thread-2:13136 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:22:00  [ pool-1-thread-1:13147 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:22:00  [ pool-1-thread-2:13162 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:22:00  [ pool-1-thread-1:13171 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:22:00  [ pool-1-thread-2:13177 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:22:00  [ pool-1-thread-1:13183 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:22:00  [ pool-1-thread-3:13197 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:22:00  [ pool-1-thread-2:13201 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:22:00  [ pool-1-thread-1:13209 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:22:00  [ pool-1-thread-3:13806 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:22:00  [ pool-1-thread-1:13935 ] - [ ERROR ]  Data truncation: Data too long for column 'patInfo' at row 1
+2015-09-27 17:22:58  [ main:1367 ] - [ ERROR ]  HHH000389: Unsuccessful: create index ix_pat_info on company_patents (patInfo)
+2015-09-27 17:22:58  [ main:1367 ] - [ ERROR ]  BLOB/TEXT column 'patInfo' used in key specification without a key length
+2015-09-27 17:25:59  [ main:1376 ] - [ ERROR ]  HHH000389: Unsuccessful: create index ix_pat_info on company_patents (patInfo)
+2015-09-27 17:25:59  [ main:1377 ] - [ ERROR ]  BLOB/TEXT column 'patInfo' used in key specification without a key length
+2015-09-27 17:28:15  [ main:1356 ] - [ ERROR ]  HHH000389: Unsuccessful: create index ix_pat_info on company_patents (patInfo)
+2015-09-27 17:28:15  [ main:1357 ] - [ ERROR ]  BLOB/TEXT column 'patInfo' used in key specification without a key length
+2015-09-27 17:35:05  [ main:1358 ] - [ ERROR ]  HHH000389: Unsuccessful: create index ix_pat_info on company_patents (patInfo)
+2015-09-27 17:35:05  [ main:1359 ] - [ ERROR ]  BLOB/TEXT column 'patInfo' used in key specification without a key length
