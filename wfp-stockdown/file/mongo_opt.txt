@@ -1,0 +1,5 @@
+
+导出整个数据库到指定目录，会生成一个文件夹
+mongodump -h localhost --port 8017 -d wfp -o target_dir/
+导入数据库
+mongorestore -h localhost --port 8017 target_dir/wfp

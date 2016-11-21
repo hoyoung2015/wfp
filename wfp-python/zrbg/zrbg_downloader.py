@@ -1,20 +1,17 @@
 # -*- coding: utf-8 -*-
 __author__ = 'v_huyang01'
-import pymongo
 import os
-import sys
-import time
 import logging
 import logging.config
 from zrbg import downloader
+from common.mongo import mongo_cli
 if __name__ == "__main__":
 
     logging.config.fileConfig("../logging.conf")
     logger = logging.getLogger('zrbg_downloader')
 
-    mongo = pymongo.MongoClient("cp01-rdqa04-dev148.cp01", 8017)
-    conn = mongo.get_database("wfp").get_collection("zrbg_info")
-    conn_company = mongo.get_database("wfp").get_collection("company_info")
+    conn = mongo_cli.get_database("wfp").get_collection("zrbg_info")
+    conn_company = mongo_cli.get_database("wfp").get_collection("company_info")
 
     # 查询目标行业的股票代码
     stock_codes = [x['stockCode'] for x in conn_company.find({"is_target":1},{"_id":0,"stockCode":1})]
