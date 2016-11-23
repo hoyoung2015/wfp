@@ -36,7 +36,7 @@ stopwords_set = set()
 for line in stopwords_list:
     stopwords_set.add(line.strip('\n'))
 print(stopwords_set)
-wfile = open("words.txt","w")
+wfile = open("words1.txt","w")
 for key in bar.keys():
     # 过滤停用词
     if key in stopwords_set or re.match("[+-]?\d+$",key)!=None:
