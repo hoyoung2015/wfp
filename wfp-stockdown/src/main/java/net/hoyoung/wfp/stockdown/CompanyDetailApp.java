@@ -50,7 +50,7 @@ public class CompanyDetailApp {
 		if(CollectionUtils.isEmpty(list)){
 			System.exit(0);
 		}
-		
+		System.out.println(list.size());
 		//创建爬虫
 		Spider spider = Spider.create(pageProcessor);
 		//导入url
@@ -61,7 +61,7 @@ public class CompanyDetailApp {
 		}
 		//开始抓取
 		long start = System.currentTimeMillis();
-		spider.thread(1).run();
+		spider.thread(3).run();
 		System.out.println("耗时:" + (System.currentTimeMillis() - start) / 1000 + "秒");
 	}
 
