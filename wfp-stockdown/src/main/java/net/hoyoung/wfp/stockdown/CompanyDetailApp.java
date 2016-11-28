@@ -50,6 +50,7 @@ public class CompanyDetailApp {
 		if(CollectionUtils.isEmpty(list)){
 			System.exit(0);
 		}
+		
 		//创建爬虫
 		Spider spider = Spider.create(pageProcessor);
 		//导入url

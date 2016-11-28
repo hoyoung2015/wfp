@@ -13,7 +13,6 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 import net.hoyoung.wfp.stockdown.spider.CompanyInfoPageProcessor;
 import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.scheduler.FileCacheQueueScheduler;
 
 @PropertySource("classpath:application.properties")
 @Configuration
