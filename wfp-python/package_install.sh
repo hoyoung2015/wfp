@@ -1,3 +1,5 @@
 pip install pymongo
 
-pip install Scrapy
+#pip install Scrapy
+# 线程池
+pip install threadpool
