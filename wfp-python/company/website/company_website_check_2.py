@@ -6,7 +6,6 @@ __author__ = 'huyang'
 from common.mongo import mongo_cli
 from threadpool import ThreadPool, makeRequests, WorkRequest
 from urllib import request
-import traceback
 
 
 def checkWebsiteAvl(stockCode, name, webSite):
@@ -18,7 +17,7 @@ def checkWebsiteAvl(stockCode, name, webSite):
             'Cache-Control': 'max-age=0',
             'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
         })
-        f = request.urlopen(req, timeout=10)
+        f = request.urlopen(req, timeout=30)
         print('%s status:%d' % (webSite, f.status))
     except:
         # traceback.print_exc()

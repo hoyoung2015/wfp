@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-导出污染行业的目标企业
+校验步骤：
+1.判断webSite字段是否存在，不存在直接删除
+2.判断webSite格式是否正确，不正确加入格式错误列表
 """
 __author__ = 'huyang'
 from common.mongo import mongo_cli
@@ -17,7 +19,7 @@ if __name__ == "__main__":
             # 直接删除
             rs = company_info.delete_one({'stockCode':com['stockCode']})
             print(rs)
-        elif re.match('^https?:/{2}\w.+$', web_site) == None:
+        elif re.match('^https?:/{2}\w.+$', web_site) == None or ';' in web_site:
             web_site_format_error.append('%s,%s,%s' % (com['stockCode'], com['name'], web_site))
         else:
             print('%s,%s,%s' % (com['stockCode'], com['name'], web_site))

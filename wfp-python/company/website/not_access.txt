@@ -1,0 +1,1441 @@
+600028-http://www.sinopec.com not access
+http://www.saicmotor.com status:200
+http://www.baosteel.com status:200
+http://www.cypc.com.cn status:200
+http://www.600795.com.cn status:200
+http://www.boe.com.cn status:200
+http://www.kangmei.com.cn status:200
+000538-http://www.yunnanbaiyao.com.cn not access
+http://www.shuanghui.net status:200
+http://www.zjky.cn status:200
+http://www.changan.com.cn status:200
+http://www.gwm.com.cn status:200
+http://www.chinamoly.com status:200
+http://www.kangdexin.com status:200
+http://www.reht.com status:200
+http://www.shanghai-electric.com status:200
+http://www.whchem.com status:200
+http://www.hpi.com.cn status:200
+http://www.byd.com.cn status:200
+http://www.btsteel.com status:200
+http://www.chalco.com.cn status:200
+http://www.tongrentang.com status:200
+http://www.sdhjgf.com status:200
+http://www.tasly.com status:200
+http://www.zjgold.com status:200
+http://www.conch.cn status:200
+http://www.sanyhi.com status:200
+http://www.goertek.com status:200
+http://www.fosunpharma.com status:200
+http://www.luxshare-ict.com status:200
+http://www.dtpower.com status:200
+http://www.cfhi.com status:200
+http://www.sanju.cn status:200
+http://www.chinacoalenergy.com status:200
+http://www.scte.com.cn status:200
+http://www.dongeejiao.com status:200
+http://www.junzhenggroup.com status:200
+http://www.csicl.com.cn status:200
+http://www.cosl.com.cn status:200
+http://www.hdpi.com.cn status:200
+http://www.naritech.cn status:200
+http://www.siasun.com status:200
+http://www.hebgtgf.com status:200
+http://www.goldwind.cn status:200
+http://www.cnoocengineering.com status:200
+http://www.xsmd.com.cn status:200
+http://www.wisco.com.cn status:200
+http://www.spc.com.cn status:200
+http://www.sdicpower.com status:200
+http://www.jxcc.com status:200
+http://www.cnnp.com.cn status:200
+http://www.tianqilithium.com status:200
+http://www.tbea.com status:200
+http://www.chint.net status:200
+http://www.longsheng.com status:200
+http://www.zzpzh.com status:200
+http://www.thdb.com status:200
+http://www.xdect.com.cn status:200
+http://www.shenergy.net.cn status:200
+http://www.sec.com.cn status:200
+http://www.cnrspc.com status:200
+http://www.sanan-e.com status:200
+http://www.ansteel.com.cn status:200
+000630-http://www.tlys.cn not access
+http://www.inovance.cn status:200
+http://www.999.com.cn status:200
+http://www.qhyhgf.com status:200
+http://www.huahaipharm.com status:200
+http://www.shanghaipower.com status:200
+http://www.longi-silicon.com status:200
+http://www.cnhu.com status:200
+http://www.jonhon.cn status:200
+http://www.yanzhoucoal.com.cn status:200
+http://www.bbmg.com.cn/listco status:200
+http://www.o-film.com status:200
+http://www.hanslaser.com status:200
+http://www.zhongdinggroup.com status:200
+600098-http://www.gdih.cn not access
+http://www.xcmg.com status:200
+http://www.nonfemet.com status:200
+http://www.cxtc.com status:200
+http://www.hayao.com status:200
+http://www.luanhn.com status:200
+600435-http://www.bfdh.com.cn not access
+http://www.gosinoic.com status:200
+http://www.shaganggf.com status:200
+http://www.jlaod.com status:200
+http://www.600219.com.cn status:200
+http://www.jushi.com status:200
+http://www.huaxingchem.com status:200
+http://www.xjguanghui.com status:200
+http://www.kingenta.com status:200
+http://www.weichaipower.com status:200
+http://www.jigang.com.cn status:200
+http://www.jdcmoly.com status:200
+http://www.wtecl.com status:200
+http://www.grgbanking.com status:200
+http://www.citichmc.com status:200
+http://www.dec-ltd.cn status:200
+http://www.cchn.com.cn status:200
+http://www.chxz.com status:200
+http://www.hepalink.com status:200
+http://www.jznygf.com status:200
+http://www.fdtsgs.com status:200
+http://www.qingxin.com.cn status:200
+http://www.chinadhe.com status:200
+http://www.jahwa.com.cn status:200
+http://www.nmhdwz.com status:200
+http://www.xinxing-pipes.com status:200
+http://www.600783.cn status:200
+http://www.gloria.cc status:200
+http://www.cement.com.cn status:200
+002219-http://www.duyiwei.com not access
+http://www.cimc.com status:200
+http://www.xingyuan.com status:200
+http://www.sinochemintl.com status:200
+http://www.swet.net.cn status:200
+600079-http://www.humanwell.com.cn not access
+http://www.yqmy.cc status:200
+http://www.jhgf.com.cn status:200
+http://www.sunpapergroup.com status:200
+http://www.tianma.cn status:200
+http://www.westmining.com status:200
+http://www.hongfa.com status:200
+http://www.kingfa.com.cn status:200
+http://www.ytl.com.cn status:200
+http://www.shxcoal.com status:200
+http://www.jisco.cn/structure/hongxinggufen.htm status:200
+http://www.600869.com status:200
+http://www.cctc.cc status:200
+http://www.magang.com.cn status:200
+http://www.chinasec.cn status:200
+http://www.gemchina.com status:200
+http://www.gangtaikonggu.com.cn status:200
+http://www.nfc.com.cn status:200
+600332-http://www.gybys.com.cn not access
+http://www.fawcar.com.cn status:200
+http://www.gzbl.com status:200
+000883-http://www.hbny.com.cn not access
+http://www.dfdchem.com status:200
+http://www.hfgxgk.com status:200
+http://www.qdtgood.com status:200
+http://www.hebang.cn status:200
+http://www.brightdairy.com status:200
+http://www.loncinindustries.com status:200
+http://www.zzepc.com.cn status:200
+http://www.token-ito.com status:200
+http://www.joincare.com status:200
+http://www.hnerkang.com status:200
+000825-http://www.tisco.com.cn not access
+http://www.valin.cn status:200
+http://www.zjshc.com status:200
+http://www.china-htdl.com status:200
+http://www.chinacamel.com status:200
+http://www.hgtech.com.cn status:200
+http://www.cofcotunhe.com status:200
+http://www.sinovel.com status:200
+http://www.wz-zhongheng.com status:200
+http://www.cyg.com status:200
+http://www.sanyou-chem.com.cn status:200
+http://www.kelun.com status:200
+http://www.jmc.com.cn status:200
+http://www.cheezheng.com.cn status:200
+600395-http://www.pjgf.cn not access
+000970-http://www.san-huan.com.cn not access
+http://www.yiling.cn status:200
+http://www.zdhm.com.cn status:200
+http://www.baolihua.com.cn status:200
+http://www.haiyao.com.cn status:200
+http://www.bnbm.com.cn status:200
+http://www.csgholding.com status:200
+http://www.hanhe-cable.com status:200
+600297-http://http://www.chinagrandauto.com/cn/ not access
+http://www.ganfenglithium.com status:200
+http://www.wenergy.cn status:200
+http://www.hec-al.com status:200
+600873-http://www.meihuagrp.com not access
+002276-http://www.wanma-cable.cn not access
+http://www.crystal-optech.com status:200
+http://www.jiangte.com.cn status:200
+http://www.cz-mz.com status:200
+000703-http://www.hengyishihua.com not access
+http://www.evebattery.com status:200
+http://www.chasesun.cn status:200
+http://www.yunnancopper.com status:200
+http://www.002002.cn status:200
+http://www.hnsyec.com status:200
+http://www.longking.com.cn status:200
+600578-http://www.jnrd.com.cn not access
+http://www.china-zmc.com status:200
+http://www.sh-ihw.com status:200
+http://www.aurora-sapphire.cn status:200
+http://www.angelyeast.com status:200
+http://www.hisunpharm.com status:200
+http://www.pinggao.com status:200
+http://www.salubris.cn status:200
+http://www.vtron.com status:200
+http://www.corun.com status:200
+http://www.tdtec.com status:200
+000539-http://www.ged.com.cn not access
+http://www.linyang.com status:200
+600426-http://www.hl-hengsheng.com not access
+http://www.yuhong.com.cn status:200
+http://www.jac.com.cn status:200
+http://www.elion.cn status:200
+http://www.gclsi.com status:200
+http://www.gzcci.com status:200
+http://www.dcpc.com status:200
+http://www.sanxing.com status:200
+http://www.600614.com status:200
+http://www.szmys.com status:200
+http://www.huapont.com.cn status:200
+http://www.deren.com.cn status:200
+002122-http://www.zjtmb.com not access
+600572-http://www.conba.com.cn not access
+http://www.sunwill.com.cn status:200
+002643-http://www.valiant-cn.com not access
+http://www.naradapower.com status:200
+http://www.sunlordinc.com status:200
+http://www.dtmy.com.cn status:200
+http://www.neptunus.com status:200
+http://www.jereh.com status:200
+http://www.jonjee.com status:200
+http://www.pmta.com.cn status:200
+http://www.cac-citc.com.cn status:200
+000629-http://www.pzhsteel.com.cn/pgvt/ not access
+http://www.chinadmegc.com status:200
+600110-http://www.kinwa.com.cn not access
+http://www.sunwoda.com status:200
+http://www.idcgroup.com.cn status:200
+http://www.kaishancomp.com.cn status:200
+http://www.jingyuntong.com status:200
+http://www.ssgf.net status:200
+http://www.guangrigf.com/index.aspx status:200
+http://www.doublecoinholdings.com status:200
+600403-http://www.yimeijt.com not access
+http://www.sinoma.com.cn status:200
+http://www.enn-ec.com.cn status:200
+http://www.beingmate.com status:200
+http://www.shaangu.com status:200
+http://www.sz-dsbj.com status:200
+000401-http://www.jdsn.com.cn not access
+http://www.zjzhongda.com status:200
+http://www.g-biomed.com status:200
+600517-http://www.zhixindianqi.com.cn not access
+000059-http://www.hjch.com not access
+600490-http://www.synica.com not access
+http://www.zjtkgf.com status:200
+600392-http://www.scshre.com not access
+http://www.hngoldcorp.com status:200
+http://www.hm.avic.com status:200
+http://www.scdanfu.cn status:200
+http://www.danbang.com status:200
+600259-http://www.gdnmi.com.cn not access
+http://www.julong.cc status:200
+http://www.jxhsh.com.cn status:200
+http://www.shanyingpaper.com status:200
+http://www.hybio.com.cn status:200
+http://www.cmreltd.com status:200
+http://www.ylgf.com status:200
+http://www.zlahsh.com status:200
+http://www.hailiang.com status:200
+http://www.biocause.com status:200
+http://www.smtcl.com status:200
+http://www.yunsheng.com status:200
+http://www.znhi.com.cn status:200
+http://ssc.sinopec.com status:200
+http://www.tshtkj.com status:200
+http://www.cpttg.com status:200
+http://www.qxtt.cn status:200
+http://www.jsjd.cc status:200
+http://www.by-health.com.cn status:200
+http://www.kedachina.com.cn status:200
+http://www.akcome.com status:200
+002408-http://www.qxtdgf.com not access
+http://www.atmcn.com status:200
+http://www.gzhtdq.com.cn status:200
+601918-http://www.sdicxinji.com.cn not access
+http://www.600711.com status:200
+http://www.chenmingpaper.com status:200
+http://www.yoxin.net status:200
+http://www.shanghaimaling.com status:200
+http://www.china-pipes.com status:200
+http://www.qdhuaren.com status:200
+http://www.btlgf.com status:200
+http://www.biok.com status:200
+http://www.hzzh.com status:200
+http://www.nationz.com.cn status:200
+http://www.TYHI.COM.CN status:200
+http://www.shaoneng.com.cn status:200
+http://www.dareglobal.com.cn status:200
+http://www.600200.com status:200
+http://www.tdgcore.com status:200
+http://www.chinameiyan.com status:200
+http://www.sanjin.com.cn status:200
+http://www.lsmin.com status:200
+http://www.belling.com.cn status:200
+http://www.silverage.cn status:200
+http://www.Shuangliang.com status:200
+http://www.titanwind.com.cn status:200
+http://www.rxpe.com status:200
+http://www.zthx.com status:200
+http://www.fangdachemical.com status:200
+http://www.guanhao.com status:200
+http://www.wolong.com.cn status:200
+http://www.jzjt.com status:200
+http://www.lianhetech.com status:200
+http://www.caeri.com.cn status:200
+http://www.jei.com.cn status:200
+http://www.600282.net status:200
+http://www.baolong.com.cn status:200
+002647-http://www.chinahonglei.com not access
+http://www.nanfang-pump.com status:200
+http://www.zhmag.com status:200
+http://www.nhwa-group.com status:200
+http://www.qdhengshun.com status:200
+http://www.zhefuet.com status:200
+600618-http://www.scacc.com not access
+600667-http://www.wxtj.com not access
+002168-http://www.hifuture.com not access
+http://www.sungrowpower.com status:200
+http://www.haomaikeji.com status:200
+http://www.enecarbon-materials.com status:200
+http://www.yngf.com status:200
+http://www.runtuchem.com status:200
+http://www.hnmining.com status:200
+http://www.7cf.com status:200
+http://www.zy-tungsten.com status:200
+http://www.shenhuo.com status:200
+http://www.ci-xing.com status:200
+600759-http://www.600759.com not access
+http://www.yyth.com.cn status:200
+http://www.kingsignal.com status:200
+http://www.yatai.com status:200
+000400-http://www.xjec.com not access
+http://www.kpc.com.cn status:200
+http://www.eeti-easa.com status:200
+http://www.hbyl.cn status:200
+http://www.tellhow.com status:200
+http://www.zhefu.cn status:200
+http://www.cstower.cn status:200
+http://www.jianxin0688.com status:200
+http://www.xemc.com.cn status:200
+002249-http://www.broad-ocean.com.cn not access
+http://www.xwsp.cc status:200
+http://www.tongyuheavy.com status:200
+http://www.kkcc.com.cn status:200
+http://www.liusteel.com status:200
+002511-http://www.zhongshungroup.com not access
+http://www.kotl.com.cn status:200
+http://www.yongtaitech.com status:200
+http://www.fengdong.com status:200
+http://www.kibinggroup.com status:200
+http://www.easpring.com.cn status:200
+http://www.renheyaoye.com status:200
+600812-http://www.ncpc.com not access
+002481-http://www.shuangtafensi.com not access
+http://www.kingdomway.com status:200
+http://www.faratronic.com status:200
+http://www.xphcn.com status:200
+http://www.sino-ge.com status:200
+http://www.xjjxy.com.cn status:200
+http://www.dunan.net status:200
+http://www.zhangzepower.com status:200
+http://www.yongding.com.cn status:200
+http://www.chinalanhua.com status:200
+http://www.sicong.com status:200
+http://www.cisri-gaona.com.cn status:200
+http://www.gdep.com.cn status:200
+http://www.jiuli.com status:200
+http://www.tjfaw.com.cn status:200
+http://www.sailuntyre.com.cn status:200
+http://www.chinasufa.com status:200
+http://www.boshi.cn status:200
+http://www.trp.com.cn status:200
+http://www.jlydjt.com status:200
+http://www.qiaqiafood.com status:200
+http://www.thjm.cn status:200
+http://www.goody.com.cn status:200
+http://www.china-kaidi.com status:200
+http://www.satlpec.com status:200
+000068-http://www.ssg.com.cn not access
+http://www.guangyuyuan.cn status:200
+http://www.roshowtech.com status:200
+http://www.zfsy.com.cn status:200
+http://www.wuscn.com status:200
+http://www.shyndec.com status:200
+http://www.cecwpc.cn status:200
+http://www.jinheshiye.com status:200
+http://www.yypaper.com status:200
+http://www.zzmj.com status:200
+000717-http://www.sgss.com.cn not access
+http://www.qjmotor.com status:200
+http://www.billionschem.com status:200
+http://www.nxhengli.com.cn status:200
+http://www.haitian-food.com status:200
+http://www.jiajiagroup.com status:200
+http://www.cn-yinbang.com status:200
+http://www.czst.com.cn status:200
+http://www.jilinzixin.com.cn status:200
+http://www.hxss.com.cn status:200
+http://www.zcdlgf.com status:200
+600550-http://www.twbb.com not access
+http://www.tayho.com.cn status:200
+600329-http://www.zhongxinyaoye.com not access
+http://www.dhidcw.com status:200
+000936-http://www.jshuaxicun.com、www.v-capital.cn not access
+http://www.apeloa.com status:200
+http://www.chinasun.com.cn status:200
+http://www.v-belt.com status:200
+http://www.300090.com.cn status:200
+http://www.cqsxsl.com status:200
+http://www.tinci.com status:200
+http://www.chinaxinzhi.com status:200
+000049-http://www.desaybattery.com not access
+http://www.yulongsteelpipe.com status:200
+http://www.baoti.com status:200
+http://www.shidanli.cn status:200
+http://www.sd-wit.com status:200
+http://www.fs-ss.com status:200
+http://www.zemic.com.cn status:200
+http://www.GEM-YEAR.com status:200
+http://www.sinogeo.com status:200
+http://www.xinsteel.com.cn status:200
+http://www.transfarchem.com status:200
+http://www.chinakingking.com status:200
+000518-http://www.shsw.com.cn not access
+http://www.taiji.com status:200
+http://www.kstar.com.cn status:200
+http://www.sf-auto.com status:200
+http://www.unifull.com status:200
+http://www.westernpower.cn status:200
+http://www.kehua.com.cn status:200
+http://www.yhdle.com status:200
+http://www.szby.cn status:200
+http://www.xinfupharm.com status:200
+000727-http://www.hdeg.com not access
+http://www.hzsteel.com status:200
+http://www.honglitronic.com status:200
+http://www.changli-steels.com status:200
+http://www.jzwfly.cn status:200
+http://www.haili.com.cn status:200
+http://www.scxbzy.com status:200
+http://www.tianguang.com status:200
+600363-http://www.lianchuang.com.cn not access
+http://www.yechiu.com.cn status:200
+http://www.mesnac.com status:200
+http://www.xinzhu.com status:200
+http://www.huayou.com status:200
+http://www.yggf.com.cn status:200
+http://www.solareast.com status:200
+http://www.smgjcoal.com status:200
+http://www.liyuanlvye.com status:200
+http://www.konka.com status:200
+http://www.hisoar.com status:200
+http://www.gritek.com status:200
+600508-http://www.sdtny.com not access
+http://www.hdenergy.com status:200
+http://www.gxhsry.com status:200
+http://www.bjhhny.com status:200
+http://www.hengyun.com.cn status:200
+http://www.hldxygf.com status:200
+http://www.yinge.com.cn status:200
+http://www.sinocera.com.cn status:200
+000572-http://www.000572.com not access
+http://www.ahxinke.com status:200
+http://www.qht.cc status:200
+http://www.ggep.com.cn status:200
+http://www.triangle.com.cn status:200
+http://www.pku-hc.com status:200
+http://www.dinglongchem.com status:200
+http://www.first-tractor.com.cn status:200
+http://www.600653.com.cn status:200
+http://www.guodong.cn status:200
+http://www.chaohuatech.com status:200
+http://www.risenenergy.com status:200
+http://www.befar.com status:200
+http://www.chinafastprint.com status:200
+http://www.haisco.com status:200
+http://www.sdjt.com status:200
+http://www.fenghua-advanced.com status:200
+http://www.taiantang.net status:200
+http://www.tlcement.com status:200
+http://www.twh.com.cn status:200
+http://www.chgf.com.cn status:200
+http://www.chinaboilers.com status:200
+http://www.luxichemical.com status:200
+http://www.jnhi.com status:200
+http://cwcg.cscec.com status:200
+http://www.lpsk.com.cn status:200
+http://www.cooltechsh.com status:200
+http://www.sggf.com.cn status:200
+http://www.makerbio.com status:200
+http://www.sierte.com status:200
+http://www.xinbang.com status:200
+http://www.china-meili.com status:200
+http://www.bltelevator.com status:200
+http://www.sanyuan.com.cn status:200
+http://www.zjhengshun.com status:200
+http://www.jjjkj.com.cn status:200
+http://www.gzsq.com status:200
+000819-http://www.yyxc0819.com not access
+http://www.spandex.com.cn status:200
+600993-http://www.mayinglong.cn not access
+http://www.gj000096.com status:200
+http://www.ytsanchuan.com status:200
+000584-http://www.uoli.com.cn not access
+600557-http://www.kanion.com not access
+http://www.chunxing-group.com status:200
+http://www.txgis.com status:200
+http://www.huaxincem.com status:200
+http://www.gd-goworld.com status:200
+http://www.ahhymd.com.cn status:200
+http://www.dilong.cc status:200
+http://www.sinowealth.com status:200
+http://www.jinbei.com.cn status:200
+000919-http://www.jlyy000919.com not access
+http://www.hangyang.com status:200
+http://www.greatoo.com status:200
+000533-http://www.macro.com.cn not access
+600634-http://www.600634.com not access
+http://www.nnsugar.com status:200
+http://www.chinameyer.com status:200
+http://www.cydl.com.cn status:200
+http://www.qingshanpaper.com status:200
+http://www.phenixoptics.com.cn status:200
+http://www.allwinnertech.com status:200
+http://www.szhittech.com status:200
+http://hd.hdky.net status:200
+300064-http://www.sinocrystal.com.cn not access
+http://www.huazi.com status:200
+http://www.aysteel.com.cn status:200
+http://www.tyjd.cc status:200
+http://www.cpijl.com status:200
+http://www.yabangdyes.com status:200
+http://www.helichina.com status:200
+http://www.fangda.com status:200
+http://www.myorbita.net status:200
+http://www.sinyang.com.cn status:200
+http://www.ahjnhg.com status:200
+000902-http://www.newyf.com not access
+http://www.sino-platinum.com.cn status:200
+http://www.yabao.com.cn status:200
+http://www.noposion.com status:200
+http://www.lishengpharma.com status:200
+http://www.chinakingland.com status:200
+http://www.rifapm.com status:200
+http://www.nykj.cc status:200
+http://www.guangtai.com.cn status:200
+http://www.wwgf.com.cn status:200
+http://www.zspcl.com status:200
+http://www.jxpaper.com.cn status:200
+http://www.tapai.com status:200
+http://www.600496.com status:200
+http://www.dingtaicn.com status:200
+http://www.der.com.cn status:200
+http://www.yuanxing.com status:200
+http://sofe.sinopec.com status:200
+http://www.xiagong.com status:200
+http://www.chth.com.cn status:200
+http://www.ytyaoye.com status:200
+http://www.ntjhzy.com status:200
+http://www.xajr.com status:200
+http://www.king-ray.com.cn status:200
+600509-http://www.tfrd.com.cn not access
+http://www.tioxhua.com status:200
+http://www.batian.com.cn status:200
+http://www.xzhlz.com status:200
+http://www.zjjlgy.com status:200
+http://www.gdganhua.com status:200
+http://www.hngymt.com status:200
+http://www.xldz.com status:200
+http://www.szclou.com status:200
+http://www.fspg.com.cn status:200
+http://www.chinaddn.com status:200
+http://www.segcl.com.cn status:200
+http://www.fczy.com status:200
+http://www.600146.net status:200
+http://www.jinke-chem.com status:200
+http://www.hua-yi.cn status:200
+http://www.slcapam.com status:200
+http://www.chinadaoming.com status:200
+http://www.baoshuo.com.cn status:200
+http://www.xykb.com status:200
+http://www.yinglitechem.com status:200
+http://www.ntfan.com status:200
+http://www.castech.com status:200
+http://www.xingfagroup.com status:200
+000925-http://www.unitedmne.com not access
+http://www.cnggg.cn status:200
+http://www.hnfzgf.com status:200
+http://www.600780.com.cn status:200
+http://www.sinodmc.com status:200
+http://www.sundiro.com status:200
+http://www.apexmic.cn status:200
+http://www.dcb-group.com status:200
+http://www.lingrui.com status:200
+http://www.sanonda.cn status:200
+http://www.sichuanhongda.com status:200
+http://www.jinzichina.com status:200
+http://www.lcetron.com status:200
+http://www.nmgpzny.com status:200
+http://www.capchem.com status:200
+300160-http://www.jsxq.com not access
+000676-http://www.hnstar.com not access
+http://www.wanchang.com status:200
+http://www.jingui-silver.com status:200
+http://www.benefo.tj.cn status:200
+http://www.halead.com status:200
+http://www.delisi.com.cn status:200
+http://www.hanbell.com.cn status:200
+http://www.sclth.com status:200
+http://www.yuneng.com.cn status:200
+http://www.jemlc.com status:200
+http://www.yitoa.com status:200
+http://www.inforeenviro.com status:200
+http://www.hdnylon.com status:200
+http://www.dynavolt.net status:200
+http://www.tubaobao.com status:200
+http://www.furuise.com status:200
+http://www.kingyork.biz/tianyaoyaoye/ status:200
+http://www.hbjnhg.com status:200
+http://www.szzt.com.cn status:200
+http://www.zhongji.cc status:200
+http://www.xjqscc.com status:200
+http://www.sgeg.cn status:200
+http://www.sunward.com.cn status:200
+http://www.sieyuan.com status:200
+http://www.helon.cn status:200
+http://www.chinaerdos.com status:200
+http://www.pm-china.com status:200
+http://www.jwgf.com status:200
+http://www.atc-a.com status:200
+http://www.zhglb.com status:200
+600452-http://www.flepc.com.cn not access
+http://www.999yichun.cn status:200
+http://www.aykj.cn status:200
+http://www.jinhe.com.cn status:200
+http://www.hiconics.com status:200
+http://www.xjpharma.com status:200
+http://www.heag.com status:200
+http://www.hnjzt.com status:200
+000920-http://www.csrgc.com.cn/ht not access
+http://www.sc-aaa.com status:200
+002171-http://www.jcty.cn not access
+http://www.jinchengpaper.com status:200
+http://www.hnruize.com status:200
+http://www.sinoma-tianshan.cn status:200
+http://www.jsac.com.cn status:200
+http://www.hxpp.com.cn status:200
+000422-http://www.hbyh.cn not access
+http://www.huataipaper.com status:200
+http://www.hcsemitek.com status:200
+http://www.szhnd.com status:200
+http://www.csg.com.cn status:200
+http://www.wynca.com status:200
+http://www.unilumin.com status:200
+http://www.shclkj.com status:200
+http://www.nthcl.com status:200
+http://www.vanward.com status:200
+http://www.tgjt.cn status:200
+http://www.huasungrp.com status:200
+http://www.yantaimoon.cn status:200
+http://www.jialing.com.cn status:200
+http://www.jinchengpharm.com status:200
+http://www.jingda.cn status:200
+http://www.hile-bio.com status:200
+http://www.xuguang.com.cn status:200
+http://www.sxjh.com.cn status:200
+http://www.chinalotus.com.cn status:200
+http://www.lianhechem.com.cn status:200
+http://www.szselen.com status:200
+http://www.sz000720.com status:200
+http://www.jingxinpharm.com status:200
+http://www.antaigroup.com status:200
+http://www.lontrue.com status:200
+http://www.sn-nc.com status:200
+http://www.czamd.com status:200
+http://www.hnnlmb.com status:200
+http://www.gold-cup.cn status:200
+http://www.qlssn.com status:200
+000565-http://www.sanxia.com not access
+http://www.ieslab.com.cn status:200
+http://www.yatal.com status:200
+http://www.aeolustyre.com status:200
+http://www.sh3f.com status:200
+http://www.gi-tech.cn status:200
+http://www.yccable.cn status:200
+http://www.oxiranchem.com status:200
+http://www.my0606.com.cn status:200
+http://www.ronsen.com.cn status:200
+http://www.lkpc.com status:200
+http://www.jlnickel.com.cn status:200
+http://www.orientzr.com status:200
+http://www.chinadewei.com status:200
+http://www.ldocean.com.cn status:200
+http://www.gdrongtai.cn status:200
+http://www.shuangxingcaisu.com status:200
+http://www.luxinevotech.com status:200
+http://www.pwalloy.com status:200
+600230-http://www.czdh.com.cn not access
+http://www.zzce.com.cn status:200
+http://www.hdhm.com status:200
+http://www.gettopacoustic.com status:200
+http://www.lgom.com.cn status:200
+http://www.cesm.com.cn status:200
+600678-http://www.scjd.cn not access
+http://www.leadchina.cn status:200
+http://www.kasun.cn status:200
+600135-http://www.gufen.luckyfilm.com not access
+http://www.ghkg000529.com status:200
+http://www.chinatianshan.com status:200
+http://www.torchcn.com status:200
+http://www.ght-china.com status:200
+http://www.sfsn.cn status:200
+http://www.zhongli.com status:200
+http://www.bluesail.cn status:200
+http://www.xj-tianye.com status:200
+http://www.abachem.com status:200
+http://www.lierchem.com status:200
+http://www.hntane.com status:200
+http://www.tofflon.com status:200
+http://www.highly.cc status:200
+http://www.yonggui.com status:200
+http://www.ncdmoly.com status:200
+http://www.xzyy.cn status:200
+http://www.jgtec.com.cn status:200
+http://www.dayesteel.com.cn status:200
+002037-http://www.gzjiulian.com/ not access
+http://www.jumpcan.com status:200
+http://www.feida.biz status:200
+http://www.xinhaigroup.com status:200
+http://www.bailu.com status:200
+http://www.btdy.com status:200
+http://www.shengdawood.com status:200
+http://www.c-wmm.com status:200
+http://www.beautystar.cn status:200
+http://www.ggec.com.cn status:200
+http://www.jhec.com.cn status:200
+600995-http://www.wsdl.com.cn not access
+http://www.scyahua.com status:200
+http://www.zdjt.com status:200
+http://www.fu-rui.com status:200
+http://www.luxiang.cn status:200
+http://www.jianfeng.com.cn status:200
+http://www.jfhggf.com status:200
+600112-http://www.czdq.cn not access
+http://www.anyuan2002.com status:200
+http://www.wiscom.com.cn status:200
+http://www.superpipe.cn status:200
+http://www.sac-china.com status:200
+http://www.hansenzy.com status:200
+http://www.my0976.com status:200
+http://www.hnlens.com status:200
+http://www.xjth.cn status:200
+http://www.kingteller.com.cn status:200
+http://www.gearsnet.com status:200
+http://www.jngx.cn status:200
+http://www.wohua.cn status:200
+http://www.zssw.com status:200
+http://www.hwsensor.com status:200
+http://www.gdjyzy.com.cn status:200
+http://www.keheng.com.cn status:200
+http://www.shindoo.com status:200
+http://www.scmeif.com status:200
+http://www.e-ande.com status:200
+http://www.ybty.com status:200
+http://www.jtlfans.com status:200
+http://www.sinojit.com status:200
+http://www.chengzhi.com.cn status:200
+http://www.baoshengcable.com status:200
+http://www.zxy.com.cn status:200
+http://www.julisling.com status:200
+http://www.gzqydl.cn status:200
+http://www.nationstar.com status:200
+http://www.mjsdgs.com status:200
+http://www.jspackmach.com status:200
+http://www.insulators.cn status:200
+002082-http://www.dongliang.com.cn not access
+http://www.lonkey.com.cn status:200
+http://www.wxboiler.com status:200
+http://www.goldenmax.cn status:200
+http://www.lshec.com status:200
+http://www.sanquan.com status:200
+http://www.tymqh.com status:200
+http://www.jpmf.com.cn status:200
+http://www.beilu.com.cn status:200
+http://www.sjec.com.cn status:200
+http://www.sypglass.com status:200
+http://www.dpc.com.cn status:200
+000952-http://www.guangjipharm.com not access
+http://www.songde.com.cn status:200
+http://www.mason-led.com status:200
+http://www.jin-fu.cn status:200
+http://www.whjm.com status:200
+300086-http://www.honz.com.cn not access
+002527-http://www.stepelevator.com not access
+http://www.dongfangelec.com status:200
+002278-http://www.shenkai.com not access
+http://www.chsdl.com status:200
+http://www.sxxc.com.cn status:200
+http://www.cqlummy.com status:200
+600847-http://www.cqwanli.net.cn not access
+http://www.tianmachem.com status:200
+http://www.guangbo.net status:200
+http://www.weihuaonline.com status:200
+http://www.ls.com.cn status:200
+http://www.mornelectric.com status:200
+http://www.cnqjyy.com status:200
+http://www.yingliugroup.com status:200
+http://www.sinocare.com status:200
+300111-http://www.sunowe.com.cn not access
+http://www.longlive.cn status:200
+http://www.jikaigf.com status:200
+000795-http://www.twin-tower.com not access
+http://www.nanyangcable.com status:200
+http://www.e-kingee.com status:200
+http://www.sdjlky.com status:200
+http://www.zfmotor.com status:200
+http://www.emtco.cn status:200
+http://www.hdbp.com status:200
+http://www.dajin.cn status:200
+http://www.yghuatai.com status:200
+http://www.creat-da.com.cn status:200
+http://www.huachangchem.cn status:200
+http://www.chinahaiyue.com status:200
+http://www.doublestar.com.cn status:200
+http://www.bsbe.com.cn status:200
+http://www.hongda-chemical.com status:200
+http://www.xjbhc.net status:200
+http://www.lantaicn.com status:200
+002053-http://www.ynyh.com not access
+http://www.hac.com.cn status:200
+http://www.tong-feng.com status:200
+http://www.joinworld.com status:200
+http://www.ceepcb.com status:200
+http://www.motic-electric.com status:200
+http://www.tianke.com status:200
+http://www.jiangsurhi.com status:200
+http://www.savings.com.cn status:200
+http://www.shuangchengmed.com status:200
+http://www.lida-oe.com status:200
+http://www.600083.com status:200
+http://www.easepal.com.cn status:200
+http://www.zoje.com status:200
+000822-http://www.chinahaihua.com not access
+http://www.hfagro.com status:200
+http://www.nee.com.cn status:200
+http://www.luyin.cn status:200
+002611-http://www.vmtdf.com not access
+http://www.golden-glass.cn status:200
+http://www.fasten.com.cn status:200
+http://www.dongling.cn status:200
+http://www.npcable.com status:200
+http://www.sgsbgroup.com status:200
+http://www.hengliinc.com status:200
+http://www.chinaadvance.com status:200
+http://www.letongink.com status:200
+http://www.galaxymagnets.com status:200
+http://www.gdjlfood.com status:200
+http://www.cqgt.cn status:200
+http://www.qifeng.cn status:200
+http://www.baoguang.com.cn status:200
+300349-http://www.china-goldcard.com not access
+600212-http://www.jiangquan.com.cn not access
+http://www.jinlugroup.cn status:200
+http://www.natachem.com status:200
+http://www.chinarpm.com status:200
+http://www.phosphatechina.com status:200
+http://www.guhan.com status:200
+600966-http://www.bohui.net not access
+601069-http://www.w-r-g.cn not access
+http://www.chalkistomato.com status:200
+http://www.hypower.com.cn status:200
+http://www.fangsheng.com.cn status:200
+http://www.loften.com.cn status:200
+http://www.first-panel.com status:200
+http://www.otic.com.cn status:200
+http://www.motimo.com status:200
+http://www.yawei.cc status:200
+http://www.yilida.com status:200
+300476-http://www.shpcb.com not access
+000837-http://www.qcde.cn not access
+http://www.infotmic.com.cn status:200
+http://www.rsm.com.cn status:200
+000899-http://www.000899.com not access
+http://www.lanpec.com status:200
+http://www.sdricom.com status:200
+http://www.hongbaoli.com status:200
+http://www.nepharm.com.cn status:200
+http://www.elefirst.com status:200
+http://www.hwgf757.com status:200
+http://www.rong-hua.net status:200
+http://www.hengxingchinese.com status:200
+http://www.chinaconveyor.com status:200
+600882-http://www.sddcny.com not access
+002068-http://www.jx-blackcat.com not access
+http://www.nanfangfood.com status:200
+http://www.hchd.com.cn status:200
+http://www.sxsanwei.com status:200
+http://www.svgoptronics.com status:200
+600449-http://www.saimasy.com.cn not access
+http://www.lypower.com status:200
+http://www.anne.com.cn status:200
+http://www.snowkey.com status:200
+http://www.alcha.com status:200
+http://www.zjkan.com status:200
+http://www.invt.com.cn status:200
+http://www.mdep.com.cn status:200
+http://www.kelin-china.com status:200
+http://www.sgmg.com.cn status:200
+http://www.chinarenzhi.com status:200
+http://www.china-pvp.com status:200
+http://www.600396.com status:200
+http://www.cjdg.com status:200
+000589-http://www.gztire.com not access
+http://www.szmicrogate.com status:200
+http://www.changhaigfrp.com status:200
+http://www.chinacdi.com status:200
+http://www.leadmanbio.com status:200
+http://www.sxcxgf.com status:200
+http://www.chinagwe.com status:200
+http://www.ingenic.com status:200
+http://www.000835.com status:200
+http://www.wnq.com.cn status:200
+http://www.zjspas.com status:200
+http://www.chnsbs.net status:200
+http://www.weidapeacock.com status:200
+http://www.busonline.com status:200
+000953-http://www.hechihuagong.com.cn not access
+http://www.baling.com.cn status:200
+http://www.lggf.com.cn status:200
+http://www.firstpvm.com status:200
+http://www.mxdl.cn status:200
+http://www.hxfz.com.cn status:200
+http://www.nanping-paper.com status:200
+http://www.Guitang.com status:200
+http://www.taloph.com status:200
+600714-http://www.china-shanchuan.com not access
+http://www.lp.com.cn status:200
+http://www.lyrysh.com status:200
+http://www.nsrd.com.cn status:200
+http://www.600608.net status:200
+http://www.huazhongcnc.com status:200
+http://www.mxdl.com.cn status:200
+http://www.minfenggroup.com status:200
+600076-http://www.hg.com.cn not access
+http://www.cnaff.com status:200
+002661-http://www.kemen.net.cn not access
+002523-http://www.tqcc.cn not access
+http://www.zys.com.cn status:200
+http://www.guofeng.com status:200
+http://profile.conch.cn status:200
+http://www.bygt.com.cn status:200
+http://www.conantoptical.com status:200
+http://www.jingjiamicro.com status:200
+http://www.fenglingroup.com status:200
+http://www.000023.cn status:200
+http://www.weldatlantic.com status:200
+http://www.ntdy.com.cn status:200
+http://www.quanchai.com.cn status:200
+http://www.000551.cn status:200
+http://www.shen-jian.com status:200
+http://www.toppcb.com status:200
+http://www.jfled.com.cn status:200
+http://www.xhzy.com status:200
+http://www.changchai.com.cn status:200
+http://www.xinguodu.com status:200
+http://www.donly.com.cn status:200
+http://www.wanshun.cn status:200
+http://www.zhanghuaji.com status:200
+http://www.dongfang-heater.com status:200
+http://www.zuoli.com status:200
+http://www.tronly.com status:200
+http://www.blb-cn.com status:200
+http://www.xntg.com status:200
+http://www.hgk-group.com status:200
+http://www.hhyyjx.net status:200
+http://www.topband-e.com status:200
+http://www.sopo.com.cn status:200
+http://www.flzc.com status:200
+http://www.xjgjsy.com status:200
+600579-http://www.thy not access
+002137-http://www.sz-seastar.com not access
+http://www.greatpower.net status:200
+300097-http://www.zhiyun-cn.com not access
+http://www.longhuachuanre.com status:200
+http://www.liuguo.com status:200
+http://www.lqpccp.com status:200
+http://www.pulike.com.cn status:200
+http://www.china-hbp.com status:200
+http://www.graceepoxy.com status:200
+600505-http://www.xcep.com.cn not access
+http://www.haiyuan-group.com status:200
+http://www.spring.com.cn status:200
+http://www.dowstone.com.cn status:200
+http://www.cdleejun.com status:200
+http://www.kangda-sh.com status:200
+http://www.idearhanyu.com status:200
+http://www.guochuang.com.cn status:200
+http://www.hodgen-china.com status:200
+http://www.yokechem.com status:200
+http://www.hwafa.com.cn status:200
+http://www.xjxfkj.com status:200
+http://www.hqhop.com status:200
+http://www.bjruitai.com status:200
+300018-http://www.zyhd.com.cn not access
+002435-http://http://www.cjrfjx.com not access
+http://www.jasic.com.cn status:200
+http://www.cbsteeltube.com status:200
+002526-http://www.skj.cc not access
+http://www.ycne.com.cn status:200
+http://www.chs5e.com status:200
+http://www.deliglass.com status:200
+http://www.dymatic.com status:200
+http://www.harzone.com.cn status:200
+http://www.cnkh.com status:200
+http://www.boamax.com status:200
+http://www.novel.com.cn status:200
+http://www.ginwa.com.cn status:200
+http://www.wasung.com status:200
+http://www.fdm.com.cn status:200
+002365-http://www.chinataurine.com not access
+http://www.gzzg.com.cn status:200
+http://www.hjjs.com status:200
+http://www.jjmy.cn status:200
+000958-http://www.dfrdjt.com not access
+http://www.longjin.com.cn status:200
+http://www.szsuccess.com.cn status:200
+http://www.delian.cn status:200
+http://www.hbshkj.cn status:200
+http://www.punai.com status:200
+http://www.fapharm.com status:200
+002207-http://www.zygf.com.cn not access
+002584-http://www.xlhg.com.cn not access
+http://www.molonggroup.com status:200
+http://www.aritime.com status:200
+http://www.qddftt.cn status:200
+http://www.sz-changhong.com status:200
+http://www.fenghwa.sh.cn status:200
+http://www.jlsg.com.cn status:200
+http://www.haoxiangni.cn status:200
+http://www.hzcables.com status:200
+http://www.huake.com status:200
+http://www.heimaocoking.com status:200
+http://www.sanbian.cn status:200
+http://www.shengyang.com status:200
+http://www.cfled.com status:200
+http://www.yzjnm.com status:200
+http://www.baolijt.cn status:200
+http://www.changelight.com.cn status:200
+http://www.yuanlicarbon.com status:200
+http://www.lzzj.com status:200
+http://www.bbcayy.com status:200
+601127-http://www.yuanchina.com not access
+http://www.ncfc.cn status:200
+http://www.lhpharma.com status:200
+http://www.lmkh.com status:200
+http://www.yodonchina.com status:200
+http://www.ledman.cn status:200
+http://www.nb-medicalsystem.com status:200
+http://www.tomotech.com status:200
+http://www.hztmyy.com status:200
+http://www.lmz.com.cn status:200
+600339-http://www.600339.cc not access
+300069-http://www.jlhdq.com not access
+http://www.yongxingbxg.com status:200
+http://www.feilihua.com status:200
+http://www.nafine.com status:200
+http://www.haida.cn status:200
+http://www.chinatypical.com status:200
+300249-http://www.sunrisegroup.com.cn not access
+http://www.cecsec.cn status:200
+http://www.hengfengpaper.com status:200
+http://www.cnsanf.com status:200
+http://www.jslanfeng.com status:200
+http://www.bjlirr.com status:200
+http://www.hjinv.com status:200
+http://www.meidanylon.com status:200
+http://www.clickele.com status:200
+http://www.daleng.cn status:200
+http://www.tech-long.com status:200
+603100-http://www.sicc.com.cn not access
+600539-http://www.600539.com.cn not access
+http://www.shimge.com status:200
+http://www.magmat.com status:200
+http://www.szaoto.com.cn status:200
+002766-http://www.szsoling.com not access
+300457-http://www.yhwins.com/cn not access
+http://www.hengli-js.com status:200
+http://www.jinleiwind.com status:200
+http://www.fjcement.com status:200
+600281-http://www.thgf.cn not access
+http://www.tszxjy.cn status:200
+http://www.uroica.com.cn status:200
+http://www.shtsp.com status:200
+http://www.tbhic.cn status:200
+http://www.ywgf.cn status:200
+http://www.starlake.com.cn status:200
+http://www.co-mens.com status:200
+http://www.jscq.com status:200
+http://www.xjgt.com status:200
+http://www.brother.com.cn status:200
+600883-http://www.ynbowin.com not access
+http://www.tech-sem.com status:200
+http://www.tianyetolian.com status:200
+http://www.fzb.com.cn status:200
+http://www.chinapuleather.com status:200
+http://www.gofar.com.cn status:200
+http://www.ntacf.com status:200
+http://www.andty.com status:200
+http://www.gzgsgf.com.cn status:200
+http://www.zzytech.com status:200
+http://www.sciyon.com status:200
+http://www.lzhg.cn status:200
+http://www.hntddl.com status:200
+http://www.fjec.com.cn status:200
+http://www.jchxmc.com status:200
+http://www.chinahongyu.cn status:200
+http://www.riland.com.cn status:200
+http://www.porton.cn status:200
+http://www.taiergroup.com status:200
+http://www.blower.cn status:200
+http://www.huitian.net.cn status:200
+http://www.eastups.com status:200
+300436-http://www.cosunter.com not access
+http://www.sinomatech.com status:200
+600781-http://www.shfuren.cn not access
+http://www.heibao.com status:200
+http://www.wlcsp.com status:200
+http://www.jiangshanchem.com status:200
+http://www.600228.net status:200
+http://www.600768.com.cn status:200
+http://www.yonglibelt.com status:200
+http://www.jolywood.cn status:200
+http://www.gykg.cn status:200
+http://www.jdzbgc.com status:200
+http://www.hong-lu.com status:200
+http://www.mkmchina.com status:200
+http://www.ty-magnet.com status:200
+http://www.canature.com status:200
+http://www.kmtcl.com.cn status:200
+http://www.cnguibao.com status:200
+http://www.ssyy.com.cn status:200
+http://www.noblelift.com status:200
+http://www.btic.com.cn status:200
+http://www.gsdyjsgs.com status:200
+http://www.northglass.com status:200
+http://www.yiduoli.com status:200
+http://www.everfine.cn status:200
+http://www.sychem.com status:200
+http://www.chinatrinity.com status:200
+000693-http://www.ufg.com.cn not access
+http://www.knt.cn status:200
+000004-http://www.sz000004.cn not access
+http://www.hailu-boiler.cn status:200
+http://www.cqzskj.com status:200
+http://www.minfa.com status:200
+http://www.kedidairy.com status:200
+http://www.jingyimetal.com status:200
+http://www.thslhg.com status:200
+http://www.dlrd.com status:200
+http://www.huadongcnc.com status:200
+http://www.hite.com.cn status:200
+http://www.cseco.cn status:200
+http://www.nnchem.com status:200
+http://www.tondchem.com status:200
+000723-http://www.mjenergy.com not access
+http://maginfo.luckyfilm.com.cn status:200
+http://www.hbxg.com status:200
+http://www.sdjintai.com.cn status:200
+http://www.xiaocheng.com status:200
+http://www.baoding-tech.com status:200
+http://www.zjke.com status:200
+http://www.qlgd.com.cn status:200
+http://www.sacredsun.cn status:200
+http://www.anoky.com.cn status:200
+http://www.chinayaxing.com status:200
+http://www.zhongyagroup.com/ status:200
+http://www.haimo.com.cn status:200
+http://www.geron-china.com status:200
+http://www.huichengchem.com status:200
+http://www.lsep.com.cn status:200
+http://www.cn-cg.com status:200
+http://www.ellingtonpcb.com status:200
+http://www.suntront.com status:200
+http://www.chinaemd.com status:200
+http://www.chinahezong.com status:200
+600793-http://www.yb-zy.com not access
+000595-http://www.nxz.com.cn not access
+http://www.nf-bearings.com status:200
+300321-http://www.tongdahdcx.com not access
+http://www.chuanrun.com status:200
+http://www.tengxinfoods.com.cn status:200
+http://www.yizumi-group.com status:200
+http://www.yaxia.com status:200
+http://www.mosopower.com status:200
+http://www.linhai.cn status:200
+http://www.bcchem.com status:200
+http://www.stfm.cn status:200
+http://www.jinhuada.com status:200
+http://www.cy-pharm.com status:200
+http://www.600796.com status:200
+http://www.greenpine.cc status:200
+http://www.qhhdsy.com status:200
+http://www.saimo.cn status:200
+http://www.chinalimin.com status:200
+http://www.lingkang.com.cn status:200
+http://www.hybiotech.com status:200
+http://www.zsmls.com status:200
+http://www.ws-chem.com status:200
+http://www.newayvalve.com status:200
+http://www.swell.com.cn status:200
+600727-http://www.lubeichem.com not access
+http://www.aihuaglobal.com status:200
+http://www.aszkjqc.com status:200
+http://www.etrol.com status:200
+http://www.hfpress.com status:200
+http://www.refond.com status:200
+http://www.v-t.net.cn status:200
+http://www.wolwobiotech.com status:200
+http://www.tonze.com status:200
+http://www.tongoiltools.com status:200
+http://www.hnhlc.com status:200
+http://www.hua-wu.com status:200
+http://www.sns-china.com status:200
+http://www.sunshine-laser.com status:200
+http://www.mhsh0637.com.cn status:200
+http://www.phichem.com.cn status:200
+http://www.snxhchem.com status:200
+http://www.gifore.com status:200
+603355-http://www.lexy.cn not access
+http://www.hstl.cn status:200
+http://www.yisheng-pharm.com status:200
+http://www.htcxms.com status:200
+http://www.hb-lx.com.cn status:200
+http://www.tfcsz.com status:200
+http://www.cn-pls.com status:200
+http://www.heng-da.com status:200
+http://www.omh.com.cn status:200
+http://www.jiuzhoupharma.com status:200
+http://www.cnheshun.com status:200
+http://www.shanghailmjx.com status:200
+http://www.tschina.com status:200
+http://www.ceepower.com status:200
+http://www.basismold.com status:200
+http://www.bosuntools.com status:200
+http://www.qx-kj.com status:200
+http://www.jianxinchemical.com status:200
+http://www.acrel.cn status:200
+603567-http://www.zbdzy.com not access
+http://www.rikechem.com status:200
+http://www.chinaguangxin.com status:200
+http://www.keyvia.cn status:200
+http://www.opple.com.cn status:200
+http://www.senry-batt.com status:200
+http://www.eoptolink.com status:200
+002088-http://www.luyangwool.com not access
+http://www.sf-diamond.com.cn status:200
+http://www.suntakpcb.com status:200
+http://china.cs-vaccine.com status:200
+http://www.autobio.com.cn status:200
+http://www.qdgon.com status:200
+http://www.dleast.cc status:200
+http://www.verygrass.com status:200
+http://www.cnbaosi.com status:200
+http://www.youngsunpack.com status:200
+http://www.bjhs.cn status:200
+http://www.goldensea.cn status:200
+http://www.zhengyee.com status:200
+http://www.fincm.com status:200
+http://www.sckxjd.com status:200
+http://www.jmjj.com status:200
+http://www.sunrisemeter.com status:200
+http://www.smcolor.com.cn status:200
+http://www.szkinks.com status:200
+http://www.jze.com.cn status:200
+http://www.cxxcl.cn status:200
+http://www.slsj.com.cn status:200
+http://www.ecec.com.cn status:200
+http://www.taikong.cn status:200
+http://www.scimee.com status:200
+000862-http://www.nxyxny.com.cn not access
+http://www.chinasti.com status:200
+http://www.tdchina.com status:200
+http://www.jsliba.com status:200
+http://www.jwdc.cn status:200
+http://www.ken-tools.com status:200
+http://www.assyrb.com status:200
+http://www.wuyangkeji.com status:200
+http://www.yinlong.com status:200
+http://www.dianguang.com status:200
+http://www.shenke.com status:200
+http://www.cndingli.com status:200
+http://www.qywt.com.cn status:200
+http://www.xuerong.com status:200
+000420-http://www.jlcfc.com not access
+http://www.xgpharma.com status:200
+http://www.guotone.com status:200
+http://www.weichaihm.com status:200
+http://www.orientcable.com status:200
+http://www.wzhf.com status:200
+http://www.lpxdgf.cn status:200
+http://www.stnm.com.cn status:200
+http://www.gaofacable.com status:200
+http://www.nrb.com.cn status:200
+http://www.ctntech.com status:200
+http://www.maxonic.com.cn status:200
+http://www.fuhuang.cn status:200
+http://www.flyco.com status:200
+http://www.skshu.com.cn status:200
+http://www.estun.com status:200
+http://www.hbklgroup.cn status:200
+http://www.sunresin.com status:200
+http://www.ruifengchemical.com status:200
+http://www.czyuxing.com status:200
+http://www.tolybread.cn status:200
+http://www.shanhe01.com status:200
+http://www.haozhihs.com status:200
+http://www.bydq.com status:200
+http://www.redphase.com.cn status:200
+http://www.pengling.cn status:200
+http://www.longood.com status:200
+http://www.jt-ele.com status:200
+http://www.wuxihonghui.com status:200
+http://www.doyin.com status:200
+http://www.jindunfan.com status:200
+http://www.kmcjn.com status:200
+http://www.dgylec.com status:200
+http://www.cecm.com.cn status:200
+http://www.huaijivalve.com status:200
+http://www.dhtest.com status:200
+http://www.huayuan-print.com status:200
+http://www.luyitong.com status:200
+http://www.jljgdq.cn status:200
+http://www.scggic.com status:200
+http://www.hmmachine.com status:200
+http://www.fushine.cn status:200
+http://www.sh-abc.cn status:200
+http://www.redwall.com.cn status:200
+http://www.lnfa.com.cn status:200
+http://www.sumnet.com.cn status:200
+http://www.kinglai.com.cn status:200
+http://www.longdameat.com status:200
+http://www.chinayoubang.com status:200
+http://www.quartzpacific.com status:200
+http://www.canmax.com.cn status:200
+002753-http://www.sxydhg.com not access
+http://www.kelongchem.com status:200
+http://www.sjzthdz.com status:200
+http://www.copton.com.cn status:200
+http://www.haishunpackaging.com status:200
+002719-http://www.maiquer.com not access
+http://www.chinaselon.com status:200
+http://www.yantangmilk.com status:200
+http://www.douson.cn status:200
+http://www.huayumining.com status:200
+http://www.zhongtaihangzhou.com status:200
+http://www.hszhenhua.com status:200
+300489-http://www.zfgf.cc not access
+http://www.sandegroup.com status:200
+http://www.yhvalve.com status:200
+603520-http://http://www.starrypharm.com not access
+http://www.sgt21.com status:200
+http://www.tczy.com.cn status:200
+http://www.sxdagang.com status:200
+http://www.goldstone-group.com status:200
+http://www.newhongtai.com status:200
+http://www.ahjlcd.com status:200
+http://www.jsjsyh.com status:200
+http://www.newamstar.com status:200
+http://www.nanxing.com.cn status:200
+http://www.sec-motor.com status:200
+http://www.xtl.sh.cn status:200
+http://www.jf-safety.com status:200
+http://www.amsky.cc status:200
+http://www.jgbr.com.cn status:200
+002346-http://www.ch-zzcc.com not access
+http://www.qianhefood.com status:200
+http://www.dowellchem.cn status:200
+http://www.sz-shijia.com status:200
+http://www.innover.com.cn status:200
+603015-http://www.techmation.com.cn not access
+300412-http://www.china-jianan.com/cn/ not access
+http://www.fjsx.com status:200
+http://www.hs-exchanger.com status:200
+http://www.globalprinting.cn status:200
+http://www.dehong.com.cn status:200
+http://www.hollyfuse.com status:200
+http://www.lsrfzy.com status:200
+http://www.baose.com status:200
+002706-http://www.sh-liangxin.com not access
+http://www.goaland.com.cn status:200
+600758-http://www.jdjs.net not access
+http://www.chengduair.com status:200
+002742-http://www.cqsstc.com not access
+http://www.sdhead.com status:200
+http://www.fengyuanhuaxue.com status:200
+002806-http://www.c-hfcc.com not access
+http://www.kennede.com status:200
+http://www.forbon.com status:200
+http://www.gltech.cn status:200
+http://www.sdmj.com.cn status:200
+http://www.topsunpower.cc status:200
+http://www.wanlistone.com status:200
+http://www.nanhua.com.cn status:200
+http://www.liande-china.com status:200
+http://www.jsgaoke.com status:200
+http://www.newu.com.cn status:200
+http://www.constgroup.com status:200
+http://www.hzyb.com status:200
+http://www.tanac.com.cn status:200
+http://www.cshnac.com status:200
+http://www.zjjizhi.com status:200
+http://www.anjifood.com status:200
+http://www.nbjingda.com status:200
+http://www.szwzxc.com status:200
+http://www.changlin.com.cn status:200
+http://www.hnjyb.com status:200
+http://www.hision.com.cn status:200
+http://www.dazhitech.com status:200
+http://www.hkdholding.com status:200
+http://www.mouldcenter.com status:200
+http://www.hsjn.com status:200
+http://www.nb-health.com status:200
+002257-http://www.ql-electronics.com not access
+http://www.bettapharma.com status:200
+http://www.xintaidianqi.com status:200
+http://www.kuangshun.com status:200
+http://www.jouder.com status:200
+http://www.esttools.com status:200
+http://www.jxgtmb.com status:200
+http://www.ask-pharm.com status:200
+http://www.sgt21.com status:200
+http://www.ctc.ac.cn status:200
+http://www.hxgroup.co status:200
+http://www.fsmjj.cn status:200
+http://www.xcc-zxz.com status:200
+300478-http://www.gxsl.com not access
+600182-http://www.gititirecorp.com not access
+000155-http://www.scwltd.com not access
