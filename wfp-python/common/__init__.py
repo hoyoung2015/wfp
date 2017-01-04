@@ -13,6 +13,7 @@ print(common_path)
 config = configparser.ConfigParser()
 config.read(filenames=common_path+'config.conf')
 # 日志
-logging.config.fileConfig(common_path+"logging.conf")
+# logging.config.fileConfig(common_path+"logging.conf")
+
 
 

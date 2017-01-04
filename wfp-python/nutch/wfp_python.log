@@ -1,0 +1,182 @@
+2017-01-03 01:18:48,523 - mylogger - INFO - excute command:cp -R /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/conf /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf0
+2017-01-03 01:18:48,532 - mylogger - INFO - excute command:cp -R /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/conf /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf1
+2017-01-03 01:18:48,535 - mylogger - INFO - excute command:cp -R /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/conf /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf2
+2017-01-03 01:18:48,541 - mylogger - INFO - start to crawl [600970	中材国际	http://www.sinoma.com.cn]
+2017-01-03 01:18:48,546 - mylogger - INFO - company 中材国际[600970] has been crawled
+2017-01-03 01:26:54,374 - mylogger - INFO - start to crawl [600970	中材国际	http://www.sinoma.com.cn]
+2017-01-03 01:26:54,376 - mylogger - INFO - company 中材国际[600970] has been crawled
+2017-01-03 01:26:54,376 - mylogger - INFO - start to crawl [601233	桐昆股份	http://www.zjtkgf.com]
+2017-01-03 01:26:54,383 - mylogger - INFO - write domain zjtkgf.com to /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf0/domain-urlfilter.txt
+2017-01-03 01:26:54,387 - mylogger - INFO - [601233	桐昆股份	http://www.zjtkgf.com] domain zjtkgf.com
+2017-01-03 01:26:54,387 - mylogger - INFO - /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/bin/crawl /home/hoyoung/workspace/wfp/wfp-python/.tmp/url0 601233 99999999
+2017-01-03 03:48:09,216 - mylogger - INFO - crawl task successful [601233	桐昆股份	http://www.zjtkgf.com] 
+2017-01-03 03:48:09,230 - mylogger - INFO - start to crawl [601369	陕鼓动力	http://www.shaangu.com]
+2017-01-03 03:48:09,255 - mylogger - INFO - write domain shaangu.com to /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf0/domain-urlfilter.txt
+2017-01-03 03:48:09,255 - mylogger - INFO - [601369	陕鼓动力	http://www.shaangu.com] domain shaangu.com
+2017-01-03 03:48:09,258 - mylogger - INFO - /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/bin/crawl /home/hoyoung/workspace/wfp/wfp-python/.tmp/url0 601369 99999999
+2017-01-03 06:46:07,308 - mylogger - INFO - crawl task successful [601369	陕鼓动力	http://www.shaangu.com] 
+2017-01-03 06:46:07,311 - mylogger - INFO - start to crawl [600567	山鹰纸业	http://www.shanyingpaper.com]
+2017-01-03 06:46:07,316 - mylogger - INFO - write domain shanyingpaper.com to /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf0/domain-urlfilter.txt
+2017-01-03 06:46:07,316 - mylogger - INFO - [600567	山鹰纸业	http://www.shanyingpaper.com] domain shanyingpaper.com
+2017-01-03 06:46:07,316 - mylogger - INFO - /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/bin/crawl /home/hoyoung/workspace/wfp/wfp-python/.tmp/url0 600567 99999999
+2017-01-03 07:44:40,063 - mylogger - INFO - crawl task successful [600567	山鹰纸业	http://www.shanyingpaper.com]2017-01-03 12:12:26,017 - mylogger - INFO - excute command:cp -R /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/conf /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf0
+2017-01-03 12:12:26,031 - mylogger - INFO - excute command:cp -R /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/conf /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf1
+2017-01-03 12:12:26,035 - mylogger - INFO - excute command:cp -R /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/conf /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf2
+2017-01-03 12:12:26,042 - mylogger - INFO - start to crawl [600970	中材国际	http://www.sinoma.com.cn]
+2017-01-03 12:12:26,045 - mylogger - INFO - company 中材国际[600970] has been crawled
+2017-01-03 12:12:26,045 - mylogger - INFO - start to crawl [601233	桐昆股份	http://www.zjtkgf.com]
+2017-01-03 12:12:26,046 - mylogger - INFO - company 桐昆股份[601233] has been crawled
+2017-01-03 12:12:26,046 - mylogger - INFO - start to crawl [601369	陕鼓动力	http://www.shaangu.com]
+2017-01-03 12:12:26,047 - mylogger - INFO - company 陕鼓动力[601369] has been crawled
+2017-01-03 12:12:26,047 - mylogger - INFO - start to crawl [600567	山鹰纸业	http://www.shanyingpaper.com]
+2017-01-03 12:12:26,048 - mylogger - INFO - company 山鹰纸业[600567] has been crawled
+2017-01-03 12:12:26,049 - mylogger - INFO - start to crawl [300199	翰宇药业	http://www.hybio.com.cn]
+2017-01-03 12:12:26,051 - mylogger - INFO - write domain hybio.com.cn to /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf0/domain-urlfilter.txt
+2017-01-03 12:12:26,051 - mylogger - INFO - [300199	翰宇药业	http://www.hybio.com.cn] domain hybio.com.cn
+2017-01-03 12:12:26,051 - mylogger - INFO - /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/bin/crawl /home/hoyoung/workspace/wfp/wfp-python/.tmp/url0 300199 99999999
+2017-01-03 14:14:54,550 - mylogger - INFO - crawl task successful [300199	翰宇药业	http://www.hybio.com.cn] 
+2017-01-03 14:14:54,552 - mylogger - INFO - start to crawl [002185	华天科技	http://www.tshtkj.com]
+2017-01-03 14:14:54,556 - mylogger - INFO - write domain tshtkj.com to /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf0/domain-urlfilter.txt
+2017-01-03 14:14:54,556 - mylogger - INFO - [002185	华天科技	http://www.tshtkj.com] domain tshtkj.com
+2017-01-03 14:14:54,557 - mylogger - INFO - /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/bin/crawl /home/hoyoung/workspace/wfp/wfp-python/.tmp/url0 002185 99999999
+2017-01-03 14:27:09,598 - mylogger - INFO - crawl task successful [002185	华天科技	http://www.tshtkj.com] 
+2017-01-03 14:27:09,598 - mylogger - INFO - start to crawl [600765	中航重机	http://www.hm.avic.com]
+2017-01-03 14:27:09,601 - mylogger - INFO - write domain hm.avic.com to /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf0/domain-urlfilter.txt
+2017-01-03 14:27:09,601 - mylogger - INFO - [600765	中航重机	http://www.hm.avic.com] domain hm.avic.com
+2017-01-03 14:27:09,601 - mylogger - INFO - /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/bin/crawl /home/hoyoung/workspace/wfp/wfp-python/.tmp/url0 600765 99999999
+2017-01-03 16:04:05,156 - mylogger - INFO - crawl task successful [600765	中航重机	http://www.hm.avic.com] 
+2017-01-03 16:04:05,180 - mylogger - INFO - start to crawl [002366	台海核电	http://www.scdanfu.cn]
+2017-01-03 16:04:05,238 - mylogger - INFO - write domain scdanfu.cn to /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf0/domain-urlfilter.txt
+2017-01-03 16:04:05,239 - mylogger - INFO - [002366	台海核电	http://www.scdanfu.cn] domain scdanfu.cn
+2017-01-03 16:04:05,245 - mylogger - INFO - /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/bin/crawl /home/hoyoung/workspace/wfp/wfp-python/.tmp/url0 002366 99999999
+2017-01-03 16:04:38,287 - mylogger - INFO - crawl task successful [002366	台海核电	http://www.scdanfu.cn] 
+2017-01-03 16:04:38,290 - mylogger - INFO - start to crawl [300202	聚龙股份	http://www.julong.cc]
+2017-01-03 16:04:38,295 - mylogger - INFO - write domain julong.cc to /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf0/domain-urlfilter.txt
+2017-01-03 16:04:38,296 - mylogger - INFO - [300202	聚龙股份	http://www.julong.cc] domain julong.cc
+2017-01-03 16:04:38,296 - mylogger - INFO - /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/bin/crawl /home/hoyoung/workspace/wfp/wfp-python/.tmp/url0 300202 99999999
+2017-01-03 16:05:11,351 - mylogger - INFO - crawl task successful [300202	聚龙股份	http://www.julong.cc] 
+2017-01-03 16:05:11,353 - mylogger - INFO - start to crawl [002203	海亮股份	http://www.hailiang.com]
+2017-01-03 16:05:11,355 - mylogger - INFO - write domain hailiang.com to /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf0/domain-urlfilter.txt
+2017-01-03 16:05:11,355 - mylogger - INFO - [002203	海亮股份	http://www.hailiang.com] domain hailiang.com
+2017-01-03 16:05:11,356 - mylogger - INFO - /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/bin/crawl /home/hoyoung/workspace/wfp/wfp-python/.tmp/url0 002203 99999999
+2017-01-03 17:46:48,121 - mylogger - INFO - crawl task successful [002203	海亮股份	http://www.hailiang.com] 
+2017-01-03 17:46:48,130 - mylogger - INFO - start to crawl [600366	宁波韵升	http://www.yunsheng.com]
+2017-01-03 17:46:48,153 - mylogger - INFO - write domain yunsheng.com to /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf0/domain-urlfilter.txt
+2017-01-03 17:46:48,153 - mylogger - INFO - [600366	宁波韵升	http://www.yunsheng.com] domain yunsheng.com
+2017-01-03 17:46:48,157 - mylogger - INFO - /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/bin/crawl /home/hoyoung/workspace/wfp/wfp-python/.tmp/url0 600366 99999999
+2017-01-03 17:54:11,596 - mylogger - INFO - crawl task successful [600366	宁波韵升	http://www.yunsheng.com] 
+2017-01-03 17:54:11,596 - mylogger - INFO - start to crawl [000807	云铝股份	http://www.ylgf.com]
+2017-01-03 17:54:11,600 - mylogger - INFO - write domain ylgf.com to /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf0/domain-urlfilter.txt
+2017-01-03 17:54:11,600 - mylogger - INFO - [000807	云铝股份	http://www.ylgf.com] domain ylgf.com
+2017-01-03 17:54:11,601 - mylogger - INFO - /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/bin/crawl /home/hoyoung/workspace/wfp/wfp-python/.tmp/url0 000807 99999999
+2017-01-03 18:21:48,745 - mylogger - INFO - crawl task successful [000807	云铝股份	http://www.ylgf.com] 
+2017-01-03 18:21:48,746 - mylogger - INFO - start to crawl [002695	煌上煌	http://www.jxhsh.com.cn]
+2017-01-03 18:21:48,748 - mylogger - INFO - write domain jxhsh.com.cn to /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf0/domain-urlfilter.txt
+2017-01-03 18:21:48,748 - mylogger - INFO - [002695	煌上煌	http://www.jxhsh.com.cn] domain jxhsh.com.cn
+2017-01-03 18:21:48,749 - mylogger - INFO - /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/bin/crawl /home/hoyoung/workspace/wfp/wfp-python/.tmp/url0 002695 99999999
+2017-01-03 19:48:20,220 - mylogger - INFO - crawl task successful [002695	煌上煌	http://www.jxhsh.com.cn]2017-01-04 01:17:31,647 - mylogger - INFO - start to crawl [600970	中材国际	http://www.sinoma.com.cn]2017-01-04 01:30:32,327 - mylogger - INFO - excute command:cp -R /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/conf /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf0
+2017-01-04 01:30:32,345 - mylogger - INFO - excute command:cp -R /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/conf /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf1
+2017-01-04 01:30:32,349 - mylogger - INFO - excute command:cp -R /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/conf /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf2
+2017-01-04 01:30:32,357 - mylogger - INFO - start to crawl [600970	中材国际	http://www.sinoma.com.cn]
+2017-01-04 01:30:32,359 - mylogger - INFO - company 中材国际[600970] has been crawled
+2017-01-04 01:30:32,360 - mylogger - INFO - start to crawl [601233	桐昆股份	http://www.zjtkgf.com]
+2017-01-04 01:30:32,361 - mylogger - INFO - company 桐昆股份[601233] has been crawled
+2017-01-04 01:30:32,361 - mylogger - INFO - start to crawl [601369	陕鼓动力	http://www.shaangu.com]
+2017-01-04 01:30:32,362 - mylogger - INFO - company 陕鼓动力[601369] has been crawled
+2017-01-04 01:30:32,362 - mylogger - INFO - start to crawl [600567	山鹰纸业	http://www.shanyingpaper.com]
+2017-01-04 01:30:32,363 - mylogger - INFO - company 山鹰纸业[600567] has been crawled
+2017-01-04 01:30:32,363 - mylogger - INFO - start to crawl [300199	翰宇药业	http://www.hybio.com.cn]
+2017-01-04 01:30:32,364 - mylogger - INFO - company 翰宇药业[300199] has been crawled
+2017-01-04 01:30:32,364 - mylogger - INFO - start to crawl [002185	华天科技	http://www.tshtkj.com]
+2017-01-04 01:30:32,365 - mylogger - INFO - company 华天科技[002185] has been crawled
+2017-01-04 01:30:32,365 - mylogger - INFO - start to crawl [600765	中航重机	http://www.hm.avic.com]
+2017-01-04 01:30:32,366 - mylogger - INFO - company 中航重机[600765] has been crawled
+2017-01-04 01:30:32,366 - mylogger - INFO - start to crawl [002366	台海核电	http://www.scdanfu.cn]
+2017-01-04 01:30:32,367 - mylogger - INFO - company 台海核电[002366] has been crawled
+2017-01-04 01:30:32,367 - mylogger - INFO - start to crawl [300202	聚龙股份	http://www.julong.cc]
+2017-01-04 01:30:32,368 - mylogger - INFO - company 聚龙股份[300202] has been crawled
+2017-01-04 01:30:32,368 - mylogger - INFO - start to crawl [002203	海亮股份	http://www.hailiang.com]
+2017-01-04 01:30:32,369 - mylogger - INFO - company 海亮股份[002203] has been crawled
+2017-01-04 01:30:32,370 - mylogger - INFO - start to crawl [600366	宁波韵升	http://www.yunsheng.com]
+2017-01-04 01:30:32,371 - mylogger - INFO - company 宁波韵升[600366] has been crawled
+2017-01-04 01:30:32,371 - mylogger - INFO - start to crawl [000807	云铝股份	http://www.ylgf.com]
+2017-01-04 01:30:32,372 - mylogger - INFO - company 云铝股份[000807] has been crawled
+2017-01-04 01:30:32,372 - mylogger - INFO - start to crawl [002695	煌上煌	http://www.jxhsh.com.cn]
+2017-01-04 01:30:32,373 - mylogger - INFO - company 煌上煌[002695] has been crawled
+2017-01-04 01:30:32,373 - mylogger - INFO - start to crawl [000831	*ST五稀	http://www.cmreltd.com]
+2017-01-04 01:30:32,375 - mylogger - INFO - write domain cmreltd.com to /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf0/domain-urlfilter.txt
+2017-01-04 01:30:32,375 - mylogger - INFO - [000831	*ST五稀	http://www.cmreltd.com] domain cmreltd.com
+2017-01-04 01:30:32,376 - mylogger - INFO - /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/bin/crawl /home/hoyoung/workspace/wfp/wfp-python/.tmp/url0 000831 99999999
+2017-01-04 04:18:22,584 - mylogger - INFO - crawl task successful [000831	*ST五稀	http://www.cmreltd.com] 
+2017-01-04 04:18:22,594 - mylogger - INFO - start to crawl [600073	上海梅林	http://www.shanghaimaling.com]
+2017-01-04 04:18:22,620 - mylogger - INFO - write domain shanghaimaling.com to /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf0/domain-urlfilter.txt
+2017-01-04 04:18:22,621 - mylogger - INFO - [600073	上海梅林	http://www.shanghaimaling.com] domain shanghaimaling.com
+2017-01-04 04:18:22,623 - mylogger - INFO - /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/bin/crawl /home/hoyoung/workspace/wfp/wfp-python/.tmp/url0 600073 99999999
+2017-01-04 04:38:23,124 - mylogger - INFO - crawl task successful [600073	上海梅林	http://www.shanghaimaling.com] 
+2017-01-04 04:38:23,125 - mylogger - INFO - start to crawl [000930	中粮生化	http://www.zlahsh.com]
+2017-01-04 04:38:23,127 - mylogger - INFO - company 中粮生化[000930] has been crawled2017-01-04 10:56:02,550 - mylogger - INFO - start to crawl [600970	中材国际	http://www.sinoma.com.cn]
+2017-01-04 10:56:02,553 - mylogger - INFO - company 中材国际[600970] has been crawled
+2017-01-04 10:56:02,553 - mylogger - INFO - start to crawl [601233	桐昆股份	http://www.zjtkgf.com]
+2017-01-04 10:56:02,554 - mylogger - INFO - company 桐昆股份[601233] has been crawled
+2017-01-04 10:56:02,554 - mylogger - INFO - start to crawl [601369	陕鼓动力	http://www.shaangu.com]
+2017-01-04 10:56:02,555 - mylogger - INFO - company 陕鼓动力[601369] has been crawled
+2017-01-04 10:56:02,555 - mylogger - INFO - start to crawl [600567	山鹰纸业	http://www.shanyingpaper.com]
+2017-01-04 10:56:02,556 - mylogger - INFO - company 山鹰纸业[600567] has been crawled
+2017-01-04 10:56:02,557 - mylogger - INFO - start to crawl [300199	翰宇药业	http://www.hybio.com.cn]
+2017-01-04 10:56:02,558 - mylogger - INFO - company 翰宇药业[300199] has been crawled
+2017-01-04 10:56:02,558 - mylogger - INFO - start to crawl [002185	华天科技	http://www.tshtkj.com]
+2017-01-04 10:56:02,559 - mylogger - INFO - company 华天科技[002185] has been crawled
+2017-01-04 10:56:02,559 - mylogger - INFO - start to crawl [600765	中航重机	http://www.hm.avic.com]
+2017-01-04 10:56:02,560 - mylogger - INFO - company 中航重机[600765] has been crawled
+2017-01-04 10:56:02,560 - mylogger - INFO - start to crawl [002366	台海核电	http://www.scdanfu.cn]
+2017-01-04 10:56:02,561 - mylogger - INFO - company 台海核电[002366] has been crawled
+2017-01-04 10:56:02,561 - mylogger - INFO - start to crawl [300202	聚龙股份	http://www.julong.cc]
+2017-01-04 10:56:02,562 - mylogger - INFO - company 聚龙股份[300202] has been crawled
+2017-01-04 10:56:02,562 - mylogger - INFO - start to crawl [002203	海亮股份	http://www.hailiang.com]
+2017-01-04 10:56:02,563 - mylogger - INFO - company 海亮股份[002203] has been crawled
+2017-01-04 10:56:02,564 - mylogger - INFO - start to crawl [600366	宁波韵升	http://www.yunsheng.com]
+2017-01-04 10:56:02,565 - mylogger - INFO - company 宁波韵升[600366] has been crawled
+2017-01-04 10:56:02,565 - mylogger - INFO - start to crawl [000807	云铝股份	http://www.ylgf.com]
+2017-01-04 10:56:02,566 - mylogger - INFO - company 云铝股份[000807] has been crawled
+2017-01-04 10:56:02,566 - mylogger - INFO - start to crawl [002695	煌上煌	http://www.jxhsh.com.cn]
+2017-01-04 10:56:02,567 - mylogger - INFO - company 煌上煌[002695] has been crawled
+2017-01-04 10:56:02,567 - mylogger - INFO - start to crawl [000831	*ST五稀	http://www.cmreltd.com]
+2017-01-04 10:56:02,568 - mylogger - INFO - company *ST五稀[000831] has been crawled
+2017-01-04 10:56:02,568 - mylogger - INFO - start to crawl [600073	上海梅林	http://www.shanghaimaling.com]
+2017-01-04 10:56:02,569 - mylogger - INFO - company 上海梅林[600073] has been crawled
+2017-01-04 10:56:02,569 - mylogger - INFO - start to crawl [000930	中粮生化	http://www.zlahsh.com]
+2017-01-04 10:56:02,570 - mylogger - INFO - company 中粮生化[000930] has been crawled2017-01-04 11:00:05,353 - mylogger - INFO - excute command:cp -R /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/conf /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf0
+2017-01-04 11:00:05,372 - mylogger - INFO - excute command:cp -R /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/conf /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf1
+2017-01-04 11:00:05,375 - mylogger - INFO - excute command:cp -R /home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local/conf /home/hoyoung/workspace/wfp/wfp-python/.tmp/conf2
+2017-01-04 11:00:05,380 - mylogger - INFO - start to crawl [600970	中材国际	http://www.sinoma.com.cn]
+2017-01-04 11:00:05,383 - mylogger - INFO - company 中材国际[600970] has been crawled
+2017-01-04 11:00:05,383 - mylogger - INFO - start to crawl [601233	桐昆股份	http://www.zjtkgf.com]
+2017-01-04 11:00:05,384 - mylogger - INFO - company 桐昆股份[601233] has been crawled
+2017-01-04 11:00:05,384 - mylogger - INFO - start to crawl [601369	陕鼓动力	http://www.shaangu.com]
+2017-01-04 11:00:05,385 - mylogger - INFO - company 陕鼓动力[601369] has been crawled
+2017-01-04 11:00:05,385 - mylogger - INFO - start to crawl [600567	山鹰纸业	http://www.shanyingpaper.com]
+2017-01-04 11:00:05,386 - mylogger - INFO - company 山鹰纸业[600567] has been crawled
+2017-01-04 11:00:05,386 - mylogger - INFO - start to crawl [300199	翰宇药业	http://www.hybio.com.cn]
+2017-01-04 11:00:05,387 - mylogger - INFO - company 翰宇药业[300199] has been crawled
+2017-01-04 11:00:05,388 - mylogger - INFO - start to crawl [002185	华天科技	http://www.tshtkj.com]
+2017-01-04 11:00:05,389 - mylogger - INFO - company 华天科技[002185] has been crawled
+2017-01-04 11:00:05,389 - mylogger - INFO - start to crawl [600765	中航重机	http://www.hm.avic.com]
+2017-01-04 11:00:05,390 - mylogger - INFO - company 中航重机[600765] has been crawled
+2017-01-04 11:00:05,390 - mylogger - INFO - start to crawl [002366	台海核电	http://www.scdanfu.cn]
+2017-01-04 11:00:05,391 - mylogger - INFO - company 台海核电[002366] has been crawled
+2017-01-04 11:00:05,391 - mylogger - INFO - start to crawl [300202	聚龙股份	http://www.julong.cc]
+2017-01-04 11:00:05,392 - mylogger - INFO - company 聚龙股份[300202] has been crawled
+2017-01-04 11:00:05,393 - mylogger - INFO - start to crawl [002203	海亮股份	http://www.hailiang.com]
+2017-01-04 11:00:05,394 - mylogger - INFO - company 海亮股份[002203] has been crawled
+2017-01-04 11:00:05,394 - mylogger - INFO - start to crawl [600366	宁波韵升	http://www.yunsheng.com]
+2017-01-04 11:00:05,395 - mylogger - INFO - company 宁波韵升[600366] has been crawled
+2017-01-04 11:00:05,395 - mylogger - INFO - start to crawl [000807	云铝股份	http://www.ylgf.com]
+2017-01-04 11:00:05,396 - mylogger - INFO - company 云铝股份[000807] has been crawled
+2017-01-04 11:00:05,396 - mylogger - INFO - start to crawl [002695	煌上煌	http://www.jxhsh.com.cn]
+2017-01-04 11:00:05,397 - mylogger - INFO - company 煌上煌[002695] has been crawled
+2017-01-04 11:00:05,397 - mylogger - INFO - start to crawl [000831	*ST五稀	http://www.cmreltd.com]
+2017-01-04 11:00:05,398 - mylogger - INFO - company *ST五稀[000831] has been crawled
+2017-01-04 11:00:05,398 - mylogger - INFO - start to crawl [600073	上海梅林	http://www.shanghaimaling.com]
+2017-01-04 11:00:05,399 - mylogger - INFO - company 上海梅林[600073] has been crawled
+2017-01-04 11:00:05,399 - mylogger - INFO - start to crawl [000930	中粮生化	http://www.zlahsh.com]
+2017-01-04 11:00:05,400 - mylogger - INFO - company 中粮生化[000930] has been crawled
