@@ -12,7 +12,7 @@ from utils.EmailSender import EmailSender
 NUTCH_HOME = '/home/hoyoung/workspace/eclipse/nutch-wfp/runtime/local'
 TMP_PATH = '/home/hoyoung/workspace/wfp/wfp-python/.tmp'
 LOG_PATH = '/home/hoyoung/tmp/nutch/logs'
-COMPANY_PATH = '/home/hoyoung/workspace/wfp/wfp-python/nutch/website_list'
+COMPANY_FILE = '/home/hoyoung/workspace/wfp/wfp-python/nutch/website_list/site03.txt'
 
 JOB_NUM = 3
 
@@ -58,6 +58,8 @@ def set_hadoop_log_path(log4j_file, hadoop_log_dir, hadoop_log_file):
 
 
 if __name__ == '__main__':
+    if not os.path.exists(LOG_PATH):
+        os.makedirs(LOG_PATH)
     email_sender = EmailSender('smtp.sina.com.cn', 'hoyoung@sina.cn', mail_pass='')
     nutch_db = mongo_cli.get_database('nutch')
     if not os.path.exists(TMP_PATH):
@@ -78,7 +80,7 @@ if __name__ == '__main__':
             os.makedirs(url_dir)
         url_dirs.append(url_dir)
         conf_dirs.append(conf_dir)
-    companies = get_company_info(COMPANY_PATH + '/site03.txt')
+    companies = get_company_info(COMPANY_FILE)
 
     for company in companies:
         logger.info('start to crawl [%s]' % company)

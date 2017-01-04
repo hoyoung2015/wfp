@@ -8,3 +8,4 @@ logs/
 .classpath
 urls_cache*/
 */.tmp/
+*/*.log
