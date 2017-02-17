@@ -10,11 +10,11 @@
 	<fileSets>
 		<fileSet>
 			<directory>target/classes</directory>
-			<excludes>
+			<!-- <excludes>
 				<exclude>*.txt</exclude>
-				<!-- <exclude>*.xml</exclude> -->
+				<exclude>*.xml</exclude>
 				<exclude>*.properties</exclude>
-			</excludes>
+			</excludes> -->
 			<outputDirectory>/</outputDirectory>
 		</fileSet>
 	</fileSets>

@@ -86,9 +86,10 @@ public class ComWebProcessor implements PageProcessor {
 			if (Pattern.matches(".+(\\.|/)(" + EXCEPT_SUFFIX + ")\\?.*", url)
 					|| Pattern.matches(".+\\.(" + EXCEPT_SUFFIX + ")$", url) // 排除后缀
 					|| domainThis.indexOf(domain) < 0
-					|| url.contains("#") || url.startsWith("mailto")
+					// || url.contains("#")
+					|| !url.startsWith("http")
 					|| Pattern.matches("http(s?)://" + domainThis + "/(en|EN|tw|TW|english|ENGLISH)(/.*)?", url)
-					|| domainThis.startsWith("english.") //英文网页
+					|| domainThis.startsWith("english.") // 英文网页
 					|| Pattern.matches("http(s?)://bbs\\." + domain + ".*", url)
 					|| Pattern.matches(".+(&|\\?)id=\\-\\d+.*", url)) {
 				iterator.remove();

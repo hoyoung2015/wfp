@@ -11,5 +11,6 @@ public interface ComWebConstant {
 	String DB_NAME = "wfp_spider";
 	String DB_NAME_TEST = "wfp_spider_test";
 	String COLLECTION_NAME = "com_page";
+	String COLLECTION_PREFIX = "com_page_";
 	String COLLECTION_NAME_TMP = "com_page_tmp";
 }

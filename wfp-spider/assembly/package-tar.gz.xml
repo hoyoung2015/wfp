@@ -21,6 +21,7 @@
             <directory>src/main/resources</directory>
             <includes>
                 <include>*.properties</include>
+                <include>*.txt</include>
                 <include>logback.xml</include>
             </includes>
             <outputDirectory>${project.package.dir}/java_conf</outputDirectory>
