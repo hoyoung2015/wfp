@@ -62,6 +62,7 @@ public class ComWebProcessor implements PageProcessor {
 				} else {
 					Request request = new Request(url);
 					request.putExtra(ComPage.STOCK_CODE, page.getRequest().getExtra(ComPage.STOCK_CODE));
+					request.putExtra("domain", page.getRequest().getExtra("domain"));
 					page.addTargetRequest(request);
 				}
 			}
@@ -74,19 +75,20 @@ public class ComWebProcessor implements PageProcessor {
 
 	private List<String> urlFilter(Page page) {
 		List<String> all = page.getHtml().links().all();
-
-		String domain = UrlUtils.getDomain(page.getRequest().getUrl()).replaceAll("^www\\.", "");
+		String domain = (String) page.getRequest().getExtra("domain");
 		Iterator<String> iterator = all.iterator();
 		while (iterator.hasNext()) {
 			String url = iterator.next();
-			String domain2 = UrlUtils.getDomain(url);
+			String domainThis = UrlUtils.getDomain(url);
 			/**
 			 * .css?v=1 .css,.jpg 站内 包含#，锚记 "mailto"开头 英文页，繁体
 			 */
 			if (Pattern.matches(".+(\\.|/)(" + EXCEPT_SUFFIX + ")\\?.*", url)
-					|| Pattern.matches(".+\\.(" + EXCEPT_SUFFIX + ")$", url) || domain2.indexOf(domain) < 0
+					|| Pattern.matches(".+\\.(" + EXCEPT_SUFFIX + ")$", url) // 排除后缀
+					|| domainThis.indexOf(domain) < 0
 					|| url.contains("#") || url.startsWith("mailto")
-					|| Pattern.matches(".+" + domain2 + "/(en|EN|tw|TW|english|ENGLISH)(/.*)?", url)
+					|| Pattern.matches("http(s?)://" + domainThis + "/(en|EN|tw|TW|english|ENGLISH)(/.*)?", url)
+					|| domainThis.startsWith("english.") //英文网页
 					|| Pattern.matches("http(s?)://bbs\\." + domain + ".*", url)
 					|| Pattern.matches(".+(&|\\?)id=\\-\\d+.*", url)) {
 				iterator.remove();

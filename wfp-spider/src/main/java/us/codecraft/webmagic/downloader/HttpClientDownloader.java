@@ -2,6 +2,7 @@ package us.codecraft.webmagic.downloader;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -47,8 +48,7 @@ public class HttpClientDownloader extends AbstractDownloader {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
-	// private final Map<String, CloseableHttpClient> httpClients = new
-	// HashMap<String, CloseableHttpClient>();
+	 private final Map<String, CloseableHttpClient> httpClients = new HashMap<String, CloseableHttpClient>();
 
 	private HttpClientGenerator httpClientGenerator = new HttpClientGenerator();
 
@@ -56,17 +56,21 @@ public class HttpClientDownloader extends AbstractDownloader {
 		if (site == null) {
 			return httpClientGenerator.getClient(null, proxy);
 		}
-		// String domain = site.getDomain();
-		// CloseableHttpClient httpClient = httpClients.get(domain);
-		// if (httpClient == null) {
-		// synchronized (this) {
-		// httpClient = httpClients.get(domain);
-		// if (httpClient == null) {
-		// httpClient = httpClientGenerator.getClient(site, proxy);
-		// httpClients.put(domain, httpClient);
-		// }
-		// }
-		// }
+		
+		
+		 String domain = site.getDomain();
+		 CloseableHttpClient httpClient = httpClients.get(domain);
+		 if (httpClient == null) {
+		 synchronized (this) {
+		 httpClient = httpClients.get(domain);
+		 if (httpClient == null) {
+		 httpClient = httpClientGenerator.getClient(site, proxy);
+		 httpClients.put(domain, httpClient);
+		 }
+		 }
+		 }
+		
+		
 		return httpClientGenerator.getClient(site, proxy);
 	}
 

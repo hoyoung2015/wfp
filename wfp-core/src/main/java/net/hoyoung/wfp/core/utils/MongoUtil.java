@@ -17,8 +17,7 @@ public class MongoUtil {
 		if (mongoClient == null) {
 			synchronized (MongoUtil.class) {
 				if (mongoClient == null) {
-					// mongoClient = new MongoClient("127.0.0.1",8017);
-					mongoClient = new MongoClient("127.0.0.1", 27017);
+					mongoClient = new MongoClient(WFPContext.getProperty("mongodb.host"), WFPContext.getProperty("mongodb.port", Integer.class));
 				}
 			}
 		}
@@ -40,7 +39,6 @@ public class MongoUtil {
 	}
 
 	public static void main(String[] args) {
-		MongoCollection<Document> collection = MongoUtil.getCollection("wfp_spider", "com_page");
-		collection.insertOne(new Document("a", "b"));
+//		MongoCollection<Document> collection = MongoUtil.getCollection("wfp_spider", "com_page");
 	}
 }

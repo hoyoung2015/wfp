@@ -25,11 +25,13 @@ import com.mongodb.client.model.Projections;
 import net.hoyoung.wfp.core.utils.MongoUtil;
 import net.hoyoung.wfp.core.utils.RedisUtil;
 import net.hoyoung.wfp.spider.comweb.bo.ComPage;
+import net.hoyoung.wfp.spider.util.ProxyReader;
 import net.hoyoung.wfp.spider.util.URLNormalizer;
 import redis.clients.jedis.Jedis;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.scheduler.RedisScheduler;
+import us.codecraft.webmagic.utils.UrlUtils;
 
 public class ComWebSpider {
 	static Logger LOG = LoggerFactory.getLogger(ComWebSpider.class);
@@ -61,13 +63,13 @@ public class ComWebSpider {
 		String indexTmp = collectionTmp.createIndex(Indexes.ascending(ComPage.STOCK_CODE, ComPage.URL),
 				new IndexOptions().unique(true));
 		LOG.info("{} create index {}", collectionTmp.getNamespace(), indexTmp);
-		
+
 		MongoCollection<Document> collection = MongoUtil.getCollection(ComWebConstant.DB_NAME,
 				ComWebConstant.COLLECTION_NAME);
 		String index = collection.createIndex(Indexes.ascending(ComPage.STOCK_CODE, ComPage.URL),
 				new IndexOptions().unique(true));
 		LOG.info("{} create index {}", collection.getNamespace(), index);
-		
+
 		ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_NUM);
 		for (String line : lines) {
 			if (line.startsWith("#")) {
@@ -115,15 +117,14 @@ public class ComWebSpider {
 				processor.getSite().setSleepTime(sleepTime);
 			}
 			// 设置代理
-			List<String[]> proxies = Lists.newArrayList();
-//			proxies.add(new String[] { "hoyoung", "QWerASdf", "139.129.93.2", "8128" });// 杨鹏的阿里云
-			proxies.add(new String[] { "hoyoung", "QWerASdf", "123.206.58.101", "8128" });// 我的腾讯云
-			proxies.add(new String[] { "hoyoung", "QWerASdf", "182.61.20.189", "8128" });// 我的百度云，首月9.9
-			proxies.add(new String[] { "hoyoung", "QWerASdf", "118.89.238.129", "8128" });// 余启林的腾讯学生机
-			proxies.add(new String[] { "hoyoung", "QWerASdf", "115.159.121.124", "8128" });// 刘威浩的腾讯学生机
-			proxies.add(new String[] { "hoyoung", "QWerASdf", "119.29.62.75", "8128" });// 邹小燕的腾讯学生机
-			proxies.add(new String[] { "hoyoung", "QWerASdf", "115.159.92.73", "8128" });// 马晶苗的腾讯学生机
-			processor.getSite().setHttpProxyPool(proxies, false);
+			List<String[]> proxies = null;
+			try {
+				proxies = ProxyReader.read("proxy.txt");
+			} catch (IOException e) {
+				LOG.warn("{} start error {}", stockCode, e.getStackTrace());
+				return;
+			}
+			processor.getSite().setHttpProxyPool(proxies, true);
 			RedisScheduler redisScheduler = new RedisScheduler("127.0.0.1");
 			Spider spider = Spider.create(processor).setScheduler(redisScheduler).thread(1);
 			ComWebSpiderListener spiderListener = new ComWebSpiderListener(spider);
@@ -136,6 +137,7 @@ public class ComWebSpider {
 				return;
 			}
 			request.putExtra(ComPage.STOCK_CODE, stockCode);
+			request.putExtra("domain", UrlUtils.getDomain(webSite).replaceAll("^www\\.", ""));
 			spider.addRequest(request).setDownloader(new ComWebHttpClientDownloader()).addPipeline(new ComWebPipeline())
 					.run();
 			// 删除redisSchedule
@@ -145,10 +147,10 @@ public class ComWebSpider {
 			MongoCollection<Document> collectionTmp = MongoUtil.getCollection(ComWebConstant.DB_NAME,
 					ComWebConstant.COLLECTION_NAME_TMP);
 			long llen = collectionTmp.count(Filters.eq(ComPage.STOCK_CODE, stockCode));
-			if (spiderListener.isFail() || llen == 0) {
+			if (spiderListener.isFail() || llen == 1) {
 				LOG.warn("{} {} failed", stockCode, webSite);
 				try {
-					new File(stockCode + ".fail").createNewFile();
+					FileUtils.writeStringToFile(new File(stockCode + ".fail"), webSite);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

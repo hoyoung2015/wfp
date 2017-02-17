@@ -13,7 +13,7 @@ public class RedisUtil {
 	public static Jedis getJedis() {
 		Jedis jedis = localJedis.get();
 		if (jedis == null) {
-			jedis = new Jedis("127.0.0.1", 6379);
+			jedis = new Jedis(WFPContext.getProperty("redis.host"), WFPContext.getProperty("redis.port", Integer.class));
 			localJedis.set(jedis);
 		}
 		if(!jedis.isConnected()){

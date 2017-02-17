@@ -19,7 +19,7 @@ public class PhantomJsTest {
 		PhantomJsPageProcessor processor = new PhantomJsPageProcessor();
 		
 		List<String[]> proxies = Lists.newArrayList();
-		proxies.add(new String[] { "hoyoung", "QWerASdf", "115.159.92.73", "8128" });// 马晶苗的腾讯学生机
+		proxies.add(new String[] { "", "", "115.159.92.73", "8128" });// 马晶苗的腾讯学生机
 		PhantomJSDownloader downloader = new PhantomJSDownloader("/Users/baidu/local/phantomjs/bin/phantomjs");
 		processor.getSite().setHttpProxyPool(proxies, false);
 		Spider.create(processor).setDownloader(downloader).addUrl("http://1212.ip138.com/ic.asp").thread(1).run();
