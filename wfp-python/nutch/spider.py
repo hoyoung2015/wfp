@@ -14,7 +14,7 @@ TMP_PATH = '/home/hoyoung/workspace/wfp/wfp-python/.tmp'
 LOG_PATH = '/home/hoyoung/tmp/nutch/logs'
 COMPANY_FILE = '/home/hoyoung/workspace/wfp/wfp-python/nutch/website_list/site03.txt'
 
-JOB_NUM = 3
+JOB_NUM = 1
 
 
 class CompanySimple:

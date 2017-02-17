@@ -1,0 +1,4 @@
+999999	hoyoung	http://www.hoyoung.net	0
+600970	中材国际	http://www.sinoma.com.cn	0
+#300159	新研股份	http://www.xjjxy.com.cn	0
+#601233	桐昆股份	http://www.zjtkgf.com	0

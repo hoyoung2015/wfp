@@ -8,7 +8,7 @@ import configparser
 import logging.config
 
 common_path = os.path.split(os.path.realpath(__file__))[0]+'/../'
-print(common_path)
+# print(common_path)
 # 配置文件
 config = configparser.ConfigParser()
 config.read(filenames=common_path+'config.conf')
