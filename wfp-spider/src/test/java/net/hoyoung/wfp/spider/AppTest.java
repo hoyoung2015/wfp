@@ -20,39 +20,35 @@ import net.hoyoung.wfp.spider.comweb.bo.ComPage;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
+public class AppTest extends TestCase {
+	/**
+	 * Create the test case
+	 *
+	 * @param testName
+	 *            name of the test case
+	 */
+	public AppTest(String testName) {
+		super(testName);
+	}
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+	/**
+	 * @return the suite of tests being tested
+	 */
+	public static Test suite() {
+		return new TestSuite(AppTest.class);
+	}
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-    	MongoCollection<Document> collection = MongoUtil.getCollection(ComWebConstant.DB_NAME,
+	/**
+	 * Rigourous Test :-)
+	 */
+	public void testApp() {
+		MongoCollection<Document> collection = MongoUtil.getCollection(ComWebConstant.DB_NAME,
 				ComWebConstant.COLLECTION_NAME);
 		MongoCollection<Document> collectionTmp = MongoUtil.getCollection(ComWebConstant.DB_NAME,
 				ComWebConstant.COLLECTION_NAME_TMP);
 		System.out.println(collection.getNamespace());
 		System.out.println(collectionTmp.getNamespace());
-		
+
 		String stockCode = "600971";
 		MongoCursor<Document> iterator = collectionTmp.find(Filters.eq(ComPage.STOCK_CODE, stockCode))
 				.projection(Projections.exclude("_id")).iterator();
@@ -70,12 +66,29 @@ public class AppTest
 			collectionTmp.deleteMany(Filters.eq(ComPage.STOCK_CODE, stockCode));
 			System.err.println("finish " + stockCode);
 		}
-    }
-    public void testc(){
-    	String index = MongoUtil.getCollection(ComWebConstant.DB_NAME, ComWebConstant.COLLECTION_NAME_TMP)
-		.createIndex(Indexes.ascending(ComPage.STOCK_CODE, ComPage.URL), new IndexOptions().unique(true));
-    	System.out.println(index);
-    	MongoUtil.getCollection(ComWebConstant.DB_NAME, ComWebConstant.COLLECTION_NAME)
-		.createIndex(Indexes.ascending(ComPage.STOCK_CODE, ComPage.URL), new IndexOptions().unique(true));
-    }
+	}
+
+	public void testc() {
+		String index = MongoUtil.getCollection(ComWebConstant.DB_NAME, ComWebConstant.COLLECTION_NAME_TMP)
+				.createIndex(Indexes.ascending(ComPage.STOCK_CODE, ComPage.URL), new IndexOptions().unique(true));
+		System.out.println(index);
+		MongoUtil.getCollection(ComWebConstant.DB_NAME, ComWebConstant.COLLECTION_NAME)
+				.createIndex(Indexes.ascending(ComPage.STOCK_CODE, ComPage.URL), new IndexOptions().unique(true));
+	}
+
+	public void testd() {
+		String domain = "hoyoung.net";
+		String domainThis = "bbs.hoyoung.net";
+		isbbs(domainThis, domain);
+	}
+
+	private boolean isbbs(String domainThis, String domain) {
+		int i = domainThis.indexOf(domain);
+		if (i == 0)
+			return false;
+		String prefix = domainThis.substring(0, i - 1);
+		if (prefix.startsWith("bbs") || prefix.endsWith("bbs"))
+			return true;
+		return false;
+	}
 }

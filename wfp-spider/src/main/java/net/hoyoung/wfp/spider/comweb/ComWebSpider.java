@@ -165,6 +165,10 @@ public class ComWebSpider {
 				logger.info(vo.getStockCode() + " " + vo.getWebSite() + " has been crawled");
 				continue;
 			}
+			if(new File(vo.getStockCode()+".fail").exists()){
+				logger.info(vo.getStockCode() + " " + vo.getWebSite() + " is arready fail");
+				continue;
+			}
 			threadPool.execute(new TaskExecutor(vo));
 		}
 		threadPool.shutdown();

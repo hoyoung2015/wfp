@@ -71,7 +71,7 @@ public class ComWebProcessor implements PageProcessor {
 	}
 
 	static final String EXCEPT_SUFFIX = "xls|xlsx|gif|GIF|jpg|JPG|png|PNG|ico|ICO|css|CSS|sit|SIT|eps|EPS|wmf|WMF|zip|ZIP|rar|RAR|ppt|PPT|mpg|MPG|xls|XLS|gz|GZ|rpm|RPM|tgz|TGZ|mov|MOV|exe|EXE|jpeg|JPEG|bmp|BMP|js|JS|swf|SWF|flv|FLV|mp4|MP4|mp3|MP3|wmv|WMV";
-	private static final int SLEEP_TIME = 250;
+	private static final int SLEEP_TIME = 200;
 
 	private List<String> urlFilter(Page page) {
 		List<String> all = page.getHtml().links().all();
@@ -80,15 +80,17 @@ public class ComWebProcessor implements PageProcessor {
 		while (iterator.hasNext()) {
 			String url = iterator.next();
 			String domainThis = UrlUtils.getDomain(url);
+
 			/**
 			 * .css?v=1 .css,.jpg 站内 包含#，锚记 "mailto"开头 英文页，繁体
 			 */
 			if (Pattern.matches(".+(\\.|/)(" + EXCEPT_SUFFIX + ")\\?.*", url)
 					|| Pattern.matches(".+\\.(" + EXCEPT_SUFFIX + ")$", url) // 排除后缀
-					|| domainThis.indexOf(domain) < 0
+					|| !domainThis.endsWith(domain) 
+					|| isbbs(domainThis, domain) // 排除bbs
 					// || url.contains("#")
 					|| !url.startsWith("http")
-					|| Pattern.matches("http(s?)://" + domainThis + "/(en|EN|tw|TW|english|ENGLISH)(/.*)?", url)
+					|| Pattern.matches("http(s?)://" + domainThis + "/(bbs|en|EN|tw|TW|english|ENGLISH)(/.*)?", url)
 					|| domainThis.startsWith("english.") // 英文网页
 					|| Pattern.matches("http(s?)://bbs\\." + domain + ".*", url)
 					|| Pattern.matches(".+(&|\\?)id=\\-\\d+.*", url)) {
@@ -96,6 +98,16 @@ public class ComWebProcessor implements PageProcessor {
 			}
 		}
 		return all;
+	}
+
+	private boolean isbbs(String domainThis, String domain) {
+		int i = domainThis.indexOf(domain);
+		if (i == 0)
+			return false;
+		String prefix = domainThis.substring(0, i - 1);
+		if (prefix.startsWith("bbs") || prefix.endsWith("bbs"))
+			return true;
+		return false;
 	}
 
 	private Site site = Site.me().setSleepTime(SLEEP_TIME).setRetryTimes(3).setTimeOut(40000).setCycleRetryTimes(2)
