@@ -8,7 +8,7 @@ public interface ComWebConstant {
 	String URL_LIST_KEY = "urlList";
 	String STOCK_CODE_KEY = "stockCode";
 	String CONTENT_LENGTH_KEY = "contentLength";
-	String DB_NAME = "wfp_spider";
+	String DB_NAME = "wfp_com_page";
 	String DB_NAME_TEST = "wfp_spider_test";
 	String COLLECTION_NAME = "com_page";
 	String COLLECTION_PREFIX = "com_page_";

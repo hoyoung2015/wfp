@@ -25,8 +25,10 @@ public class ComWebDomain {
 		Set<String> set = Sets.newHashSet();
 		
 		try {
+			int cnt = 0;
 			while(iterator.hasNext()){
 				Document document = iterator.next();
+				System.out.println(++cnt);
 				set.add(UrlUtils.getDomain(document.getString(ComPage.URL)));
 			}
 		} finally {

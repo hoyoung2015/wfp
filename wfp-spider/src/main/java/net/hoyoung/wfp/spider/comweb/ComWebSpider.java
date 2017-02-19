@@ -19,13 +19,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
-import com.mongodb.MongoWriteException;
+import com.mongodb.MongoNamespace;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.IndexOptions;
 import com.mongodb.client.model.Indexes;
-import com.mongodb.client.model.Projections;
 
 import net.hoyoung.wfp.core.utils.MongoUtil;
 import net.hoyoung.wfp.core.utils.RedisUtil;
@@ -100,11 +99,15 @@ public class ComWebSpider {
 
 	private void createIndex() {
 		// 建索引
-		MongoCollection<Document> collectionTmp = MongoUtil.getCollection(ComWebConstant.DB_NAME,
-				ComWebConstant.COLLECTION_NAME_TMP);
-		String indexTmp = collectionTmp.createIndex(Indexes.ascending(ComPage.STOCK_CODE, ComPage.URL),
-				new IndexOptions().unique(true));
-		logger.info("{} create index {}", collectionTmp.getNamespace(), indexTmp);
+		// MongoCollection<Document> collectionTmp =
+		// MongoUtil.getCollection(ComWebConstant.DB_NAME,
+		// ComWebConstant.COLLECTION_NAME_TMP);
+		// String indexTmp =
+		// collectionTmp.createIndex(Indexes.ascending(ComPage.STOCK_CODE,
+		// ComPage.URL),
+		// new IndexOptions().unique(true));
+		// logger.info("{} create index {}", collectionTmp.getNamespace(),
+		// indexTmp);
 	}
 
 	private List<ComVo> readCom() {
@@ -135,14 +138,15 @@ public class ComWebSpider {
 		}
 		return list;
 	}
-	
-	public Set<String> getCollectionNameSet(){
+
+	public Set<String> getCollectionNameSet() {
 		Set<String> set = new HashSet<>();
-		MongoCursor<String> iterator = MongoUtil.getClient().getDatabase(ComWebConstant.DB_NAME).listCollectionNames().iterator();
+		MongoCursor<String> iterator = MongoUtil.getClient().getDatabase(ComWebConstant.DB_NAME).listCollectionNames()
+				.iterator();
 		try {
-			while(iterator.hasNext()){
+			while (iterator.hasNext()) {
 				String name = iterator.next();
-				if(name.startsWith(ComWebConstant.COLLECTION_PREFIX)){
+				if (!name.endsWith("tmp")) {
 					set.add(name);
 				}
 			}
@@ -161,11 +165,11 @@ public class ComWebSpider {
 		ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_NUM);
 		Set<String> nameSet = getCollectionNameSet();
 		for (ComVo vo : list) {
-			if (nameSet.contains(ComWebConstant.COLLECTION_PREFIX+vo.getStockCode())) {
+			if (nameSet.contains(vo.getStockCode())) {
 				logger.info(vo.getStockCode() + " " + vo.getWebSite() + " has been crawled");
 				continue;
 			}
-			if(new File(vo.getStockCode()+".fail").exists()){
+			if (new File(vo.getStockCode() + ".fail").exists()) {
 				logger.info(vo.getStockCode() + " " + vo.getWebSite() + " is arready fail");
 				continue;
 			}
@@ -197,6 +201,11 @@ public class ComWebSpider {
 		@Override
 		public void run() {
 			LOG.info("start crawl {} {}", com.getStockCode(), com.getWebSite());
+			MongoCollection<Document> collectionTmp = MongoUtil.getCollection(ComWebConstant.DB_NAME,
+					com.getStockCode() + "_tmp");
+			String indexTmp = collectionTmp.createIndex(Indexes.ascending(ComPage.STOCK_CODE, ComPage.URL),
+					new IndexOptions().unique(true));
+			LOG.info("{} create index {}", collectionTmp.getNamespace(), indexTmp);
 			ComWebProcessor processor = new ComWebProcessor();
 			if (com.getSleepTime() > 0) {
 				processor.getSite().setSleepTime(com.getSleepTime());
@@ -229,8 +238,6 @@ public class ComWebSpider {
 			Jedis jedis = RedisUtil.getJedis();
 			jedis.del("set_" + processor.getSite().getDomain());
 			jedis.del("item_" + processor.getSite().getDomain());
-			MongoCollection<Document> collectionTmp = MongoUtil.getCollection(ComWebConstant.DB_NAME,
-					ComWebConstant.COLLECTION_NAME_TMP);
 			long llen = collectionTmp.count(Filters.eq(ComPage.STOCK_CODE, com.getStockCode()));
 			if (spiderListener.isFail() || llen == 1) {
 				LOG.warn("{} {} failed", com.getStockCode(), com.getWebSite());
@@ -240,32 +247,11 @@ public class ComWebSpider {
 					e.printStackTrace();
 				}
 			} else {
-				extract();
-			}
-		}
-		private void extract(){
-			// 创建新的collection，com_page_stockcode，如com_page_000123
-			MongoCollection<Document> collection = MongoUtil.getCollection(ComWebConstant.DB_NAME,
-					ComWebConstant.COLLECTION_PREFIX+this.com.getStockCode());
-			MongoCollection<Document> collectionTmp = MongoUtil.getCollection(ComWebConstant.DB_NAME,
-					ComWebConstant.COLLECTION_NAME_TMP);
-			MongoCursor<Document> iterator = collectionTmp.find(Filters.eq(ComPage.STOCK_CODE, com.getStockCode()))
-					.projection(Projections.exclude("_id")).iterator();
-			try {
-				while (iterator.hasNext()) {
-					Document document = iterator.next();
-					try {
-						collection.insertOne(document);
-					} catch (MongoWriteException e) {
-						LOG.info("duplicate key +" + com.getStockCode() + " " + document.getString(ComPage.URL));
-					}
-				}
-			} finally {
-				iterator.close();
-				collectionTmp.deleteMany(Filters.eq(ComPage.STOCK_CODE, com.getStockCode()));
+				// 成功的话重命名com_page_000000_tmp -> com_page_000000
+				collectionTmp.renameCollection(new MongoNamespace(ComWebConstant.DB_NAME + "." + com.getStockCode()));
 				LOG.info("finish " + com.getStockCode() + " " + com.getStockCode());
 			}
 		}
 	}
-	
+
 }
