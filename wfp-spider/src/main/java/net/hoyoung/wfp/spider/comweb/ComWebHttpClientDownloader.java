@@ -5,11 +5,13 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.Header;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -31,6 +33,7 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import net.hoyoung.wfp.spider.comweb.bo.ComPage;
 import net.hoyoung.wfp.spider.util.URLNormalizer;
 import net.hoyoung.wfp.spider.util.UserAgentUtil;
 import us.codecraft.webmagic.Page;
@@ -111,8 +114,8 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 			if (proxy != null) {
 
 			}
-			logger.info("downloading(" + (proxyHost == null ? "localhost"
-					: proxyHost.getAddress().getHostAddress()) + ") page {}", request.getUrl());
+			logger.info("downloading(" + (proxyHost == null ? "localhost" : proxyHost.getAddress().getHostAddress())
+					+ ") page {}", request.getUrl());
 			HttpContext context = new BasicHttpContext();
 
 			HttpUriRequest httpUriRequest = getHttpUriRequest(request, site, headers, proxyHost);
@@ -122,10 +125,26 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 			request.putExtra(Request.STATUS_CODE, statusCode);
 			if (statusAccept(acceptStatCode, statusCode)) {
 				Page page = new Page();
+
+				// 获取content-length
+				request.putExtra(ComPage.CONTENT_LENGTH, httpResponse.getEntity().getContentLength());
+				Header contentType = httpResponse.getEntity().getContentType();
+				if (contentType != null) {
+					String value = contentType.getValue();
+					if (value.contains(";")) {
+						value = value.split(";")[0];
+					}
+					if (value.contains("/")) {
+						value = value.split("/")[1];
+					}
+					request.putExtra(ComPage.CONTENT_TYPE, value);
+				}
+				/******** 判断是否为重定向 *********/
+				// 获取跳转的url
 				List<?> redirectUrls = (List<?>) context.getAttribute(HttpClientContext.REDIRECT_LOCATIONS);
-				request.putExtra(ComWebConstant.CONTENT_LENGTH_KEY, httpResponse.getEntity().getContentLength());
 				String landingPageUrl = null;
 				if (CollectionUtils.isNotEmpty(redirectUrls)) {
+					// 最后一个url是最终的url
 					Object landingPageReq = redirectUrls.get(redirectUrls.size() - 1);
 					String str = landingPageReq.toString();
 					str = URLNormalizer.normalize(str);
@@ -133,8 +152,20 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 						landingPageUrl = str;
 					}
 				}
-				if (landingPageUrl != null) {
+				if(landingPageUrl==null && contentType==null){
+					// 下载文件也把它当做重定向处理
+					Header[] descHeader = httpResponse.getHeaders("Content-Description");
+					Header[] fileHeader = httpResponse.getHeaders("Content-Disposition");
+					if (descHeader != null && descHeader.length > 0 && fileHeader != null && fileHeader.length > 0 && "File Transfer".equals(descHeader[0].getValue())) {
+						Matcher matcher = Pattern.compile("filename=\".+\\.([a-zA-Z]+)").matcher(fileHeader[0].getValue());
+						if(matcher.find() && Pattern.matches("("+ComWebConstant.DOC_REGEX+")", matcher.group(1))){
+							request.putExtra(ComPage.CONTENT_TYPE, matcher.group(1));
+							landingPageUrl = request.getUrl();
+						}
+					}
+				}
 
+				if (landingPageUrl != null) {
 					request.putExtra(ComWebConstant.LANDING_PAGE_KEY, landingPageUrl);
 					httpResponse.getEntity().getContent().close();
 					page.setUrl(new PlainText(request.getUrl()));

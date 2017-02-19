@@ -240,12 +240,14 @@ public class ComWebSpider {
 			jedis.del("item_" + processor.getSite().getDomain());
 			long llen = collectionTmp.count(Filters.eq(ComPage.STOCK_CODE, com.getStockCode()));
 			if (spiderListener.isFail() || llen == 1) {
+				collectionTmp.drop();
 				LOG.warn("{} {} failed", com.getStockCode(), com.getWebSite());
 				try {
 					FileUtils.writeStringToFile(new File(com.getStockCode() + ".fail"), com.getWebSite());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+				
 			} else {
 				// 成功的话重命名com_page_000000_tmp -> com_page_000000
 				collectionTmp.renameCollection(new MongoNamespace(ComWebConstant.DB_NAME + "." + com.getStockCode()));

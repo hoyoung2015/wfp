@@ -7,5 +7,5 @@ public interface ComPage {
 	String HTML = "html";
 	String CONTENT_LENGTH = "contentLength";
 	String CONTENT = "content";
-	
+	String CONTENT_TYPE = "contentType";
 }

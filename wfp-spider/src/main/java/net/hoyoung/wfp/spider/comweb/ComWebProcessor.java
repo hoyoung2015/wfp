@@ -47,8 +47,13 @@ public class ComWebProcessor implements PageProcessor {
 
 	@Override
 	public void process(Page page) {
-		Document document = new Document(ComPage.STOCK_CODE, page.getRequest().getExtra(ComPage.STOCK_CODE));
+		Document document = new Document(ComPage.STOCK_CODE, page.getRequest().getExtra(ComPage.STOCK_CODE))
+				.append(ComPage.CONTENT_LENGTH, page.getRequest().getExtra(ComPage.CONTENT_LENGTH));
 
+		if(page.getRequest().getExtra(ComPage.CONTENT_TYPE)!=null){
+			document.put(ComPage.CONTENT_TYPE, page.getRequest().getExtra(ComPage.CONTENT_TYPE));
+		}
+		
 		String landingPageUrl = (String) page.getRequest().getExtra(ComWebConstant.LANDING_PAGE_KEY);
 		if (StringUtils.isNotEmpty(landingPageUrl)) {
 			document.put(ComPage.URL, landingPageUrl);

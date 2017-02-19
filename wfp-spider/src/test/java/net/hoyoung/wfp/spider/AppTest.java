@@ -1,5 +1,8 @@
 package net.hoyoung.wfp.spider;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.bson.Document;
 
 import com.mongodb.MongoWriteException;
@@ -16,6 +19,8 @@ import junit.framework.TestSuite;
 import net.hoyoung.wfp.core.utils.MongoUtil;
 import net.hoyoung.wfp.spider.comweb.ComWebConstant;
 import net.hoyoung.wfp.spider.comweb.bo.ComPage;
+import us.codecraft.webmagic.Request;
+import us.codecraft.webmagic.utils.UrlUtils;
 
 /**
  * Unit test for simple App.
@@ -77,9 +82,14 @@ public class AppTest extends TestCase {
 	}
 
 	public void testd() {
-		String domain = "hoyoung.net";
-		String domainThis = "bbs.hoyoung.net";
-		isbbs(domainThis, domain);
+		String string = "attachment; filename=\"SG5KTL-Däº§åä»ç».pdf\"";
+		Matcher matcher = Pattern.compile("filename=\".+\\.([a-zA-Z]+)").matcher(string);
+		if(matcher.find() && Pattern.matches("("+ComWebConstant.DOC_REGEX+")", matcher.group(1))){
+			System.out.println(matcher.group(1));
+		}
+	}
+	public void teste() {
+		System.out.println(UrlUtils.getDomain("http://www.cesm.com.cn:8080/"));
 	}
 
 	private boolean isbbs(String domainThis, String domain) {
@@ -91,4 +101,5 @@ public class AppTest extends TestCase {
 			return true;
 		return false;
 	}
+	
 }
