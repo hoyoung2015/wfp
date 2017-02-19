@@ -1,8 +1,13 @@
 package net.hoyoung.wfp.spider.comweb;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -10,6 +15,7 @@ import org.apache.commons.lang.StringUtils;
 import org.bson.Document;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 import net.hoyoung.wfp.spider.comweb.bo.ComPage;
 import net.hoyoung.wfp.spider.util.URLNormalizer;
@@ -23,6 +29,21 @@ import us.codecraft.webmagic.selector.Selectable;
 import us.codecraft.webmagic.utils.UrlUtils;
 
 public class ComWebProcessor implements PageProcessor {
+
+	private Set<String> blackDomainSet = Sets.newHashSet();
+	{
+		InputStream in = this.getClass().getClassLoader().getResourceAsStream("com_page_blacklist.txt");
+		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+		String tmp = null;
+		try {
+			while ((tmp = reader.readLine()) != null) {
+				blackDomainSet.add(tmp.trim());
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(-1);
+		}
+	}
 
 	@Override
 	public void process(Page page) {
@@ -84,14 +105,13 @@ public class ComWebProcessor implements PageProcessor {
 			/**
 			 * .css?v=1 .css,.jpg 站内 包含#，锚记 "mailto"开头 英文页，繁体
 			 */
-			if (Pattern.matches(".+(\\.|/)(" + EXCEPT_SUFFIX + ")\\?.*", url)
+			if (!url.startsWith("http") // 不是http协议
+					|| Pattern.matches(".+(\\.|/)(" + EXCEPT_SUFFIX + ")\\?.*", url)
 					|| Pattern.matches(".+\\.(" + EXCEPT_SUFFIX + ")$", url) // 排除后缀
 					|| !domainThis.endsWith(domain) 
+					|| blackDomainSet.contains(domainThis)
 					|| isbbs(domainThis, domain) // 排除bbs
-					// || url.contains("#")
-					|| !url.startsWith("http")
 					|| Pattern.matches("http(s?)://" + domainThis + "/(bbs|en|EN|tw|TW|english|ENGLISH)(/.*)?", url)
-					|| domainThis.startsWith("english.") // 英文网页
 					|| Pattern.matches("http(s?)://bbs\\." + domain + ".*", url)
 					|| Pattern.matches(".+(&|\\?)id=\\-\\d+.*", url)) {
 				iterator.remove();
@@ -105,7 +125,8 @@ public class ComWebProcessor implements PageProcessor {
 		if (i == 0)
 			return false;
 		String prefix = domainThis.substring(0, i - 1);
-		if (prefix.startsWith("bbs") || prefix.endsWith("bbs"))
+		if (prefix.startsWith("bbs") || prefix.endsWith("bbs")
+				|| Pattern.matches("(bbs|mail|video|oa|newoa|hospital|english|en|email)", prefix))
 			return true;
 		return false;
 	}
