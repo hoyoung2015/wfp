@@ -5,6 +5,7 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -164,7 +165,8 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 //							landingPageUrl = "";
 //						}
 						// 下载文件的链接忽略
-						landingPageUrl = "";
+//						landingPageUrl = "";
+						throw new IOException("This is a download file "+new String(fileHeader[0].getValue().getBytes("ISO-8859-1"),"utf8"));
 					}
 				}
 
