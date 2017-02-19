@@ -135,7 +135,7 @@ public class ComWebProcessor implements PageProcessor {
 			return false;
 		String prefix = domainThis.substring(0, i - 1);
 		if (prefix.startsWith("bbs") || prefix.endsWith("bbs")
-				|| Pattern.matches("(bbs|mail|video|oa|newoa|hospital|english|en|email)", prefix))
+				|| Pattern.matches("(bbs|mail|video|oa|newoa|hospital|english|en|email|de|jp)", prefix))
 			return true;
 		return false;
 	}

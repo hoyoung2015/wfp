@@ -5,7 +5,6 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -157,14 +156,15 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 					Header[] descHeader = httpResponse.getHeaders("Content-Description");
 					Header[] fileHeader = httpResponse.getHeaders("Content-Disposition");
 					if (descHeader != null && descHeader.length > 0 && fileHeader != null && fileHeader.length > 0 && "File Transfer".equals(descHeader[0].getValue())) {
-//						System.out.println(new String(fileHeader[0].getValue().getBytes("ISO-8859-1"),"utf8"));
-						Matcher matcher = Pattern.compile("filename=.*\\.("+ComWebConstant.DOC_REGEX+")").matcher(new String(fileHeader[0].getValue().getBytes("ISO-8859-1"),"utf8"));
-						if(matcher.find()){
-							request.putExtra(ComPage.CONTENT_TYPE, matcher.group(1));
-							landingPageUrl = request.getUrl();
-						}else {
-							landingPageUrl = "";
-						}
+//						Matcher matcher = Pattern.compile("filename=.*\\.("+ComWebConstant.DOC_REGEX+")").matcher(new String(fileHeader[0].getValue().getBytes("ISO-8859-1"),"utf8"));
+//						if(matcher.find()){
+//							request.putExtra(ComPage.CONTENT_TYPE, matcher.group(1));
+//							landingPageUrl = request.getUrl();
+//						}else {
+//							landingPageUrl = "";
+//						}
+						// 下载文件的链接忽略
+						landingPageUrl = "";
 					}
 				}
 
