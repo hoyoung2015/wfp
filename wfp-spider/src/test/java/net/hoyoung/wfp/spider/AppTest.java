@@ -83,7 +83,7 @@ public class AppTest extends TestCase {
 
 	public void testd() {
 		String string = "attachment; filename=\"SG5KTL-Däº§åä»ç».pdf\"";
-		Matcher matcher = Pattern.compile("filename=\".+\\.([a-zA-Z]+)").matcher(string);
+		Matcher matcher = Pattern.compile("filename=.*\\.([a-zA-Z]+)").matcher(string);
 		if(matcher.find() && Pattern.matches("("+ComWebConstant.DOC_REGEX+")", matcher.group(1))){
 			System.out.println(matcher.group(1));
 		}

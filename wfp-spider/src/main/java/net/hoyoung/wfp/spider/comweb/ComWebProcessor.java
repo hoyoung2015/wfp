@@ -55,7 +55,11 @@ public class ComWebProcessor implements PageProcessor {
 		}
 		
 		String landingPageUrl = (String) page.getRequest().getExtra(ComWebConstant.LANDING_PAGE_KEY);
-		if (StringUtils.isNotEmpty(landingPageUrl)) {
+		if (landingPageUrl != null) {
+			// 这里做了特殊处理，对于下载文件的链接，又不是文档的文件不做处理.
+			if("".equals(landingPageUrl)){
+				return;
+			}
 			document.put(ComPage.URL, landingPageUrl);
 			page.putField(ComWebConstant.URL_LIST_KEY, Lists.newArrayList(document));
 			System.out.println("redirect to " + landingPageUrl);
