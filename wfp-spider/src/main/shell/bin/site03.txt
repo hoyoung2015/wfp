@@ -1,4 +1,4 @@
-002275	桂林三金	http://www.sanjin.com.cn/site1	300
+002275	桂林三金	http://www.sanjin.com.cn/site1	0
 600577	精达股份	http://www.jingda.cn	400
 600585	海螺水泥	http://www.conch.cn	0
 600526	菲达环保	http://www.feida.biz	0
@@ -58,7 +58,7 @@
 300252	金信诺	http://www.kingsignal.cn	0
 300185	通裕重工	http://www.tongyuheavy.com	0
 002237	恒邦股份	http://www.hbyl.cn	0
-600416	湘电股份	http://www.xemc.com.cn	1000
+#charset有问题 600416	湘电股份	http://www.xemc.com.cn	300
 600590	泰豪科技	http://www.tellhow.com	0
 002266	浙富控股	http://www.zhefu.cn	0
 601700	风范股份	http://www.cstower.cn	0

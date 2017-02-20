@@ -277,9 +277,9 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 			byte[] contentBytes = IOUtils.toByteArray(httpResponse.getEntity().getContent());
 			String htmlCharset = getHtmlCharset(httpResponse, contentBytes);
 			if (htmlCharset != null) {
-				if("gbk2312".equals(charset)){
-					charset = "gb2312";
-				}else if ("UTF-8'utf-8'".equals(charset)) {
+				if("gbk2312".equals(htmlCharset)){
+					htmlCharset = "gb2312";
+				}else if (htmlCharset.contains("utf-8")) {
 					charset = "utf-8";
 				}
 				return new String(contentBytes, htmlCharset);
