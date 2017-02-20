@@ -38,7 +38,7 @@ public class TestComWebSpider {
 	}
 
 	public static void main(String[] args) {
-		Request request = new Request("http://www.xemc.com.cn/join.html");
+		Request request = new Request("http://www.czst.com.cn/xwzx/jtyw.htm");
 		request.putExtra(ComPage.STOCK_CODE, "111111");
 		request.putExtra("domain", UrlUtils.getDomain(request.getUrl()).replaceAll("^www\\.", ""));
 		ComWebProcessor processor = new ComWebProcessor();
