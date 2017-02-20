@@ -280,7 +280,7 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 				if("gbk2312".equals(htmlCharset)){
 					htmlCharset = "gb2312";
 				}else if (htmlCharset.contains("utf-8")) {
-					charset = "utf-8";
+					htmlCharset = "utf-8";
 				}
 				return new String(contentBytes, htmlCharset);
 			} else {
