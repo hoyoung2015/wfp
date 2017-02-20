@@ -313,6 +313,9 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 				if (metaContent.indexOf("charset") != -1) {
 					metaContent = metaContent.substring(metaContent.indexOf("charset"), metaContent.length());
 					charset = metaContent.split("=")[1];
+					if("gbk2312".equals(charset)){
+						charset = "gb2312";
+					}
 					break;
 				}
 				// 2.2、html5 <meta charset="UTF-8" />

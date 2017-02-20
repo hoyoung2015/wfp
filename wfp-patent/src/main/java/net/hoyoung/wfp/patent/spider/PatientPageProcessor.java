@@ -12,6 +12,7 @@ import org.bson.Document;
 
 import com.google.common.collect.Lists;
 
+import net.hoyoung.wfp.core.utils.ProxyReader;
 import net.hoyoung.wfp.patent.PatentPage;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
@@ -108,14 +109,7 @@ public class PatientPageProcessor implements PageProcessor {
 
 	public static void main(String[] args) {
 		PatientPageProcessor pageProcessor = new PatientPageProcessor();
-		// 设置代理
-		List<String[]> proxies = Lists.newArrayList();
-		proxies.add(new String[] { "hoyoung", "QWerASdf", "139.129.93.2", "8128" });// 杨鹏的阿里云
-		proxies.add(new String[] { "hoyoung", "QWerASdf", "123.206.58.101", "8128" });// 我的腾讯云
-		proxies.add(new String[] { "hoyoung", "QWerASdf", "182.61.20.189", "8128" });// 我的百度云，首月9.9
-		proxies.add(new String[] { "hoyoung", "QWerASdf", "118.89.238.129", "8128" });// 余启林的腾讯学生机
-		pageProcessor.getSite().setHttpProxyPool(proxies, false);
-
+		pageProcessor.getSite().setHttpProxyPool(ProxyReader.read(), false);
 		Request request = new Request(
 				"http://s.wanfangdata.com.cn/patent.aspx?q=%e4%b8%93%e5%88%a9%e6%9d%83%e4%ba%ba%3a%e6%97%a5%e5%87%ba%e4%b8%9c%e6%96%b9%e5%a4%aa%e9%98%b3%e8%83%bd%e8%82%a1%e4%bb%bd%e6%9c%89%e9%99%90%e5%85%ac%e5%8f%b8&f=top&p=1");
 		request.putExtra(PatentPage.STOCK_CODE, "111111");

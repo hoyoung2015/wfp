@@ -1,0 +1,8 @@
+[ieslab.com.cn]
+http://www\.ieslab\.com\.cn/sitefiles/services/cms/utils\.aspx\?type=Download&.*
+
+[conch.cn]
+http(s?)://ygcg.conch.cn/.*
+
+[sungrowpower.com]
+http(s?)://dl.sungrowpower.com/.*

@@ -27,9 +27,9 @@ import com.mongodb.client.model.IndexOptions;
 import com.mongodb.client.model.Indexes;
 
 import net.hoyoung.wfp.core.utils.MongoUtil;
+import net.hoyoung.wfp.core.utils.ProxyReader;
 import net.hoyoung.wfp.core.utils.RedisUtil;
 import net.hoyoung.wfp.spider.comweb.bo.ComPage;
-import net.hoyoung.wfp.spider.util.ProxyReader;
 import net.hoyoung.wfp.spider.util.URLNormalizer;
 import redis.clients.jedis.Jedis;
 import us.codecraft.webmagic.Request;
@@ -211,14 +211,7 @@ public class ComWebSpider {
 				processor.getSite().setSleepTime(com.getSleepTime());
 			}
 			// 设置代理
-			List<String[]> proxies = null;
-			try {
-				proxies = ProxyReader.read("proxy.txt");
-			} catch (IOException e) {
-				LOG.warn("{} start error {}", com.getStockCode(), e.getStackTrace());
-				return;
-			}
-			processor.getSite().setHttpProxyPool(proxies, false);
+			processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
 			RedisScheduler redisScheduler = new RedisScheduler("127.0.0.1");
 			Spider spider = Spider.create(processor).setScheduler(redisScheduler).thread(3);
 			ComWebSpiderListener spiderListener = new ComWebSpiderListener(spider);
@@ -239,7 +232,7 @@ public class ComWebSpider {
 			jedis.del("set_" + processor.getSite().getDomain());
 			jedis.del("item_" + processor.getSite().getDomain());
 			long llen = collectionTmp.count(Filters.eq(ComPage.STOCK_CODE, com.getStockCode()));
-			if (spiderListener.isFail() || llen == 1) {
+			if (spiderListener.isFail() || llen <= 1) {
 				collectionTmp.drop();
 				LOG.warn("{} {} failed", com.getStockCode(), com.getWebSite());
 				try {

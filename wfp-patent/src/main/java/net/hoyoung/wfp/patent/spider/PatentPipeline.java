@@ -5,9 +5,11 @@ import java.util.List;
 import org.apache.commons.collections.CollectionUtils;
 import org.bson.Document;
 
-import net.hoyoung.wfp.core.utils.RedisUtil;
+import com.mongodb.client.MongoCollection;
+
+import net.hoyoung.wfp.core.utils.MongoUtil;
 import net.hoyoung.wfp.patent.PatentConstant;
-import redis.clients.jedis.Jedis;
+import net.hoyoung.wfp.patent.PatentPage;
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
@@ -20,9 +22,10 @@ public class PatentPipeline implements Pipeline {
 		if (CollectionUtils.isEmpty(documents)) {
 			return;
 		}
-		Jedis jedis = RedisUtil.getJedis();
+		String stockCode = (String) resultItems.getRequest().getExtra(PatentPage.STOCK_CODE);
+		MongoCollection<Document> tmp = MongoUtil.getCollection(PatentConstant.DB_NAME, stockCode+"_tmp");
 		for (Document document : documents) {
-			jedis.lpush(PatentConstant.REDIS_KEY, document.toJson());
+			tmp.insertOne(document);
 		}
 	}
 

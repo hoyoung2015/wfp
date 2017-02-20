@@ -1,23 +1,20 @@
 package net.hoyoung.wfp.spider.comweb;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import java.util.regex.Pattern;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.bson.Document;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 import net.hoyoung.wfp.spider.comweb.bo.ComPage;
+import net.hoyoung.wfp.spider.comweb.urlfilter.DomainUrlFilter;
 import net.hoyoung.wfp.spider.util.URLNormalizer;
 import net.hoyoung.wfp.spider.util.UserAgentUtil;
 import us.codecraft.webmagic.Page;
@@ -26,34 +23,27 @@ import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Selectable;
-import us.codecraft.webmagic.utils.UrlUtils;
 
 public class ComWebProcessor implements PageProcessor {
+	private Logger logger = LoggerFactory.getLogger(getClass());
 
-	private Set<String> blackDomainSet = Sets.newHashSet();
-	{
-		InputStream in = this.getClass().getClassLoader().getResourceAsStream("com_page_blacklist.txt");
-		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-		String tmp = null;
-		try {
-			while ((tmp = reader.readLine()) != null) {
-				blackDomainSet.add(tmp.trim());
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.exit(-1);
-		}
-	}
+	private DomainUrlFilter urlFilter = new DomainUrlFilter();
 
 	@Override
 	public void process(Page page) {
+		if (page.getHtml().links().regex("http://.*safedog.cn/.*").all().size() > 0) {
+			// 遇到了安全狗
+			logger.warn("{} {} safedog.cn", page.getRequest().getExtra(ComPage.STOCK_CODE), page.getRequest().getUrl());
+			return;
+		}
+
 		Document document = new Document(ComPage.STOCK_CODE, page.getRequest().getExtra(ComPage.STOCK_CODE))
 				.append(ComPage.CONTENT_LENGTH, page.getRequest().getExtra(ComPage.CONTENT_LENGTH));
 
-		if(page.getRequest().getExtra(ComPage.CONTENT_TYPE)!=null){
+		if (page.getRequest().getExtra(ComPage.CONTENT_TYPE) != null) {
 			document.put(ComPage.CONTENT_TYPE, page.getRequest().getExtra(ComPage.CONTENT_TYPE));
 		}
-		
+
 		String landingPageUrl = (String) page.getRequest().getExtra(ComWebConstant.LANDING_PAGE_KEY);
 		if (StringUtils.isNotEmpty(landingPageUrl)) {
 			document.put(ComPage.URL, landingPageUrl);
@@ -96,7 +86,6 @@ public class ComWebProcessor implements PageProcessor {
 		page.putField(ComWebConstant.URL_LIST_KEY, list);
 	}
 
-	static final String EXCEPT_SUFFIX = "xls|xlsx|gif|GIF|jpg|JPG|png|PNG|ico|ICO|css|CSS|sit|SIT|eps|EPS|wmf|WMF|zip|ZIP|rar|RAR|ppt|PPT|mpg|MPG|xls|XLS|gz|GZ|rpm|RPM|tgz|TGZ|mov|MOV|exe|EXE|jpeg|JPEG|bmp|BMP|js|JS|swf|SWF|flv|FLV|mp4|MP4|mp3|MP3|wmv|WMV";
 	private static final int SLEEP_TIME = 200;
 
 	private List<String> urlFilter(Page page) {
@@ -105,35 +94,11 @@ public class ComWebProcessor implements PageProcessor {
 		Iterator<String> iterator = all.iterator();
 		while (iterator.hasNext()) {
 			String url = iterator.next();
-			String domainThis = UrlUtils.getDomain(url);
-
-			/**
-			 * .css?v=1 .css,.jpg 站内 包含#，锚记 "mailto"开头 英文页，繁体
-			 */
-			if (!url.startsWith("http") // 不是http协议
-					|| Pattern.matches(".+(\\.|/)(" + EXCEPT_SUFFIX + ")\\?.*", url)
-					|| Pattern.matches(".+\\.(" + EXCEPT_SUFFIX + ")$", url) // 排除后缀
-					|| !domainThis.endsWith(domain) 
-					|| blackDomainSet.contains(domainThis)
-					|| isbbs(domainThis, domain) // 排除bbs
-					|| Pattern.matches("http(s?)://" + domainThis + "/(bbs|en|EN|tw|TW|english|ENGLISH)(/.*)?", url)
-					|| Pattern.matches("http(s?)://bbs\\." + domain + ".*", url)
-					|| Pattern.matches(".+(&|\\?)id=\\-\\d+.*", url)) {
+			if (urlFilter.accept(domain, url) == false) {
 				iterator.remove();
 			}
 		}
 		return all;
-	}
-
-	private boolean isbbs(String domainThis, String domain) {
-		int i = domainThis.indexOf(domain);
-		if (i == 0)
-			return false;
-		String prefix = domainThis.substring(0, i - 1);
-		if (prefix.startsWith("bbs") || prefix.endsWith("bbs")
-				|| Pattern.matches("(bbs|mail|video|oa|newoa|hospital|english|en|email|de|jp)", prefix))
-			return true;
-		return false;
 	}
 
 	private Site site = Site.me().setSleepTime(SLEEP_TIME).setRetryTimes(3).setTimeOut(40000).setCycleRetryTimes(2)
