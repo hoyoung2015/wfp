@@ -34,6 +34,9 @@ public class ProxyReader {
 	}
 
 	public static void main(String[] args) throws IOException {
-		ProxyReader.read();
+		List<String[]> list = ProxyReader.read();
+		for (String[] strings : list) {
+			System.out.println(strings[0]);
+		}
 	}
 }

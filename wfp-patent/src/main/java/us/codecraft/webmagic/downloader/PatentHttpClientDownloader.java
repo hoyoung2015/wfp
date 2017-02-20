@@ -43,7 +43,7 @@ import us.codecraft.webmagic.utils.WMCollections;
  * @since 0.1.0
  */
 @ThreadSafe
-public class HttpClientDownloader extends AbstractDownloader {
+public class PatentHttpClientDownloader extends AbstractDownloader {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -86,7 +86,7 @@ public class HttpClientDownloader extends AbstractDownloader {
 		} else {
 			acceptStatCode = WMCollections.newHashSet(200);
 		}
-		logger.info("downloading page {}", request.getUrl());
+
 		CloseableHttpResponse httpResponse = null;
 		int statusCode = 0;
 		try {
@@ -98,6 +98,9 @@ public class HttpClientDownloader extends AbstractDownloader {
 			} else if (site.getHttpProxy() != null) {
 				proxyHost = site.getHttpProxy();
 			}
+
+			logger.info("downloading(" + (proxyHost == null ? "localhost" : proxyHost.getAddress().getHostAddress())
+					+ ") page {}", request.getUrl());
 
 			HttpUriRequest httpUriRequest = getHttpUriRequest(request, site, headers, proxyHost);// ���������˴���
 			httpResponse = getHttpClient(site, proxy).execute(httpUriRequest);// getHttpClient�������˴�����֤
@@ -172,7 +175,7 @@ public class HttpClientDownloader extends AbstractDownloader {
 			RequestBuilder requestBuilder = RequestBuilder.post();
 			String json = (String) request.getExtra("json");
 			if (json != null) {
-				requestBuilder.setEntity(new StringEntity(json,"UTF-8"));
+				requestBuilder.setEntity(new StringEntity(json, "UTF-8"));
 				requestBuilder.addHeader("Content-Type", "application/json");
 			} else {
 				NameValuePair[] nameValuePair = (NameValuePair[]) request.getExtra("nameValuePair");

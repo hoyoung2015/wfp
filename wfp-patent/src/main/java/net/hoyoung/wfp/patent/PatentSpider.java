@@ -26,6 +26,7 @@ import net.hoyoung.wfp.patent.spider.PatentPipeline;
 import net.hoyoung.wfp.patent.spider.PatientPageProcessor;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.downloader.PatentHttpClientDownloader;
 import us.codecraft.webmagic.processor.PageProcessor;
 
 /**
@@ -70,7 +71,8 @@ public class PatentSpider {
 				// 设置代理
 				PageProcessor pageProcessor = new PatientPageProcessor();
 				pageProcessor.getSite().setHttpProxyPool(ProxyReader.read(), false);
-				Spider.create(pageProcessor).addPipeline(new PatentPipeline()).addRequest(request).thread(2).run();
+				Spider.create(pageProcessor).addPipeline(new PatentPipeline())
+				.setDownloader(new PatentHttpClientDownloader()).addRequest(request).thread(2).run();
 				tmp.renameCollection(new MongoNamespace(PatentConstant.DB_NAME, comInfo.getStockCode()));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
