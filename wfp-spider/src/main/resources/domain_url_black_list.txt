@@ -6,3 +6,6 @@ http(s?)://ygcg.conch.cn/.*
 
 [sungrowpower.com]
 http(s?)://dl.sungrowpower.com/.*
+
+[jingda.cn]
+http(s?)://www.ejingda.cn

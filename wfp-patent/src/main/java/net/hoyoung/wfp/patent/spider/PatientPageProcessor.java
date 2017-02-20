@@ -9,6 +9,8 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.bson.Document;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
 
@@ -22,8 +24,10 @@ import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Selectable;
 
 public class PatientPageProcessor implements PageProcessor {
-	
+	private Logger logger = LoggerFactory.getLogger(getClass());
 	private AtomicInteger counter = new AtomicInteger(0);
+
+	private int total = 0;
 
 	private String getPatentDate(Selectable div) {
 		String s = div.$("div.left-record > div.record-subtitle", "text").get();
@@ -62,6 +66,14 @@ public class PatientPageProcessor implements PageProcessor {
 		if (CollectionUtils.isEmpty(items)) {
 			return;
 		}
+		// 第一页
+		if (Pattern.matches("http://.*&p=1$", page.getRequest().getUrl())) {
+			String totalTxt = page.getHtml()
+					.$("body > div.content.content-search.clear > div.left > div.total-records > span", "text").get();
+			this.total = Integer.valueOf(totalTxt.replace(",", "").replace("条", ""));
+			logger.info("{} has {} patents", page.getRequest().getExtra(PatentPage.STOCK_CODE), total);
+			System.err.println("total=" + total);
+		}
 		List<Document> documents = Lists.newArrayList();
 		String stockCode = (String) page.getRequest().getExtra(PatentPage.STOCK_CODE);
 		for (Selectable div : items) {
@@ -69,13 +81,19 @@ public class PatientPageProcessor implements PageProcessor {
 			String patentName = div.$("div.left-record > div.record-title > a.title", "text").get();
 			String patentType = getPatentType(div);
 			String date = getPatentDate(div);
-			System.out.println(counter.incrementAndGet()+"\t"+detailUrl + "\t" + patentName + "\t" + patentType + "\t" + date);
+			counter.incrementAndGet();
+			// System.out.println(counter.incrementAndGet()+"\t"+detailUrl +
+			// "\t" + patentName + "\t" + patentType + "\t" + date);
 			documents.add(new Document(PatentPage.STOCK_CODE, stockCode).append(PatentPage.DETAIL_URL, detailUrl)
 					.append(PatentPage.DATE, date).append(PatentPage.PATENT_NAME, patentName)
 					.append(PatentPage.PATENT_TYPE, patentType));
 		}
 		page.putField("documents", documents);
 		nextPage(page);
+	}
+	
+	public boolean isComplete(){
+		return this.total == this.counter.get();
 	}
 
 	private void nextPage(Page page) {
@@ -95,7 +113,7 @@ public class PatientPageProcessor implements PageProcessor {
 
 	private static final int SLEEP_TIME = 1000;
 
-	private Site site = Site.me().setSleepTime(SLEEP_TIME).setRetryTimes(3).setTimeOut(30000).setCycleRetryTimes(2)
+	private Site site = Site.me().setSleepTime(SLEEP_TIME).setRetryTimes(3).setTimeOut(30000).setCycleRetryTimes(3)
 			.addHeader("User-Agent",
 					"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36")
 			.addHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
@@ -108,6 +126,7 @@ public class PatientPageProcessor implements PageProcessor {
 	}
 
 	public static void main(String[] args) {
+
 		PatientPageProcessor pageProcessor = new PatientPageProcessor();
 		pageProcessor.getSite().setHttpProxyPool(ProxyReader.read(), false);
 		Request request = new Request(

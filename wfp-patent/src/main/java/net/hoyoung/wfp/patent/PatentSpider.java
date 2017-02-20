@@ -1,5 +1,7 @@
 package net.hoyoung.wfp.patent;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
@@ -27,7 +29,6 @@ import net.hoyoung.wfp.patent.spider.PatientPageProcessor;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.PatentHttpClientDownloader;
-import us.codecraft.webmagic.processor.PageProcessor;
 
 /**
  * Hello world!
@@ -37,8 +38,7 @@ public class PatentSpider {
 	Logger logger = LoggerFactory.getLogger(getClass());
 
 	private ComInfoInput comInfoInput;
-	
-	
+
 	public PatentSpider(ComInfoInput comInfoInput) {
 		super();
 		this.comInfoInput = comInfoInput;
@@ -53,14 +53,17 @@ public class PatentSpider {
 		}
 		Set<String> collectionNameSet = getCollectionNameSet();
 		for (ComInfo comInfo : list) {
-			if(collectionNameSet.contains(comInfo.getStockCode())){
+			if (collectionNameSet.contains(comInfo.getStockCode())) {
 				logger.info("company {} has been crawled");
 				continue;
 			}
+			logger.info("start to crawl {}({})", comInfo.getName(), comInfo.getStockCode());
 			// 创建索引
-			MongoCollection<Document> tmp = MongoUtil.getCollection(PatentConstant.DB_NAME, comInfo.getStockCode()+"_tmp");
-			tmp.createIndex(Indexes.ascending(PatentPage.STOCK_CODE,PatentPage.DETAIL_URL), new IndexOptions().unique(true));
-			
+			MongoCollection<Document> tmp = MongoUtil.getCollection(PatentConstant.DB_NAME,
+					comInfo.getStockCode() + "_tmp");
+			tmp.createIndex(Indexes.ascending(PatentPage.STOCK_CODE, PatentPage.DETAIL_URL),
+					new IndexOptions().unique(true));
+
 			String fullName = comInfo.getName();
 			String url;
 			try {
@@ -69,14 +72,27 @@ public class PatentSpider {
 				Request request = new Request(url);
 				request.putExtra(PatentPage.STOCK_CODE, comInfo.getStockCode());
 				// 设置代理
-				PageProcessor pageProcessor = new PatientPageProcessor();
+				PatientPageProcessor pageProcessor = new PatientPageProcessor();
 				pageProcessor.getSite().setHttpProxyPool(ProxyReader.read(), false);
 				Spider.create(pageProcessor).addPipeline(new PatentPipeline())
-				.setDownloader(new PatentHttpClientDownloader()).addRequest(request).thread(2).run();
-				tmp.renameCollection(new MongoNamespace(PatentConstant.DB_NAME, comInfo.getStockCode()));
+						.setDownloader(new PatentHttpClientDownloader()).addRequest(request).thread(2).run();
+				if(pageProcessor.isComplete()){
+					tmp.renameCollection(new MongoNamespace(PatentConstant.DB_NAME, comInfo.getStockCode()));
+					logger.info("finish crawl {}({}) patent", comInfo.getName(), comInfo.getStockCode());
+				}else{
+					logger.warn("{} {} failed", comInfo.getStockCode(), comInfo.getName());
+					File file = new File(comInfo.getStockCode());
+					if(!file.exists()){
+						try {
+							file.createNewFile();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				}
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
-				logger.warn("company {} encoding error",comInfo.getStockCode());
+				logger.warn("company {} encoding error", comInfo.getStockCode());
 			}
 		}
 	}
@@ -94,7 +110,7 @@ public class PatentSpider {
 	}
 
 	public static void main(String[] args) {
-		if(args==null || args.length!=1){
+		if (args == null || args.length != 1) {
 			System.err.println("com_info.txt not found");
 			System.exit(-1);
 		}

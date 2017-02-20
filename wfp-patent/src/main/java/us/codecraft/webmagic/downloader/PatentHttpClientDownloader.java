@@ -98,7 +98,6 @@ public class PatentHttpClientDownloader extends AbstractDownloader {
 			} else if (site.getHttpProxy() != null) {
 				proxyHost = site.getHttpProxy();
 			}
-
 			logger.info("downloading(" + (proxyHost == null ? "localhost" : proxyHost.getAddress().getHostAddress())
 					+ ") page {}", request.getUrl());
 

@@ -233,7 +233,7 @@ public class ComWebSpider {
 			jedis.del("item_" + processor.getSite().getDomain());
 			long llen = collectionTmp.count(Filters.eq(ComPage.STOCK_CODE, com.getStockCode()));
 			if (spiderListener.isFail() || llen <= 1) {
-				collectionTmp.drop();
+//				collectionTmp.drop();
 				LOG.warn("{} {} failed", com.getStockCode(), com.getWebSite());
 				try {
 					FileUtils.writeStringToFile(new File(com.getStockCode() + ".fail"), com.getWebSite());
