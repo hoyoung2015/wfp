@@ -9,3 +9,9 @@ http(s?)://dl.sungrowpower.com/.*
 
 [jingda.cn]
 http(s?)://www.ejingda.cn
+
+[sanjin.com.cn]
+http(s?)://www\.sanjin\.com\.cn/trade/.*
+
+[xsmd.com.cn]
+http://msxh.xsmd.com.cn/.*

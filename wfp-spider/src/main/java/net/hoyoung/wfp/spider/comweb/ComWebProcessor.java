@@ -15,6 +15,7 @@ import com.google.common.collect.Lists;
 
 import net.hoyoung.wfp.spider.comweb.bo.ComPage;
 import net.hoyoung.wfp.spider.comweb.urlfilter.DomainUrlFilter;
+import net.hoyoung.wfp.spider.comweb.urlfilter.PageFilter;
 import net.hoyoung.wfp.spider.util.URLNormalizer;
 import net.hoyoung.wfp.spider.util.UserAgentUtil;
 import us.codecraft.webmagic.Page;
@@ -29,11 +30,16 @@ public class ComWebProcessor implements PageProcessor {
 
 	private DomainUrlFilter urlFilter = new DomainUrlFilter();
 
+	private PageFilter pageFilter = new PageFilter();
+
 	@Override
 	public void process(Page page) {
 		if (page.getHtml().links().regex("http://.*safedog.cn/.*").all().size() > 0) {
 			// 遇到了安全狗
 			logger.warn("{} {} safedog.cn", page.getRequest().getExtra(ComPage.STOCK_CODE), page.getRequest().getUrl());
+			return;
+		}
+		if (pageFilter.accept(page) == false) {
 			return;
 		}
 
@@ -101,7 +107,7 @@ public class ComWebProcessor implements PageProcessor {
 		return all;
 	}
 
-	private Site site = Site.me().setSleepTime(SLEEP_TIME).setRetryTimes(3).setTimeOut(40000).setCycleRetryTimes(2)
+	private Site site = Site.me().setSleepTime(SLEEP_TIME).setRetryTimes(3).setTimeOut(50000).setCycleRetryTimes(2)
 			.addHeader("User-Agent", UserAgentUtil.getRandomAgent())
 			.addHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
 			.addHeader("Accept-Language", "zh-CN,zh;q=0.8").addHeader("Accept-Encoding", "gzip, deflate, sdch, br")
