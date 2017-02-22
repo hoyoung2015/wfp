@@ -34,7 +34,7 @@ import net.hoyoung.wfp.spider.util.URLNormalizer;
 import redis.clients.jedis.Jedis;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.scheduler.RedisScheduler;
+import us.codecraft.webmagic.scheduler.MyRedisScheduler;
 import us.codecraft.webmagic.utils.UrlUtils;
 
 public class ComWebSpider {
@@ -97,18 +97,6 @@ public class ComWebSpider {
 
 	}
 
-	private void createIndex() {
-		// 建索引
-		// MongoCollection<Document> collectionTmp =
-		// MongoUtil.getCollection(ComWebConstant.DB_NAME,
-		// ComWebConstant.COLLECTION_NAME_TMP);
-		// String indexTmp =
-		// collectionTmp.createIndex(Indexes.ascending(ComPage.STOCK_CODE,
-		// ComPage.URL),
-		// new IndexOptions().unique(true));
-		// logger.info("{} create index {}", collectionTmp.getNamespace(),
-		// indexTmp);
-	}
 
 	private List<ComVo> readCom() {
 		List<ComVo> list = Lists.newArrayList();
@@ -161,7 +149,6 @@ public class ComWebSpider {
 		if (CollectionUtils.isEmpty(list)) {
 			System.exit(-1);
 		}
-		this.createIndex();
 		ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_NUM);
 		Set<String> nameSet = getCollectionNameSet();
 		for (ComVo vo : list) {
@@ -212,7 +199,7 @@ public class ComWebSpider {
 			}
 			// 设置代理
 			processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
-			RedisScheduler redisScheduler = new RedisScheduler("127.0.0.1");
+			MyRedisScheduler redisScheduler = new MyRedisScheduler("127.0.0.1");
 			Spider spider = Spider.create(processor).setScheduler(redisScheduler).thread(3);
 			ComWebSpiderListener spiderListener = new ComWebSpiderListener(spider);
 			spider.setSpiderListeners(Lists.newArrayList(spiderListener));

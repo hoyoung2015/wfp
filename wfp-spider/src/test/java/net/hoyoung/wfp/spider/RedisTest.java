@@ -5,17 +5,20 @@ import org.junit.Test;
 import net.hoyoung.wfp.core.utils.RedisUtil;
 import net.hoyoung.wfp.spider.util.UserAgentUtil;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.Transaction;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
-import us.codecraft.webmagic.scheduler.RedisScheduler;
+import us.codecraft.webmagic.scheduler.MyRedisScheduler;
 
 public class RedisTest {
 
 	@Test
 	public void test(){
-		RedisScheduler redisScheduler = new RedisScheduler("127.0.0.1");
+		MyRedisScheduler redisScheduler = new MyRedisScheduler("127.0.0.1");
 		TestProcessor processor = new TestProcessor();
 		Spider.create(processor)
 		.setScheduler(redisScheduler).addUrl("http://www.hoyoung.net").thread(1).run();
@@ -43,5 +46,21 @@ public class RedisTest {
 			return site;
 		}
 		
+	}
+	@Test
+	public void testMulti(){
+		JedisPool jedisPool = new JedisPool(new JedisPoolConfig(), "127.0.0.1");
+		Jedis jedis = jedisPool.getResource();
+		try {
+			Transaction tx = jedis.multi();
+			tx.set("a", "1");
+			tx.lpush("b", "2");
+//			System.out.println(1/0);
+//			tx.exec();
+		} finally {
+			jedis.close();
+		}
+		
+		jedisPool.close();
 	}
 }
