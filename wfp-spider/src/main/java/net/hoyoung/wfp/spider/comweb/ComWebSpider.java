@@ -236,7 +236,7 @@ public class ComWebSpider {
 //				collectionTmp.drop();
 				LOG.warn("{} {} failed", com.getStockCode(), com.getWebSite());
 				try {
-					FileUtils.writeStringToFile(new File(com.getStockCode() + ".fail\n"), com.getWebSite());
+					FileUtils.writeStringToFile(new File(com.getStockCode() + ".fail"), com.getWebSite()+"\n");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
