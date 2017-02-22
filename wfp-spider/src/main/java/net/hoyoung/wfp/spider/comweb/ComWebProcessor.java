@@ -34,15 +34,6 @@ public class ComWebProcessor implements PageProcessor {
 
 	@Override
 	public void process(Page page) {
-		if (page.getHtml().links().regex("http://.*safedog.cn/.*").all().size() > 0) {
-			// 遇到了安全狗
-			logger.warn("{} {} safedog.cn", page.getRequest().getExtra(ComPage.STOCK_CODE), page.getRequest().getUrl());
-			return;
-		}
-		if (pageFilter.accept(page) == false) {
-			return;
-		}
-
 		Document document = new Document(ComPage.STOCK_CODE, page.getRequest().getExtra(ComPage.STOCK_CODE))
 				.append(ComPage.CONTENT_LENGTH, page.getRequest().getExtra(ComPage.CONTENT_LENGTH));
 
@@ -55,6 +46,14 @@ public class ComWebProcessor implements PageProcessor {
 			document.put(ComPage.URL, landingPageUrl);
 			page.putField(ComWebConstant.URL_LIST_KEY, Lists.newArrayList(document));
 			System.out.println("redirect to " + landingPageUrl);
+			return;
+		}
+		if (page.getHtml().links().regex("http://.*safedog.cn/.*").all().size() > 0) {
+			// 遇到了安全狗
+			logger.warn("{} {} safedog.cn", page.getRequest().getExtra(ComPage.STOCK_CODE), page.getRequest().getUrl());
+			return;
+		}
+		if (pageFilter.accept(page) == false) {
 			return;
 		}
 		// 判断是否为标准的包含body的html

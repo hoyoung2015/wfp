@@ -15,3 +15,6 @@ http(s?)://www\.sanjin\.com\.cn/trade/.*
 
 [xsmd.com.cn]
 http://msxh.xsmd.com.cn/.*
+
+[shanghaipower.com]
+http://www\.shanghaipower\.com/power/company/.*

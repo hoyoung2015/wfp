@@ -35,10 +35,10 @@ public class DomainUrlFilter {
 					continue;
 				}
 				String regex = regexMap.get(cusorDomain);
-				if(regex == null){
+				if (regex == null) {
 					regex = line;
-				}else{
-					regex += "|"+line;
+				} else {
+					regex += "|" + line;
 				}
 				regexMap.put(cusorDomain, regex);
 			}
@@ -51,17 +51,19 @@ public class DomainUrlFilter {
 				e.printStackTrace();
 			}
 		}
-		for( Entry<String, String> entry: regexMap.entrySet()){
-			System.out.println(entry.getKey()+"\t"+entry.getValue());
+		for (Entry<String, String> entry : regexMap.entrySet()) {
+			System.out.println(entry.getKey() + "\t" + entry.getValue());
 		}
 	}
+
 	/**
 	 * 返回true给通过，否则丢弃该url
+	 * 
 	 * @param domain
 	 * @param url
 	 * @return
 	 */
-	public boolean accept(String domain,String url){
+	public boolean accept(String domain, String url) {
 		String domainThis = UrlUtils.getDomain(url);
 		/**
 		 * .css?v=1 .css,.jpg 站内 包含#，锚记 "mailto"开头 英文页，繁体
@@ -69,7 +71,7 @@ public class DomainUrlFilter {
 		if (!url.startsWith("http") // 不是http协议
 				|| Pattern.matches(".+(\\.|/)(" + EXCEPT_SUFFIX + ")\\?.*", url) // 排除非html文件
 				|| Pattern.matches(".+\\.(" + EXCEPT_SUFFIX + ")$", url) // 排除非html文件后缀
-				|| !domainThis.endsWith(domain) // 顶级域名不一样
+				|| isRootDomainSame(domainThis, domain) == false // 顶级域名不一样
 				|| isInBlackList(domain, url) // 在黑名单中
 				|| isbbs(domainThis, domain) // 排除bbs
 				|| Pattern.matches("http(s?)://" + domainThis + "/(bbs|en|EN|tw|TW|english|ENGLISH)(/.*)?", url) // 排除非中文
@@ -78,15 +80,32 @@ public class DomainUrlFilter {
 		}
 		return true;
 	}
+
+	/**
+	 * 判断两个顶级域名是否相同
+	 * 
+	 * @param domainThis
+	 * @param domain
+	 * @return
+	 */
+	private boolean isRootDomainSame(String domainThis, String domain) {
+		if (domainThis.equals(domain))
+			return true;
+		if (domainThis.length() > domain.length() && domainThis.replace(domain, "").endsWith("."))
+			return true;
+		return false;
+	}
+
 	static final String EXCEPT_SUFFIX = "xls|xlsx|gif|GIF|jpg|JPG|png|PNG|ico|ICO|css|CSS|sit|SIT|eps|EPS|wmf|WMF|zip|ZIP|rar|RAR|ppt|PPT|mpg|MPG|xls|XLS|gz|GZ|rpm|RPM|tgz|TGZ|mov|MOV|exe|EXE|jpeg|JPEG|bmp|BMP|js|JS|swf|SWF|flv|FLV|mp4|MP4|mp3|MP3|wmv|WMV";
-	
-	private boolean isInBlackList(String domain,String url){
+
+	private boolean isInBlackList(String domain, String url) {
 		String regex = regexMap.get(domain);
-		if(regex==null){
+		if (regex == null) {
 			return false;
 		}
-		return Pattern.matches("("+regex+")", url);
+		return Pattern.matches("(" + regex + ")", url);
 	}
+
 	private boolean isbbs(String domainThis, String domain) {
 		int i = domainThis.indexOf(domain);
 		if (i == 0)
@@ -97,9 +116,10 @@ public class DomainUrlFilter {
 			return true;
 		return false;
 	}
+
 	public static void main(String[] args) {
 		DomainUrlFilter urlFilter = new DomainUrlFilter();
-		System.out.println(urlFilter.accept("conch.cn", "http://ygcg.conch.cn/a"));
+		System.out.println(urlFilter.accept("dongeejiao.com", "http://www.dongeejiao.com/news/detail/1768.htm"));
 	}
 
 }
