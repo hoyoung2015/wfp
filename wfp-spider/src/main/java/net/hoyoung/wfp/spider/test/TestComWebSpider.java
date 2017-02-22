@@ -6,10 +6,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.apache.commons.collections.CollectionUtils;
 import org.bson.Document;
 
+import com.google.common.collect.Lists;
+
 import net.hoyoung.wfp.core.utils.ProxyReader;
 import net.hoyoung.wfp.spider.comweb.ComWebConstant;
 import net.hoyoung.wfp.spider.comweb.ComWebHttpClientDownloader;
 import net.hoyoung.wfp.spider.comweb.ComWebProcessor;
+import net.hoyoung.wfp.spider.comweb.ComWebSpiderListener;
 import net.hoyoung.wfp.spider.comweb.bo.ComPage;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.ResultItems;
@@ -25,6 +28,7 @@ public class TestComWebSpider {
 		private AtomicInteger count = new AtomicInteger(0);
 		@Override
 		public void process(ResultItems resultItems, Task task) {
+			
 			List<Document> list = resultItems.get(ComWebConstant.URL_LIST_KEY);
 
 			if (CollectionUtils.isEmpty(list)) {
@@ -38,12 +42,14 @@ public class TestComWebSpider {
 	}
 
 	public static void main(String[] args) {
-		Request request = new Request("http://www.nonfemet.com/plus/view.php?aid=1052");
+		Request request = new Request("http://www.xdect.com.cn/");
 		request.putExtra(ComPage.STOCK_CODE, "111111");
 		request.putExtra("domain", UrlUtils.getDomain(request.getUrl()).replaceAll("^www\\.", ""));
 		ComWebProcessor processor = new ComWebProcessor();
 		 processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
-		Spider.create(processor).setDownloader(new ComWebHttpClientDownloader()).addRequest(request).addPipeline(new MyPipeline()).thread(1).run();
+		 Spider spider = Spider.create(processor).setDownloader(new ComWebHttpClientDownloader()).addRequest(request).addPipeline(new MyPipeline()).thread(1);
+		ComWebSpiderListener spiderListener = new ComWebSpiderListener(spider);
+		spider.setSpiderListeners(Lists.newArrayList(spiderListener)).run();
 	}
 
 }

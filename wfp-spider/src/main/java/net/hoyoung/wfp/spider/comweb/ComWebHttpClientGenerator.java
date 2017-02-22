@@ -53,6 +53,9 @@ public class ComWebHttpClientGenerator {
         CredentialsProvider credsProvider = null;
         HttpClientBuilder httpClientBuilder = HttpClients.custom();
         
+//        httpClientBuilder.setRedirectStrategy(new LaxRedirectStrategy());
+        httpClientBuilder.disableRedirectHandling();
+        
         if(proxy!=null && StringUtils.isNotBlank(proxy.getUser()) && StringUtils.isNotBlank(proxy.getPassword()))
         {
             credsProvider= new BasicCredentialsProvider();

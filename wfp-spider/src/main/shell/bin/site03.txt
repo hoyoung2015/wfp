@@ -148,7 +148,7 @@
 600321	国栋建设	http://www.guodong.cn	0
 002436	兴森科技	http://www.chinafastprint.com/cn/index.aspx	1000
 300228	富瑞特装	http://www.furuise.com	0
-002197	证通电子	https://www.szzt.com.cn	0
+#https协议，等稍后不使用代理 002197	证通电子	https://www.szzt.com.cn	0
 #安全狗 600425	青松建化	http://www.xjqscc.com	0
 300308	中际装备	http://www.zhongji.cc	0
 600114	东睦股份	http://www.pm-china.com/cn/cn-index.php	0
@@ -272,16 +272,16 @@
 000792	盐湖股份	http://www.qhyhgf.com	0
 600362	江西铜业	http://www.jxcc.com	0
 601985	中国核电	http://www.cnnp.com.cn	0
-601179	中国西电	http://www.xdect.com.cn	0
+601179	中国西电	http://www.xdect.com.cn/structure/index.htm	0
 600352	浙江龙盛	http://www.longsheng.com	0
-600436	片仔癀	http://www.zzpzh.com	0
+#安全狗 600436	片仔癀	http://www.zzpzh.com	0
 000898	鞍钢股份	http://www.ansteel.com.cn	0
 000027	深圳能源	http://www.sec.com.cn	0
 000887	中鼎股份	http://www.zhongdinggroup.com	0
 600521	华海药业	http://www.huahaipharm.com	0
 601992	金隅股份	http://www.bbmg.com.cn/listco	0
 000999	华润三九	https://www.999.com.cn/index.html	0
-300124	汇川技术	http://www.inovance.cn	0
+#安全狗 300124	汇川技术	http://www.inovance.cn	0
 601958	金钼股份	http://www.jdcmoly.com	0
 600021	上海电力	http://www.shanghaipower.com	0
 002001	新和成	http://www.cnhu.com	0

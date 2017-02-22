@@ -120,7 +120,7 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 
 			HttpUriRequest httpUriRequest = getHttpUriRequest(request, site, headers, proxyHost);
 			httpResponse = getHttpClient(site, proxy).execute(httpUriRequest, context);
-
+			
 			statusCode = httpResponse.getStatusLine().getStatusCode();
 			request.putExtra(Request.STATUS_CODE, statusCode);
 			if (statusAccept(acceptStatCode, statusCode)) {
@@ -152,21 +152,29 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 						landingPageUrl = str;
 					}
 				}
-				if(landingPageUrl==null && contentType==null){
+				if (landingPageUrl == null && contentType == null) {
 					// 下载文件也把它当做重定向处理
 					Header[] descHeader = httpResponse.getHeaders("Content-Description");
 					Header[] fileHeader = httpResponse.getHeaders("Content-Disposition");
-					if (descHeader != null && descHeader.length > 0 && fileHeader != null && fileHeader.length > 0 && "File Transfer".equals(descHeader[0].getValue())) {
-//						Matcher matcher = Pattern.compile("filename=.*\\.("+ComWebConstant.DOC_REGEX+")").matcher(new String(fileHeader[0].getValue().getBytes("ISO-8859-1"),"utf8"));
-//						if(matcher.find()){
-//							request.putExtra(ComPage.CONTENT_TYPE, matcher.group(1));
-//							landingPageUrl = request.getUrl();
-//						}else {
-//							landingPageUrl = "";
-//						}
+					if (fileHeader != null && fileHeader.length > 0
+							&& ((descHeader.length > 0 && "File Transfer".equals(descHeader[0].getValue()))
+									|| fileHeader[0].getValue().startsWith("attachment"))) {
+						// Matcher matcher =
+						// Pattern.compile("filename=.*\\.("+ComWebConstant.DOC_REGEX+")").matcher(new
+						// String(fileHeader[0].getValue().getBytes("ISO-8859-1"),"utf8"));
+						// if(matcher.find()){
+						// request.putExtra(ComPage.CONTENT_TYPE,
+						// matcher.group(1));
+						// landingPageUrl = request.getUrl();
+						// }else {
+						// landingPageUrl = "";
+						// }
 						// 下载文件的链接忽略
-//						landingPageUrl = "";
-						throw new IOException("This is a download file "+new String(fileHeader[0].getValue().getBytes("ISO-8859-1"),"utf8"));
+						// landingPageUrl = "";
+						httpResponse.getEntity().getContent().close();
+						statusCode = 404;
+						throw new IOException("This is a download file "
+								+ new String(fileHeader[0].getValue().getBytes("ISO-8859-1"), "utf8"));
 					}
 				}
 
@@ -187,7 +195,7 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 			}
 		} catch (IOException e) {
 			logger.warn("download page {} error", request.getUrl(), e);
-			if (site.getCycleRetryTimes() > 0) {
+			if (site.getCycleRetryTimes() > 0 && statusCode != 404) {
 				return addToCycleRetry(request, site);
 			}
 			onError(request);
@@ -277,9 +285,9 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 			byte[] contentBytes = IOUtils.toByteArray(httpResponse.getEntity().getContent());
 			String htmlCharset = getHtmlCharset(httpResponse, contentBytes);
 			if (htmlCharset != null) {
-				if("gbk2312".equals(htmlCharset)){
+				if ("gbk2312".equals(htmlCharset)) {
 					htmlCharset = "gb2312";
-				}else if (htmlCharset.contains("utf-8")) {
+				} else if (htmlCharset.contains("utf-8")) {
 					htmlCharset = "utf-8";
 				}
 				return new String(contentBytes, htmlCharset);
