@@ -74,7 +74,7 @@ public class DomainUrlFilter {
 				|| isRootDomainSame(domainThis, domain) == false // 顶级域名不一样
 				|| isInBlackList(domain, url) // 在黑名单中
 				|| isbbs(domainThis, domain) // 排除bbs
-				|| Pattern.matches("http(s?)://" + domainThis + "/(bbs|en|EN|tw|TW|english|ENGLISH)(/.*)?", url) // 排除非中文
+				|| Pattern.matches("http(s?)://" + domainThis + "/(bbs|en|EN|tw|TW|english|ENGLISH|newenglish|erp)(/.*)?", url) // 排除非中文
 				|| Pattern.matches(".+(&|\\?)id=\\-\\d+.*", url)) {
 			return false;
 		}
@@ -112,14 +112,14 @@ public class DomainUrlFilter {
 			return false;
 		String prefix = domainThis.substring(0, i - 1);
 		if (prefix.startsWith("bbs") || prefix.endsWith("bbs")
-				|| Pattern.matches("(bbs|mail|video|oa|newoa|hospital|english|en|email|de|jp)", prefix))
+				|| Pattern.matches("(bbs|mail|video|oa|newoa|hospital|english|en|email|de|jp|erp)", prefix))
 			return true;
 		return false;
 	}
 
 	public static void main(String[] args) {
 		DomainUrlFilter urlFilter = new DomainUrlFilter();
-		System.out.println(urlFilter.accept("dongeejiao.com", "http://www.dongeejiao.com/news/detail/1768.htm"));
+		System.out.println(urlFilter.accept("jingda.cn", "http://www.ejingda.cn/catalog/qibaotongxian/"));
 	}
 
 }
