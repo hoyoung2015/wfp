@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -51,9 +50,9 @@ public class DomainUrlFilter {
 				e.printStackTrace();
 			}
 		}
-		for (Entry<String, String> entry : regexMap.entrySet()) {
-			System.out.println(entry.getKey() + "\t" + entry.getValue());
-		}
+//		for (Entry<String, String> entry : regexMap.entrySet()) {
+//			System.out.println(entry.getKey() + "\t" + entry.getValue());
+//		}
 	}
 
 	/**
@@ -74,7 +73,7 @@ public class DomainUrlFilter {
 				|| isRootDomainSame(domainThis, domain) == false // 顶级域名不一样
 				|| isInBlackList(domain, url) // 在黑名单中
 				|| isbbs(domainThis, domain) // 排除bbs
-				|| Pattern.matches("http(s?)://" + domainThis + "/(bbs|en|EN|tw|TW|english|ENGLISH|newenglish|erp)(/.*)?", url) // 排除非中文
+				|| Pattern.matches("http(s?)://" + domainThis + "/(bbs|en|EN|tw|TW|english|ENGLISH|newenglish|erp|BYDEnglish|English)(/.*)?", url) // 排除非中文
 				|| Pattern.matches(".+(&|\\?)id=\\-\\d+.*", url)) {
 			return false;
 		}

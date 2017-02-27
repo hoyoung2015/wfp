@@ -7,10 +7,18 @@ import java.security.NoSuchAlgorithmException;
  * @author xufeng
  *         2014/11/8
  */
-public class Md5Util {
+public class EncryptUtil {
+	
+	public static void main(String[] args) {
+		try {
+			System.out.println(EncryptUtil.encryptSha1("hello"));
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+	}
 
-    public static String encrypt(String password) throws NoSuchAlgorithmException {
-        MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+    public static String encryptSha1(String password) throws NoSuchAlgorithmException {
+        MessageDigest messageDigest = MessageDigest.getInstance("SHA1");
         messageDigest.update(password.getBytes());
         byte[] b = messageDigest.digest();
         return byteArrayToHex(b);

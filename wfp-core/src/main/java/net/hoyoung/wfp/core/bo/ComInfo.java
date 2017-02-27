@@ -30,6 +30,10 @@ public class ComInfo {
 	public void setSname(String sname) {
 		this.sname = sname;
 	}
+	@Override
+	public String toString() {
+		return "ComInfo [stockCode=" + stockCode + ", webSite=" + webSite + ", name=" + name + ", sname=" + sname + "]";
+	}
 	
 	
 }

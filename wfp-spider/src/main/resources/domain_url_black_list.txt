@@ -14,7 +14,23 @@ http(s?)://www.ejingda.cn
 http(s?)://www\.sanjin\.com\.cn/trade/.*
 
 [xsmd.com.cn]
-http://msxh.xsmd.com.cn/.*
+http://msxh\.xsmd\.com\.cn/.*
 
 [shanghaipower.com]
 http://www\.shanghaipower\.com/power/company/.*
+
+[byd.cn]
+http://www\.byd\.cn/BYDEnglish/.*
+
+[cxtc.com]
+http(s?)://scm\.cxtc\.com/.*
+https(s?)://mall\.cxtc\.com/.*
+
+[weichaipower.com]
+http://m\.en\.weichaipower.com/.*
+
+[yuhong.com]
+http://www\.yuhong\.com\.cn/videoshow/.*
+
+[chinacamel.com]
+http://auto\.chinacamel\.com/.*

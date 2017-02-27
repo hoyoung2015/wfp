@@ -8,4 +8,5 @@ public interface ComPage {
 	String CONTENT_LENGTH = "contentLength";
 	String CONTENT = "content";
 	String CONTENT_TYPE = "contentType";
+	String CONTENT_SHA1 = "contentSha1";
 }

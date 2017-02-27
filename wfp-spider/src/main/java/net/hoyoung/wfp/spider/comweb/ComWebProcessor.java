@@ -34,6 +34,8 @@ public class ComWebProcessor implements PageProcessor {
 
 	@Override
 	public void process(Page page) {
+		
+		
 		Document document = new Document(ComPage.STOCK_CODE, page.getRequest().getExtra(ComPage.STOCK_CODE))
 				.append(ComPage.CONTENT_LENGTH, page.getRequest().getExtra(ComPage.CONTENT_LENGTH));
 

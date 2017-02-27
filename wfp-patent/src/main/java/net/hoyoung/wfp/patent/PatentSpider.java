@@ -1,7 +1,5 @@
 package net.hoyoung.wfp.patent;
 
-import java.io.File;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
@@ -21,7 +19,6 @@ import com.mongodb.client.model.Indexes;
 
 import net.hoyoung.wfp.core.bo.ComInfo;
 import net.hoyoung.wfp.core.utils.MongoUtil;
-import net.hoyoung.wfp.core.utils.ProxyReader;
 import net.hoyoung.wfp.patent.input.ComInfoInput;
 import net.hoyoung.wfp.patent.input.FileComInfoInput;
 import net.hoyoung.wfp.patent.spider.PatentPipeline;
@@ -29,6 +26,8 @@ import net.hoyoung.wfp.patent.spider.PatientPageProcessor;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.PatentHttpClientDownloader;
+import us.codecraft.webmagic.scheduler.FileCacheQueueScheduler;
+import us.codecraft.webmagic.scheduler.RedisScheduler;
 
 /**
  * Hello world!
@@ -54,7 +53,7 @@ public class PatentSpider {
 		Set<String> collectionNameSet = getCollectionNameSet();
 		for (ComInfo comInfo : list) {
 			if (collectionNameSet.contains(comInfo.getStockCode())) {
-				logger.info("company {} has been crawled");
+				logger.info("company {} has been crawled", comInfo);
 				continue;
 			}
 			logger.info("start to crawl {}({})", comInfo.getName(), comInfo.getStockCode());
@@ -71,25 +70,15 @@ public class PatentSpider {
 						+ URLEncoder.encode("专利权人:" + fullName, "UTF-8").toLowerCase() + "&f=top&p=1";
 				Request request = new Request(url);
 				request.putExtra(PatentPage.STOCK_CODE, comInfo.getStockCode());
-				// 设置代理
+
 				PatientPageProcessor pageProcessor = new PatientPageProcessor();
-				pageProcessor.getSite().setHttpProxyPool(ProxyReader.read(), false);
+				// 设置代理
+				// pageProcessor.getSite().setHttpProxyPool(ProxyReader.read(),
+				// false);
 				Spider.create(pageProcessor).addPipeline(new PatentPipeline())
+						.setScheduler(new RedisScheduler("127.0.0.1"))
 						.setDownloader(new PatentHttpClientDownloader()).addRequest(request).thread(2).run();
-				if(pageProcessor.isComplete()){
-					tmp.renameCollection(new MongoNamespace(PatentConstant.DB_NAME, comInfo.getStockCode()));
-					logger.info("finish crawl {}({}) patent", comInfo.getName(), comInfo.getStockCode());
-				}else{
-					logger.warn("{} {} failed", comInfo.getStockCode(), comInfo.getName());
-					File file = new File(comInfo.getStockCode());
-					if(!file.exists()){
-						try {
-							file.createNewFile();
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					}
-				}
+				tmp.renameCollection(new MongoNamespace(PatentConstant.DB_NAME, comInfo.getStockCode()));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 				logger.warn("company {} encoding error", comInfo.getStockCode());

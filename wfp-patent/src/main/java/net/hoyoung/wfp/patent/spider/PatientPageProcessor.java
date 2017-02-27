@@ -27,8 +27,6 @@ public class PatientPageProcessor implements PageProcessor {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	private AtomicInteger counter = new AtomicInteger(0);
 
-	private int total = 0;
-
 	private String getPatentDate(Selectable div) {
 		String s = div.$("div.left-record > div.record-subtitle", "text").get();
 		Matcher matcher = Pattern.compile("(\\d{4}年\\d{1,2}月\\d{1,2})").matcher(s);
@@ -63,15 +61,18 @@ public class PatientPageProcessor implements PageProcessor {
 		List<Selectable> items = page.getHtml()
 				.$("body > div.content.content-search.clear > div.right > div.record-item-list > div.record-item")
 				.nodes();
-		if (CollectionUtils.isEmpty(items)) {
-			return;
-		}
 		// 第一页
 		if (Pattern.matches("http://.*&p=1$", page.getRequest().getUrl())) {
+			if (CollectionUtils.isEmpty(items)) {
+				page.putField("description", 0);
+				return;
+			}
+			
 			String totalTxt = page.getHtml()
 					.$("body > div.content.content-search.clear > div.left > div.total-records > span", "text").get();
-			this.total = Integer.valueOf(totalTxt.replace(",", "").replace("条", ""));
+			Integer total = Integer.valueOf(totalTxt.replace(",", "").replace("条", ""));
 			logger.info("{} has {} patents", page.getRequest().getExtra(PatentPage.STOCK_CODE), total);
+			page.putField("description", total);
 			System.err.println("total=" + total);
 		}
 		List<Document> documents = Lists.newArrayList();
@@ -90,10 +91,6 @@ public class PatientPageProcessor implements PageProcessor {
 		}
 		page.putField("documents", documents);
 		nextPage(page);
-	}
-	
-	public boolean isComplete(){
-		return this.total == this.counter.get();
 	}
 
 	private void nextPage(Page page) {

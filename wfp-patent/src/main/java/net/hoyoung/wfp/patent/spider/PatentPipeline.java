@@ -18,12 +18,20 @@ public class PatentPipeline implements Pipeline {
 
 	@Override
 	public void process(ResultItems resultItems, Task task) {
+		Integer total = resultItems.get("description");
+		String stockCode = (String) resultItems.getRequest().getExtra(PatentPage.STOCK_CODE);
+
+		if (total != null) {
+			MongoUtil.getCollection(PatentConstant.DB_NAME, "description")
+					.insertOne(new Document("total", total).append(PatentPage.STOCK_CODE, stockCode));
+		}
+
 		List<Document> documents = resultItems.get("documents");
 		if (CollectionUtils.isEmpty(documents)) {
 			return;
 		}
-		String stockCode = (String) resultItems.getRequest().getExtra(PatentPage.STOCK_CODE);
-		MongoCollection<Document> tmp = MongoUtil.getCollection(PatentConstant.DB_NAME, stockCode+"_tmp");
+
+		MongoCollection<Document> tmp = MongoUtil.getCollection(PatentConstant.DB_NAME, stockCode + "_tmp");
 		for (Document document : documents) {
 			tmp.insertOne(document);
 		}
