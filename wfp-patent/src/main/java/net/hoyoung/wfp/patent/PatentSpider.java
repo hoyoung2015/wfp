@@ -14,6 +14,7 @@ import com.google.common.collect.Sets;
 import com.mongodb.MongoNamespace;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.IndexOptions;
 import com.mongodb.client.model.Indexes;
 
@@ -26,7 +27,6 @@ import net.hoyoung.wfp.patent.spider.PatientPageProcessor;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.PatentHttpClientDownloader;
-import us.codecraft.webmagic.scheduler.FileCacheQueueScheduler;
 import us.codecraft.webmagic.scheduler.RedisScheduler;
 
 /**
@@ -51,6 +51,8 @@ public class PatentSpider {
 			System.exit(-1);
 		}
 		Set<String> collectionNameSet = getCollectionNameSet();
+
+		MongoCollection<Document> description = MongoUtil.getCollection(PatentConstant.DB_NAME, "description");
 		for (ComInfo comInfo : list) {
 			if (collectionNameSet.contains(comInfo.getStockCode())) {
 				logger.info("company {} has been crawled", comInfo);
@@ -76,10 +78,14 @@ public class PatentSpider {
 				// pageProcessor.getSite().setHttpProxyPool(ProxyReader.read(),
 				// false);
 				Spider.create(pageProcessor).addPipeline(new PatentPipeline())
-						.setScheduler(new RedisScheduler("127.0.0.1"))
-						.setDownloader(new PatentHttpClientDownloader()).addRequest(request).thread(5).run();
-				tmp.renameCollection(new MongoNamespace(PatentConstant.DB_NAME, comInfo.getStockCode()));
-				
+						.setScheduler(new RedisScheduler("127.0.0.1")).setDownloader(new PatentHttpClientDownloader())
+						.addRequest(request).thread(5).run();
+
+				Document desc = description.find(Filters.eq(PatentPage.STOCK_CODE, comInfo.getStockCode())).first();
+				if (tmp.count() == 0 || tmp.count() == desc.getLong("total")) {
+					tmp.renameCollection(new MongoNamespace(PatentConstant.DB_NAME, comInfo.getStockCode()));
+				}
+
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 				logger.warn("company {} encoding error", comInfo.getStockCode());
