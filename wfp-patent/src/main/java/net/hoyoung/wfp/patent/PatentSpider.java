@@ -77,7 +77,7 @@ public class PatentSpider {
 				// false);
 				Spider.create(pageProcessor).addPipeline(new PatentPipeline())
 						.setScheduler(new RedisScheduler("127.0.0.1"))
-						.setDownloader(new PatentHttpClientDownloader()).addRequest(request).thread(2).run();
+						.setDownloader(new PatentHttpClientDownloader()).addRequest(request).thread(5).run();
 				tmp.renameCollection(new MongoNamespace(PatentConstant.DB_NAME, comInfo.getStockCode()));
 				
 			} catch (UnsupportedEncodingException e) {
