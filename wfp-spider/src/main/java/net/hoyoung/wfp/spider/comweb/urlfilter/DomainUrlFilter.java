@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,7 +16,7 @@ public class DomainUrlFilter {
 
 	private String configFile = "domain_url_black_list.txt";
 	private Map<String, String> regexMap = new HashMap<>();
-	private Pattern domainPattern = Pattern.compile("\\[([0-9a-zA-Z_\\-\\.]+)\\]");
+	private Pattern domainPattern = Pattern.compile("^\\[([0-9a-zA-Z_\\-\\.]+)\\]$");
 
 	public DomainUrlFilter() {
 		InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(configFile);
@@ -50,9 +51,9 @@ public class DomainUrlFilter {
 				e.printStackTrace();
 			}
 		}
-//		for (Entry<String, String> entry : regexMap.entrySet()) {
-//			System.out.println(entry.getKey() + "\t" + entry.getValue());
-//		}
+		for (Entry<String, String> entry : regexMap.entrySet()) {
+			System.out.println(entry.getKey() + "\t" + entry.getValue());
+		}
 	}
 
 	/**

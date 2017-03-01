@@ -1,3 +1,6 @@
+[shuanghui.net]
+http://www\.shuanghui\.net/[0-9a-zA-Z_]+/viewpic\.php.*
+
 [ieslab.com.cn]
 http://www\.ieslab\.com\.cn/sitefiles/services/cms/utils\.aspx\?type=Download&.*
 
@@ -34,3 +37,11 @@ http://www\.yuhong\.com\.cn/videoshow/.*
 
 [chinacamel.com]
 http://auto\.chinacamel\.com/.*
+
+[chasesun.cn]
+http://www\.chasesun\.cn/infor/en/.*
+
+[token-ito.com]
+http://www\.token-ito\.com/yp_add_list\.asp\?id=\d+
+http://www\.token-ito\.com/sca_list\.asp\?id=\d+
+http://www\.token-ito\.com/sca_view\.asp\?id=\d+

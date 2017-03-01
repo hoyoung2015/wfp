@@ -9,8 +9,8 @@ from common import url_utils
 
 rds = Redis(host='127.0.0.1', port=6379, db=0, decode_responses=True)
 
-url = 'http://www.chinacamel.com/about.aspx?node=about'
-regex = 'http://auto\.chinacamel\.com/.*'
+url = 'http://www.token-ito.com/'
+regex = 'http://www\.token-ito\.com/sca_view\.asp\?id=\d+'
 
 domain = url_utils.get_domain(url)
 print(domain)

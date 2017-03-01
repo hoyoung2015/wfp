@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.collections.CollectionUtils;
 import org.bson.Document;
 
+import com.mongodb.DuplicateKeyException;
 import com.mongodb.MongoWriteException;
 import com.mongodb.client.MongoCollection;
 
@@ -31,6 +32,8 @@ public class ComWebPipeline implements Pipeline {
 			try {
 				collectionTmp.insertOne(document);
 			} catch (MongoWriteException e) {
+				
+			}catch (DuplicateKeyException e) {
 				
 			}
 		}

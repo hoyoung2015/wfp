@@ -83,12 +83,13 @@ public class StaticUrlFilter {
 			if(cnt > 1000){
 				break;
 			}
+			name = "300088";
 			String domain = stockCode2Domain.get(name);
 			System.out.println(String.format("%d\tstart to process %s[%s]", ++cnt, name, domain));
 			if (domain == null) {
 				continue;
 			}
-
+			name += "_tmp";
 			MongoCollection<Document> collection = MongoUtil.getCollection(ComWebConstant.DB_NAME, name);
 			List<ObjectId> oids = Lists.newArrayList();
 			MongoCursor<Document> docIte = collection.find().projection(Projections.include(ComPage.URL)).iterator();
@@ -97,6 +98,7 @@ public class StaticUrlFilter {
 				while (docIte.hasNext()) {
 					Document doc = docIte.next();
 					String url = doc.getString(ComPage.URL);
+					
 					if (urlFilter.accept(domain, url) == false && Pattern.matches(".+\\.(" + ComWebConstant.DOC_REGEX + ")$", url) == false) {
 						System.out.println(doc.getString(ComPage.URL));
 						oids.add(doc.getObjectId("_id"));
@@ -108,6 +110,7 @@ public class StaticUrlFilter {
 			if(CollectionUtils.isNotEmpty(oids)){
 				collection.deleteMany(Filters.in("_id", oids));
 			}
+			break;
 		}
 	}
 }

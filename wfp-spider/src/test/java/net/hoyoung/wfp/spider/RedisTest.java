@@ -1,5 +1,9 @@
 package net.hoyoung.wfp.spider;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 import net.hoyoung.wfp.core.utils.RedisUtil;
@@ -13,6 +17,8 @@ import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.scheduler.MyRedisScheduler;
+import us.codecraft.webmagic.selector.Html;
+import us.codecraft.webmagic.selector.Selectable;
 
 public class RedisTest {
 
@@ -62,5 +68,16 @@ public class RedisTest {
 		}
 		
 		jedisPool.close();
+	}
+	@Test
+	public void testHtml(){
+		try {
+			Html html = new Html(FileUtils.readFileToString(new File("aa.html")));
+			String name = html.$("body > div.wrapper > div.jl_body > table","width").get();
+			System.out.println(name);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
