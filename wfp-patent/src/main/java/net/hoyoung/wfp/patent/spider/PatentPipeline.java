@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.commons.collections.CollectionUtils;
 import org.bson.Document;
 
+import com.mongodb.DuplicateKeyException;
+import com.mongodb.MongoWriteException;
 import com.mongodb.client.MongoCollection;
 
 import net.hoyoung.wfp.core.utils.MongoUtil;
@@ -33,7 +35,13 @@ public class PatentPipeline implements Pipeline {
 
 		MongoCollection<Document> tmp = MongoUtil.getCollection(PatentConstant.DB_NAME, stockCode + "_tmp");
 		for (Document document : documents) {
-			tmp.insertOne(document);
+			try {
+				tmp.insertOne(document);
+			} catch (MongoWriteException e) {
+
+			} catch (DuplicateKeyException e) {
+
+			}
 		}
 	}
 

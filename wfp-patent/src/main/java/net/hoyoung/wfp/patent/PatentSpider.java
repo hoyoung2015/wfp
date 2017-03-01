@@ -79,6 +79,7 @@ public class PatentSpider {
 						.setScheduler(new RedisScheduler("127.0.0.1"))
 						.setDownloader(new PatentHttpClientDownloader()).addRequest(request).thread(2).run();
 				tmp.renameCollection(new MongoNamespace(PatentConstant.DB_NAME, comInfo.getStockCode()));
+				
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 				logger.warn("company {} encoding error", comInfo.getStockCode());
