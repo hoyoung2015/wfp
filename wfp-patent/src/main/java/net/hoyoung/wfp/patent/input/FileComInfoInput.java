@@ -27,6 +27,10 @@ public class FileComInfoInput implements ComInfoInput {
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
 			String line = null;
 			while ((line = br.readLine()) != null) {
+				line = line.trim();
+				if (line.startsWith("#")) {
+					continue;
+				}
 				String[] split = line.split(",");
 				ComInfo comInfo = new ComInfo();
 				comInfo.setName(split[1]);
