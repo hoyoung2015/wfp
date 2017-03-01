@@ -20,10 +20,12 @@ import com.mongodb.client.model.Indexes;
 
 import net.hoyoung.wfp.core.bo.ComInfo;
 import net.hoyoung.wfp.core.utils.MongoUtil;
+import net.hoyoung.wfp.core.utils.RedisUtil;
 import net.hoyoung.wfp.patent.input.ComInfoInput;
 import net.hoyoung.wfp.patent.input.FileComInfoInput;
 import net.hoyoung.wfp.patent.spider.PatentPipeline;
 import net.hoyoung.wfp.patent.spider.PatientPageProcessor;
+import redis.clients.jedis.Jedis;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.PatentHttpClientDownloader;
@@ -82,8 +84,11 @@ public class PatentSpider {
 						.addRequest(request).thread(5).run();
 
 				Document desc = description.find(Filters.eq(PatentPage.STOCK_CODE, comInfo.getStockCode())).first();
-				if (tmp.count() == 0 || tmp.count() == desc.getLong("total")) {
+				if (tmp.count() == 0 || tmp.count() == desc.getInteger("total")) {
 					tmp.renameCollection(new MongoNamespace(PatentConstant.DB_NAME, comInfo.getStockCode()));
+					Jedis jedis = RedisUtil.getJedis();
+					jedis.del("item_s.wanfangdata.com.cn");
+					jedis.del("set_s.wanfangdata.com.cn");
 				}
 
 			} catch (UnsupportedEncodingException e) {
