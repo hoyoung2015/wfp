@@ -29,7 +29,6 @@ import redis.clients.jedis.Jedis;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.PatentHttpClientDownloader;
-import us.codecraft.webmagic.scheduler.RedisScheduler;
 
 /**
  * Hello world!
@@ -80,7 +79,7 @@ public class PatentSpider {
 				// pageProcessor.getSite().setHttpProxyPool(ProxyReader.read(),
 				// false);
 				Spider.create(pageProcessor).addPipeline(new PatentPipeline())
-						.setScheduler(new RedisScheduler("127.0.0.1")).setDownloader(new PatentHttpClientDownloader())
+						.setDownloader(new PatentHttpClientDownloader())
 						.addRequest(request).thread(5).run();
 
 				Document desc = description.find(Filters.eq(PatentPage.STOCK_CODE, comInfo.getStockCode())).first();
