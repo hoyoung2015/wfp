@@ -54,6 +54,7 @@ public class PatentSpider {
 		Set<String> collectionNameSet = getCollectionNameSet();
 
 		MongoCollection<Document> description = MongoUtil.getCollection(PatentConstant.DB_NAME, "description");
+		description.createIndex(Indexes.ascending(PatentPage.STOCK_CODE), new IndexOptions().unique(true));
 		for (ComInfo comInfo : list) {
 			if (collectionNameSet.contains(comInfo.getStockCode())) {
 				logger.info("company {} has been crawled", comInfo);
