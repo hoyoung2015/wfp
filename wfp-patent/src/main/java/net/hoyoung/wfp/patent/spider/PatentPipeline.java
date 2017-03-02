@@ -24,8 +24,15 @@ public class PatentPipeline implements Pipeline {
 		String stockCode = (String) resultItems.getRequest().getExtra(PatentPage.STOCK_CODE);
 
 		if (total != null) {
-			MongoUtil.getCollection(PatentConstant.DB_NAME, "description")
-					.insertOne(new Document("total", total).append(PatentPage.STOCK_CODE, stockCode));
+			try {
+				MongoUtil.getCollection(PatentConstant.DB_NAME, "description")
+				.insertOne(new Document("total", total).append(PatentPage.STOCK_CODE, stockCode));
+			} catch (MongoWriteException e) {
+
+			} catch (DuplicateKeyException e) {
+
+			}
+			
 		}
 
 		List<Document> documents = resultItems.get("documents");
