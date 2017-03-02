@@ -108,7 +108,7 @@ public class PatientPageProcessor implements PageProcessor {
 		}
 	}
 
-	private static final int SLEEP_TIME = 100;
+	private static final int SLEEP_TIME = 1000;
 
 	private Site site = Site.me().setSleepTime(SLEEP_TIME).setRetryTimes(3).setTimeOut(50000).setCycleRetryTimes(3)
 			.addHeader("User-Agent",

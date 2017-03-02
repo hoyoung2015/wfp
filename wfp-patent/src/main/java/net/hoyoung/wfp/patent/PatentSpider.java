@@ -68,7 +68,7 @@ public class PatentSpider {
 			String url;
 			try {
 				url = "http://s.wanfangdata.com.cn/patent.aspx?q="
-						+ URLEncoder.encode("专利权人:" + fullName, "UTF-8").toLowerCase() + "&f=top&p=1";
+						+ URLEncoder.encode("专利权人:\"" + fullName+"\"", "UTF-8").toLowerCase() + "&f=top&p=1";
 				Request request = new Request(url);
 				request.putExtra(PatentPage.STOCK_CODE, comInfo.getStockCode());
 
@@ -76,7 +76,7 @@ public class PatentSpider {
 				// 设置代理
 				// pageProcessor.getSite().setHttpProxyPool(ProxyReader.read(),
 				// false);
-				Spider.create(pageProcessor).addPipeline(new PatentPipeline()).addRequest(request).thread(1).run();
+				Spider.create(pageProcessor).addPipeline(new PatentPipeline()).addRequest(request).thread(5).run();
 
 				Document desc = description.find(Filters.eq(PatentPage.STOCK_CODE, comInfo.getStockCode())).first();
 				if (tmp.count() == 0 || tmp.count() == desc.getInteger("total")) {
