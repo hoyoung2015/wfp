@@ -76,7 +76,7 @@ public class PatentSpider {
 				// 设置代理
 				// pageProcessor.getSite().setHttpProxyPool(ProxyReader.read(),
 				// false);
-				Spider.create(pageProcessor).addPipeline(new PatentPipeline()).addRequest(request).thread(5).run();
+				Spider.create(pageProcessor).addPipeline(new PatentPipeline()).addRequest(request).thread(3).run();
 
 				Document desc = description.find(Filters.eq(PatentPage.STOCK_CODE, comInfo.getStockCode())).first();
 				if (tmp.count() == 0 || tmp.count() == desc.getInteger("total")) {
