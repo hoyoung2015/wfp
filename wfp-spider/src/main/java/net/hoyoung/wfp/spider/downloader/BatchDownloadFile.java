@@ -150,6 +150,92 @@ public class BatchDownloadFile implements Runnable {
 		}
 	}
 
+	public void syncRun() throws DownloadException {
+		// 首次下载，获取下载文件长度
+		if (first) {
+			length = this.getFileSize();// 获取文件长度
+			downloadInfo.setLength(this.length);
+			if (length == -1) {
+				logger.warn("file length is unknow!");
+				stop = true;
+				throw new DownloadException("content type is miss match");
+			} else if (length == -2) {
+				logger.warn("read file length is error!");
+				stop = true;
+				throw new DownloadException("content type is miss match");
+			} else if (length == -3) {
+				logger.warn("content type is miss match");
+				stop = true;
+				throw new DownloadException("content type is miss match");
+			} else if (length > 0) {
+				/**
+				 * eg start: 1, 3, 5, 7, 9 end: 3, 5, 7, 9, length
+				 */
+				for (int i = 0, len = startPos.length; i < len; i++) {
+					long size = i * (length / len);
+					startPos[i] = size;
+
+					// 设置最后一个结束点的位置
+					if (i == len - 1) {
+						endPos[i] = length;
+					} else {
+						size = (i + 1) * (length / len);
+						endPos[i] = size;
+					}
+					logger.debug("start-end Position[" + i + "]: " + startPos[i] + "-" + endPos[i]);
+				}
+				this.startPos_now = this.startPos;
+			} else {
+				logger.warn("get file length is error, download is stop!");
+				stop = true;
+			}
+		}
+
+		// 子线程开始下载
+		if (!stop) {
+			// 创建单线程下载对象数组
+			fileItem = new DownloadFile[startPos.length];// startPos.length =
+															// downloadInfo.getSplitter()
+			for (int i = 0; i < startPos.length; i++) {
+				try {
+					// 创建指定个数单线程下载对象，每个线程独立完成指定块内容的下载
+					fileItem[i] = new DownloadFile(downloadInfo.getUrl(),
+							this.downloadInfo.getFilePath() + File.separator + downloadInfo.getFileName(),
+							startPos_now[i], endPos[i], i);
+					fileItem[i].start();// 启动线程，开始下载
+					logger.debug("Thread: " + i + ", startPos: " + startPos[i] + ", endPos: " + endPos[i]);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			// 循环写入下载文件长度信息
+			while (!stop) {
+				try {
+					writePosInfo();
+					Thread.sleep(SLEEP_SECONDS);
+					stop = true;
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				for (int i = 0; i < startPos.length; i++) {
+					if (!fileItem[i].isDownloadOver()) {
+						stop = false;
+						break;
+					}
+				}
+			}
+			// 任务完成
+			logger.info("Download task is finished!");
+			// 删除记录信息
+			this.tempFile.delete();
+		}
+	}
+	
+	int lastProgress = 0;
+
 	/**
 	 * 将写入点数据保存在临时文件中
 	 * 
@@ -174,7 +260,11 @@ public class BatchDownloadFile implements Runnable {
 		dos.close();
 		// 输出总的下载进度
 		int progress = (int) Math.round(completeLength * 1.0 / this.length * 100);// 0~100
-		logger.info("下载进度:" + progress);
+		if (progress > lastProgress) {
+			lastProgress = progress;
+			logger.info("下载进度:" + progress);
+		}
+
 	}
 
 	/**
@@ -249,10 +339,13 @@ public class BatchDownloadFile implements Runnable {
 	}
 
 	public static void main(String[] args) {
-//		 DownloadInfo downloadInfo = new DownloadInfo("http://www.hybio.com.cn/Public/Attachment/File/2015/01/20/54bdeb86a0a84.PDF");
-//		DownloadInfo downloadInfo = new DownloadInfo("http://www.faratronic.com/Upfile_pro/investor/20094230145193.doc");
-		DownloadInfo downloadInfo = new DownloadInfo("http://www.faratronic.com/Upfile_pro/investor/201032685818979.doc");
-				downloadInfo.addExcludeContentType(ContentType.PDF, ContentType.MSWORD);
+		// DownloadInfo downloadInfo = new
+		// DownloadInfo("http://www.hybio.com.cn/Public/Attachment/File/2015/01/20/54bdeb86a0a84.PDF");
+		// DownloadInfo downloadInfo = new
+		// DownloadInfo("http://www.faratronic.com/Upfile_pro/investor/20094230145193.doc");
+		DownloadInfo downloadInfo = new DownloadInfo(
+				"http://www.faratronic.com/Upfile_pro/investor/201032685818979.doc");
+		downloadInfo.addExcludeContentType(ContentType.PDF, ContentType.MSWORD);
 		downloadInfo.setFileName("ceshi.doc");
 		new Thread(new BatchDownloadFile(downloadInfo)).start();
 	}

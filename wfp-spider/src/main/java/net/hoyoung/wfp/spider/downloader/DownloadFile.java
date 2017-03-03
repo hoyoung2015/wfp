@@ -23,15 +23,13 @@ public class DownloadFile extends Thread {
 	private long endPos;
 	// 线程id
 	private int threadId;
-	
+
 	// 下载是否完成
 	private boolean isDownloadOver = false;
 
 	private SaveItemFile itemFile;
 
 	private static final int BUFF_LENGTH = 1024 * 8;
-	
-	
 
 	/**
 	 * @param url
@@ -59,10 +57,11 @@ public class DownloadFile extends Thread {
 	@Override
 	public void run() {
 		while (endPos > startPos && !isDownloadOver) {
+			InputStream is = null;
+			HttpURLConnection conn = null;
 			try {
 				URL url = new URL(this.url);
-				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-
+				conn = (HttpURLConnection) url.openConnection();
 				// 设置连接超时时间为10000ms
 				conn.setConnectTimeout(6000000);
 				// 设置读取数据超时时间为10000ms
@@ -72,13 +71,14 @@ public class DownloadFile extends Thread {
 
 				String property = "bytes=" + startPos + "-";
 				conn.setRequestProperty("RANGE", property);
+				conn.setRequestProperty("Connection", "keep-alive");
 
 				// 输出log信息
 				logger.debug("开始 " + threadId + "：" + property + endPos);
 				// printHeader(conn);
 
 				// 获取文件输入流，读取文件内容
-				InputStream is = conn.getInputStream();
+				is = conn.getInputStream();
 
 				byte[] buff = new byte[BUFF_LENGTH];
 				int length = -1;
@@ -86,7 +86,8 @@ public class DownloadFile extends Thread {
 				long tmp = startPos;
 				while (tmp < endPos && (length = is.read(buff)) > 0 && !isDownloadOver) {
 					/**
-					 * 下载doc的时候，最后一个线程读到末尾的时候is.read(buff)奇怪阻塞了，所以把tmp < endPos判断放在前面来终止
+					 * 下载doc的时候，最后一个线程读到末尾的时候is.read(buff)奇怪阻塞了，所以把tmp <
+					 * endPos判断放在前面来终止
 					 */
 					tmp += length;
 					// 写入文件内容，返回最后写入的长度
@@ -100,6 +101,16 @@ public class DownloadFile extends Thread {
 			} catch (IOException e) {
 				e.printStackTrace();
 			} finally {
+				if (is != null) {
+					try {
+						is.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				if (conn != null) {
+					conn.disconnect();
+				}
 				try {
 					if (itemFile != null) {
 						itemFile.close();

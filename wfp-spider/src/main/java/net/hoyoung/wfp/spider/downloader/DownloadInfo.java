@@ -18,7 +18,7 @@ public class DownloadInfo {
 	// 下载文件默认保存路径
 	private final static String FILE_PATH = "/Users/baidu/tmp/downloader";
 	// 默认分块数、线程数
-	private final static int SPLITTER_NUM = 5;
+	private final static int SPLITTER_NUM = 3;
 
 	private Set<String> excludeContentType = new HashSet<String>();
 

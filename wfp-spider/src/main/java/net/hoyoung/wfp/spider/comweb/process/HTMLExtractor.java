@@ -2,7 +2,6 @@ package net.hoyoung.wfp.spider.comweb.process;
 
 import static com.mongodb.client.model.Filters.eq;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -17,8 +16,6 @@ import com.mongodb.client.model.Projections;
 import com.mongodb.client.model.Updates;
 
 import cn.edu.hfut.dmic.contentextractor.ContentExtractor;
-import net.hoyoung.wfp.core.utils.EncryptUtil;
-import net.hoyoung.wfp.core.utils.Md5Util;
 import net.hoyoung.wfp.core.utils.MongoUtil;
 import net.hoyoung.wfp.spider.comweb.ComWebConstant;
 import net.hoyoung.wfp.spider.comweb.bo.ComPage;
@@ -44,7 +41,8 @@ public class HTMLExtractor {
 	}
 
 	public static void main(String[] args) {
-		String dbName = ComWebConstant.DB_NAME + "_test";
+//		String dbName = ComWebConstant.DB_NAME + "_test";
+		String dbName = ComWebConstant.DB_NAME;
 
 		List<String> list = MongoUtil.getCollectionNames(dbName, "\\d{6}");
 		if (CollectionUtils.isEmpty(list)) {
@@ -67,22 +65,15 @@ public class HTMLExtractor {
 					try {
 						content = ContentExtractor.getContentByHtml(html);
 					} catch (Exception e) {
-						e.printStackTrace();
+//						e.printStackTrace();
+						
 						content = getContent(html);
 					}
 					if (content == null) {
 						content = "";
 					}
-					try {
-						String contentSha1 = EncryptUtil.encryptSha1(content);
-//						Bson updates = Updates.combine(Updates.set(ComPage.CONTENT, content),
-//								Updates.set(ComPage.CONTENT_SHA1, contentSha1));
-						Bson updates = Updates.set(ComPage.CONTENT_SHA1, contentSha1);
-						collection.updateOne(eq("_id", document.get("_id")), updates);
-					} catch (NoSuchAlgorithmException e) {
-						e.printStackTrace();
-					}
-
+					Bson updates = Updates.combine(Updates.set(ComPage.CONTENT, content));
+					collection.updateOne(eq("_id", document.get("_id")), updates);
 				}
 			} finally {
 				iterator.close();
