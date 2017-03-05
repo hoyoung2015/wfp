@@ -16,6 +16,7 @@ try:
     resp = requests.get('http://1212.ip138.com/ic.asp', headers=headers, proxies={
         'http': ip_proxy
     }, timeout=40)
+
     print(resp.text)
 except Exception as e:
     print(e)
