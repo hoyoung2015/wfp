@@ -11,3 +11,4 @@ urls_cache*/
 log/
 .phantomjs/
 proxy.txt
+tmpfile_*
