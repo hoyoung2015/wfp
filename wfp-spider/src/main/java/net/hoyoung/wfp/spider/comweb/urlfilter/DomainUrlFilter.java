@@ -10,15 +10,18 @@ import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang3.StringUtils;
+
 import us.codecraft.webmagic.utils.UrlUtils;
 
 public class DomainUrlFilter {
 
 	private String configFile = "domain_url_black_list.txt";
-	private Map<String, String> regexMap = new HashMap<>();
+	private Map<String, String> notAccessRegexMap = new HashMap<>();
+	private Map<String, String> accessRegexMap = new HashMap<>();
 	private Pattern domainPattern = Pattern.compile("^\\[([0-9a-zA-Z_\\-\\.]+)\\]$");
 
-	private static String EN_REGEX = "bbs|esitecn|en|EN|e|En|ru|sp|jp|py|Es|vn|eng|tw|TW|english|ENGLISH|japanese|newenglish|erp|BYDEnglish|English|\\w+_english";
+	private static String EN_REGEX = "bbs|esitecn|eng|en|EN|e|En|ru|fr|ar|sp|jp|py|Es|vn|eng|tw|TW|english|ENGLISH|japanese|newenglish|erp|BYDEnglish|English|\\w+_english";
 
 	public DomainUrlFilter() {
 		InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(configFile);
@@ -36,13 +39,21 @@ public class DomainUrlFilter {
 					cusorDomain = matcher.group(1);
 					continue;
 				}
-				String regex = regexMap.get(cusorDomain);
+
+				Map<String, String> tmp = null;
+				if (line.startsWith("+")) {
+					tmp = accessRegexMap;
+					line = line.substring(1);
+				} else {
+					tmp = notAccessRegexMap;
+				}
+				String regex = tmp.get(cusorDomain);
 				if (regex == null) {
 					regex = line;
 				} else {
 					regex += "|" + line;
 				}
-				regexMap.put(cusorDomain, regex);
+				tmp.put(cusorDomain, regex);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -53,7 +64,7 @@ public class DomainUrlFilter {
 				e.printStackTrace();
 			}
 		}
-		for (Entry<String, String> entry : regexMap.entrySet()) {
+		for (Entry<String, String> entry : notAccessRegexMap.entrySet()) {
 			System.out.println(entry.getKey() + "\t" + entry.getValue());
 		}
 	}
@@ -66,6 +77,14 @@ public class DomainUrlFilter {
 	 * @return
 	 */
 	public boolean accept(String domain, String url) {
+
+		String acceptRegex = accessRegexMap.get(domain);
+
+		if (StringUtils.isNotEmpty(acceptRegex) && !Pattern.matches("(" + accessRegexMap.get(domain) + ")", url)) {
+			return false;
+		}
+		// 不能单纯的认为出现在白名单中就是合法的，因为还要验证后缀
+
 		String domainThis = UrlUtils.getDomain(url);
 		/**
 		 * .css?v=1 .css,.jpg 站内 包含#，锚记 "mailto"开头 英文页，繁体
@@ -101,7 +120,7 @@ public class DomainUrlFilter {
 	static final String EXCEPT_SUFFIX = "xls|xlsx|gif|GIF|jpg|JPG|png|PNG|ico|ICO|css|CSS|sit|SIT|eps|EPS|wmf|WMF|zip|ZIP|rar|RAR|ppt|PPT|mpg|MPG|xls|XLS|gz|GZ|rpm|RPM|tgz|TGZ|mov|MOV|exe|EXE|jpeg|JPEG|bmp|BMP|js|JS|swf|SWF|flv|FLV|mp4|MP4|mp3|MP3|wmv|WMV|apk|dmg|pptx";
 
 	private boolean isInBlackList(String domain, String url) {
-		String regex = regexMap.get(domain);
+		String regex = notAccessRegexMap.get(domain);
 		if (regex == null) {
 			return false;
 		}
@@ -113,8 +132,8 @@ public class DomainUrlFilter {
 		if (i == 0)
 			return false;
 		String prefix = domainThis.substring(0, i - 1);
-		if (prefix.startsWith("bbs") || prefix.endsWith("bbs") || Pattern
-				.matches("(bbs|mail|video|oa|newoa|hospital|english|esp|en|email|de|jp|erp|ru|sp|english)", prefix))
+		if (prefix.startsWith("bbs") || prefix.endsWith("bbs") || Pattern.matches(
+				"(bbs|kr|es|sp|mail|video|oa|newoa|hospital|english|esp|en|email|de|jp|erp|ru|sp|english)", prefix))
 			return true;
 		return false;
 	}

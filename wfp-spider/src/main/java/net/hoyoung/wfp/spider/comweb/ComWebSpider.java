@@ -29,6 +29,7 @@ import com.mongodb.client.model.Indexes;
 import net.hoyoung.wfp.core.utils.MongoUtil;
 import net.hoyoung.wfp.core.utils.ProxyReader;
 import net.hoyoung.wfp.core.utils.RedisUtil;
+import net.hoyoung.wfp.core.utils.WFPContext;
 import net.hoyoung.wfp.spider.comweb.bo.ComPage;
 import net.hoyoung.wfp.spider.util.URLNormalizer;
 import redis.clients.jedis.Jedis;
@@ -39,8 +40,6 @@ import us.codecraft.webmagic.utils.UrlUtils;
 
 public class ComWebSpider {
 	Logger logger = LoggerFactory.getLogger(getClass());
-
-	public static final int THREAD_NUM = 12;
 
 	private String siteFile = null;
 
@@ -97,7 +96,6 @@ public class ComWebSpider {
 
 	}
 
-
 	private List<ComVo> readCom() {
 		List<ComVo> list = Lists.newArrayList();
 		BufferedReader br = null;
@@ -149,7 +147,8 @@ public class ComWebSpider {
 		if (CollectionUtils.isEmpty(list)) {
 			System.exit(-1);
 		}
-		ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_NUM);
+		ExecutorService threadPool = Executors
+				.newFixedThreadPool(WFPContext.getProperty("compage.executors", Integer.class));
 		Set<String> nameSet = getCollectionNameSet();
 		for (ComVo vo : list) {
 			if (nameSet.contains(vo.getStockCode())) {
@@ -192,15 +191,21 @@ public class ComWebSpider {
 					com.getStockCode() + "_tmp");
 			String indexTmp = collectionTmp.createIndex(Indexes.ascending(ComPage.STOCK_CODE, ComPage.URL),
 					new IndexOptions().unique(true));
+			// sha1 去重
+			collectionTmp.createIndex(Indexes.ascending(ComPage.CONTENT_SHA1));
 			LOG.info("{} create index {}", collectionTmp.getNamespace(), indexTmp);
 			ComWebProcessor processor = new ComWebProcessor();
 			if (com.getSleepTime() > 0) {
 				processor.getSite().setSleepTime(com.getSleepTime());
 			}
 			// 设置代理
-			processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
+			if(WFPContext.getProperty("compage.spider.useProxy", Boolean.class)){
+				processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
+			}
+			
 			MyRedisScheduler redisScheduler = new MyRedisScheduler("127.0.0.1");
-			Spider spider = Spider.create(processor).setScheduler(redisScheduler).thread(3);
+			Spider spider = Spider.create(processor).setScheduler(redisScheduler)
+					.thread(WFPContext.getProperty("compage.spider.thread", Integer.class));
 			ComWebSpiderListener spiderListener = new ComWebSpiderListener(spider);
 			spider.setSpiderListeners(Lists.newArrayList(spiderListener));
 			Request request;
@@ -220,14 +225,14 @@ public class ComWebSpider {
 			jedis.del("item_" + processor.getSite().getDomain());
 			long llen = collectionTmp.count(Filters.eq(ComPage.STOCK_CODE, com.getStockCode()));
 			if (spiderListener.isFail() || llen <= 1) {
-//				collectionTmp.drop();
+				// collectionTmp.drop();
 				LOG.warn("{} {} failed", com.getStockCode(), com.getWebSite());
 				try {
-					FileUtils.writeStringToFile(new File(com.getStockCode() + ".fail"), com.getWebSite()+"\n");
+					FileUtils.writeStringToFile(new File(com.getStockCode() + ".fail"), com.getWebSite() + "\n");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				
+
 			} else {
 				// 成功的话重命名com_page_000000_tmp -> com_page_000000
 				collectionTmp.renameCollection(new MongoNamespace(ComWebConstant.DB_NAME + "." + com.getStockCode()));

@@ -1,5 +1,7 @@
 package net.hoyoung.wfp.spider.comweb;
 
+import net.hoyoung.wfp.core.utils.WFPContext;
+
 public interface ComWebConstant {
 	String REDIS_PREFIX = "comweb_";
 	String DOC_REGEX = "pdf|PDF|doc|DOC|docx|DOCX";
@@ -8,7 +10,7 @@ public interface ComWebConstant {
 	String URL_LIST_KEY = "urlList";
 	String STOCK_CODE_KEY = "stockCode";
 	String CONTENT_LENGTH_KEY = "contentLength";
-	String DB_NAME = "wfp_com_page";
+	String DB_NAME = WFPContext.getProperty("compage.dbname", String.class);
 	String DB_NAME_TEST = "wfp_spider_test";
 	String COLLECTION_NAME = "com_page";
 	String COLLECTION_PREFIX = "com_page_";

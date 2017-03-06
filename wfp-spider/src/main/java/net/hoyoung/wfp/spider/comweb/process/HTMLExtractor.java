@@ -31,7 +31,7 @@ import net.hoyoung.wfp.spider.comweb.bo.ComPage;
 public class HTMLExtractor {
 	private static Logger LOG = LoggerFactory.getLogger(HTMLExtractor.class);
 
-	public static String getContent(String html) {
+	public static String getContentAll(String html) {
 		org.jsoup.nodes.Document doc = Jsoup.parse(html);
 		doc.getElementsByTag("a").remove();
 		doc.getElementsByTag("button").remove();
@@ -41,6 +41,19 @@ public class HTMLExtractor {
 		doc.getElementsByTag("script").remove();
 		doc.getElementsByTag("form").remove();
 		return doc.getElementsByTag("body").text();
+	}
+
+	public static String getContent(String html) {
+		if (html == null) {
+			return null;
+		}
+		String content = null;
+		try {
+			content = ContentExtractor.getContentByHtml(html);
+		} catch (Exception e) {
+			content = getContentAll(html);
+		}
+		return content;
 	}
 
 	public static void main(String[] args) {
@@ -64,14 +77,7 @@ public class HTMLExtractor {
 					LOG.info(String.format("process collection %s_%d\t%s", collectionName, total--,
 							document.get(ComPage.URL)));
 					String html = document.getString(ComPage.HTML);
-					String content = null;
-					try {
-						content = ContentExtractor.getContentByHtml(html);
-					} catch (Exception e) {
-						// e.printStackTrace();
-
-						content = getContent(html);
-					}
+					String content = getContent(html);
 					if (content == null) {
 						content = "";
 					}

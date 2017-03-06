@@ -17,7 +17,7 @@ public class ContentExtractorTest {
 	public void test(){
 		
 		try {
-			String content = HTMLExtractor.getContent(FileUtils.readFileToString(new File("discuz.html")));
+			String content = HTMLExtractor.getContentAll(FileUtils.readFileToString(new File("discuz.html")));
 			System.out.println(content);
 		} catch (IOException e) {
 			e.printStackTrace();
