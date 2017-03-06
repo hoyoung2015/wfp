@@ -4,7 +4,7 @@ import re
 """
 查询并删除专利数为0的
 """
-client = MongoClient(host='10.170.47.245', port=27017)
+client = MongoClient(host='10.170.29.80', port=27017)
 db = client.get_database('wfp_com_patent')
 desc = db.get_collection('description')
 cnt = 0
@@ -19,6 +19,7 @@ for x in desc.find():
     db.get_collection(stock_code).drop()
     rs.append(stock_code)
 
+# exit(-1)
 if len(rs) > 0:
     desc.delete_many({
         'stockCode': {

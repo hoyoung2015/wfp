@@ -83,7 +83,7 @@ public class StaticUrlFilter {
 			if(cnt > 1000){
 				break;
 			}
-//			name = "300158";
+			name = "600795";
 			String domain = stockCode2Domain.get(name);
 			System.out.println(String.format("%d\tstart to process %s[%s]", ++cnt, name, domain));
 			if (domain == null) {
@@ -98,10 +98,13 @@ public class StaticUrlFilter {
 				while (docIte.hasNext()) {
 					Document doc = docIte.next();
 					String url = doc.getString(ComPage.URL);
-					if(url.contains("download")){
-						System.out.println(url);
-					}else {
-						continue;
+//					if(url.contains("download")){
+//						System.out.println(url);
+//					}else {
+//						continue;
+//					}
+					if(url.endsWith(".pptx")){
+						System.out.println("hello");
 					}
 					if (urlFilter.accept(domain, url) == false && Pattern.matches(".+\\.(" + ComWebConstant.DOC_REGEX + ")$", url) == false) {
 						System.out.println(doc.getString(ComPage.URL));
@@ -114,7 +117,7 @@ public class StaticUrlFilter {
 			if(CollectionUtils.isNotEmpty(oids)){
 				collection.deleteMany(Filters.in("_id", oids));
 			}
-//			break;
+			break;
 		}
 	}
 }

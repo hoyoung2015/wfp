@@ -3,7 +3,7 @@ from pymongo import MongoClient
 """
 对于专利为0的企业，再检查一次
 """
-client = MongoClient(host='10.170.47.245', port=27017)
+client = MongoClient(host='10.170.29.80', port=27017)
 db = client.get_database('wfp_com_patent')
 desc = db.get_collection('description')
 

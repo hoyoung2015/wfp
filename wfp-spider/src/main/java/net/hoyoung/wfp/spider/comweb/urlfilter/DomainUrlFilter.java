@@ -18,6 +18,8 @@ public class DomainUrlFilter {
 	private Map<String, String> regexMap = new HashMap<>();
 	private Pattern domainPattern = Pattern.compile("^\\[([0-9a-zA-Z_\\-\\.]+)\\]$");
 
+	private static String EN_REGEX = "bbs|esitecn|en|EN|e|En|ru|sp|jp|py|Es|vn|eng|tw|TW|english|ENGLISH|japanese|newenglish|erp|BYDEnglish|English|\\w+_english";
+
 	public DomainUrlFilter() {
 		InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(configFile);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -74,7 +76,7 @@ public class DomainUrlFilter {
 				|| isRootDomainSame(domainThis, domain) == false // 顶级域名不一样
 				|| isInBlackList(domain, url) // 在黑名单中
 				|| isbbs(domainThis, domain) // 排除bbs
-				|| Pattern.matches("http(s?)://" + domainThis + "/(bbs|en|EN|tw|TW|english|ENGLISH|newenglish|erp|BYDEnglish|English)(/.*)?", url) // 排除非中文
+				|| Pattern.matches("http(s?)://" + domainThis + "/(html/)?(" + EN_REGEX + ")(/.*)?", url) // 排除非中文
 				|| Pattern.matches(".+(&|\\?)id=\\-\\d+.*", url)) {
 			return false;
 		}
@@ -96,7 +98,7 @@ public class DomainUrlFilter {
 		return false;
 	}
 
-	static final String EXCEPT_SUFFIX = "xls|xlsx|gif|GIF|jpg|JPG|png|PNG|ico|ICO|css|CSS|sit|SIT|eps|EPS|wmf|WMF|zip|ZIP|rar|RAR|ppt|PPT|mpg|MPG|xls|XLS|gz|GZ|rpm|RPM|tgz|TGZ|mov|MOV|exe|EXE|jpeg|JPEG|bmp|BMP|js|JS|swf|SWF|flv|FLV|mp4|MP4|mp3|MP3|wmv|WMV";
+	static final String EXCEPT_SUFFIX = "xls|xlsx|gif|GIF|jpg|JPG|png|PNG|ico|ICO|css|CSS|sit|SIT|eps|EPS|wmf|WMF|zip|ZIP|rar|RAR|ppt|PPT|mpg|MPG|xls|XLS|gz|GZ|rpm|RPM|tgz|TGZ|mov|MOV|exe|EXE|jpeg|JPEG|bmp|BMP|js|JS|swf|SWF|flv|FLV|mp4|MP4|mp3|MP3|wmv|WMV|apk|dmg|pptx";
 
 	private boolean isInBlackList(String domain, String url) {
 		String regex = regexMap.get(domain);
@@ -111,15 +113,16 @@ public class DomainUrlFilter {
 		if (i == 0)
 			return false;
 		String prefix = domainThis.substring(0, i - 1);
-		if (prefix.startsWith("bbs") || prefix.endsWith("bbs")
-				|| Pattern.matches("(bbs|mail|video|oa|newoa|hospital|english|en|email|de|jp|erp)", prefix))
+		if (prefix.startsWith("bbs") || prefix.endsWith("bbs") || Pattern
+				.matches("(bbs|mail|video|oa|newoa|hospital|english|esp|en|email|de|jp|erp|ru|sp|english)", prefix))
 			return true;
 		return false;
 	}
 
 	public static void main(String[] args) {
 		DomainUrlFilter urlFilter = new DomainUrlFilter();
-		System.out.println(urlFilter.accept("jingda.cn", "http://www.ejingda.cn/catalog/qibaotongxian/"));
+		System.out.println(urlFilter.accept("600795.com.cn",
+				"http://www.600795.com.cn/publish/main/19/82/101469/101473/20150629144918220362667/1435720940049.pptx"));
 	}
 
 }
