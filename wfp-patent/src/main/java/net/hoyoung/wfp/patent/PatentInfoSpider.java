@@ -20,7 +20,6 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
 
 import net.hoyoung.wfp.core.utils.MongoUtil;
-import net.hoyoung.wfp.core.utils.ProxyReader;
 import net.hoyoung.wfp.patent.spider.PatentInfoPageProcessor;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
@@ -95,8 +94,8 @@ public class PatentInfoSpider {
 			long total = collection.count();
 			logger.info("start to process {},total {}", stockCode, total);
 			PatentInfoPageProcessor pageProcessor = new PatentInfoPageProcessor(total);
-			pageProcessor.getSite().setHttpProxyPool(ProxyReader.read(), false);
-			Spider.create(new PatentInfoPageProcessor(total)).setDownloader(new PatentHttpClientDownloader())
+//			pageProcessor.getSite().setHttpProxyPool(ProxyReader.read(), false);
+			Spider.create(pageProcessor).setDownloader(new PatentHttpClientDownloader())
 					.addRequest(requests.toArray(new Request[] {})).thread(5).run();
 		}
 
