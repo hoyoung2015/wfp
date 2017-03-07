@@ -46,7 +46,7 @@ public class TestComWebSpider {
 		request.putExtra(ComPage.STOCK_CODE, "111111");
 		request.putExtra("domain", UrlUtils.getDomain(request.getUrl()).replaceAll("^www\\.", ""));
 		ComWebProcessor processor = new ComWebProcessor();
-//		 processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
+		 processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
 		 Spider spider = Spider.create(processor).setDownloader(new ComWebHttpClientDownloader()).addRequest(request).addPipeline(new MyPipeline()).thread(1);
 		ComWebSpiderListener spiderListener = new ComWebSpiderListener(spider);
 		spider.setSpiderListeners(Lists.newArrayList(spiderListener)).run();

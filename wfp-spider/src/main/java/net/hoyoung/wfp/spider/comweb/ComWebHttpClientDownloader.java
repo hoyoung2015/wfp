@@ -93,8 +93,6 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 			acceptStatCode = site.getAcceptStatCode();
 			charset = site.getCharset();
 			headers = site.getHeaders();
-			// 随机agent
-			headers.put("User-Agent", UserAgentUtil.getRandomAgent());
 		} else {
 			acceptStatCode = WMCollections.newHashSet(200);
 		}

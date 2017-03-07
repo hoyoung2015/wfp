@@ -138,9 +138,7 @@ public class ComWebProcessor implements PageProcessor {
 
 	private Site site = Site.me().setSleepTime(WFPContext.getProperty("compage.spider.commonSleepTime", Integer.class)).setRetryTimes(3).setTimeOut(50000).setCycleRetryTimes(2)
 			.addHeader("User-Agent", "Googlebot/2.1 (+http://www.google.com/bot.html)")
-			.addHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
-			.addHeader("Accept-Language", "zh-CN,zh;q=0.8").addHeader("Accept-Encoding", "gzip, deflate, sdch, br")
-			.addHeader("Cache-Control", "max-age=0").addHeader("Upgrade-Insecure-Requests", "1");
+			.addHeader("Accept-Language", "zh-CN,zh;q=0.8");
 
 	@Override
 	public Site getSite() {
