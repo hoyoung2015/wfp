@@ -1,6 +1,7 @@
 package net.hoyoung.wfp.spider.comweb;
 
 import java.io.IOException;
+import java.net.URI;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +35,6 @@ import org.slf4j.LoggerFactory;
 
 import net.hoyoung.wfp.spider.comweb.bo.ComPage;
 import net.hoyoung.wfp.spider.util.URLNormalizer;
-import net.hoyoung.wfp.spider.util.UserAgentUtil;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
@@ -116,6 +116,7 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 			HttpContext context = new BasicHttpContext();
 
 			HttpUriRequest httpUriRequest = getHttpUriRequest(request, site, headers, proxyHost);
+
 			httpResponse = getHttpClient(site, proxy).execute(httpUriRequest, context);
 
 			statusCode = httpResponse.getStatusLine().getStatusCode();
@@ -228,7 +229,10 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 
 	protected HttpUriRequest getHttpUriRequest(Request request, Site site, Map<String, String> headers,
 			HttpHost proxy) {
-		RequestBuilder requestBuilder = selectRequestMethod(request).setUri(request.getUrl());
+		RequestBuilder requestBuilder = selectRequestMethod(request);
+		if (requestBuilder.getUri() == null) {
+			requestBuilder.setUri(request.getUrl());
+		}
 		if (headers != null) {
 			for (Map.Entry<String, String> headerEntry : headers.entrySet()) {
 				requestBuilder.addHeader(headerEntry.getKey(), headerEntry.getValue());
@@ -249,7 +253,14 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 		String method = request.getMethod();
 		if (method == null || method.equalsIgnoreCase(HttpConstant.Method.GET)) {
 			// default get
-			return RequestBuilder.get();
+			String url = request.getUrl();
+			try {
+				URI uri = URI.create(url);
+				return RequestBuilder.get(uri);
+			} catch (IllegalArgumentException e) {
+				url = url.replace("^", "%5e");
+			}
+			return RequestBuilder.get(URI.create(url));
 		} else if (method.equalsIgnoreCase(HttpConstant.Method.POST)) {
 			RequestBuilder requestBuilder = RequestBuilder.post();
 			NameValuePair[] nameValuePair = (NameValuePair[]) request.getExtra("nameValuePair");

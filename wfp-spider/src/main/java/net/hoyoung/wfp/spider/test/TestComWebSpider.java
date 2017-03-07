@@ -19,7 +19,6 @@ import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
-import us.codecraft.webmagic.utils.UrlUtils;
 
 public class TestComWebSpider {
 
@@ -42,9 +41,9 @@ public class TestComWebSpider {
 	}
 
 	public static void main(String[] args) {
-		Request request = new Request("http://www.tlcement.com/");
+		Request request = new Request("http://www.yuhong.com.cn/logistics/tp/noticeshow/id/danye/id/projectshow/bid/6/id/purchaselist/tp/289/lm/noticeshow/id/341.html");
 		request.putExtra(ComPage.STOCK_CODE, "111111");
-		request.putExtra("domain", UrlUtils.getDomain(request.getUrl()).replaceAll("^www\\.", ""));
+		request.putExtra("domain", "yuhong.com.cn");
 		ComWebProcessor processor = new ComWebProcessor();
 		 processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
 		 Spider spider = Spider.create(processor).setDownloader(new ComWebHttpClientDownloader()).addRequest(request).addPipeline(new MyPipeline()).thread(1);

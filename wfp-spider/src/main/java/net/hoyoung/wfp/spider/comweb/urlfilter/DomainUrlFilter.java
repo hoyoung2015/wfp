@@ -133,7 +133,7 @@ public class DomainUrlFilter {
 			return false;
 		String prefix = domainThis.substring(0, i - 1);
 		if (prefix.startsWith("bbs") || prefix.endsWith("bbs") || Pattern.matches(
-				"(bbs|kr|es|sp|mail|video|oa|newoa|hospital|english|esp|en|email|de|jp|erp|ru|sp|english)", prefix))
+				"(bbs|kr|es|sp|mail|video|zhaopin|oa|newoa|hospital|english|esp|en|email|de|jp|erp|ru|sp|english)", prefix))
 			return true;
 		return false;
 	}

@@ -170,3 +170,6 @@ http://www.scggic.com/ggwm/.*
 
 [xintaidianqi.com]
 http://www.xintaidianqi.com/xintaidianqi/.*
+
+[fangda.com]
+http://export.fangda.com/.*
