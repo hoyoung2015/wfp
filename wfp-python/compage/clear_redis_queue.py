@@ -9,11 +9,11 @@ from common import url_utils
 
 rds = Redis(host='10.170.61.54', port=6379, db=0, decode_responses=True)
 
-url = 'http://www.yuhong.com.cn/'
-regex = 'http://www.yuhong.com.cn/(technology.*|technology1.*|noticeshow.*|purchaselist.*|project.*|logistics.*|strategy.*|service.*|download.*|newsshow.*|affirming.*|contactform.*|projectshow.*|danye.*){2,}'
+# url = 'http://www.yuhong.com.cn/'
+# regex = 'http://www.yuhong.com.cn/(technology.*|noticeshow.*|purchase.*|project.*|logistics.*|strategy.*|service.*|download.*|newsshow.*|affirming.*|contactform.*|danye.*|videoshow.*|product.*){2,}'
 
-# print(re.match(regex,'http://www.yuhong.com.cn/logistics/tp/noticeshow/id/danye/id/projectshow/bid/6/id/purchaselist/tp/289/lm/noticeshow/id/341.html'))
-# exit(0)
+url = 'http://www.huaxincem.com'
+regex = 'http://biz.huaxincem.com/.*'
 
 domain = url_utils.get_domain(url)
 # exit(-1)
