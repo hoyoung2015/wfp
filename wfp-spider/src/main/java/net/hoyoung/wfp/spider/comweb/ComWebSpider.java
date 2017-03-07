@@ -31,6 +31,7 @@ import net.hoyoung.wfp.core.utils.ProxyReader;
 import net.hoyoung.wfp.core.utils.RedisUtil;
 import net.hoyoung.wfp.core.utils.WFPContext;
 import net.hoyoung.wfp.spider.comweb.bo.ComPage;
+import net.hoyoung.wfp.spider.comweb.vo.ComVo;
 import net.hoyoung.wfp.spider.util.URLNormalizer;
 import redis.clients.jedis.Jedis;
 import us.codecraft.webmagic.Request;
@@ -48,54 +49,6 @@ public class ComWebSpider {
 		this.siteFile = siteFile;
 	}
 
-	class ComVo {
-		private String stockCode;
-		private String sname;
-		private String webSite;
-		private Integer sleepTime;
-
-		public ComVo(String stockCode, String sname, String webSite, Integer sleepTime) {
-			super();
-			this.stockCode = stockCode;
-			this.sname = sname;
-			this.webSite = webSite;
-			this.sleepTime = sleepTime;
-		}
-
-		public String getStockCode() {
-			return stockCode;
-		}
-
-		public void setStockCode(String stockCode) {
-			this.stockCode = stockCode;
-		}
-
-		public String getSname() {
-			return sname;
-		}
-
-		public void setSname(String sname) {
-			this.sname = sname;
-		}
-
-		public String getWebSite() {
-			return webSite;
-		}
-
-		public void setWebSite(String webSite) {
-			this.webSite = webSite;
-		}
-
-		public Integer getSleepTime() {
-			return sleepTime;
-		}
-
-		public void setSleepTime(Integer sleepTime) {
-			this.sleepTime = sleepTime;
-		}
-
-	}
-
 	private List<ComVo> readCom() {
 		List<ComVo> list = Lists.newArrayList();
 		BufferedReader br = null;
@@ -108,6 +61,9 @@ public class ComWebSpider {
 				}
 				String[] split = line.split("\t");
 				ComVo vo = new ComVo(split[0], split[1], split[2], Integer.valueOf(split[3]));
+				if (split.length > 4) {
+					vo.setUserAgent(split[4]);
+				}
 				list.add(vo);
 			}
 
@@ -198,11 +154,14 @@ public class ComWebSpider {
 			if (com.getSleepTime() > 0) {
 				processor.getSite().setSleepTime(com.getSleepTime());
 			}
+			if (com.getUserAgent() != null) {
+				processor.getSite().addHeader("User-Agent", com.getUserAgent());
+			}
 			// 设置代理
-			if(WFPContext.getProperty("compage.spider.useProxy", Boolean.class)){
+			if (WFPContext.getProperty("compage.spider.useProxy", Boolean.class)) {
 				processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
 			}
-			
+
 			MyRedisScheduler redisScheduler = new MyRedisScheduler("127.0.0.1");
 			Spider spider = Spider.create(processor).setScheduler(redisScheduler)
 					.thread(WFPContext.getProperty("compage.spider.thread", Integer.class));

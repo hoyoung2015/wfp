@@ -69,7 +69,7 @@
 002111	威海广泰	http://www.guangtai.com.cn	0
 300116	坚瑞消防	http://www.xajr.com	0
 300201	海伦哲	http://www.xzhlz.com	0
-300004	南风股份	http://www.ntfan.com	0
+300004	南风股份	http://www.ntfan.com	0	Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1
 600971	恒源煤电	http://www.ahhymd.com.cn	0
 002352	鼎泰新材	http://www.dingtaicn.com/index2.asp	0
 000571	新大洲A	http://www.sundiro.com	0

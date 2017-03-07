@@ -4,6 +4,7 @@ public class ComVo {
 		private String sname;
 		private String webSite;
 		private Integer sleepTime;
+		private String userAgent;
 
 		public ComVo(String stockCode, String sname, String webSite, Integer sleepTime) {
 			super();
@@ -12,6 +13,20 @@ public class ComVo {
 			this.webSite = webSite;
 			this.sleepTime = sleepTime;
 		}
+		
+		
+
+		public String getUserAgent() {
+			return userAgent;
+		}
+
+
+
+		public void setUserAgent(String userAgent) {
+			this.userAgent = userAgent;
+		}
+
+
 
 		public String getStockCode() {
 			return stockCode;

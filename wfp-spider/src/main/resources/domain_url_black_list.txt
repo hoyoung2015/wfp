@@ -33,8 +33,9 @@ https(s?)://mall\.cxtc\.com/.*
 [weichaipower.com]
 http://m\.en\.weichaipower.com/.*
 
-[yuhong.com]
+[yuhong.com.cn]
 http://www\.yuhong\.com\.cn/videoshow/.*
+http://www.yuhong.com.cn/(technology.*|technology1.*|noticeshow.*|purchaselist.*|project.*|logistics.*|strategy.*|service.*|download.*|newsshow.*|affirming.*|contactform.*|projectshow.*|danye.*|videoshow.*){2,}
 
 [chinacamel.com]
 http://auto\.chinacamel\.com/.*

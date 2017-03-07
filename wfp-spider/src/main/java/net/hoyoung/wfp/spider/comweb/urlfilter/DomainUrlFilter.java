@@ -140,8 +140,8 @@ public class DomainUrlFilter {
 
 	public static void main(String[] args) {
 		DomainUrlFilter urlFilter = new DomainUrlFilter();
-		System.out.println(urlFilter.accept("600795.com.cn",
-				"http://www.600795.com.cn/publish/main/19/82/101469/101473/20150629144918220362667/1435720940049.pptx"));
+		System.out.println(urlFilter.accept("yuhong.com.cn",
+				"http://www.yuhong.com.cn/videoshow/id/projectshow/bid/6/id/purchaselist/tp/289/lm/purchaselist/tp/289/lm/projectshow/bid/6/id/videoindex.html"));
 	}
 
 }

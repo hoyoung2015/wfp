@@ -41,11 +41,12 @@ public class TestComWebSpider {
 	}
 
 	public static void main(String[] args) {
-		Request request = new Request("http://www.yuhong.com.cn/logistics/tp/noticeshow/id/danye/id/projectshow/bid/6/id/purchaselist/tp/289/lm/noticeshow/id/341.html");
+		Request request = new Request("http://www.ntfan.com");
 		request.putExtra(ComPage.STOCK_CODE, "111111");
-		request.putExtra("domain", "yuhong.com.cn");
+		request.putExtra("domain", "ntfan.com");
 		ComWebProcessor processor = new ComWebProcessor();
 		 processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
+		 processor.getSite().addHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1");
 		 Spider spider = Spider.create(processor).setDownloader(new ComWebHttpClientDownloader()).addRequest(request).addPipeline(new MyPipeline()).thread(1);
 		ComWebSpiderListener spiderListener = new ComWebSpiderListener(spider);
 		spider.setSpiderListeners(Lists.newArrayList(spiderListener)).run();
