@@ -119,7 +119,7 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 
 			HttpUriRequest httpUriRequest = getHttpUriRequest(request, site, headers, proxyHost);
 			httpResponse = getHttpClient(site, proxy).execute(httpUriRequest, context);
-			
+
 			statusCode = httpResponse.getStatusLine().getStatusCode();
 			request.putExtra(Request.STATUS_CODE, statusCode);
 			if (statusAccept(acceptStatCode, statusCode)) {
@@ -146,6 +146,9 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 					// 最后一个url是最终的url
 					Object landingPageReq = redirectUrls.get(redirectUrls.size() - 1);
 					String str = landingPageReq.toString();
+					logger.info("redirect occured,set request url with {}", str);
+					request.setUrl(str);
+
 					str = URLNormalizer.normalize(str);
 					if (Pattern.matches(".+\\.(" + ComWebConstant.DOC_REGEX + ")", str)) {
 						landingPageUrl = str;
@@ -170,7 +173,7 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 						// }
 						// 下载文件的链接忽略
 						// landingPageUrl = "";
-//						httpResponse.getEntity().getContent().close();
+						// httpResponse.getEntity().getContent().close();
 						statusCode = 404;
 						throw new IOException("This is a download file "
 								+ new String(fileHeader[0].getValue().getBytes("ISO-8859-1"), "utf8"));
@@ -179,7 +182,7 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 
 				if (landingPageUrl != null) {
 					request.putExtra(ComWebConstant.LANDING_PAGE_KEY, landingPageUrl);
-//					httpResponse.getEntity().getContent().close();
+					// httpResponse.getEntity().getContent().close();
 					page.setUrl(new PlainText(request.getUrl()));
 					page.setRequest(request);
 					page.setStatusCode(httpResponse.getStatusLine().getStatusCode());
