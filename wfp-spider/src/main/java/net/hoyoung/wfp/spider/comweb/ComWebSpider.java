@@ -178,10 +178,7 @@ public class ComWebSpider {
 			request.putExtra("domain", UrlUtils.getDomain(com.getWebSite()).replaceAll("^www\\.", ""));
 			spider.addRequest(request).setDownloader(new ComWebHttpClientDownloader()).addPipeline(new ComWebPipeline())
 					.run();
-			// 删除redisSchedule
-			Jedis jedis = RedisUtil.getJedis();
-			jedis.del("set_" + processor.getSite().getDomain());
-			jedis.del("item_" + processor.getSite().getDomain());
+			
 			long llen = collectionTmp.count(Filters.eq(ComPage.STOCK_CODE, com.getStockCode()));
 			if (spiderListener.isFail() || llen <= 1) {
 				// collectionTmp.drop();
@@ -196,6 +193,10 @@ public class ComWebSpider {
 				// 成功的话重命名com_page_000000_tmp -> com_page_000000
 				collectionTmp.renameCollection(new MongoNamespace(ComWebConstant.DB_NAME + "." + com.getStockCode()));
 				LOG.info("finish " + com.getStockCode() + " " + com.getStockCode());
+				// 删除redisSchedule
+				Jedis jedis = RedisUtil.getJedis();
+				jedis.del("set_" + processor.getSite().getDomain());
+				jedis.del("item_" + processor.getSite().getDomain());
 			}
 		}
 	}

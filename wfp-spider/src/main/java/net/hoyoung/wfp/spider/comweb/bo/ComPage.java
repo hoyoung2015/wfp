@@ -9,4 +9,5 @@ public interface ComPage {
 	String CONTENT = "content";
 	String CONTENT_TYPE = "contentType";
 	String CONTENT_SHA1 = "contentSha1";
+	String FILE_NAME = "filename";
 }

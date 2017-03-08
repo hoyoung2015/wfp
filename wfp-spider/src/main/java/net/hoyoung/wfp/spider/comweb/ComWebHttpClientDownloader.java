@@ -6,6 +6,7 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -33,8 +34,6 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import net.hoyoung.wfp.spider.comweb.bo.ComPage;
-import net.hoyoung.wfp.spider.util.URLNormalizer;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
@@ -80,6 +79,32 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 		return httpClientGenerator.getClient(site, proxy);
 	}
 
+	private String getContentTypeValue(Header contentType) {
+		String contentTypeValue = null;
+		if (contentType != null) {
+			contentTypeValue = contentType.getValue();
+			if (contentTypeValue.contains(";")) {
+				contentTypeValue = contentTypeValue.split(";")[0];
+			}
+			if (contentTypeValue.contains("/")) {
+				contentTypeValue = contentTypeValue.split("/")[1];
+			}
+		}
+		return contentTypeValue;
+	}
+
+	public void redirectProcess(Request request, HttpContext context) {
+		// 获取跳转的url
+		List<?> redirectUrls = (List<?>) context.getAttribute(HttpClientContext.REDIRECT_LOCATIONS);
+		if (CollectionUtils.isNotEmpty(redirectUrls)) {
+			// 最后一个url是最终的url
+			Object landingPageReq = redirectUrls.get(redirectUrls.size() - 1);
+			String str = landingPageReq.toString();
+			logger.info("redirect occured,set request url with {}", str);
+			request.setUrl(str);
+		}
+	}
+
 	@Override
 	public Page download(Request request, Task task) {
 		Site site = null;
@@ -99,6 +124,7 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 
 		CloseableHttpResponse httpResponse = null;
 		int statusCode = 0;
+		HttpUriRequest httpUriRequest = null;
 		try {
 			HttpHost proxyHost = null;
 			Proxy proxy = null; // TODO
@@ -115,80 +141,70 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 					+ ") page {}", request.getUrl());
 			HttpContext context = new BasicHttpContext();
 
-			HttpUriRequest httpUriRequest = getHttpUriRequest(request, site, headers, proxyHost);
+			httpUriRequest = getHttpUriRequest(request, site, headers, proxyHost);
 
 			httpResponse = getHttpClient(site, proxy).execute(httpUriRequest, context);
 
 			statusCode = httpResponse.getStatusLine().getStatusCode();
 			request.putExtra(Request.STATUS_CODE, statusCode);
 			if (statusAccept(acceptStatCode, statusCode)) {
-				Page page = new Page();
-
-				// 获取content-length
-				request.putExtra(ComPage.CONTENT_LENGTH, httpResponse.getEntity().getContentLength());
-				Header contentType = httpResponse.getEntity().getContentType();
-				if (contentType != null) {
-					String value = contentType.getValue();
-					if (value.contains(";")) {
-						value = value.split(";")[0];
-					}
-					if (value.contains("/")) {
-						value = value.split("/")[1];
-					}
-					request.putExtra(ComPage.CONTENT_TYPE, value);
-				}
 				/******** 判断是否为重定向 *********/
-				// 获取跳转的url
-				List<?> redirectUrls = (List<?>) context.getAttribute(HttpClientContext.REDIRECT_LOCATIONS);
-				String landingPageUrl = null;
-				if (CollectionUtils.isNotEmpty(redirectUrls)) {
-					// 最后一个url是最终的url
-					Object landingPageReq = redirectUrls.get(redirectUrls.size() - 1);
-					String str = landingPageReq.toString();
-					logger.info("redirect occured,set request url with {}", str);
-					request.setUrl(str);
+				redirectProcess(request, context);
+				ComWebPage page = new ComWebPage();
+				page.setRequest(request);
+				page.setUrl(new PlainText(request.getUrl()));
+				page.setStatusCode(statusCode);
 
-					str = URLNormalizer.normalize(str);
-					if (Pattern.matches(".+\\.(" + ComWebConstant.DOC_REGEX + ")", str)) {
-						landingPageUrl = str;
-					}
+				Header contentType = httpResponse.getEntity().getContentType();
+				String contentTypeValue = getContentTypeValue(contentType);
+				if (contentTypeValue != null && !Pattern.matches("(msword|pdf|html|octet-stream)", contentTypeValue)) {
+					page.setSkip(true);
+					return page;
 				}
-				if (landingPageUrl == null && contentType == null) {
-					// 下载文件也把它当做重定向处理
-					Header[] descHeader = httpResponse.getHeaders("Content-Description");
+				if (contentTypeValue != null) {
+					page.setContentLength(httpResponse.getEntity().getContentLength());
+					page.setContentType(contentTypeValue);
+				}
+				if (page.getContentLength() == -1 || Pattern.matches("html", contentTypeValue)) {// html
+					page.setContentType("html");
+					String content = getContent(charset, httpResponse);
+					page.setRawText(content);
+					return page;
+				}
+				// 文件下载流，这里只要文档
+				if ("octet-stream".equals(contentTypeValue)) {
+					page.setContentType(contentTypeValue);
 					Header[] fileHeader = httpResponse.getHeaders("Content-Disposition");
-					if (fileHeader != null && fileHeader.length > 0
-							&& ((descHeader.length > 0 && "File Transfer".equals(descHeader[0].getValue()))
-									|| fileHeader[0].getValue().startsWith("attachment"))) {
-						// Matcher matcher =
-						// Pattern.compile("filename=.*\\.("+ComWebConstant.DOC_REGEX+")").matcher(new
-						// String(fileHeader[0].getValue().getBytes("ISO-8859-1"),"utf8"));
-						// if(matcher.find()){
-						// request.putExtra(ComPage.CONTENT_TYPE,
-						// matcher.group(1));
-						// landingPageUrl = request.getUrl();
-						// }else {
-						// landingPageUrl = "";
-						// }
-						// 下载文件的链接忽略
-						// landingPageUrl = "";
-						// httpResponse.getEntity().getContent().close();
-						statusCode = 404;
-						throw new IOException("This is a download file "
-								+ new String(fileHeader[0].getValue().getBytes("ISO-8859-1"), "utf8"));
+					if (fileHeader != null && fileHeader.length > 0 && fileHeader[0].getValue().startsWith("attachment")
+							&& page.getContentLength() <= 40 * 1024 * 1024) {
+						// 下载文件
+						Matcher matcher = Pattern.compile("filename=(.+\\.(" + ComWebConstant.DOC_REGEX + "))")
+								.matcher(new String(fileHeader[0].getValue().getBytes("ISO-8859-1"), "utf8"));
+						if (matcher.find()) {
+							// TODO
+							String filename = matcher.group(1);
+							String ext = matcher.group(2);
+							if ("pdf".equals(ext.toLowerCase())) {
+								page.setContentType("pdf");
+							} else {
+								page.setContentType("msword");
+							}
+							page.setFilename(filename);
+							return page;
+						} else {
+							// 其他类型的下载文件skip
+							page.setSkip(true);
+							return page;
+						}
 					}
 				}
-
-				if (landingPageUrl != null) {
-					request.putExtra(ComWebConstant.LANDING_PAGE_KEY, landingPageUrl);
-					// httpResponse.getEntity().getContent().close();
-					page.setUrl(new PlainText(request.getUrl()));
-					page.setRequest(request);
-					page.setStatusCode(httpResponse.getStatusLine().getStatusCode());
-				} else {
-					page = handleResponse(request, charset, httpResponse, task);
+				// 文档直接返回
+				if (Pattern.matches("(msword|pdf)", page.getContentType())) {
+					page.setStatusCode(statusCode);
+					return page;
 				}
-				onSuccess(request);
+				// 其它未知类型skip
+				page.setSkip(true);
 				return page;
 			} else {
 				logger.warn("get page {} error, status code {} ", request.getUrl(), statusCode);
@@ -209,7 +225,7 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 			}
 			try {
 				if (httpResponse != null) {
-					// ensure the connection is released back to pool
+					httpResponse.close();
 					EntityUtils.consume(httpResponse.getEntity());
 				}
 			} catch (IOException e) {
@@ -240,7 +256,7 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 		}
 		RequestConfig.Builder requestConfigBuilder = RequestConfig.custom()
 				.setConnectionRequestTimeout(site.getTimeOut()).setSocketTimeout(site.getTimeOut())
-				.setConnectTimeout(site.getTimeOut()).setCookieSpec(CookieSpecs.BEST_MATCH);
+				.setConnectTimeout(site.getTimeOut()).setCookieSpec(CookieSpecs.DEFAULT);
 		if (proxy != null) {
 			requestConfigBuilder.setProxy(proxy);
 			request.putExtra(Request.PROXY, proxy);
@@ -280,10 +296,10 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 		throw new IllegalArgumentException("Illegal HTTP Method " + method);
 	}
 
-	protected Page handleResponse(Request request, String charset, HttpResponse httpResponse, Task task)
+	protected ComWebPage handleResponse(Request request, String charset, HttpResponse httpResponse, Task task)
 			throws IOException {
 		String content = getContent(charset, httpResponse);
-		Page page = new Page();
+		ComWebPage page = new ComWebPage();
 		page.setRawText(content);
 		page.setUrl(new PlainText(request.getUrl()));
 		page.setRequest(request);

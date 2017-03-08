@@ -12,3 +12,4 @@ log/
 .phantomjs/
 proxy.txt
 tmpfile_*
+mail.properties

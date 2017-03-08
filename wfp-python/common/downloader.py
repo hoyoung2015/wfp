@@ -150,7 +150,7 @@ if __name__ == '__main__':
     url = "http://static.sse.com.cn/disclosure/listedinfo/announcement/c/2016-04-23/600160_20160423_12.pdf"
     output = '/Users/baidu/tmp/test/test.pdf'
     try:
-        download(url, output, blocks=1, proxies={})
+        download(url, output, blocks=3, proxies={})
     except HTTPError as e:
         print(e)
         print(e.code)

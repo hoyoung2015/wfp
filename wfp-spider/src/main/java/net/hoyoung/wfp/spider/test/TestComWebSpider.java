@@ -19,6 +19,7 @@ import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
+import us.codecraft.webmagic.utils.UrlUtils;
 
 public class TestComWebSpider {
 
@@ -41,12 +42,16 @@ public class TestComWebSpider {
 	}
 
 	public static void main(String[] args) {
-		Request request = new Request("http://www.ntfan.com");
+//		Request request = new Request("http://www.hoyoung.net/2017/02/10/squid3-proxy/");
+//		Request request = new Request("http://www.jonjee.com/admin/webfiles/magazine/151_2.pdf");
+//		Request request = new Request("http://www.chinadmegc.com/ebook_download.php?46");
+//		Request request = new Request("http://www.chinadmegc.com/ebook_download.php?48");//big
+		Request request = new Request("http://gp1.erdos.cn");
 		request.putExtra(ComPage.STOCK_CODE, "111111");
-		request.putExtra("domain", "ntfan.com");
+		request.putExtra("domain", "jjjkj.com.cn");
 		ComWebProcessor processor = new ComWebProcessor();
 		 processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
-		 processor.getSite().addHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1");
+//		 processor.getSite().addHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1");
 		 Spider spider = Spider.create(processor).setDownloader(new ComWebHttpClientDownloader()).addRequest(request).addPipeline(new MyPipeline()).thread(1);
 		ComWebSpiderListener spiderListener = new ComWebSpiderListener(spider);
 		spider.setSpiderListeners(Lists.newArrayList(spiderListener)).run();

@@ -23,7 +23,7 @@
 002067	景兴纸业	http://www.jxpaper.com.cn	0
 601677	明泰铝业	http://www.hngymt.com	0
 000576	广东甘化	http://www.gdganhua.com	0
-600295	鄂尔多斯	http://www.chinaerdos.com/	0
+600295	鄂尔多斯	http://gp1.erdos.cn	0	Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1
 600521	华海药业	http://www.huahaipharm.com/index.asp	0
 600458	时代新材	http://www.trp.com.cn/Page/882/language/zh-CN/default.aspx	0
 002390	信邦制药	http://www.xinbang.com	0
@@ -55,7 +55,7 @@
 002332	仙琚制药	http://www.xjpharma.com/main.html	0
 601113	华鼎股份	http://www.hdnylon.com/cn/index.aspx	0
 600488	天药股份	http://www.kingyork.biz/tianyaoyaoye/	0
-002190	成飞集成	http://www.cac-citc.com.cn/	0
+002190	成飞集成	http://www.cac-citc.com.cn/	0	Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1
 002534	杭锅股份	http://www.chinaboilers.com	0
 002689	远大智能	http://www.bltelevator.com.cn/	0
 300066	三川智慧	http://www.ytsanchuan.com	0
@@ -66,7 +66,7 @@
 300064	豫金刚石	http://www.sinocrystal.com.cn	0
 002443	金洲管道	http://www.chinakingland.com	0
 002520	日发精机	http://www.rifapm.com	0
-002111	威海广泰	http://www.guangtai.com.cn	0
+002111	威海广泰	http://www.guangtai.com.cn	0	Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1
 300116	坚瑞消防	http://www.xajr.com	0
 300201	海伦哲	http://www.xzhlz.com	0
 300004	南风股份	http://www.ntfan.com	0	Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1
@@ -79,7 +79,7 @@
 600707	彩虹股份	http://www.chgf.com.cn	0
 002512	达华智能	http://www.twh.com.cn	0
 300153	科泰电源	http://www.cooltechsh.com	0
-300327	中颖电子	http://www.sinowealth.com	0
+300327	中颖电子	http://www.sinowealth.com	0	Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1
 002402	和而泰	http://www.szhittech.com	0
 300053	欧比特	http://www.myorbita.net	0
 002389	南洋科技	http://www.nykj.cc	0
@@ -88,6 +88,6 @@
 002121	科陆电子	http://www.szclou.com	0
 002180	艾派克	http://www.apexmic.cn	0
 002028	思源电气	http://www.sieyuan.com	0
-000922	佳电股份	http://www.jemlc.com	0
+000922	佳电股份	http://www.jemlc.com	0	Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1
 002227	奥特迅	http://www.atc-a.com	0
 002684	猛狮科技	http://www.dynavolt.net	0

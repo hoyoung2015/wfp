@@ -2,6 +2,7 @@ package net.hoyoung.wfp.spider.comweb;
 
 import java.net.MalformedURLException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -27,7 +28,6 @@ import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
-import us.codecraft.webmagic.selector.Selectable;
 
 public class ComWebProcessor implements PageProcessor {
 	private Logger logger = LoggerFactory.getLogger(getClass());
@@ -37,38 +37,40 @@ public class ComWebProcessor implements PageProcessor {
 	private PageFilter pageFilter = new PageFilter();
 
 	@Override
-	public void process(Page page) {
-		Document document = new Document(ComPage.STOCK_CODE, page.getRequest().getExtra(ComPage.STOCK_CODE))
-				.append(ComPage.CONTENT_LENGTH, page.getRequest().getExtra(ComPage.CONTENT_LENGTH));
-		
-		if (page.getRequest().getExtra(ComPage.CONTENT_TYPE) != null) {
-			document.put(ComPage.CONTENT_TYPE, page.getRequest().getExtra(ComPage.CONTENT_TYPE));
-		}
-
-		String landingPageUrl = (String) page.getRequest().getExtra(ComWebConstant.LANDING_PAGE_KEY);
-		if (StringUtils.isNotEmpty(landingPageUrl)) {
-			document.put(ComPage.URL, landingPageUrl);
-			page.putField(ComWebConstant.URL_LIST_KEY, Lists.newArrayList(document));
-			System.out.println("redirect to " + landingPageUrl);
+	public void process(Page page0) {
+		if (page0.getResultItems().isSkip()) {
 			return;
 		}
+		if (!(page0 instanceof ComWebPage)) {
+			return;
+		}
+		ComWebPage page = (ComWebPage) page0;
+
+		Document document = new Document(ComPage.STOCK_CODE, page.getRequest().getExtra(ComPage.STOCK_CODE))
+				.append(ComPage.CONTENT_LENGTH, page.getContentLength())
+				.append(ComPage.CONTENT_TYPE, page.getContentType()).append(ComPage.URL, page.getRequest().getUrl());
+		if (page.getFilename() != null) {
+			document.append(ComPage.FILE_NAME, page.getFilename());
+		}
+		ArrayList<Document> data = Lists.newArrayList(document);
+		if (page.getRawText() == null) {
+			page.putField(ComWebConstant.URL_LIST_KEY, data);
+			return;
+		}
+
 		if (page.getHtml().links().regex("http://.*safedog.cn/.*").all().size() > 0) {
 			// 遇到了安全狗
-			logger.warn("{} {} safedog.cn", page.getRequest().getExtra(ComPage.STOCK_CODE), page.getRequest().getUrl());
+			logger.warn("{} {} found safedog", page.getRequest().getExtra(ComPage.STOCK_CODE),
+					page.getRequest().getUrl());
 			return;
 		}
 		if (pageFilter.accept(page) == false) {
 			return;
 		}
-		// 判断是否为标准的包含body的html
-		List<Selectable> bodyNodes = page.getHtml().$("body > *").nodes();
-		if (CollectionUtils.isEmpty(bodyNodes)) {
-			return;
-		}
-		document.put(ComPage.URL, page.getRequest().getUrl());
 		document.put(ComPage.HTML, page.getRawText());
 		String content = HTMLExtractor.getContent(page.getRawText());
-		if(content==null) content = "";
+		if (content == null)
+			content = "";
 		document.put(ComPage.CONTENT, content);
 		try {
 			String sha1 = EncryptUtil.encryptSha1(content);
@@ -76,12 +78,9 @@ public class ComWebProcessor implements PageProcessor {
 		} catch (NoSuchAlgorithmException e1) {
 			e1.printStackTrace();
 		}
-		List<Document> list = Lists.newArrayList(document);
 		List<String> links = this.urlFilter(page);
-		
 		if (CollectionUtils.isNotEmpty(links)) {
 			for (String url : links) {
-				
 				try {
 					url = URLNormalizer.normalize(url);
 				} catch (MalformedURLException e) {
@@ -91,10 +90,17 @@ public class ComWebProcessor implements PageProcessor {
 					continue;
 				}
 				// 文档
-				if (Pattern.matches(".+\\.(" + ComWebConstant.DOC_REGEX + ")$", url)) {
+				if (Pattern.matches("http(s?)://.+\\.(" + ComWebConstant.DOC_REGEX + ")$", url)) {
 					Document doc = new Document(ComPage.STOCK_CODE, page.getRequest().getExtra(ComPage.STOCK_CODE));
 					doc.put(ComPage.URL, url);
-					list.add(doc);
+					int i = url.lastIndexOf(".");
+					String ext = url.substring(i + 1);
+					if ("pdf".equals(ext.toLowerCase())) {
+						doc.append(ComPage.CONTENT_TYPE, "pdf");
+					} else {
+						doc.append(ComPage.CONTENT_TYPE, "msword");
+					}
+					data.add(doc);
 				} else {
 					Request request = new Request(url);
 					request.putExtra(ComPage.STOCK_CODE, page.getRequest().getExtra(ComPage.STOCK_CODE));
@@ -103,7 +109,7 @@ public class ComWebProcessor implements PageProcessor {
 				}
 			}
 		}
-		page.putField(ComWebConstant.URL_LIST_KEY, list);
+		page.putField(ComWebConstant.URL_LIST_KEY, data);
 	}
 
 	private List<String> fuckUrlProcess(Page page) {
@@ -118,13 +124,13 @@ public class ComWebProcessor implements PageProcessor {
 		}
 		return list;
 	}
-	
+
 	private List<String> urlFilter(Page page) {
 		List<String> all = page.getHtml().links().all();
-		
+
 		List<String> fuckLinks = fuckUrlProcess(page);
 		all.addAll(fuckLinks);
-		
+
 		String domain = (String) page.getRequest().getExtra("domain");
 		Iterator<String> iterator = all.iterator();
 		while (iterator.hasNext()) {
@@ -136,7 +142,8 @@ public class ComWebProcessor implements PageProcessor {
 		return all;
 	}
 
-	private Site site = Site.me().setSleepTime(WFPContext.getProperty("compage.spider.commonSleepTime", Integer.class)).setRetryTimes(3).setTimeOut(50000).setCycleRetryTimes(2)
+	private Site site = Site.me().setSleepTime(WFPContext.getProperty("compage.spider.commonSleepTime", Integer.class))
+			.setRetryTimes(3).setTimeOut(50000).setCycleRetryTimes(2)
 			.addHeader("User-Agent", "Baiduspider+(+http://www.baidu.com/search/spider.htm)")
 			.addHeader("Accept-Language", "zh-CN,zh;q=0.8");
 

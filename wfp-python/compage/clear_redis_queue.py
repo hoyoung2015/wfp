@@ -7,14 +7,10 @@ from common import url_utils
 比如企业自建的discuz论坛，商城页面，这些页面量非常大，但是不需要
 '''
 
-rds = Redis(host='10.170.61.54', port=6379, db=0, decode_responses=True)
+rds = Redis(host='127.0.0.1', port=6379, db=0, decode_responses=True)
 
-# url = 'http://www.yuhong.com.cn/'
-# regex = 'http://www.yuhong.com.cn/(technology.*|noticeshow.*|purchase.*|project.*|logistics.*|strategy.*|service.*|download.*|newsshow.*|affirming.*|contactform.*|danye.*|videoshow.*|product.*){2,}'
-
-url = 'http://www.huaxincem.com'
-regex = 'http://biz.huaxincem.com/.*'
-
+url = 'http://www.yuhong.com.cn/'
+regex = 'http://www.yuhong.com.cn/(technology.*|noticeshow.*|purchase.*|project.*|logistics.*|strategy.*|service.*|download.*|newsshow.*|affirming.*|contactform.*|danye.*|videoshow.*|product.*|news.*|video.*|merchants.*){2,}'
 domain = url_utils.get_domain(url)
 # exit(-1)
 

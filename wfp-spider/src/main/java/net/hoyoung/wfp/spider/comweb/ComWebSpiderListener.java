@@ -1,10 +1,18 @@
 package net.hoyoung.wfp.spider.comweb;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import javax.mail.MessagingException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import net.hoyoung.wfp.core.utils.WFPContext;
+import net.hoyoung.wfp.core.utils.mail.MailUtil;
+import net.hoyoung.wfp.spider.comweb.bo.ComPage;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.SpiderListener;
@@ -51,6 +59,23 @@ public class ComWebSpiderListener implements SpiderListener {
 		}
 		// 停止爬虫
 		spider.stop();
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				String stockCode = (String) request.getExtra(ComPage.STOCK_CODE);
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				String domain = (String) request.getExtra("domain");
+				try {
+					MailUtil.sendMail(WFPContext.getProperty("spider.fail.receiver"),
+							stockCode + " " + sdf.format(new Date()), domain);
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (MessagingException e) {
+					e.printStackTrace();
+					logger.warn("send email fail");
+				}
+			}
+		}).start();
 		isFail = true;
 	}
 
