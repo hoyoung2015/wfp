@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 import re
 
-client = MongoClient(host='10.170.61.54', port=27017)
+client = MongoClient(host='127.0.0.1', port=27017)
 
 db = client.get_database('wfp_com_page')
 col_set = set()
@@ -28,9 +28,10 @@ with open('web_source_crawl.txt') as f:
         total += 1
         sp = line.split('\t')
         if sp[0] in col_set:
-            cnt += 1
-        else:
             write_line(line)
+
+        else:
+            cnt += 1
     f.close()
 
 print(cnt, '/', total)

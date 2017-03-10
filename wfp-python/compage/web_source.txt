@@ -427,7 +427,6 @@
 002644	佛慈制药	http://www.fczy.com	0
 300004	南风股份	http://www.ntfan.com	0
 002632	道明光学	http://www.chinadaoming.com	0
-300459	金科娱乐	http://www.jinke-chem.com	0
 000571	新大洲A	http://www.sundiro.com	0
 002180	艾派克	http://www.apexmic.cn	0
 600141	兴发集团	http://www.xingfagroup.com	0
