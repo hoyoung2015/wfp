@@ -30,10 +30,10 @@ public class ComWebPipeline implements Pipeline {
 		String stockCode = (String) resultItems.getRequest().getExtra(ComPage.STOCK_CODE);
 		MongoCollection<Document> collectionTmp = MongoUtil.getCollection(ComWebConstant.DB_NAME, stockCode + "_tmp");
 		for (Document document : list) {
-			String sha1 = document.getString(ComPage.CONTENT_SHA1);
-			if (StringUtils.isNotEmpty(sha1) && collectionTmp.count(Filters.eq(ComPage.CONTENT_SHA1, sha1)) > 0) {
-				continue;
-			}
+//			String sha1 = document.getString(ComPage.CONTENT_SHA1);
+//			if (StringUtils.isNotEmpty(sha1) && collectionTmp.count(Filters.eq(ComPage.CONTENT_SHA1, sha1)) > 0) {
+//				continue;
+//			}
 
 			try {
 				collectionTmp.insertOne(document);

@@ -1,7 +1,6 @@
 package net.hoyoung.wfp.spider.comweb;
 
 import java.net.MalformedURLException;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -16,10 +15,8 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
 
-import net.hoyoung.wfp.core.utils.EncryptUtil;
 import net.hoyoung.wfp.core.utils.WFPContext;
 import net.hoyoung.wfp.spider.comweb.bo.ComPage;
-import net.hoyoung.wfp.spider.comweb.process.HTMLExtractor;
 import net.hoyoung.wfp.spider.comweb.urlfilter.DomainUrlFilter;
 import net.hoyoung.wfp.spider.comweb.urlfilter.PageFilter;
 import net.hoyoung.wfp.spider.util.URLNormalizer;
@@ -78,16 +75,16 @@ public class ComWebProcessor implements PageProcessor {
 			return;
 		}
 		document.put(ComPage.HTML, page.getRawText());
-		String content = HTMLExtractor.getContent(page.getRawText());
-		if (content == null)
-			content = "";
-		document.put(ComPage.CONTENT, content);
-		try {
-			String sha1 = EncryptUtil.encryptSha1(content);
-			document.append(ComPage.CONTENT_SHA1, sha1);
-		} catch (NoSuchAlgorithmException e1) {
-			e1.printStackTrace();
-		}
+//		String content = HTMLExtractor.getContent(page.getRawText());
+//		if (content == null)
+//			content = "";
+//		document.put(ComPage.CONTENT, content);
+//		try {
+//			String sha1 = EncryptUtil.encryptSha1(content);
+//			document.append(ComPage.CONTENT_SHA1, sha1);
+//		} catch (NoSuchAlgorithmException e1) {
+//			e1.printStackTrace();
+//		}
 		List<String> links = this.urlFilter(page);
 		if (CollectionUtils.isNotEmpty(links)) {
 			for (String url : links) {
@@ -153,9 +150,8 @@ public class ComWebProcessor implements PageProcessor {
 	}
 
 	private Site site = Site.me().setSleepTime(WFPContext.getProperty("compage.spider.commonSleepTime", Integer.class))
-			.setRetryTimes(3).setTimeOut(50000).setCycleRetryTimes(2)
-			.addHeader("User-Agent", "Sogou web spider/3.0(+http://www.sogou.com/docs/help/webmasters.htm#07)")
-			.addHeader("Accept-Language", "zh-CN,zh;q=0.8");
+			.setRetryTimes(3).setTimeOut(WFPContext.getProperty("compage.spider.sleepTime", Integer.class)).setCycleRetryTimes(WFPContext.getProperty("compage.spider.retryTime", Integer.class))
+			.addHeader("User-Agent", "Sogou web spider/3.0(+http://www.sogou.com/docs/help/webmasters.htm#07)");
 
 	@Override
 	public Site getSite() {
