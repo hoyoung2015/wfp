@@ -1,6 +1,9 @@
 [shuanghui.net]
 http://www\.shuanghui\.net/[0-9a-zA-Z_]+/viewpic\.php.*
 
+[xingfagroup.com]
+http://www\.xingfagroup\.com/index\.php\?m=content&c=index&a=lists&catid=\d+&page=\d{3,}&typeid=
+
 [ieslab.com.cn]
 http://www\.ieslab\.com\.cn/sitefiles/services/cms/utils\.aspx\?type=Download&.*
 
@@ -180,3 +183,6 @@ http://biz.huaxincem.com/.*
 
 [jonhon.cn]
 http://www.jonhon.cn/tools/download.ashx.*
+
+[angelyeast.com]
+http://biolab\.angelyeast\.com/.*

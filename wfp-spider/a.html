@@ -1,0 +1,979 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>健康元</title>
+    <link href="css/cs.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="x-ua-compatible" content="ie=7" />
+</head>
+<body>
+    <form name="aspnetForm" method="post" action="index.aspx" id="aspnetForm">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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b2FkLzIwMTItMDItMjJcY2RjNTg4NDYtNThkYS00YjViLThjOTctOTNhNTY1OTdiYjhlLmpwZ0AvSW1hZ2VVcGxvYWQvMjAxMi0wMi0yMlwxZDRjMzg4YS02ZTZjLTQwNzUtODI5ZS05YWExYzFiOTI0MTMuanBnJOWkquWkquiNr+S4mumrmOaWsOaKgOacr+S8geS4muivgeS5piTlpKrlpKroja/kuJrpq5jmlrDmioDmnK/kvIHkuJror4HkuaZkAgMPZBYCZg8VBkAvSW1hZ2VVcGxvYWQvMjAxMi0wMi0yMlw3MDM4MDI0Ni1lNzk0LTQyMDgtODQyMS1hNjU1N2ZjYzk4OTAuanBnWOWBpeW6t+WFg+iOtzIwMTHlubTlub/kuJznnIHljJblrabljp/mlpnoja/jgIHljJblraboja/lk4HliLbliYLliLbpgKDooYzkuJrpooblhpvlk4HniYxAL0ltYWdlVXBsb2FkLzIwMTItMDItMjJcYzRkNzJjZjktYzgzZS00Njc0LWEwNGQtNmYzNWZmNzc0Y2E0LmpwZ0AvSW1hZ2VVcGxvYWQvMjAxMi0wMi0yMlw3MDM4MDI0Ni1lNzk0LTQyMDgtODQyMS1hNjU1N2ZjYzk4OTAuanBnWOWBpeW6t+WFg+iOtzIwMTHlubTlub/kuJznnIHljJblrabljp/mlpnoja/jgIHljJblraboja/lk4HliLbliYLliLbpgKDooYzkuJrpooblhpvlk4HniYwl5YGl5bq35YWD6I63MjAxMeW5tOW5v+S4nOecgeWMluWtpi4uLmQCFw8WAh8BAhQWKGYPZBYCZg8VAwM1MzICNzFAL0ltYWdlVXBsb2FkLzIwMTAtMDMtMDVcZDgyNzU2ODctNmE0NS00ZGM4LWFmZmQtOWVlZGY3YjNmNzA5LmpwZ2QCAQ9kFgJmDxUDAzUzNwMxMTJAL0ltYWdlVXBsb2FkLzIwMTAtMDQtMjZcY2QxNTQ1OGMtODMwNi00MzhhLWIwOTctYTQ4ZmI4Y2I1YmNhLkpQR2QCAg9kFgJmDxUDAzUzMgI3MkAvSW1hZ2VVcGxvYWQvMjAxMC0wMy0wNVw1NDc1YzViZS0wZGYxLTRmOTQtOWU4Yy1jZjhlMTZhZThkNzguanBnZAIDD2QWAmYPFQMDNTM3AzExM0AvSW1hZ2VVcGxvYWQvMjAxMC0wNC0yNlxmMGVlMmU3Yi1kNTg4LTQ2MDQtOTNmOS05ZmUyMmVmNDc0ZTUuSlBHZAIED2QWAmYPFQMDNTMyAjczQC9JbWFnZVVwbG9hZC8yMDEwLTAzLTA1XDVlZDVkODM4LTgyMTItNDY4OC1iYTlhLTVlNzk3MzRiMzNiNS5qcGdkAgUPZBYCZg8VAwM1MzcDMTE0QC9JbWFnZVVwbG9hZC8yMDEwLTA0LTI2XGU4YzIwNjQ1LWY3NmEtNDVjYi1iMTY0LTlhNGFmY2Y2YTJiYy5KUEdkAgYPZBYCZg8VAwM1MzQDMTA2QC9JbWFnZVVwbG9hZC8yMDEwLTA0LTI3XDQyZDNmOTFmLWI0ZjItNDQwZi04YTVkLWQ5NjI1YzBlZTMxNC5qcGdkAgcPZBYCZg8VAwM1MzcDMTE1QC9JbWFnZVVwbG9hZC8yMDEwLTA0LTI2XDMyZjU4YWM4LTY2YzktNGZjMS1iNWU4LWYwZmZmNTJiYTg3Zi5KUEdkAggPZBYCZg8VAwM1MzQDMTA3QC9JbWFnZVVwbG9hZC8yMDEwLTA0LTI3XGU4NjNjNjMyLTQ4YWItNGJkMS1hOWU5LTFkNzYzZDEyYTcyYy5qcGdkAgkPZBYCZg8VAwM1MzcDMTE2QC9JbWFnZVVwbG9hZC8yMDEwLTA0LTI2XDAxYTg3Mzk5LTdlNDctNDMyNS04MGFmLThkMzBkOWMyYTE4Mi5KUEdkAgoPZBYCZg8VAwM1MzQDMTA4QC9JbWFnZVVwbG9hZC8yMDEwLTA0LTI3XDNlOTc1OTc1LTY4NGMtNGFlZS1iOTNjLWJiM2U2N2Y1YWM1Ny5qcGdkAgsPZBYCZg8VAwM1MzcDMTE3QC9JbWFnZVVwbG9hZC8yMDEwLTA0LTI2XDYxYWRhNWExLWQ4ZjQtNDY1Mi1hMjFkLWJmYTUzZGRkMGQ0MS5KUEdkAgwPZBYCZg8VAwM1MzcDMTE4QC9JbWFnZVVwbG9hZC8yMDEwLTA0LTI2XGY0MjI1MDRkLWU3NjMtNDY0OS1hZjQzLTQ2NjI0NGJiYTgzOC5KUEdkAg0PZBYCZg8VAwM1MzMCNzRAL0ltYWdlVXBsb2FkLzIwMTAtMDMtMDVcMmFiYTUzNTktZGYyYy00ZThmLWI2Y2QtZGVmMTlkMGY0YTgxLmpwZ2QCDg9kFgJmDxUDAzUzNwMxMTlAL0ltYWdlVXBsb2FkLzIwMTAtMDQtMjZcNzI4MThlODctMzY2Ny00NzAzLTg5ZWEtMmZiNjlmMGE4YzVkLkpQR2QCDw9kFgJmDxUDAzUzMwI3NUAvSW1hZ2VVcGxvYWQvMjAxMC0wMy0wNVwxMWZkNDdlNS0xYzVhLTRmOWMtOWZkMC0wZjg1YzYyNDk0YzMuanBnZAIQD2QWAmYPFQMDNTM3AzEyMEAvSW1hZ2VVcGxvYWQvMjAxMC0wNC0yNlw1YThjYTEwYy04OWJhLTRhYWItODZiMS1iNGE2YzMyYjRlMDMuSlBHZAIRD2QWAmYPFQMDNTMzAjc2QC9JbWFnZVVwbG9hZC8yMDEwLTAzLTA1XGI3MTUyM2ZhLTAzNWQtNDJiOS05OWEwLTU3Yjc4MTc0MTg5Yy5qcGdkAhIPZBYCZg8VAwM1MzcDMTIxQC9JbWFnZVVwbG9hZC8yMDEwLTA0LTI2XDAyNDNmMTk5LTc2OTQtNDA0OC04MDhlLWRiNmUzMjU0ZDg4Mi5KUEdkAhMPZBYCZg8VAwM2MzcDMjk1QC9JbWFnZVVwbG9hZC8yMDEyLTExLTI5XDA0NjZiZGYxLWE3NGMtNGVhMy1iYTRkLTA3ODhlNTU4ZDBlYS5qcGdkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYBBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJE5DV2ViX1NlYXJjaF9Qcm9kdWN0cyRJbWFnZUJ1dHRvbjFpw+8G/VrFqAVxu6CpYnB9Zgq5UQ==" />
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="90059987" />
+</div>
+        
+            
+
+    <script type="text/javascript" src="js/msclass.js"></script>
+    <table width="1003" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+        <tr>
+            <td width="218" valign="top">
+                <table width="218" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td colspan="2">
+                            <img src="images/logo.jpg" width="218" height="85" alt="" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
+                                width="218" height="233">
+                                <param name="movie" value="swf/menu.swf" />
+                                <param name="quality" value="high" />
+                                <param name="wmode" value="transparent" />
+                                <embed src="swf/menu.swf" width="218" height="233" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer"
+                                    type="application/x-shockwave-flash" wmode="transparent"></embed>
+                            </object>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="9" rowspan="4">
+                        </td>
+                        <td width="185">
+                            <a href="http://jiankangyuan.tmall.com/" target="_blank"><img src="images/order.jpg" border="0" width="209" height="93" alt="" /></a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="images/video_title.jpg" width="209" height="39" alt="" /></td>
+                    </tr>
+                    <tr>
+                        <td style="background-image: url(images/video_bg.jpg); width: 209px; height: 160px;" align="center">
+                            
+                            <a href="About.aspx?CateID=582"><img src="images/video.jpg" border="0" /></a>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" background="images/left_bg.jpg">
+                            <table width="209" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td height="30" align="center" bgcolor="#F7F7F7">
+                                        <select name="select" size="1" onchange="if(this.value!=''){location.href=this.value;}">
+                                            
+                                                <option value="About.aspx?CateId=640">-------- 集团下属企业 -------</option>                                                                                                
+                                                <option value="About.aspx?CateId=517">丽珠医药集团股份有限公司</option>                                                                                                
+                                                <option value="About.aspx?CateId=519">深圳市海滨制药有限公司</option>                                                                                                
+                                                <option value="About.aspx?CateId=520">深圳太太药业有限公司</option>                                                                                                
+                                                <option value="About.aspx?CateId=516">健康药业（中国）有限公司</option>                                                                                                
+                                                <option value="About.aspx?CateId=550">焦作健康元生物制品有限公司</option>                                                                                                
+                                                <option value="About.aspx?CateId=551">新乡海滨药业有限公司</option>                                                                                                
+                                                <option value="About.aspx?CateId=518">山东健康药业有限公司</option>                                                                                                
+                                                <option value="About.aspx?CateId=527">健康元日用保健品有限公司</option>                                                                                                
+                                                <option value="About.aspx?CateId=526">深圳太太基因工程有限公司</option>                                                                                                
+                                                <option value="About.aspx?CateId=465">深圳市喜悦实业有限公司</option>                                                                                                
+                                                <option value="About.aspx?CateId=553">天诚实业有限公司</option>                                                                                                
+                                                <option value="About.aspx?CateId=639">太太司法鉴定所</option>                                                                                                
+                                                <option value="About.aspx?CateId=648">深圳太太生物科技有限公司</option>                                                                                                
+                                                <option value="About.aspx?CateId=649">上海方予健康医药科技有限公司</option>                                                                                                
+
+
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        
+                                            <p>&nbsp;</p><table border="0" cellspacing="0" cellpadding="0" width="98%" align="center"><tbody><tr><td class="name01">健康元药业集团股份有限公司</td></tr><tr><td class="about" bgcolor="#f7f7f7" valign="top"><p>总部地址：深圳市南山区高新区北<br />区朗山路17号健康元药业集团大厦<br />电话：&nbsp;&nbsp;(0755)86252388<br />&nbsp;传真： (0755)<span lang="EN-US" style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;; color: #4c4c4c; font-size: 9pt">86252398</span></p><p>邮箱： <a href="mailto:joincare@joincare.com">joincare@joincare.com</a><br /></p></td></tr></tbody></table>                                            
+
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="inves.aspx"><img src="images/invest.jpg" alt="" border="0" /></a></td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        
+                                            <table border="0" cellspacing="0" cellpadding="0" width="100%">
+    <tbody>
+        <tr>
+            <td><img alt="" width="209" height="27" src="images/jky.jpg" /></td>
+        </tr>
+        <tr>
+            <td align="center"><a target="_blank" href="inves.aspx"><img border="0" alt="" width="206" src="http://image2.sinajs.cn/newchart/min/n/sh600380.gif?1269420229562" /></a></td>
+        </tr>
+        <tr>
+            <td><img alt="" width="209" height="28" src="images/lz2.jpg" /></td>
+        </tr>
+        <tr>
+            <td align="center"><a target="_blank" href="inves.aspx"><img border="0" alt="" width="206" src="http://hqpicr.eastmoney.com/r/1220961.png?0.6043564822523483" /></a></td>
+        </tr>
+        <tr>
+            <td><img alt="" width="209" height="28" src="images/lz.jpg" /></td>
+        </tr>
+        <tr>
+            <td align="center"><a target="_blank" href="inves.aspx"><img border="0" width="206" alt="" src="http://image2.sinajs.cn/newchart/min/n/sz000513.gif?1269420692062" /></a></td>
+        </tr>
+        <tr>
+            <td align="center">
+            <div align="left"><img alt="" width="209" height="28" src="images/lzb.jpg" /></div>
+            </td>
+        </tr>
+        <tr>
+            <td align="center"><a target="_blank" href="http://www.0186.com.cn"><img border="0" alt="" width="206" src="http://image2.sinajs.cn/newchart/min/n/sz000513.gif?1269420692062" /></a></td>
+        </tr>
+    </tbody>
+</table>                                            
+
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td valign="top">
+                <table width="785" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td height="24" colspan="2">&nbsp;
+                            </td>
+                    </tr>
+                    <tr>
+                        <td width="494" style="padding-left: 44px;">
+                            
+    <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td width="29">
+                <img src="images/search.jpg" width="29" height="23" /></td>
+            <td>
+                <input name="ctl00$ContentPlaceHolder1$NCWeb_Search_Products$TextBox1" type="text" value="请输入关键字" id="ctl00_ContentPlaceHolder1_NCWeb_Search_Products_TextBox1" onfocus="if(this.value=='请输入关键字'|| this.value=='keyword'){this.value='';}" />
+                &nbsp;</td>
+            <td width="27">
+                <input type="image" name="ctl00$ContentPlaceHolder1$NCWeb_Search_Products$ImageButton1" id="ctl00_ContentPlaceHolder1_NCWeb_Search_Products_ImageButton1" src="images/search_botton.jpg" style="border-width:0px;" />
+            </td>
+        </tr>
+    </table>
+                        </td>
+                        <td>
+                            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
+                                width="291" height="33">
+                                <param name="movie" value="swf/top_menu.swf" />
+                                <param name="quality" value="high" />
+                                <param name="wmode" value="transparent" />
+                                <embed src="swf/top_menu.swf" width="291" height="33" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer"
+                                    type="application/x-shockwave-flash" wmode="transparent"></embed>
+                            </object>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <img src="images/index_08.jpg" width="785" height="12" alt="" /></td>
+                    </tr>
+                </table>
+                <table width="785" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="13">&nbsp;
+                            </td>
+                        <td valign="top">
+                            <table width="755" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td>
+                                        
+                                    <SCRIPT language=javascript1.1>
+                                    var Arr_big	= new Array();
+                                    var Arr_small	= new Array();
+
+                                    var Arr_title	= new Array()
+                                    var Arr_context	= new Array()
+                                    Arr_big[0]	="images/01.jpg" //澶у浘 380x260
+                                    Arr_small[0]	="images/s1.jpg" //灏忓浘 75x50
+
+                                    Arr_big[1]	="images/02.jpg"
+                                    Arr_small[1]	="images/s2.jpg"
+
+                                    Arr_big[2]	="images/03.jpg"
+                                    Arr_small[2]	="images/s3.jpg"
+
+                                    Arr_big[3]	="images/04.jpg"
+                                    Arr_small[3]	="images/s4.jpg"
+
+                                    Arr_big[4]	="images/05.jpg"
+                                    Arr_small[4]	="images/s5.jpg"
+
+                                    Arr_big[5]	="images/06.jpg"
+                                    Arr_small[5]	="images/s6.jpg"
+
+                                    var bigpics	=Arr_big.join("|")
+                                    var smallpics	=Arr_small.join("|")
+
+                                    var titles	=Arr_title.join("|")
+                                    var context	=Arr_context.join("|")
+                                    document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="755" height="284">');
+                                    document.write('<param name="allowScriptAccess" value="sameDomain"><param name="movie" value="swf/banner.swf"><param name="quality" value="high">');
+                                    document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+                                    document.write('<param name="FlashVars" value="bigpics='+bigpics+'&smallpics='+smallpics+'&titles='+titles+'&context='+context+'">');
+                                    document.write('<embed src="swf/banner.swf" wmode="opaque" FlashVars="bigpics='+bigpics+'&smallpics='+smallpics+'&titles='+titles+'&context='+context+'" menu="false"  quality="high" width="755" height="284" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />');	document.write('</object>');
+                                    </SCRIPT>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="images/title01.jpg" alt="" width="754" height="40" border="0" usemap="#Map" /></td>
+                                </tr>
+                                <tr>
+                                    <td height="155" valign="top" class="syabout">
+                                        
+                                            <table border="0" cellspacing="0" cellpadding="0" width="750" align="center">
+    <tbody>
+        <tr>
+            <td width="214"><img alt="" width="204" height="155" src="images/about_img.jpg" /></td>
+            <td width="536">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 健康元药业集团股份有限公司（以下称健康元药业集团）前身为深圳太太保健食品有限公司。由朱保国董事长92年创办成立，靠一剂&ldquo;太太口服液&rdquo;奠定保健品行业龙头地位；95年战略转型进军药业，更名为深圳太太药业有限公司；97年收购深圳市海滨制药有限公司完成从保健品企业到制药企业成功转型；99年股份制改造完成变更为深圳太太药业股份有限公司；2001年太太药业上海证券交易所挂牌，成功上市，发行7,000万股，募集资金17亿，为当时A股上市募集资金最多的民营企业。之后，健康元药业集团相继收购健康药业（中国）有限公司，丽珠医药集团股份有限公司等优质医药企业；2003年更名为健康元药业集团股份有限公司。<br />
+            &nbsp;</td>
+        </tr>
+    </tbody>
+</table>                                            
+
+
+                                    </td>
+                                </tr>
+                            </table>
+                            <table width="755" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="362" valign="top">
+                                        <table width="362" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td>
+                                                    <img src="images/title04.jpg" width="362" border="0" usemap="#Map4" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="278" valign="top">
+                                                    
+                                                    
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=573&ID=2220" title="深圳太太药业有限公司环境监测报告">深圳太太药业有限公司环境监测报告</a>
+                                                            </td>
+                                                            <td>
+                                                                17-02-28</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=573&ID=2212" title="太太集团起舞微商 大牌背书再拉新幕">太太集团起舞微商 大牌背书再拉新幕</a>
+                                                            </td>
+                                                            <td>
+                                                                16-09-19</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=573&ID=2208" title="2016年健康元集团、丽珠集团包装材料招标结果公告">2016年健康元集团、丽珠集团包装材料招标结果...</a>
+                                                            </td>
+                                                            <td>
+                                                                16-05-12</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=573&ID=2206" title="健康元荣获中国上市公司最佳董事会“天马奖”">健康元荣获中国上市公司最佳董事会“天马奖”</a>
+                                                            </td>
+                                                            <td>
+                                                                16-04-18</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=573&ID=2202" title="深圳太太药业有限公司环境监测报告">深圳太太药业有限公司环境监测报告</a>
+                                                            </td>
+                                                            <td>
+                                                                15-07-16</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=573&ID=2198" title="健康元集团携手思埠集团战略合作签约仪式暨新品新闻发布会">健康元集团携手思埠集团战略合作签约仪式暨新...</a>
+                                                            </td>
+                                                            <td>
+                                                                15-04-19</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=573&ID=2196" title="健康元限制性股票激励计划获得中国证监会备案无异议">健康元限制性股票激励计划获得中国证监会备案...</a>
+                                                            </td>
+                                                            <td>
+                                                                15-04-18</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=573&ID=2195" title="新年新气象，健康元新任总裁杨冬云先生走马上任">新年新气象，健康元新任总裁杨冬云先生走马上...</a>
+                                                            </td>
+                                                            <td>
+                                                                15-01-07</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=573&ID=2193" title="2014年健康元集团、丽珠集团包装材料联合招标结果公告">2014年健康元集团、丽珠集团包装材料联合招标...</a>
+                                                            </td>
+                                                            <td>
+                                                                14-07-29</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=573&ID=2192" title="健康元子公司太太基因联手美年大健康涉足子宫颈癌检测领域">健康元子公司太太基因联手美年大健康涉足子宫...</a>
+                                                            </td>
+                                                            <td>
+                                                                14-04-03</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=573&ID=2185" title="健康元药业集团成为中国光大银行总行战略客户">健康元药业集团成为中国光大银行总行战略客户</a>
+                                                            </td>
+                                                            <td>
+                                                                13-12-02</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=573&ID=2184" title="一句话新闻：健康元全资子公司深圳太太药业有限公司荣获“广东省保健食品安全示范单位”">一句话新闻：健康元全资子公司深圳太太药业有...</a>
+                                                            </td>
+                                                            <td>
+                                                                13-04-28</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td width="23">&nbsp;
+                                        </td>
+                                    <td width="370" valign="top">
+                                        <table width="362" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td>
+                                                    <img src="images/title03.jpg" width="370" border="0" usemap="#Map3" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="298" valign="top">
+                                                    
+                                                    
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=226&ID=2207" title="全国人大常委会副委员长、全国妇联主席沈跃跃率队来深进行执法检查">全国人大常委会副委员长、全国妇联主席沈跃跃...</a>
+                                                            </td>
+                                                            <td>
+                                                                16-04-28</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=226&ID=2204" title="获3200万美元C轮融资，杏树林全面开启商业化和国际化">获3200万美元C轮融资，杏树林全面开启商业化和...</a>
+                                                            </td>
+                                                            <td>
+                                                                16-01-27</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=226&ID=2205" title="杏树林获3000万美元注资 估值超2亿美元">杏树林获3000万美元注资 估值超2亿美元</a>
+                                                            </td>
+                                                            <td>
+                                                                16-01-27</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=225&ID=2199" title="思埠携手上市公司健康元 打造O2O新平台">思埠携手上市公司健康元 打造O2O新平台</a>
+                                                            </td>
+                                                            <td>
+                                                                15-04-21</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=225&ID=2194" title="深圳第二届内幕交易警示教育展">深圳第二届内幕交易警示教育展</a>
+                                                            </td>
+                                                            <td>
+                                                                14-11-03</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=225&ID=2191" title="健康元自研药物单克隆抗体获临床批件">健康元自研药物单克隆抗体获临床批件</a>
+                                                            </td>
+                                                            <td>
+                                                                14-03-11</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=225&ID=2190" title="健康元单克隆抗体产品获得药物试验批件">健康元单克隆抗体产品获得药物试验批件</a>
+                                                            </td>
+                                                            <td>
+                                                                14-03-11</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=225&ID=2189" title="STCN解读:健康元子公司美罗培南通过欧盟CEP认证">STCN解读:健康元子公司美罗培南通过欧盟CEP认...</a>
+                                                            </td>
+                                                            <td>
+                                                                14-03-04</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=225&ID=2188" title="健康元无菌美罗培南通过欧盟CEP认证">健康元无菌美罗培南通过欧盟CEP认证</a>
+                                                            </td>
+                                                            <td>
+                                                                14-03-04</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=225&ID=2187" title="获港交所放行 丽珠B转H进入“倒计时”">获港交所放行 丽珠B转H进入“倒计时”</a>
+                                                            </td>
+                                                            <td>
+                                                                13-12-17</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=225&ID=2186" title="丽珠集团夺得B转H第二单">丽珠集团夺得B转H第二单</a>
+                                                            </td>
+                                                            <td>
+                                                                13-12-17</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    <table width="360" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="12">
+                                                                <img src="images/icon.jpg" width="8" height="7" /></td>
+                                                            <td width="290" height="28">
+                                                                &nbsp;<a href="News.aspx?CateId=225&ID=2183" title="证监会受理丽珠 B股转H股申请">证监会受理丽珠 B股转H股申请</a>
+                                                            </td>
+                                                            <td>
+                                                                13-04-18</td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <map name="Map3Map" id="Map3Map">
+                                            <area shape="rect" coords="301,12,350,32" href="About.aspx?CateID=222" />
+                                        </map>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table width="755" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    
+                                    <td width="755" valign="top">
+                                        <table width="755" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td width="362" valign="top">
+                                                	<table width="362" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+                                                            <td>
+                                                                <img src="images/title_02.jpg" width="362" border="0" usemap="#Map2" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="298" valign="top">
+                                                            <link rel="stylesheet" href="js/lightbox.css" type="text/css" media="screen" />
+                                                            <script src="js/prototype.js" type="text/javascript"></script>
+                                                            <script src="js/scriptaculous.js?load=effects" type="text/javascript"></script>
+                                                            <script src="js/lightbox.js" type="text/javascript"></script>
+                                                                
+                                                                <div class="float">
+                                                                    <table width="162" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tr>
+                                                                            <td width="162" height="108" align="center" background="images/honor_img_bg.jpg">
+                                                                                <a href="/ImageUpload/2012-02-22\da5563f2-dd45-439a-b4c7-2c224815805b.jpg" rel="lightbox" title="海滨制药高新技术企业证书">
+                                                                                    <img src="/ImageUpload/2012-02-22\88848ab3-2be8-4ccd-b638-30ecb5f977cd.jpg" width="156" height="102" border="0" /></a></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td align="center">
+                                                                                <a href="/ImageUpload/2012-02-22\da5563f2-dd45-439a-b4c7-2c224815805b.jpg" rel="lightbox" title="海滨制药高新技术企业证书">海滨制药高新技术企业证书</a></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                                
+                                                                <div class="float">
+                                                                    <table width="162" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tr>
+                                                                            <td width="162" height="108" align="center" background="images/honor_img_bg.jpg">
+                                                                                <a href="/ImageUpload/2012-02-22\de596898-38a3-4cc3-8d11-ac5a7e7858c5.jpg" rel="lightbox" title="太太基因高新技术企业证书">
+                                                                                    <img src="/ImageUpload/2012-02-22\9a09fc19-96c8-4277-8747-d00318a6931f.jpg" width="156" height="102" border="0" /></a></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td align="center">
+                                                                                <a href="/ImageUpload/2012-02-22\de596898-38a3-4cc3-8d11-ac5a7e7858c5.jpg" rel="lightbox" title="太太基因高新技术企业证书">太太基因高新技术企业证书</a></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                                
+                                                                <div class="float">
+                                                                    <table width="162" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tr>
+                                                                            <td width="162" height="108" align="center" background="images/honor_img_bg.jpg">
+                                                                                <a href="/ImageUpload/2012-02-22\1d4c388a-6e6c-4075-829e-9aa1c1b92413.jpg" rel="lightbox" title="太太药业高新技术企业证书">
+                                                                                    <img src="/ImageUpload/2012-02-22\cdc58846-58da-4b5b-8c97-93a56597bb8e.jpg" width="156" height="102" border="0" /></a></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td align="center">
+                                                                                <a href="/ImageUpload/2012-02-22\1d4c388a-6e6c-4075-829e-9aa1c1b92413.jpg" rel="lightbox" title="太太药业高新技术企业证书">太太药业高新技术企业证书</a></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                                
+                                                                <div class="float">
+                                                                    <table width="162" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tr>
+                                                                            <td width="162" height="108" align="center" background="images/honor_img_bg.jpg">
+                                                                                <a href="/ImageUpload/2012-02-22\70380246-e794-4208-8421-a6557fcc9890.jpg" rel="lightbox" title="健康元获2011年广东省化学原料药、化学药品制剂制造行业领军品牌">
+                                                                                    <img src="/ImageUpload/2012-02-22\c4d72cf9-c83e-4674-a04d-6f35ff774ca4.jpg" width="156" height="102" border="0" /></a></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td align="center">
+                                                                                <a href="/ImageUpload/2012-02-22\70380246-e794-4208-8421-a6557fcc9890.jpg" rel="lightbox" title="健康元获2011年广东省化学原料药、化学药品制剂制造行业领军品牌">健康元获2011年广东省化学...</a></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                                
+                                                                
+                                                                
+                                                                
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                </td>
+                                                <td width="23">&nbsp;
+                                                    </td>
+                                                <td width="370" valign="top">
+                                                    <table width="362" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+                                                            <td>
+                                                                <img src="images/title05.jpg" width="370" border="0" usemap="#ZDLS" /><map name="ZDLS" id="ZDLS">
+  <area shape="rect" coords="310,11,370,35" href="About.aspx?CateID=219" />
+</map></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="278" valign="top" class="about">
+                                                                
+                                                                    <p>&nbsp;</p>
+<div align="center">
+<table border="1" cellspacing="0" cellpadding="0" width="374" style="border-bottom: medium none; border-left: medium none; width: 280.6pt; border-collapse: collapse; border-top: medium none; border-right: medium none">
+    <tbody>
+        <tr style="height: 30pt">
+            <td width="35" style="border-bottom: #cccccc 1pt inset; border-left: #cccccc 1pt inset; padding-bottom: 0cm; padding-left: 3.75pt; width: 26.25pt; padding-right: 0cm; background: whitesmoke; height: 30pt; border-top: #cccccc 1pt inset; border-right: #cccccc 1pt inset; padding-top: 0cm">
+            <div align="center"><b><span style="font-size: 9pt">号</span></b></div>
+            </td>
+            <td width="113" style="border-bottom: #cccccc 1pt inset; border-left: #d4d0c8; padding-bottom: 0cm; padding-left: 3.75pt; width: 84.75pt; padding-right: 0cm; background: whitesmoke; height: 30pt; border-top: #cccccc 1pt inset; border-right: #cccccc 1pt inset; padding-top: 0cm">
+            <div align="center"><b><span style="font-size: 9pt">日</span></b><b><span style="font-size: 9pt">&nbsp;&nbsp;&nbsp; </span></b><b><span style="font-size: 9pt">期</span></b></div>
+            </td>
+            <td width="226" style="border-bottom: #cccccc 1pt inset; border-left: #d4d0c8; padding-bottom: 0cm; padding-left: 3.75pt; width: 169.6pt; padding-right: 0cm; background: whitesmoke; height: 30pt; border-top: #cccccc 1pt inset; border-right: #cccccc 1pt inset; padding-top: 0cm">
+            <div align="center"><b><span style="font-size: 9pt">内</span></b><b><span style="font-size: 9pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b><b><span style="font-size: 9pt">容</span></b></div>
+            </td>
+        </tr>
+        <tr style="height: 22.5pt">
+            <td style="border-bottom: #cccccc 1pt inset; border-left: #cccccc 1pt inset; padding-bottom: 0cm; background-color: transparent; padding-left: 3.75pt; padding-right: 0cm; height: 22.5pt; border-top: #d4d0c8; border-right: #cccccc 1pt inset; padding-top: 0cm">
+            <div align="center"><span style="font-size: 9pt">72</span></div>
+            </td>
+            <td width="113" style="border-bottom: #cccccc 1pt inset; border-left: #d4d0c8; padding-bottom: 0cm; background-color: transparent; padding-left: 3.75pt; width: 84.75pt; padding-right: 0cm; height: 22.5pt; border-top: #d4d0c8; border-right: #cccccc 1pt inset; padding-top: 0cm">
+            <div align="left"><span style="font-size: 9pt">2014</span><span style="font-size: 9pt">年</span><span style="font-size: 9pt">3</span><span style="font-size: 9pt">月</span><span style="font-size: 9pt">4</span><span style="font-size: 9pt">日</span></div>
+            </td>
+            <td width="226" style="border-bottom: #cccccc 1pt inset; border-left: #d4d0c8; padding-bottom: 0cm; background-color: transparent; padding-left: 3.75pt; width: 169.6pt; padding-right: 0cm; height: 22.5pt; border-top: #d4d0c8; border-right: #cccccc 1pt inset; padding-top: 0cm">
+            <div align="left"><span style="font-size: 9pt">子公司珠海市丽珠单抗生物技术有限公司单克隆抗体产品获得药物临床试验批件。</span></div>
+            </td>
+        </tr>
+        <tr style="height: 22.5pt">
+            <td style="border-bottom: #cccccc 1pt inset; border-left: #cccccc 1pt inset; padding-bottom: 0cm; background-color: transparent; padding-left: 3.75pt; padding-right: 0cm; height: 22.5pt; border-top: #d4d0c8; border-right: #cccccc 1pt inset; padding-top: 0cm">
+            <div align="center"><span style="font-size: 9pt">71</span></div>
+            </td>
+            <td width="113" style="border-bottom: #cccccc 1pt inset; border-left: #d4d0c8; padding-bottom: 0cm; background-color: transparent; padding-left: 3.75pt; width: 84.75pt; padding-right: 0cm; height: 22.5pt; border-top: #d4d0c8; border-right: #cccccc 1pt inset; padding-top: 0cm">
+            <div align="left"><span style="font-size: 9pt">2014</span><span style="font-size: 9pt">年</span><span style="font-size: 9pt">2</span><span style="font-size: 9pt">月</span><span style="font-size: 9pt">24</span><span style="font-size: 9pt">日</span></div>
+            </td>
+            <td width="226" style="border-bottom: #cccccc 1pt inset; border-left: #d4d0c8; padding-bottom: 0cm; background-color: transparent; padding-left: 3.75pt; width: 169.6pt; padding-right: 0cm; height: 22.5pt; border-top: #d4d0c8; border-right: #cccccc 1pt inset; padding-top: 0cm">
+            <div align="left"><span style="font-size: 9pt">子公司海滨制药无菌美罗培南获得欧盟</span><span style="font-size: 9pt">CEP</span><span style="font-size: 9pt">认证。</span></div>
+            </td>
+        </tr>
+        <tr style="height: 22.5pt">
+            <td style="border-bottom: #cccccc 1pt inset; border-left: #cccccc 1pt inset; padding-bottom: 0cm; background-color: transparent; padding-left: 3.75pt; padding-right: 0cm; height: 22.5pt; border-top: #d4d0c8; border-right: #cccccc 1pt inset; padding-top: 0cm">
+            <div align="center"><span style="font-size: 9pt">70</span></div>
+            </td>
+            <td width="113" style="border-bottom: #cccccc 1pt inset; border-left: #d4d0c8; padding-bottom: 0cm; background-color: transparent; padding-left: 3.75pt; width: 84.75pt; padding-right: 0cm; height: 22.5pt; border-top: #d4d0c8; border-right: #cccccc 1pt inset; padding-top: 0cm">
+            <div align="left"><span style="font-size: 9pt">2014</span><span style="font-size: 9pt">年</span><span style="font-size: 9pt">1</span><span style="font-size: 9pt">月</span><span style="font-size: 9pt">16</span><span style="font-size: 9pt">日</span></div>
+            </td>
+            <td width="226" style="border-bottom: #cccccc 1pt inset; border-left: #d4d0c8; padding-bottom: 0cm; background-color: transparent; padding-left: 3.75pt; width: 169.6pt; padding-right: 0cm; height: 22.5pt; border-top: #d4d0c8; border-right: #cccccc 1pt inset; padding-top: 0cm">
+            <div align="left"><span style="font-size: 9pt">丽珠集团&ldquo;B转H&rdquo;项目顺利收关，&ldquo;01513&rdquo;正式挂牌交易。</span></div>
+            </td>
+        </tr>
+        <tr style="height: 22.5pt">
+            <td style="border-bottom: #cccccc 1pt inset; border-left: #cccccc 1pt inset; padding-bottom: 0cm; background-color: transparent; padding-left: 3.75pt; padding-right: 0cm; height: 22.5pt; border-top: #d4d0c8; border-right: #cccccc 1pt inset; padding-top: 0cm">
+            <div align="center"><span style="font-size: 9pt">69</span></div>
+            </td>
+            <td width="113" style="border-bottom: #cccccc 1pt inset; border-left: #d4d0c8; padding-bottom: 0cm; background-color: transparent; padding-left: 3.75pt; width: 84.75pt; padding-right: 0cm; height: 22.5pt; border-top: #d4d0c8; border-right: #cccccc 1pt inset; padding-top: 0cm">
+            <div align="left"><span style="font-size: 9pt">2013</span><span style="font-size: 9pt">年</span><span style="font-size: 9pt">9</span><span style="font-size: 9pt">月</span><span style="font-size: 9pt">10</span><span style="font-size: 9pt">日</span></div>
+            </td>
+            <td width="226" style="border-bottom: #cccccc 1pt inset; border-left: #d4d0c8; padding-bottom: 0cm; background-color: transparent; padding-left: 3.75pt; width: 169.6pt; padding-right: 0cm; height: 22.5pt; border-top: #d4d0c8; border-right: #cccccc 1pt inset; padding-top: 0cm">
+            <div align="left"><span style="font-size: 9pt">&ldquo;上海方予健康医药科技有限公司&rdquo;成立，公司上海研发基地诞生。</span></div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>                                                                    
+
+
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <map name="Map3MapMap" id="Map1">
+                                                        <area shape="rect" coords="301,12,350,32" href="#" />
+                                                    </map>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                            <table width="755" border="0" cellspacing="0" cellpadding="0" class="prlogo">
+                                <tr>
+                                    <td width="24">
+                                        <img src="images/pr_logo_right.jpg" width="24" id="left1" style="cursor:pointer" height="86" /></td>
+                                    <td background="images/pr_logo_bg.jpg" width="707">
+                                    <div style="overflow:hidden; padding-top:10px;" id="marquee11">
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=532&ID=71">
+                                                <img src="/ImageUpload/2010-03-05\d8275687-6a45-4dc8-affd-9eedf7b3f709.jpg" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=537&ID=112">
+                                                <img src="/ImageUpload/2010-04-26\cd15458c-8306-438a-b097-a48fb8cb5bca.JPG" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=532&ID=72">
+                                                <img src="/ImageUpload/2010-03-05\5475c5be-0df1-4f94-9e8c-cf8e16ae8d78.jpg" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=537&ID=113">
+                                                <img src="/ImageUpload/2010-04-26\f0ee2e7b-d588-4604-93f9-9fe22ef474e5.JPG" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=532&ID=73">
+                                                <img src="/ImageUpload/2010-03-05\5ed5d838-8212-4688-ba9a-5e79734b33b5.jpg" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=537&ID=114">
+                                                <img src="/ImageUpload/2010-04-26\e8c20645-f76a-45cb-b164-9a4afcf6a2bc.JPG" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=534&ID=106">
+                                                <img src="/ImageUpload/2010-04-27\42d3f91f-b4f2-440f-8a5d-d9625c0ee314.jpg" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=537&ID=115">
+                                                <img src="/ImageUpload/2010-04-26\32f58ac8-66c9-4fc1-b5e8-f0fff52ba87f.JPG" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=534&ID=107">
+                                                <img src="/ImageUpload/2010-04-27\e863c632-48ab-4bd1-a9e9-1d763d12a72c.jpg" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=537&ID=116">
+                                                <img src="/ImageUpload/2010-04-26\01a87399-7e47-4325-80af-8d30d9c2a182.JPG" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=534&ID=108">
+                                                <img src="/ImageUpload/2010-04-27\3e975975-684c-4aee-b93c-bb3e67f5ac57.jpg" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=537&ID=117">
+                                                <img src="/ImageUpload/2010-04-26\61ada5a1-d8f4-4652-a21d-bfa53ddd0d41.JPG" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=537&ID=118">
+                                                <img src="/ImageUpload/2010-04-26\f422504d-e763-4649-af43-466244bba838.JPG" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=533&ID=74">
+                                                <img src="/ImageUpload/2010-03-05\2aba5359-df2c-4e8f-b6cd-def19d0f4a81.jpg" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=537&ID=119">
+                                                <img src="/ImageUpload/2010-04-26\72818e87-3667-4703-89ea-2fb69f0a8c5d.JPG" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=533&ID=75">
+                                                <img src="/ImageUpload/2010-03-05\11fd47e5-1c5a-4f9c-9fd0-0f85c62494c3.jpg" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=537&ID=120">
+                                                <img src="/ImageUpload/2010-04-26\5a8ca10c-89ba-4aab-86b1-b4a6c32b4e03.JPG" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=533&ID=76">
+                                                <img src="/ImageUpload/2010-03-05\b71523fa-035d-42b9-99a0-57b78174189c.jpg" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=537&ID=121">
+                                                <img src="/ImageUpload/2010-04-26\0243f199-7694-4048-808e-db6e3254d882.JPG" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" style="margin:0 10px 0 5px; display:inline;">
+                                        <tr>
+                                            <td><a href="Products.aspx?CateId=637&ID=295">
+                                                <img src="/ImageUpload/2012-11-29\0466bdf1-a74c-4ea3-ba4d-0788e558d0ea.jpg" width="71" height="73" border="0" /></a></td>
+                                        </tr>
+                                        </table>
+                                                                               
+                                    </div>
+                                    
+                                    </td>
+                                    <td width="24">
+                                        <img src="images/pr_logo_left.jpg" id="right1" style="cursor:pointer" width="24" height="86" /></td>
+                                </tr>
+                            </table>
+                            <script type="text/javascript" defer="defer">
+                            var marquee2=new Marquee("marquee11");
+                            marquee2.Direction="left";
+                            marquee2.Step=1;
+                            marquee2.Width = 707;
+                            marquee2.Height=76;
+                            marquee2.Timer=20;
+                            //marquee2.ScrollStep=-1;
+                            var left1 = document.getElementById("left1");
+                            var right1 = document.getElementById("right1");
+                            left1.onclick=function(){marquee2.Direction=2};
+                            right1.onclick=function(){marquee2.Direction=3};
+                            marquee2.Start();
+                            </script> 
+                        </td>
+                        <td width="17" valign="top">
+                            <img src="images/right_line.jpg" width="17" height="603" alt="" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+       
+    
+    <table width="1003" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="9" align="center" bgcolor="#FFFFFF">
+            </td>
+            <td width="977" height="66" align="center" class="endbg">
+                <a href="About.aspx">走进健康元</a> | <a href="news.aspx">集团资讯</a> | <a href="products.aspx">
+                    产品与服务</a> | <a href="culture.aspx">健康元文化</a> | <a href="jobs.aspx">人才招聘</a> |
+                <a href="inves.aspx">投资者关系</a> | <a href="services.aspx">客服中心</a><br>
+                Copyright © 2009健康元集团有限公司 All Rights Reserved. <a href="manage/adminlogin.aspx" target="_blank">■</a> 粤ICP05043304号 技术支持：<a href="http://www.35.com"
+                    target="_blank">35互联</a>
+					<!-- Start of LogMicroscope Code -->
+<script type="text/javascript" language="javascript">
+// Modification of this code is not allowed and will permanently disable your account!
+// SiteName:   www.35.com
+// Copyright (C) 2006 35.Com All Rights Reserved
+var lm_site=16130; 
+</script>
+<script type="text/javascript" language="javascript" src=" http://lm.35.com/counter/counter.js"></script>
+<!-- End of LogMicroscope Code --></td>
+            <td width="17" align="center" bgcolor="#FFFFFF">
+                <script id="ebsgovicon" src="http://szcert.ebs.org.cn/govicon.js?id=ff67f455-3f76-421e-b824-c716ae5dbf42&width=128&height=52&type=2" type="text/javascript" charset="utf-8"></script>
+</td>
+        </tr>
+    </table>
+    <div style="background-color: #FFFFFF; width: 1003px; height: 8px; margin: 0 auto;">
+    </div>
+    <map name="Map" id="Map">
+        <area shape="rect" coords="690,15,736,34" href="about.aspx" />
+    </map>
+    <map name="Map2" id="Map2">
+        <area shape="rect" coords="301,12,350,32" href="About.aspx?CateID=222" />
+    </map>
+    <map name="Map3" id="Map3">
+        <area shape="rect" coords="301,12,351,34" href="news.aspx" />
+    </map>
+    <map name="Map4" id="Map4">
+        <area shape="rect" coords="296,7,343,28" href="News.aspx?CateID=573" />
+    </map>
+    <map name="Map5" id="Map5">
+        <area shape="rect" coords="692,9,748,38" href="About.aspx?CateID=219" />
+    </map>
+    </form>
+    <center>
+    <!--可信网站图片LOGO安装开始-->
+<script src="https://ss.cnnic.cn/seallogo.dll?sn=2010101500100002645&ct=df"> </script> 
+<!--可信网站图片LOGO安装结束-->
+    </center>
+</body>
+</html>

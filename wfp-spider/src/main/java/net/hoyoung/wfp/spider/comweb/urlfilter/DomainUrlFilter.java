@@ -21,7 +21,7 @@ public class DomainUrlFilter {
 	private Map<String, String> accessRegexMap = new HashMap<>();
 	private Pattern domainPattern = Pattern.compile("^\\[([0-9a-zA-Z_\\-\\.]+)\\]$");
 
-	private static String EN_REGEX = "bbs|esitecn|eng|en|EN|e|En|ru|fr|ar|sp|jp|py|Es|vn|eng|tw|TW|english|ENGLISH|japanese|newenglish|erp|BYDEnglish|English|\\w+_english";
+	private static String EN_REGEX = "bbs|esitecn|eng|en|EN|En|ru|fr|ar|sp|jp|py|Es|vn|eng|tw|TW|english|ENGLISH|japanese|newenglish|erp|BYDEnglish|English|\\w+_english";
 
 	public DomainUrlFilter() {
 		InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(configFile);
@@ -69,6 +69,14 @@ public class DomainUrlFilter {
 		}
 	}
 
+	public boolean isRejectFileUrl(String url) {
+		if (Pattern.matches(".+(\\.|/)(" + EXCEPT_SUFFIX + ")\\?.*", url) // 排除非html文件
+				|| Pattern.matches(".+\\.(" + EXCEPT_SUFFIX + ")$", url)) { // 排除非html文件后缀
+			return true;
+		}
+		return false;
+	}
+
 	/**
 	 * 返回true给通过，否则丢弃该url
 	 * 
@@ -90,10 +98,8 @@ public class DomainUrlFilter {
 		 * .css?v=1 .css,.jpg 站内 包含#，锚记 "mailto"开头 英文页，繁体
 		 */
 		if (!url.startsWith("http") // 不是http协议
-				|| Pattern.matches(".+(\\.|/)(" + EXCEPT_SUFFIX + ")\\?.*", url) // 排除非html文件
-				|| Pattern.matches(".+\\.(" + EXCEPT_SUFFIX + ")$", url) // 排除非html文件后缀
 				|| isRootDomainSame(domainThis, domain) == false // 顶级域名不一样
-				|| isInBlackList(domain, url) // 在黑名单中
+				|| isRejectFileUrl(url) || isInBlackList(domain, url) // 在黑名单中
 				|| isbbs(domainThis, domain) // 排除bbs
 				|| Pattern.matches("http(s?)://" + domainThis + "/(html/)?(" + EN_REGEX + ")(/.*)?", url) // 排除非中文
 				|| Pattern.matches(".+(&|\\?)id=\\-\\d+.*", url)) {
@@ -132,8 +138,10 @@ public class DomainUrlFilter {
 		if (i == 0)
 			return false;
 		String prefix = domainThis.substring(0, i - 1);
-		if (prefix.startsWith("bbs") || prefix.endsWith("bbs") || Pattern.matches(
-				"(bbs|kr|es|sp|mail|video|zhaopin|oa|newoa|hospital|english|esp|en|email|de|jp|erp|ru|sp|english)", prefix))
+		if (prefix.startsWith("bbs") || prefix.endsWith("bbs")
+				|| Pattern.matches(
+						"(bbs|kr|es|sp|mail|video|zhaopin|oa|newoa|hospital|english|esp|en|email|de|jp|erp|ru|sp|english)",
+						prefix))
 			return true;
 		return false;
 	}

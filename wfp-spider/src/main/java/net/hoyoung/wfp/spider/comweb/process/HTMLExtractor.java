@@ -8,6 +8,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,13 +34,11 @@ public class HTMLExtractor {
 
 	public static String getContentAll(String html) {
 		org.jsoup.nodes.Document doc = Jsoup.parse(html);
-		doc.getElementsByTag("a").remove();
-		doc.getElementsByTag("button").remove();
-		doc.getElementsByTag("input").remove();
-		doc.getElementsByTag("header").remove();
-		doc.getElementsByTag("textarea").remove();
-		doc.getElementsByTag("script").remove();
-		doc.getElementsByTag("form").remove();
+
+		String[] excludeTags = { "a", "button", "input", "header", "textarea", "script"};
+		for (String tag : excludeTags) {
+			doc.getElementsByTag(tag).remove();
+		}
 		return doc.getElementsByTag("body").text();
 	}
 
@@ -48,11 +47,11 @@ public class HTMLExtractor {
 			return null;
 		}
 		String content = null;
-		try {
-			content = ContentExtractor.getContentByHtml(html);
-		} catch (Exception e) {
-			content = getContentAll(html);
-		}
+		// try {
+		// content = ContentExtractor.getContentByHtml(html);
+		// } catch (Exception e) {
+		content = getContentAll(html);
+		// }
 		return content;
 	}
 

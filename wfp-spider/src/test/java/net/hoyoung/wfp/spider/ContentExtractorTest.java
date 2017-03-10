@@ -8,7 +8,6 @@ import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 import net.hoyoung.wfp.spider.comweb.process.HTMLExtractor;
-import net.hoyoung.wfp.spider.comweb.urlfilter.DomainUrlFilter;
 import us.codecraft.webmagic.utils.UrlUtils;
 
 public class ContentExtractorTest {
@@ -28,5 +27,14 @@ public class ContentExtractorTest {
 	public void test2(){
 		String domain = UrlUtils.getDomain("http://61.178.129.231/report/userLogin.jsp");
 		System.out.println(Pattern.matches("((\\d+\\.){3}\\d+.*|localhost.*)", domain));
+	}
+	@Test
+	public void test3(){
+		try {
+			String s = HTMLExtractor.getContent(FileUtils.readFileToString(new File("a.html")));
+			System.out.println(s);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

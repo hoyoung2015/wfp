@@ -44,7 +44,17 @@ public class ComWebProcessor implements PageProcessor {
 		if (!(page0 instanceof ComWebPage)) {
 			return;
 		}
+		
+		// 重定向出现的不合法的url
+		if(urlFilter.isRejectFileUrl(page0.getRequest().getUrl())){
+			return;
+		}
+		
+		
 		ComWebPage page = (ComWebPage) page0;
+		
+		
+		
 
 		Document document = new Document(ComPage.STOCK_CODE, page.getRequest().getExtra(ComPage.STOCK_CODE))
 				.append(ComPage.CONTENT_LENGTH, page.getContentLength())
@@ -144,7 +154,7 @@ public class ComWebProcessor implements PageProcessor {
 
 	private Site site = Site.me().setSleepTime(WFPContext.getProperty("compage.spider.commonSleepTime", Integer.class))
 			.setRetryTimes(3).setTimeOut(50000).setCycleRetryTimes(2)
-			.addHeader("User-Agent", "Baiduspider+(+http://www.baidu.com/search/spider.htm)")
+			.addHeader("User-Agent", "Sogou web spider/3.0(+http://www.sogou.com/docs/help/webmasters.htm#07)")
 			.addHeader("Accept-Language", "zh-CN,zh;q=0.8");
 
 	@Override

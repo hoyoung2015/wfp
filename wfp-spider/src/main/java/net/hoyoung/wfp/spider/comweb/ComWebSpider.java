@@ -14,6 +14,7 @@ import java.util.concurrent.Executors;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
 import org.bson.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +37,7 @@ import net.hoyoung.wfp.spider.util.URLNormalizer;
 import redis.clients.jedis.Jedis;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.proxy.ComWebProxyPool;
 import us.codecraft.webmagic.scheduler.MyRedisScheduler;
 import us.codecraft.webmagic.utils.UrlUtils;
 
@@ -56,7 +58,7 @@ public class ComWebSpider {
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(siteFile)));
 			String line = null;
 			while ((line = br.readLine()) != null) {
-				if (line.startsWith("#")) {
+				if (StringUtils.isEmpty(line) || line.startsWith("#")) {
 					continue;
 				}
 				String[] split = line.split("\t");
@@ -159,9 +161,8 @@ public class ComWebSpider {
 			}
 			// 设置代理
 			if (WFPContext.getProperty("compage.spider.useProxy", Boolean.class)) {
-				processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
+				processor.getSite().setHttpProxyPool(new ComWebProxyPool(ProxyReader.read(), false));
 			}
-
 			MyRedisScheduler redisScheduler = new MyRedisScheduler("127.0.0.1");
 			Spider spider = Spider.create(processor).setScheduler(redisScheduler)
 					.thread(WFPContext.getProperty("compage.spider.thread", Integer.class));
