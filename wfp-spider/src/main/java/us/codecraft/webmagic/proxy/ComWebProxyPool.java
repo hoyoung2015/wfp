@@ -36,7 +36,7 @@ public class ComWebProxyPool implements ProxyPool{
     private Map<String, Proxy> allProxy = new ConcurrentHashMap<String, Proxy>();
 
     private int reuseInterval = 1500;// ms
-    private int reviveTime = 2 * 60 * 60 * 1000;// ms
+    private int reviveTime = 60 * 1000;// ms
     private int saveProxyInterval = 10 * 60 * 1000;// ms
 
     private boolean isEnable = false;
