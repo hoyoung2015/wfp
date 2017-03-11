@@ -47,9 +47,15 @@ public class TestComWebSpider {
 //		Request request = new Request("http://www.jonjee.com/admin/webfiles/magazine/151_2.pdf");
 //		Request request = new Request("http://www.chinadmegc.com/ebook_download.php?46");
 //		Request request = new Request("http://www.chinadmegc.com/ebook_download.php?48");//big
-		Request request = new Request("http://www.joincare.com/");
+//		Request request = new Request("http://www.nhwa-group.com/sitefiles/services/cms/utils.aspx?type=Download&publishmentSystemID=4&channelID=72&contentID=461");
+//		Request request = new Request("http://www.kingyork.biz/pages/{$MODULE[guestbook][url]}post.php'");
+//		Request request = new Request("http://www.600795.com.cn/publish/main/25/27/20150116104829606723809/kzzzp_xxpl_05");//download
+//		Request request = new Request("http://www.loncinindustries.com/Group/NewsDetails.aspx?catid=7|68|80&id=2146794229");//url包含竖线
+//		Request request = new Request("http://www.jmc.com.cn/jmc/home/file/download/id/39.html");//download fuck
+		Request request = new Request("http://www.nhwa-group.com/sitefiles/services/cms/utils.aspx?type=Download&publishmentSystemID=4&channelID=72&contentID=457");//download
+		
 		request.putExtra(ComPage.STOCK_CODE, "111111");
-		request.putExtra("domain", "joincare.com");
+		request.putExtra("domain", "nhwa-group.com");
 		ComWebProcessor processor = new ComWebProcessor();
 		processor.getSite().setHttpProxyPool(new ComWebProxyPool(ProxyReader.read(), false));
 //		 processor.getSite().addHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1");

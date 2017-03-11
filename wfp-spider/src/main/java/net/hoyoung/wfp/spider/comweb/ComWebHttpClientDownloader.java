@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.cxf.transport.http.Headers;
 import org.apache.http.Header;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
@@ -156,7 +157,36 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 				page.setStatusCode(statusCode);
 
 				Header contentType = httpResponse.getEntity().getContentType();
+
+				// httpResponse.getAllHeaders()
+
+				Header[] dispoHeader = httpResponse.getHeaders("Content-Disposition");
+
 				String contentTypeValue = getContentTypeValue(contentType);
+				if (contentType == null && dispoHeader != null && dispoHeader.length > 0) {
+					// http://www.nhwa-group.com/sitefiles/services/cms/utils.aspx?type=Download&publishmentSystemID=4&channelID=72&contentID=461
+					String dispoValue = dispoHeader[0].getValue();
+					// 下载文件
+					Matcher matcher = Pattern.compile("filename=(.+\\.(" + ComWebConstant.DOC_REGEX + "))")
+							.matcher(new String(dispoValue.getBytes("ISO-8859-1"), "utf8"));
+					if (matcher.find()) {
+						// TODO
+						String filename = matcher.group(1);
+						String ext = matcher.group(2);
+						if ("pdf".equals(ext.toLowerCase())) {
+							page.setContentType("pdf");
+						} else {
+							page.setContentType("msword");
+						}
+						page.setFilename(filename);
+						return page;
+					} else {
+						// 其他类型的下载文件skip
+						page.setSkip(true);
+						return page;
+					}
+				}
+
 				if (contentTypeValue != null && !Pattern.matches("(msword|pdf|html|octet-stream)", contentTypeValue)) {
 					page.setSkip(true);
 					return page;
@@ -245,6 +275,10 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 
 	protected HttpUriRequest getHttpUriRequest(Request request, Site site, Map<String, String> headers,
 			HttpHost proxy) {
+		if (proxy != null) {
+			// 这里将其提到前面，因为如果url验证不合法会抛出异常，异常处理会返还proxy，必须先设置
+			request.putExtra(Request.PROXY, proxy);
+		}
 		RequestBuilder requestBuilder = selectRequestMethod(request);
 		if (requestBuilder.getUri() == null) {
 			requestBuilder.setUri(request.getUrl());
@@ -259,7 +293,6 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 				.setConnectTimeout(site.getTimeOut()).setCookieSpec(CookieSpecs.DEFAULT);
 		if (proxy != null) {
 			requestConfigBuilder.setProxy(proxy);
-			request.putExtra(Request.PROXY, proxy);
 		}
 		requestBuilder.setConfig(requestConfigBuilder.build());
 		return requestBuilder.build();
@@ -275,6 +308,10 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 				return RequestBuilder.get(uri);
 			} catch (IllegalArgumentException e) {
 				url = url.replace("^", "%5e");
+				if (url.contains("|")) {
+					url = url.replace("|", "");
+					logger.warn("{} contails shuxian", url);
+				}
 			}
 			return RequestBuilder.get(URI.create(url));
 		} else if (method.equalsIgnoreCase(HttpConstant.Method.POST)) {

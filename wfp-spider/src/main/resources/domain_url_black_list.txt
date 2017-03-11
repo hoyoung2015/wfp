@@ -7,6 +7,9 @@ http://www\.xingfagroup\.com/index\.php\?m=content&c=index&a=lists&catid=\d+&pag
 [ieslab.com.cn]
 http://www\.ieslab\.com\.cn/sitefiles/services/cms/utils\.aspx\?type=Download&.*
 
+[jac.com.cn]
+http://jac(en|fr|sp|ar|pro|vie).jac.com.cn/.*
+
 [conch.cn]
 http(s?)://ygcg.conch.cn/.*
 
