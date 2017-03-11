@@ -2,9 +2,21 @@ package net.hoyoung.wfp.spider;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.Charset;
+import java.util.List;
+import java.util.regex.Pattern;
 
 import org.apache.commons.codec.digest.Sha2Crypt;
+import org.apache.commons.httpclient.URIException;
 import org.apache.commons.io.FileUtils;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.junit.Test;
 
 import net.hoyoung.wfp.core.utils.RedisUtil;
@@ -20,6 +32,7 @@ import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.scheduler.MyRedisScheduler;
 import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.Selectable;
+import us.codecraft.webmagic.utils.UrlUtils;
 
 public class RedisTest {
 
@@ -79,11 +92,37 @@ public class RedisTest {
 		String ext = url.substring(i);
 		System.out.println(String.format("%s \t %s", filename, ext));
 	}
+
 	@Test
 	public void testSha2() {
 		File file = new File("/Users/baidu/tmp/downloader/000060");
-		for(String string : file.list()){
+		for (String string : file.list()) {
 			System.out.println(string);
 		}
+	}
+
+	@Test
+	public void testSha3() throws URIException, NullPointerException {
+		String url = "http://www.salubris.cn/ch/news_detail.asp?typeid=2&typename=&id=286&name=信立泰携手中国心血管健康联盟共同打造ACS诊疗、预防、随访为一体的全程关爱项目";
+
+		if (Pattern.matches("http(s?)://.*[\\u4e00-\\u9fa5]+.*", url)) {
+			
+		    String encodedUrl = new org.apache.commons.httpclient.URI(url,false,"utf-8").toString();
+		    System.out.println(encodedUrl);
+//			URL u = new URL(url);
+//			String query = u.getQuery();
+//			int port = u.getPort();
+//			url = u.getProtocol()+"://" + u.getHost();
+//			if (port > -1) {
+//				url += ":" + port;
+//			}
+//			
+////			query.split("&")
+//			
+//			url += u.getPath() + "?" + URLEncoder.encode(query, "utf-8");
+//			System.out.println(url);
+
+		}
+
 	}
 }

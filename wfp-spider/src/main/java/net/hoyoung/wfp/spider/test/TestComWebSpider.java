@@ -52,7 +52,8 @@ public class TestComWebSpider {
 //		Request request = new Request("http://www.600795.com.cn/publish/main/25/27/20150116104829606723809/kzzzp_xxpl_05");//download
 //		Request request = new Request("http://www.loncinindustries.com/Group/NewsDetails.aspx?catid=7|68|80&id=2146794229");//url包含竖线
 //		Request request = new Request("http://www.jmc.com.cn/jmc/home/file/download/id/39.html");//download fuck
-		Request request = new Request("http://www.nhwa-group.com/sitefiles/services/cms/utils.aspx?type=Download&publishmentSystemID=4&channelID=72&contentID=457");//download
+//		Request request = new Request("http://www.nhwa-group.com/sitefiles/services/cms/utils.aspx?type=Download&publishmentSystemID=4&channelID=72&contentID=457");//download
+		Request request = new Request("http://www.salubris.cn/ch/news_detail.asp?typeid=2&typename=&id=286&name=信立泰携手中国心血管健康联盟共同打造ACS诊疗、预防、随访为一体的全程关爱项目");//urlencode
 		
 		request.putExtra(ComPage.STOCK_CODE, "111111");
 		request.putExtra("domain", "nhwa-group.com");

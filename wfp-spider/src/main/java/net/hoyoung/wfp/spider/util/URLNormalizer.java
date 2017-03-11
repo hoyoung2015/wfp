@@ -8,6 +8,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.regex.Pattern;
 
+import org.apache.commons.httpclient.URIException;
+
 public class URLNormalizer {
 
 	public static String normalize(String urlString) throws MalformedURLException {
@@ -71,6 +73,14 @@ public class URLNormalizer {
 
 		if (changed)
 			urlString = new URL(protocol, host, port, file).toString();
+		
+		try {
+			urlString = new org.apache.commons.httpclient.URI(urlString,false,"utf-8").toString();
+		} catch (URIException e) {
+			e.printStackTrace();
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
 
 		return urlString;
 	}

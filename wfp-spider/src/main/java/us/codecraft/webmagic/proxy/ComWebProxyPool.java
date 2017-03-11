@@ -230,8 +230,16 @@ public class ComWebProxyPool implements ProxyPool{
                 // p.fail(Proxy.ERROR_404);
                 // p.setReuseTimeInterval(reuseInterval * p.getFailedNum());
                 break;
+            case 500:
+                // p.fail(Proxy.ERROR_404);
+                // p.setReuseTimeInterval(reuseInterval * p.getFailedNum());
+                break;
+            case 503:
+                // p.fail(Proxy.ERROR_404);
+                // p.setReuseTimeInterval(reuseInterval * p.getFailedNum());
+                break;
             default:
-                p.fail(statusCode);
+//                p.fail(statusCode);
                 break;
         }
         if (p.getFailedNum() > 20) {
