@@ -3,6 +3,7 @@ package net.hoyoung.wfp.spider.comweb;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.apache.commons.httpclient.URI;
 import org.apache.commons.lang3.StringUtils;
@@ -111,9 +112,11 @@ public class ComWebHttpClientGenerator {
 				if (locationHeader != null && StringUtils.isNotEmpty(locationHeader.getValue())) {
 					String location = locationHeader.getValue();
 					location = new String(location.getBytes("ISO-8859-1"), "utf8");
-					URI uri = new URI(location, false, "utf-8");
+					if(Pattern.matches(".*[\u4e00-\u9fa5]+.*", location)){
+						location = new URI(location, false, "utf-8").toString();
+					}
 					response.removeHeader(locationHeader);
-					response.addHeader("location", uri.toString());
+					response.addHeader("location", location);
 				}
 
 				Header contentEncodingHeader = response.getFirstHeader(HTTP.CONTENT_ENCODING);

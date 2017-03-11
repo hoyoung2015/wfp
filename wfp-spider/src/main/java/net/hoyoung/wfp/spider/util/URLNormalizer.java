@@ -75,7 +75,10 @@ public class URLNormalizer {
 			urlString = new URL(protocol, host, port, file).toString();
 		
 		try {
-			urlString = new org.apache.commons.httpclient.URI(urlString,false,"utf-8").toString();
+			if(Pattern.matches("http(s?)://.*[\u4e00-\u9fa5]+.*", urlString)){
+				urlString = new org.apache.commons.httpclient.URI(urlString,false,"utf-8").toString();
+			}
+			
 		} catch (URIException e) {
 			e.printStackTrace();
 		} catch (NullPointerException e) {

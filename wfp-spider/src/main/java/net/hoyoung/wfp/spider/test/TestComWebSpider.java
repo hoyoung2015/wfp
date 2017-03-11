@@ -20,7 +20,6 @@ import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
 import us.codecraft.webmagic.proxy.ComWebProxyPool;
-import us.codecraft.webmagic.utils.UrlUtils;
 
 public class TestComWebSpider {
 
@@ -63,14 +62,15 @@ public class TestComWebSpider {
 		// fuck
 		// Request request = new
 		// Request("http://www.nhwa-group.com/sitefiles/services/cms/utils.aspx?type=Download&publishmentSystemID=4&channelID=72&contentID=457");//download
-		 Request request = new
-		 Request("http://www.salubris.cn/ch/news_detail.asp?typeid=2&typename=&id=286&name=信立泰携手中国心血管健康联盟共同打造ACS诊疗、预防、随访为一体的全程关爱项目");//urlencode
+//		 Request request = new
+//		 Request("http://www.salubris.cn/ch/news_detail.asp?typeid=2&typename=&id=286&name=信立泰携手中国心血管健康联盟共同打造ACS诊疗、预防、随访为一体的全程关爱项目");//urlencode
 //		Request request = new Request("http://www.sanju.cn/Home/Index/downFiles/newsid/395.html");// download 反射修改content-encoding
 //		Request request = new Request("http://www.sanju.cn/Home/Index/downFiles/newsid/395.html");// download 反射修改content-encoding
 //		Request request = new Request("http://www.hybio.com.cn/ajax/file/id/353.php");//
+		Request request = new Request("http://www.loncinindustries.com/motocycle/TopicActive.aspx?catid=9-706-463554675-1374275421");//
 
 		request.putExtra(ComPage.STOCK_CODE, "111111");
-		request.putExtra("domain", "nhwa-group.com");
+		request.putExtra("domain", "loncinindustries.com");
 		ComWebProcessor processor = new ComWebProcessor();
 		processor.getSite().setHttpProxyPool(new ComWebProxyPool(ProxyReader.read(), false));
 		// processor.getSite().addHeader("User-Agent", "Mozilla/5.0 (Windows NT

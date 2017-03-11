@@ -12,11 +12,13 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import org.apache.commons.codec.digest.Sha2Crypt;
+import org.apache.commons.httpclient.URI;
 import org.apache.commons.httpclient.URIException;
 import org.apache.commons.io.FileUtils;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.xmlbeans.impl.xb.xsdschema.impl.PublicImpl;
 import org.junit.Test;
 
 import net.hoyoung.wfp.core.utils.RedisUtil;
@@ -123,6 +125,19 @@ public class RedisTest {
 //			System.out.println(url);
 
 		}
+		
 
+	}
+	
+	@Test
+	public void test3() {
+		try {
+			URI uri = new URI("http://hr.grgbanking.com/social/job/getJobListByCompany?workPlace=%E5%B9%BF%E5%B7%9E", false, "utf-8");
+			System.out.println(uri.toString());
+		} catch (URIException e) {
+			e.printStackTrace();
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
 	}
 }

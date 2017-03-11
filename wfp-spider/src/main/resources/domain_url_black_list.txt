@@ -189,3 +189,9 @@ http://www.jonhon.cn/tools/download.ashx.*
 
 [angelyeast.com]
 http://biolab\.angelyeast\.com/.*
+
+[grgbanking.com]
+http://hr.grgbanking.com/.*
+
+[gclsi.com]
+http://tc.gclsi.com/.*

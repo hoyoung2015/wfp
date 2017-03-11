@@ -72,7 +72,6 @@
 000650	仁和药业	http://www.renheyaoye.com/	0
 600184	光电股份	http://www.sicong.com/	0
 600563	法拉电子	http://www.faratronic.com/	0
-000777	中核科技	http://www.chinasufa.com/	0
 601058	赛轮金宇	http://www.sailunjinyu.com/	0
 002011	盾安环境	http://www.dunan.net/	0
 600105	永鼎股份	http://www.yongding.com.cn/	0
