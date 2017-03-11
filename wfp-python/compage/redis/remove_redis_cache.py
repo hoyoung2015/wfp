@@ -8,7 +8,7 @@ from common import url_utils
 
 rds = Redis(host='10.170.4.57', port=6379, db=0, decode_responses=True)
 
-url = 'http://www.salubris.cn/ch/news.asp?page=2'
+url = 'http://www.sanju.cn'
 domain = url_utils.get_domain(url)
 # exit(-1)
 

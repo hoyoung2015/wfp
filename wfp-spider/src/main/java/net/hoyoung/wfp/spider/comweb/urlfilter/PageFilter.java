@@ -14,6 +14,11 @@ import us.codecraft.webmagic.selector.Selectable;
 public class PageFilter {
 
 	public boolean accept(Page page) {
+		
+		// 排除404
+		if("404 Not Found".equals(page.getHtml().$("title","text").get())){
+			return false;
+		}
 
 		// 排除discuz
 		String metaGenerator = page.getHtml().xpath("/html/head/meta[@name='generator']/@content").get();

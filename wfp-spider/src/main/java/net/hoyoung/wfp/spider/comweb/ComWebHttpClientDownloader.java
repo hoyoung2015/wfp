@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.io.IOUtils;
@@ -163,7 +164,8 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 				Header[] dispoHeader = httpResponse.getHeaders("Content-Disposition");
 
 				String contentTypeValue = getContentTypeValue(contentType);
-				if (contentType == null && dispoHeader != null && dispoHeader.length > 0) {
+				if ((dispoHeader != null && dispoHeader.length > 0)
+						&& (contentType == null || Pattern.matches("pdf|msword", contentTypeValue))) {
 					// http://www.nhwa-group.com/sitefiles/services/cms/utils.aspx?type=Download&publishmentSystemID=4&channelID=72&contentID=461
 					String dispoValue = dispoHeader[0].getValue();
 					// 下载文件
