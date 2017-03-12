@@ -148,8 +148,8 @@ public class DomainUrlFilter {
 
 	public static void main(String[] args) {
 		DomainUrlFilter urlFilter = new DomainUrlFilter();
-		System.out.println(urlFilter.accept("yuhong.com.cn",
-				"http://www.yuhong.com.cn/productshow/bid/2/sid/10/id/projectshow/bid/6/id/projectshow/bid/6/id/purchaselist/tp/purchaselist/tp/289/lm/4.html"));
+		System.out.println(urlFilter.accept("unilumin.cn",
+				"http://www.unilumin.cn/channel/High-end%20Solutions_545.html"));
 	}
 
 }

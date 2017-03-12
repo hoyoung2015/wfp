@@ -289,7 +289,6 @@
 300185	通裕重工	http://www.tongyuheavy.com/	0
 002266	浙富控股	http://www.zhefu.cn/	0
 002530	丰东股份	http://www.fengdong.com/	0
-000777	中核科技	http://www.chinasufa.com/	0
 300159	新研股份	http://www.xjjxy.com.cn/	0
 002011	盾安环境	http://www.dunan.net/	0
 002224	三力士	http://www.v-belt.com/	0
