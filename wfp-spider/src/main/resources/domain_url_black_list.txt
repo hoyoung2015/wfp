@@ -198,4 +198,5 @@ http://tc.gclsi.com/.*
 
 [unilumin.cn]
 http://(ja|eps).unilumin.com/.*
+http://www.unilumin.cn/sitefiles/services/cms/utils.aspx.*
 http://www.unilumin.cn/channel/(video|gaoqingdianshiqiang|HDTV|luoyan3D|huneigudinganzhuang|户内外租赁|changjing|ptsb|OutDoorLight|_55[678]).*
