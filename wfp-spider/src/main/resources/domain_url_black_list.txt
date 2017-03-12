@@ -198,5 +198,19 @@ http://tc.gclsi.com/.*
 
 [unilumin.cn]
 http://(ja|eps).unilumin.com/.*
-http://www.unilumin.cn/sitefiles/services/cms/utils.aspx.*
+http://www.unilumin.cn/sitefiles/services/cms/.*
 http://www.unilumin.cn/channel/(video|gaoqingdianshiqiang|HDTV|luoyan3D|huneigudinganzhuang|户内外租赁|changjing|ptsb|OutDoorLight|_55[678]).*
+
+[haitian-food.com]
+http://www.haitian-food.com/(join.html|joininfo).*
+http://www.haitian-food.com/productlist/.*
+http://www.haitian-food.com/taste(list|view)?/.*
+
+[fosunpharma.com]
+http://www.fosunpharma.com/job/social.*
+
+[vtron.com]
+http://www.vtron.com/product/.*
+
+[mesnac.com]
+http://www.mesnac.com/product.*

@@ -19,7 +19,7 @@ from common import url_utils
 rds = Redis(host='127.0.0.1', port=6379, db=0, decode_responses=True)
 
 url = 'http://www.unilumin.cn/'
-regex = 'http://(ja|eps).unilumin.com/.*|http://www.unilumin.cn/sitefiles/services/cms/utils.aspx.*|http://www.unilumin.cn/channel/(video|gaoqingdianshiqiang|HDTV|luoyan3D|huneigudinganzhuang|户内外租赁|changjing|ptsb|OutDoorLight|_55[678]).*'
+regex = 'http://(ja|eps).unilumin.com/.*|http://www.unilumin.cn/sitefiles/services/cms/.*|http://www.unilumin.cn/channel/(video|gaoqingdianshiqiang|HDTV|luoyan3D|huneigudinganzhuang|户内外租赁|changjing|ptsb|OutDoorLight|_55[678]).*'
 domain = url_utils.get_domain(url)
 # exit(-1)
 

@@ -44,7 +44,8 @@ public class TestWindowHref {
 		private Site site = Site.me().setSleepTime(1000).setRetryTimes(3).setTimeOut(50000).setCycleRetryTimes(2)
 				.addHeader("User-Agent", UserAgentUtil.getRandomAgent())
 				.addHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
-				.addHeader("Accept-Language", "zh-CN,zh;q=0.8").addHeader("Accept-Encoding", "gzip, deflate, sdch, br")
+				.addHeader("Accept-Language", "zh-CN,zh;q=0.8")
+				.addHeader("Accept-Encoding", "gzip, deflate, sdch, br")
 				.addHeader("Cache-Control", "max-age=0").addHeader("Upgrade-Insecure-Requests", "1");
 
 		@Override
@@ -55,7 +56,7 @@ public class TestWindowHref {
 	}
 
 	public static void main(String[] args) {
-		Spider.create(new MyPageProcessor()).addUrl("http://www.anoky.com.cn/gsxw_list").thread(1).run();
+		Spider.create(new MyPageProcessor()).addUrl("http://www.vtron.com/").thread(1).run();
 	}
 
 }

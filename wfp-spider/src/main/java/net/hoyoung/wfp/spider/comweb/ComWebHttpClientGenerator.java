@@ -107,7 +107,7 @@ public class ComWebHttpClientGenerator {
 		httpClientBuilder.addInterceptorFirst(new HttpResponseInterceptor() {
 			@Override
 			public void process(HttpResponse response, HttpContext context) throws HttpException, IOException {
-
+				
 				final Header locationHeader = response.getFirstHeader("location");
 				if (locationHeader != null && StringUtils.isNotEmpty(locationHeader.getValue())) {
 					String location = locationHeader.getValue();
