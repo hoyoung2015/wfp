@@ -1,0 +1,19 @@
+<html>
+<title>谢谢了您</title>
+<head>
+
+</head>
+<body>
+<form name="check" action="/" method="post">
+    <fieldset>
+        <legend>查询是否抓取完</legend>
+        stockCode:<input type="text" name="stockCode" value="">
+        url:<input type="text" name="url" value="" size="100"><input type="submit" name="查询" value="查询">
+    </fieldset>
+</form>
+<hr>
+{% if name %}
+{{ name }}
+{% endif %}
+</body>
+</html>

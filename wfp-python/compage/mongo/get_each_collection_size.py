@@ -26,4 +26,7 @@ df = df.drop('sleepTime', 1)
 df['是否抓完'] = 0
 df.loc[df['pageCount'] >= 1000, '是否抓完'] = 1
 df['备注'] = ''
-df.to_excel('/Users/baidu/tmp/wfp_com_page.xlsx', index=False)
+
+with pd.ExcelWriter('/Users/baidu/tmp/wfp_com_page.xlsx') as writer:
+    df.to_excel(writer, index=False, sheet_name='Sheet1')
+    pd.DataFrame({'是否抓取取值': [0, 1]}).to_excel(writer, index=False, sheet_name='meta')
