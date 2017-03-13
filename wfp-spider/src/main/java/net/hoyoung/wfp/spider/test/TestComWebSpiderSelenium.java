@@ -18,10 +18,11 @@ import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.Task;
+import us.codecraft.webmagic.downloader.selenium.SeleniumDownloader;
 import us.codecraft.webmagic.pipeline.Pipeline;
 import us.codecraft.webmagic.proxy.ComWebProxyPool;
 
-public class TestComWebSpider {
+public class TestComWebSpiderSelenium {
 
 	static class MyPipeline implements Pipeline {
 		private AtomicInteger count = new AtomicInteger(0);
@@ -72,26 +73,13 @@ public class TestComWebSpider {
 		request.putExtra(ComPage.STOCK_CODE, "111111");
 		request.putExtra("domain", "loncinindustries.com");
 		ComWebProcessor processor = new ComWebProcessor();
-		processor.getSite().setSleepTime(2000);
-//		processor.getSite().setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36");
-		processor.getSite().addCookie("yunsuo_session_verify", "f1d6aa3baf181630711386c09f29ea04");
-		processor.getSite().addCookie("security_session_mid_verify", "4d121955de6f28a04579558da44f2e1a");
-		processor.getSite().addCookie("srcurl", "687474703a2f2f7777772e76616c696e2e636e2f436f6c756d6e2e617370783f436f6c49643d32");
-//		processor.getSite().addCookie("path", "/");
-//		processor.getSite().addHeader("Cookie", "yunsuo_session_verify=f1d6aa3baf181630711386c09f29ea04;srcurl=687474703a2f2f7777772e76616c696e2e636e2f;security_session_mid_verify=4d121955de6f28a04579558da44f2e1a");
-		processor.getSite().addHeader("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36");
-		processor.getSite().addHeader("Referer","http://www.valin.cn/Column.aspx?ColId=2&security_verify_data=313238302c383030");
-		
 //		processor.getSite().setHttpProxyPool(new ComWebProxyPool(ProxyReader.read(), false));
 		// processor.getSite().addHeader("User-Agent", "Mozilla/5.0 (Windows NT
 		// 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1");
 		Spider spider = Spider.create(processor)
-				.setDownloader(new ComWebHttpClientDownloader())
+				.setDownloader(new SeleniumDownloader("/Users/baidu/local/bin/chromedriver"))
 				.addRequest(request)
 				.addPipeline(new MyPipeline()).thread(1);
-		
-//		spider.addUrl("http://www.valin.cn/");
-		
 		ComWebSpiderListener spiderListener = new ComWebSpiderListener(spider);
 		spider.setSpiderListeners(Lists.newArrayList(spiderListener)).run();
 	}

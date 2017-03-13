@@ -34,7 +34,7 @@ import us.codecraft.webmagic.utils.WMCollections;
  * @version 0.5.3
  */
 @ThreadSafe
-public class PhantomJSDownloader extends AbstractDownloader {
+public class HoyPhantomJSDownloader extends AbstractDownloader {
 
 	private static Logger logger = LoggerFactory.getLogger(PhantomJSDownloader.class);
 	private static String crawlJsPath;
@@ -45,7 +45,7 @@ public class PhantomJSDownloader extends AbstractDownloader {
 	private int retryNum;
 	private int threadNum;
 
-	public PhantomJSDownloader() {
+	public HoyPhantomJSDownloader() {
 		this.initPhantomjsCrawlPath();
 	}
 
@@ -59,14 +59,17 @@ public class PhantomJSDownloader extends AbstractDownloader {
 	 * @param phantomJsCommand
 	 *            phantomJsCommand
 	 */
-	public PhantomJSDownloader(String phantomJsCommand) {
+	public HoyPhantomJSDownloader(String phantomJsCommand) {
 		this.initPhantomjsCrawlPath();
-		PhantomJSDownloader.phantomJsCommand = phantomJsCommand;
+		HoyPhantomJSDownloader.phantomJsCommand = phantomJsCommand;
+		System.out.println(threadNum);
 	}
 
 	private void initPhantomjsCrawlPath() {
-		PhantomJSDownloader.crawlJsPath = new File(this.getClass().getResource("/").getPath()).getPath()
-				+ System.getProperty("file.separator") + "crawl.js ";
+		// HoyPhantomJSDownloader.crawlJsPath = new
+		// File(this.getClass().getResource("/").getPath()).getPath()
+		// + System.getProperty("file.separator") + "crawl.js ";
+		HoyPhantomJSDownloader.crawlJsPath = "/Users/baidu/workspace/wfp/wfp-spider/src/main/resources/crawl.js";
 	}
 
 	@Override
@@ -77,12 +80,12 @@ public class PhantomJSDownloader extends AbstractDownloader {
 		PhantomJsResponse response = getPage(request, task.getSite());
 		Set<Integer> acceptStatCode;
 		Site site = task.getSite();
-		if(site!=null){
+		if (site != null) {
 			acceptStatCode = site.getAcceptStatCode();
-		}else{
+		} else {
 			acceptStatCode = WMCollections.newHashSet(200);
 		}
-		if(acceptStatCode.contains(response.getStatusCode())){
+		if (acceptStatCode.contains(response.getStatusCode())) {
 			onSuccess(request);
 			String content = response.getContent();
 			Page page = new Page();
@@ -91,7 +94,7 @@ public class PhantomJSDownloader extends AbstractDownloader {
 			page.setRequest(request);
 			page.setStatusCode(response.getStatusCode());
 			return page;
-		}else {
+		} else {
 			logger.warn("get page {} error, status code {} ", request.getUrl(), response.getStatusCode());
 			return null;
 		}
@@ -130,7 +133,7 @@ public class PhantomJSDownloader extends AbstractDownloader {
 		}
 		try {
 			Runtime runtime = Runtime.getRuntime();
-			String commond = phantomJsCommand + proxyConfig + " " + crawlJsPath + jsonFileName;
+			String commond = phantomJsCommand + proxyConfig + " " + crawlJsPath + " " + jsonFileName;
 			logger.debug("command:{}", commond);
 			Process process = runtime.exec(commond);
 			InputStream is = process.getInputStream();
@@ -146,11 +149,11 @@ public class PhantomJSDownloader extends AbstractDownloader {
 				}
 				if (line.startsWith("statusCode:")) {
 					int i = line.indexOf(":");
-					response.setStatusCode(Integer.valueOf(line.substring(i+1)));
+					response.setStatusCode(Integer.valueOf(line.substring(i + 1)));
 				} else if (line.startsWith("redirectURL:")) {
 					int i = line.indexOf(":");
-					String redirectUrl = line.substring(i+1);
-					if(StringUtils.isNotEmpty(redirectUrl) && !"null".equals(redirectUrl)){
+					String redirectUrl = line.substring(i + 1);
+					if (StringUtils.isNotEmpty(redirectUrl) && !"null".equals(redirectUrl)) {
 						response.setRedirectUrl(redirectUrl);
 					}
 				} else if (">----------------------<".equals(line)) {
@@ -175,7 +178,7 @@ public class PhantomJSDownloader extends AbstractDownloader {
 		return retryNum;
 	}
 
-	public PhantomJSDownloader setRetryNum(int retryNum) {
+	public HoyPhantomJSDownloader setRetryNum(int retryNum) {
 		this.retryNum = retryNum;
 		return this;
 	}

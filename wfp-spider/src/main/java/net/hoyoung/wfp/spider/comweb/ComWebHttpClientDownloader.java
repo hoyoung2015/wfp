@@ -3,17 +3,16 @@ package net.hoyoung.wfp.spider.comweb;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.charset.Charset;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.cxf.transport.http.Headers;
 import org.apache.http.Header;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
@@ -58,8 +57,8 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
-	// private final Map<String, CloseableHttpClient> httpClients = new
-	// HashMap<String, CloseableHttpClient>();
+	 private final Map<String, CloseableHttpClient> httpClients = new
+	 HashMap<String, CloseableHttpClient>();
 
 	private ComWebHttpClientGenerator httpClientGenerator = new ComWebHttpClientGenerator();
 
@@ -67,17 +66,17 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 		if (site == null) {
 			return httpClientGenerator.getClient(null, proxy);
 		}
-		// String domain = site.getDomain();
-		// CloseableHttpClient httpClient = httpClients.get(domain);
-		// if (httpClient == null) {
-		// synchronized (this) {
-		// httpClient = httpClients.get(domain);
-		// if (httpClient == null) {
-		// httpClient = httpClientGenerator.getClient(site, proxy);
-		// httpClients.put(domain, httpClient);
-		// }
-		// }
-		// }
+		 String domain = site.getDomain();
+		 CloseableHttpClient httpClient = httpClients.get(domain);
+		 if (httpClient == null) {
+		 synchronized (this) {
+		 httpClient = httpClients.get(domain);
+		 if (httpClient == null) {
+		 httpClient = httpClientGenerator.getClient(site, proxy);
+		 httpClients.put(domain, httpClient);
+		 }
+		 }
+		 }
 		return httpClientGenerator.getClient(site, proxy);
 	}
 

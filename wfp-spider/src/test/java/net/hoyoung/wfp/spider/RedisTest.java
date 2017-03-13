@@ -131,13 +131,6 @@ public class RedisTest {
 	
 	@Test
 	public void test3() {
-		try {
-			URI uri = new URI("http://hr.grgbanking.com/social/job/getJobListByCompany?workPlace=%E5%B9%BF%E5%B7%9E", false, "utf-8");
-			System.out.println(uri.toString());
-		} catch (URIException e) {
-			e.printStackTrace();
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		}
+		
 	}
 }

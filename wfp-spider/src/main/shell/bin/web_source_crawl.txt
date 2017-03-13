@@ -154,7 +154,6 @@
 600808	马钢股份	http://www.magang.com.cn/index.xhtml	0
 000800	一汽轿车	http://www.fawcar.com.cn/	0
 603766	隆鑫通用	http://www.loncinindustries.com/	0
-000932	华菱钢铁	http://www.valin.cn/	0
 000550	江铃汽车	http://www.jmc.com.cn/jmc/	0
 600418	江淮汽车	http://www.jac.com.cn/	0
 000807	云铝股份	http://www.ylgf.com/	0
@@ -176,7 +175,6 @@
 002450	康得新	http://www.kangdexin.com/	0
 600309	万华化学	http://www.whchem.com/	0
 600688	上海石化	http://spc.sinopec.com/spc/	0
-600196	复星医药	http://www.fosunpharma.com/	0	Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.27 (KHTML, like Gecko) Chrome/12.0.712.0 Safari/534.27
 600085	同仁堂	http://www.tongrentang.com/	0
 600535	天士力	http://www.tasly.com/	0
 300072	三聚环保	http://www.sanju.cn/	0

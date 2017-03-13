@@ -24,6 +24,9 @@ page.open(url, function (status) {
 page.onResourceReceived = function(response) {
     // check if the resource is done downloading 
     if (response.stage !== "end") return;
+    
+    conole.log(response.headers);
+    
     // apply resource filter if needed:
     if (response.headers.filter(function(header) {
     	// header.value
