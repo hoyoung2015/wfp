@@ -25,6 +25,9 @@ public class URLNormalizer {
 		if (urlString.endsWith("\\") && urlString.length() > 2) {
 			urlString = urlString.substring(0, urlString.length() - 1);
 		}
+		if(urlString.endsWith("http:/")){
+			urlString = urlString.substring(0, urlString.lastIndexOf("http:/"));
+		}
 
 		URL url = new URL(urlString);
 
