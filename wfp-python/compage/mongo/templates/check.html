@@ -4,6 +4,7 @@
 
 </head>
 <body>
+<p>说明：打开上市公司的网站，找到新闻资讯类含有分页列表的页面，检查最后一页中的某条资讯的url是否存在</p>
 <form name="check" action="/" method="post">
     <fieldset>
         <legend>查询是否抓取完</legend>
@@ -11,8 +12,8 @@
         url:<input type="text" name="url" value="" size="100"><input type="submit" name="查询" value="查询">
     </fieldset>
 </form>
-<hr>
 {% if name %}
+<hr>
 {{ name }}
 {% endif %}
 </body>
