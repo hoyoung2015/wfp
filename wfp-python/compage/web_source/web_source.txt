@@ -313,7 +313,6 @@
 002287	奇正藏药	http://www.cheezheng.com.cn/	0
 002603	以岭药业	http://www.yiling.cn/	0
 002273	水晶光电	http://www.crystal-optech.com/	0
-000690	宝新能源	http://www.baolihua.com.cn/	0
 000566	海南海药	http://www.haiyao.com.cn/	0
 002002	鸿达兴业	http://www.002002.cn/index.jhtml	0
 002498	汉缆股份	http://www.hanhe-cable.com/	0
