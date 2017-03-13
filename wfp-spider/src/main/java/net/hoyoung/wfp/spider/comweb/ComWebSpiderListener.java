@@ -43,6 +43,9 @@ public class ComWebSpiderListener implements SpiderListener {
 		if (500 == statusCode) {
 			return;
 		}
+		if (403 == statusCode) {
+			return;
+		}
 
 		int errorNow = error.incrementAndGet();
 		logger.warn("{} failed {} time", request.getUrl(), errorNow);
