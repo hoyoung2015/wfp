@@ -214,3 +214,6 @@ http://www.vtron.com/product/.*
 
 [mesnac.com]
 http://www.mesnac.com/product.*
+
+[sinocera.cn]
+http://www.sinocera.cn/manager/.*

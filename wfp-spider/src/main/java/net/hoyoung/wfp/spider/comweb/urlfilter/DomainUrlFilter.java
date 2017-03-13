@@ -150,7 +150,7 @@ public class DomainUrlFilter {
 		String prefix = domainThis.substring(0, i - 1);
 		if (prefix.startsWith("bbs") || prefix.endsWith("bbs")
 				|| Pattern.matches(
-						"(bbs|kr|es|sp|mail|video|zhaopin|oa|newoa|hospital|english|esp|en|email|de|jp|erp|ru|sp|english)",
+						"(bbs|kr|es|sp|mail|video|zhaopin|oa|newoa|hospital|english|esp|en|email|de|jp|erp|ru|sp|english|ko|ja)",
 						prefix))
 			return true;
 		return false;

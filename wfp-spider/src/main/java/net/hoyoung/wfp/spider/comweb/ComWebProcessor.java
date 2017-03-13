@@ -20,6 +20,7 @@ import net.hoyoung.wfp.spider.comweb.bo.ComPage;
 import net.hoyoung.wfp.spider.comweb.urlfilter.DomainUrlFilter;
 import net.hoyoung.wfp.spider.comweb.urlfilter.PageFilter;
 import net.hoyoung.wfp.spider.util.URLNormalizer;
+import net.hoyoung.wfp.spider.util.UserAgentUtil;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
@@ -152,7 +153,8 @@ public class ComWebProcessor implements PageProcessor {
 	private Site site = Site.me().setSleepTime(WFPContext.getProperty("compage.spider.commonSleepTime", Integer.class))
 			.setRetryTimes(3).setTimeOut(WFPContext.getProperty("compage.spider.sleepTime", Integer.class)).setCycleRetryTimes(WFPContext.getProperty("compage.spider.retryTime", Integer.class))
 			.addHeader("Accept-Language", "zh-CN,zh;q=0.8")//有的server需要这个
-			.addHeader("User-Agent", "Sogou web spider/3.0(+http://www.sogou.com/docs/help/webmasters.htm#07)");
+			.addHeader("User-Agent", UserAgentUtil.getRandomAgent());
+//	.addHeader("User-Agent", "Sogou web spider/3.0(+http://www.sogou.com/docs/help/webmasters.htm#07)");
 	@Override
 	public Site getSite() {
 		return site;
