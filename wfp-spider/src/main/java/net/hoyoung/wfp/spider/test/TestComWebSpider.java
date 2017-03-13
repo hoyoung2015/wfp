@@ -70,7 +70,7 @@ public class TestComWebSpider {
 		Request request = new Request("http://www.hgtech.com.cn/gsxw/index.jhtml");//
 
 		request.putExtra(ComPage.STOCK_CODE, "111111");
-		request.putExtra("domain", "loncinindustries.com");
+		request.putExtra("domain", "hgtech.com.cn");
 		ComWebProcessor processor = new ComWebProcessor();
 		
 //		processor.getSite().setHttpProxyPool(new ComWebProxyPool(ProxyReader.read(), false));

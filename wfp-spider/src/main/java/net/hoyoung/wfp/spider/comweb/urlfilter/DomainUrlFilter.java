@@ -116,8 +116,18 @@ public class DomainUrlFilter {
 	 * @return
 	 */
 	private boolean isRootDomainSame(String domainThis, String domain) {
+
+		// 去掉端口
+		if (domainThis.indexOf(":") > -1) {
+			domainThis = domainThis.replaceAll(":\\d+$", "");
+		}
+		if (domain.indexOf(":") > -1) {
+			domain = domain.replaceAll(":\\d+$", "");
+		}
+
 		if (domainThis.equals(domain))
 			return true;
+
 		if (domainThis.length() > domain.length() && domainThis.replace(domain, "").endsWith("."))
 			return true;
 		return false;
@@ -148,8 +158,8 @@ public class DomainUrlFilter {
 
 	public static void main(String[] args) {
 		DomainUrlFilter urlFilter = new DomainUrlFilter();
-		System.out.println(urlFilter.accept("unilumin.cn",
-				"http://www.unilumin.cn/channel/High-end%20Solutions_545.html"));
+		System.out.println(
+				urlFilter.accept("unilumin.cn", "http://www.unilumin.cn/channel/High-end%20Solutions_545.html"));
 	}
 
 }
