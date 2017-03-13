@@ -26,6 +26,7 @@ import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
+import us.codecraft.webmagic.selector.Selectable;
 
 public class ComWebProcessor implements PageProcessor {
 	private Logger logger = LoggerFactory.getLogger(getClass());
@@ -33,7 +34,62 @@ public class ComWebProcessor implements PageProcessor {
 	private DomainUrlFilter urlFilter = new DomainUrlFilter();
 
 	private PageFilter pageFilter = new PageFilter();
+	
+	private Pattern beachPattern = Pattern.compile("return jump_([a-zA-Z0-9]+)\\((\\d+),(\\d+)\\);");
+	private Pattern currentNoPattern = Pattern.compile("var current_no=\"(.*?)\"");
+	private String currentSize = null;
+	private List<String> beachUrlProcess(Page page) {
+		if (currentSize == null) {
+			synchronized (this) {
+				if (currentSize == null) {
+					Pattern pattern = Pattern.compile("var current_size=\"(.*?)\"");
+					Matcher matcher = pattern.matcher(page.getRawText());
+					if (matcher.find()) {
+						this.currentSize = matcher.group(1);
+					}
+				}
+			}
+		}
+		Matcher matcher = currentNoPattern.matcher(page.getRawText());
+		String currentNo = null;
+		if(matcher.find()){
+			currentNo = matcher.group(1);
+		}
+		
+		
+		List<String> list = Lists.newArrayList();
+		for (Selectable e : page.getHtml().$("a", "onclick").nodes()) {
+			if (StringUtils.isEmpty(e.get())) {
+				continue;
+			}
+			String s = e.get().trim();
+			String jumplocation = page.getRequest().getUrl();
+			if (page.getRequest().getUrl().indexOf("=") == -1) {
+				jumplocation = jumplocation.replace(".html", "/.html");
+			}
+			matcher = beachPattern.matcher(s);
+			if (!matcher.find()) {
+				continue;
+			}
+//			String key = matcher.group(1);
+			String pageNo = matcher.group(2);
+			String pageSize = matcher.group(3);
+			if (page.getRequest().getUrl().indexOf(currentNo) != -1) {
+				jumplocation = jumplocation.replace(currentNo, currentNo.replaceAll("\\d+$", pageNo));
+			} else {
+				jumplocation = jumplocation.replace(".html", "&" + currentNo.replaceAll("\\d+$", pageNo) + ".html");
+			}
+			if (page.getRequest().getUrl().indexOf(currentSize) != -1) {
+				jumplocation = jumplocation.replace(currentSize, currentSize.replaceAll("\\d+$", pageSize));
+			} else {
+				jumplocation = jumplocation.replace(".html", "&" + currentSize.replaceAll("\\d+$", pageSize) + ".html");
+			}
+			list.add(jumplocation);
+		}
 
+		return list;
+	}
+	
 	@Override
 	public void process(Page page0) {
 		if (page0.getResultItems().isSkip()) {
@@ -42,17 +98,13 @@ public class ComWebProcessor implements PageProcessor {
 		if (!(page0 instanceof ComWebPage)) {
 			return;
 		}
-		
+
 		// 重定向出现的不合法的url
-		if(urlFilter.isRejectFileUrl(page0.getRequest().getUrl())){
+		if (urlFilter.isRejectFileUrl(page0.getRequest().getUrl())) {
 			return;
 		}
-		
-		
+
 		ComWebPage page = (ComWebPage) page0;
-		
-		
-		
 
 		Document document = new Document(ComPage.STOCK_CODE, page.getRequest().getExtra(ComPage.STOCK_CODE))
 				.append(ComPage.CONTENT_LENGTH, page.getContentLength())
@@ -76,16 +128,16 @@ public class ComWebProcessor implements PageProcessor {
 			return;
 		}
 		document.put(ComPage.HTML, page.getRawText());
-//		String content = HTMLExtractor.getContent(page.getRawText());
-//		if (content == null)
-//			content = "";
-//		document.put(ComPage.CONTENT, content);
-//		try {
-//			String sha1 = EncryptUtil.encryptSha1(content);
-//			document.append(ComPage.CONTENT_SHA1, sha1);
-//		} catch (NoSuchAlgorithmException e1) {
-//			e1.printStackTrace();
-//		}
+		// String content = HTMLExtractor.getContent(page.getRawText());
+		// if (content == null)
+		// content = "";
+		// document.put(ComPage.CONTENT, content);
+		// try {
+		// String sha1 = EncryptUtil.encryptSha1(content);
+		// document.append(ComPage.CONTENT_SHA1, sha1);
+		// } catch (NoSuchAlgorithmException e1) {
+		// e1.printStackTrace();
+		// }
 		List<String> links = this.urlFilter(page);
 		if (CollectionUtils.isNotEmpty(links)) {
 			for (String url : links) {
@@ -133,11 +185,12 @@ public class ComWebProcessor implements PageProcessor {
 		return list;
 	}
 
+
 	private List<String> urlFilter(Page page) {
 		List<String> all = page.getHtml().links().all();
 
-		List<String> fuckLinks = fuckUrlProcess(page);
-		all.addAll(fuckLinks);
+		all.addAll(fuckUrlProcess(page));
+		all.addAll(beachUrlProcess(page));
 
 		String domain = (String) page.getRequest().getExtra("domain");
 		Iterator<String> iterator = all.iterator();
@@ -151,10 +204,13 @@ public class ComWebProcessor implements PageProcessor {
 	}
 
 	private Site site = Site.me().setSleepTime(WFPContext.getProperty("compage.spider.commonSleepTime", Integer.class))
-			.setRetryTimes(3).setTimeOut(WFPContext.getProperty("compage.spider.sleepTime", Integer.class)).setCycleRetryTimes(WFPContext.getProperty("compage.spider.retryTime", Integer.class))
-			.addHeader("Accept-Language", "zh-CN,zh;q=0.8")//有的server需要这个
+			.setRetryTimes(3).setTimeOut(WFPContext.getProperty("compage.spider.sleepTime", Integer.class))
+			.setCycleRetryTimes(WFPContext.getProperty("compage.spider.retryTime", Integer.class))
+			.addHeader("Accept-Language", "zh-CN,zh;q=0.8")// 有的server需要这个
 			.addHeader("User-Agent", UserAgentUtil.getRandomAgent());
-//	.addHeader("User-Agent", "Sogou web spider/3.0(+http://www.sogou.com/docs/help/webmasters.htm#07)");
+
+	// .addHeader("User-Agent", "Sogou web
+	// spider/3.0(+http://www.sogou.com/docs/help/webmasters.htm#07)");
 	@Override
 	public Site getSite() {
 		return site;
