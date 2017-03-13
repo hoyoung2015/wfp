@@ -37,20 +37,15 @@ public class ComWebProcessor implements PageProcessor {
 	
 	private Pattern beachPattern = Pattern.compile("return jump_([a-zA-Z0-9]+)\\((\\d+),(\\d+)\\);");
 	private Pattern currentNoPattern = Pattern.compile("var current_no=\"(.*?)\"");
-	private String currentSize = null;
+	private Pattern currentSizePattern = Pattern.compile("var current_size=\"(.*?)\"");
 	private List<String> beachUrlProcess(Page page) {
-		if (currentSize == null) {
-			synchronized (this) {
-				if (currentSize == null) {
-					Pattern pattern = Pattern.compile("var current_size=\"(.*?)\"");
-					Matcher matcher = pattern.matcher(page.getRawText());
-					if (matcher.find()) {
-						this.currentSize = matcher.group(1);
-					}
-				}
-			}
+		Matcher matcher = currentSizePattern.matcher(page.getRawText());
+		String currentSize = null;
+		if (matcher.find()) {
+			currentSize = matcher.group(1);
 		}
-		Matcher matcher = currentNoPattern.matcher(page.getRawText());
+		
+		matcher = currentNoPattern.matcher(page.getRawText());
 		String currentNo = null;
 		if(matcher.find()){
 			currentNo = matcher.group(1);

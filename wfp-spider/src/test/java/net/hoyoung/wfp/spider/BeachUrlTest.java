@@ -86,7 +86,7 @@ public class BeachUrlTest {
 		Page page = new Page();
 		page.setRawText(rawText);
 		Request request = new Request(
-				"http://www.sinocera.cn/news_list1/&newsCategoryId=ec32c866-2873-4d12-8264-899931df6724&FrontNews_list01-1438823191669_pageNo=3&FrontNews_list01-1438823191669_pageSize=10.html");
+				"http://www.chinakingking.com/news_list/newsCategoryId=3&FrontNews_list01-1450763995000_pageNo=2&FrontNews_list01-1450763995000_pageSize=10.html");
 		page.setRequest(request);
 		page.setUrl(new PlainText(request.getUrl()));
 
