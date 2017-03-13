@@ -19,7 +19,8 @@ def check(name=None):
         })
         last_url_collection.find_one_and_replace({'stockCode': stock_code}, {
             'stockCode': stock_code,
-            'lastUrl': url
+            'lastUrl': url,
+            'count': count
         }, upsert=True)
         if count > 0:
             s = '存在-1'
