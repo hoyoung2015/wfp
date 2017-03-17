@@ -60,4 +60,13 @@ public class ComVo {
 			this.sleepTime = sleepTime;
 		}
 
+
+
+		@Override
+		public String toString() {
+			return "ComVo [stockCode=" + stockCode + ", sname=" + sname + ", webSite=" + webSite + ", sleepTime="
+					+ sleepTime + ", userAgent=" + userAgent + "]";
+		}
+
+		
 	}

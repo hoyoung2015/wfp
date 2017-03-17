@@ -1,10 +1,7 @@
 package net.hoyoung.wfp.spider.comweb;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.util.HashSet;
 import java.util.List;
@@ -14,7 +11,6 @@ import java.util.concurrent.Executors;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.StringUtils;
 import org.bson.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +30,8 @@ import net.hoyoung.wfp.core.utils.WFPContext;
 import net.hoyoung.wfp.spider.comweb.bo.ComPage;
 import net.hoyoung.wfp.spider.comweb.vo.ComVo;
 import net.hoyoung.wfp.spider.util.URLNormalizer;
+import net.hoyoung.wfp.spider.websource.MongoWebSourceReader;
+import net.hoyoung.wfp.spider.websource.WebSourceReader;
 import redis.clients.jedis.Jedis;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
@@ -43,46 +41,11 @@ import us.codecraft.webmagic.utils.UrlUtils;
 
 public class ComWebSpider {
 	Logger logger = LoggerFactory.getLogger(getClass());
-
-	private String siteFile = null;
-
-	public ComWebSpider(String siteFile) {
+	private WebSourceReader webSourceReader;
+	public ComWebSpider(WebSourceReader webSourceReader) {
 		super();
-		this.siteFile = siteFile;
+		this.webSourceReader = webSourceReader;
 	}
-
-	private List<ComVo> readCom() {
-		List<ComVo> list = Lists.newArrayList();
-		BufferedReader br = null;
-		try {
-			br = new BufferedReader(new InputStreamReader(new FileInputStream(siteFile)));
-			String line = null;
-			while ((line = br.readLine()) != null) {
-				if (StringUtils.isEmpty(line) || line.startsWith("#")) {
-					continue;
-				}
-				String[] split = line.split("\t");
-				ComVo vo = new ComVo(split[0], split[1], split[2], Integer.valueOf(split[3]));
-				if (split.length > 4) {
-					vo.setUserAgent(split[4]);
-				}
-				list.add(vo);
-			}
-
-		} catch (IOException e) {
-			logger.warn("read site list error {}", e.getMessage());
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return list;
-	}
-
 	public Set<String> getCollectionNameSet() {
 		Set<String> set = new HashSet<>();
 		MongoCursor<String> iterator = MongoUtil.getClient().getDatabase(ComWebConstant.DB_NAME).listCollectionNames()
@@ -101,7 +64,7 @@ public class ComWebSpider {
 	}
 
 	public void start() {
-		List<ComVo> list = readCom();
+		List<ComVo> list = webSourceReader.read();
 		if (CollectionUtils.isEmpty(list)) {
 			System.exit(-1);
 		}
@@ -123,13 +86,7 @@ public class ComWebSpider {
 	}
 
 	public static void main(String[] args) {
-		String input = null;
-		if (args == null || args.length != 1) {
-			System.err.println("input file error");
-			System.exit(-3);
-		}
-		input = args[0];
-		new ComWebSpider(input).start();
+		new ComWebSpider(new MongoWebSourceReader("wfp", "web_source")).start();
 	}
 
 	static class TaskExecutor implements Runnable {
