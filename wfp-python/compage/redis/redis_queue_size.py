@@ -1,8 +1,5 @@
-import os
-import sys
 from redis import Redis
 
-sys.path.append(rootPath)
 
 
 host = '127.0.0.1'
