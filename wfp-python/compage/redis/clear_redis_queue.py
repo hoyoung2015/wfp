@@ -16,10 +16,10 @@ from common import url_utils
 比如企业自建的discuz论坛，商城页面，这些页面量非常大，但是不需要
 '''
 
-rds = Redis(host='127.0.0.1', port=6379, db=0, decode_responses=True)
+rds = Redis(host='10.170.71.93', port=6379, db=0, decode_responses=True)
 
-url = 'http://www.unilumin.cn/'
-regex = 'http://(ja|eps).unilumin.com/.*|http://www.unilumin.cn/sitefiles/services/cms/.*|http://www.unilumin.cn/channel/(video|gaoqingdianshiqiang|HDTV|luoyan3D|huneigudinganzhuang|户内外租赁|changjing|ptsb|OutDoorLight|_55[678]).*'
+url = 'http://www.sinowealth.com/'
+regex = 'http://www.sinowealth.com/(zh|ZH)/product.asp.*'
 domain = url_utils.get_domain(url)
 # exit(-1)
 

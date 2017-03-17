@@ -13,6 +13,7 @@ import net.hoyoung.wfp.spider.comweb.ComWebConstant;
 import net.hoyoung.wfp.spider.comweb.ComWebHttpClientDownloader;
 import net.hoyoung.wfp.spider.comweb.ComWebProcessor;
 import net.hoyoung.wfp.spider.comweb.ComWebSpiderListener;
+import net.hoyoung.wfp.spider.comweb.FuckDownloader;
 import net.hoyoung.wfp.spider.comweb.bo.ComPage;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.ResultItems;
@@ -21,7 +22,7 @@ import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
 import us.codecraft.webmagic.proxy.ComWebProxyPool;
 
-public class TestComWebSpider {
+public class TestComWebSpiderJs {
 
 	static class MyPipeline implements Pipeline {
 		private AtomicInteger count = new AtomicInteger(0);
@@ -70,14 +71,14 @@ public class TestComWebSpider {
 		Request request = new Request("http://www.600780.com.cn/news_263/hydt/");//
 
 		request.putExtra(ComPage.STOCK_CODE, "111111");
-		request.putExtra("domain", "600780.com.cn");
+		request.putExtra("domain", "valin.cn");
 		ComWebProcessor processor = new ComWebProcessor();
 		
 //		processor.getSite().setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36");
 		
 //		processor.getSite().setHttpProxyPool(new ComWebProxyPool(ProxyReader.read(), false));
 		Spider spider = Spider.create(processor)
-				.setDownloader(new ComWebHttpClientDownloader())
+				.setDownloader(new FuckDownloader())
 				.addRequest(request)
 				.addPipeline(new MyPipeline()).thread(1);
 		ComWebSpiderListener spiderListener = new ComWebSpiderListener(spider);

@@ -10,7 +10,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 
+import net.hoyoung.wfp.spider.comweb.ComWebPage;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
@@ -26,7 +30,7 @@ import us.codecraft.webmagic.selector.PlainText;
  * Date: 13-7-26 <br>
  * Time: 下午1:37 <br>
  */
-public class SeleniumDownloader implements Downloader, Closeable {
+public class ComWebSeleniumDownloader implements Downloader, Closeable {
 
     private volatile WebDriverPool webDriverPool;
 
@@ -41,7 +45,7 @@ public class SeleniumDownloader implements Downloader, Closeable {
      *
      * @param chromeDriverPath
      */
-    public SeleniumDownloader(String chromeDriverPath) {
+    public ComWebSeleniumDownloader(String chromeDriverPath) {
         System.getProperties().setProperty("webdriver.chrome.driver", chromeDriverPath);
     }
 
@@ -51,15 +55,16 @@ public class SeleniumDownloader implements Downloader, Closeable {
      * @param sleepTime
      * @return this
      */
-    public SeleniumDownloader setSleepTime(int sleepTime) {
+    public ComWebSeleniumDownloader setSleepTime(int sleepTime) {
         this.sleepTime = sleepTime;
         return this;
     }
-
+    
     @Override
     public Page download(Request request, Task task) {
         checkInit();
         WebDriver webDriver;
+        
         try {
             webDriver = webDriverPool.get();
         } catch (InterruptedException e) {
@@ -68,12 +73,15 @@ public class SeleniumDownloader implements Downloader, Closeable {
         }
         logger.info("downloading page " + request.getUrl());
         webDriver.get(request.getUrl());
+        
         try {
             Thread.sleep(sleepTime);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         WebDriver.Options manage = webDriver.manage();
+        
+        
         Site site = task.getSite();
         if (site.getCookies() != null) {
             for (Map.Entry<String, String> cookieEntry : site.getCookies().entrySet()) {
@@ -81,9 +89,18 @@ public class SeleniumDownloader implements Downloader, Closeable {
                 manage.addCookie(cookie);
             }
         }
+        
+        
         WebElement webElement = webDriver.findElement(By.xpath("/html"));
+        
+        request.setUrl(webDriver.getCurrentUrl());
+        
         String content = webElement.getAttribute("outerHTML");
-        Page page = new Page();
+        
+        
+        
+        
+        ComWebPage page = new ComWebPage();
         page.setRawText(content);
         page.setUrl(new PlainText(request.getUrl()));
         page.setRequest(request);

@@ -19,16 +19,16 @@ except ImportError:
 
 
 class ZrbgCrawler:
-    host = "cp01-rdqa04-dev148.cp01"
-    port = 8017
+    host = "127.0.0.1"
+    port = 27017
     db_wfp = "wfp"
     years = [
-        # "2010-12-31",
+        "2010-12-31",
         # "2011-12-31",
         # "2012-12-31",
         # "2013-12-31",
         # "2014-12-31",
-        "2015-12-31"
+        # "2015-12-31"
     ]
 
     def __init__(self):

@@ -18,7 +18,7 @@ import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.Task;
-import us.codecraft.webmagic.downloader.selenium.SeleniumDownloader;
+import us.codecraft.webmagic.downloader.selenium.ComWebSeleniumDownloader;
 import us.codecraft.webmagic.pipeline.Pipeline;
 import us.codecraft.webmagic.proxy.ComWebProxyPool;
 
@@ -46,8 +46,8 @@ public class TestComWebSpiderSelenium {
 		// Request request = new
 		// Request("http://www.hoyoung.net/2017/02/10/squid3-proxy/");
 //		 Request request = new Request("http://www.jonjee.com/admin/webfiles/magazine/151_2.pdf"); //download
-//		 Request request = new
-//		 Request("http://www.chinadmegc.com/ebook_download.php?46");
+		 Request request = new
+		 Request("http://www.chinadmegc.com/ebook_download.php?46");
 //		 Request request = new
 //		 Request("http://www.chinadmegc.com/ebook_download.php?48");//big
 		// Request request = new
@@ -68,16 +68,16 @@ public class TestComWebSpiderSelenium {
 //		Request request = new Request("http://www.sanju.cn/Home/Index/downFiles/newsid/395.html");// download 反射修改content-encoding
 //		Request request = new Request("http://www.hybio.com.cn/ajax/file/id/353.php");//
 //		Request request = new Request("http://www.loncinindustries.com/motocycle/TopicActive.aspx?catid=9-706-463554675-1374275421");//
-		Request request = new Request("http://www.valin.cn/Column.aspx?ColId=2");//
+//		Request request = new Request("http://www.jisco.cn/structure/xwzx/gsxw");//
 
 		request.putExtra(ComPage.STOCK_CODE, "111111");
-		request.putExtra("domain", "loncinindustries.com");
+		request.putExtra("domain", "jisco.cn");
 		ComWebProcessor processor = new ComWebProcessor();
 //		processor.getSite().setHttpProxyPool(new ComWebProxyPool(ProxyReader.read(), false));
 		// processor.getSite().addHeader("User-Agent", "Mozilla/5.0 (Windows NT
 		// 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1");
 		Spider spider = Spider.create(processor)
-				.setDownloader(new SeleniumDownloader("/Users/baidu/local/bin/chromedriver"))
+				.setDownloader(new ComWebSeleniumDownloader("/Users/baidu/local/bin/chromedriver"))
 				.addRequest(request)
 				.addPipeline(new MyPipeline()).thread(1);
 		ComWebSpiderListener spiderListener = new ComWebSpiderListener(spider);
