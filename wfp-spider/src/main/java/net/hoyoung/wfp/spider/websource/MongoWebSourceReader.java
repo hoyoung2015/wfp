@@ -43,8 +43,9 @@ public class MongoWebSourceReader implements WebSourceReader {
 		}
 		return rs;
 	}
-	
+
 	public static void main(String[] args) {
+
 		MongoWebSourceReader reader = new MongoWebSourceReader("wfp", "web_source");
 		List<ComVo> list = reader.read();
 		for (ComVo vo : list) {

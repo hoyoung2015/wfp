@@ -223,3 +223,6 @@ http://www.sdhjgf.com.cn/products_.*
 
 [sinowealth.com]
 http://www.sinowealth.com/(zh|ZH)/product.asp.*
+
+[minfenggroup.com]
+http://zb.minfenggroup.com/.*
