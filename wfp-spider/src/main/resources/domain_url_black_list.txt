@@ -226,3 +226,6 @@ http://www.sinowealth.com/(zh|ZH)/product.asp.*
 
 [minfenggroup.com]
 http://zb.minfenggroup.com/.*
+
+[haoxiangni.cn]
+http://www.haoxiangni.cn/.+(pageid=\d+){2,}

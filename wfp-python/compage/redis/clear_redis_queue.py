@@ -18,8 +18,8 @@ from common import url_utils
 
 rds = Redis(host='127.0.0.1', port=6379, db=0, decode_responses=True)
 
-url = 'http://www.minfenggroup.com/'
-regex = 'http://zb.minfenggroup.com/.*'
+url = 'http://www.haoxiangni.cn/'
+regex = 'http://www.haoxiangni.cn/.+(pageid=\d+){2,}'
 domain = url_utils.get_domain(url)
 # exit(-1)
 
