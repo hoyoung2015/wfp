@@ -102,7 +102,7 @@ public class DomainUrlFilter {
 				|| isRejectFileUrl(url) || isInBlackList(domain, url) // 在黑名单中
 				|| isbbs(domainThis, domain) // 排除bbs
 				|| Pattern.matches("http(s?)://" + domainThis + "/(html/)?(" + EN_REGEX + ")(/.*)?", url) // 排除非中文
-				|| Pattern.matches(".+(&|\\?)id=\\-\\d+.*", url)) {
+				|| Pattern.matches(".+(&|\\?)(id|page)=\\-\\d+.*", url)) {
 			return false;
 		}
 		return true;

@@ -6,9 +6,9 @@ from common import url_utils
 
 '''
 
-rds = Redis(host='10.170.71.93', port=6379, db=0, decode_responses=True)
+rds = Redis(host='10.170.7.35', port=6379, db=0, decode_responses=True)
 
-url = 'http://www.csg.com.cn/'
+url = 'http://www.tongoiltools.com/'
 domain = url_utils.get_domain(url)
 # exit(-1)
 
