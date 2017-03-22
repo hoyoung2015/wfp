@@ -232,3 +232,9 @@ http://www.haoxiangni.cn/.+(&pageid=\d+){2,}
 
 [hzyb.com]
 http://(www.)?hzyb.com/plus/.*
+
+[hfagro.com]
+http://www.hfagro.com/.+&page=(\-)?\d{3,}.*
+
+[tech-long.com]
+http://www.tech-long.com/.+&page=(\-)?\d{3,}.*
