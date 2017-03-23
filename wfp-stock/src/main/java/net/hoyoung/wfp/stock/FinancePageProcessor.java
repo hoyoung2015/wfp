@@ -1,4 +1,4 @@
-package net.hoyoung.wfp.search;
+package net.hoyoung.wfp.stock;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +16,7 @@ import com.mongodb.client.model.Projections;
 
 import net.hoyoung.wfp.core.utils.MongoUtil;
 import net.hoyoung.wfp.core.utils.ProxyReader;
+import net.hoyoung.wfp.search.FootprintPipeline;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;

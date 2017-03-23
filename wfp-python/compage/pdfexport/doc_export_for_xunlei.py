@@ -1,21 +1,17 @@
 import sys
 import os
+import re
 
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 print(rootPath)
 sys.path.append(rootPath)
 
-from common.downloader import download
 from common.mongo import mongo_cli
 import re
 import hashlib
-from urllib.error import HTTPError
-from urllib.error import URLError
 from common import log
 import logging
-import queue
-import time
 from common.xunleidata import *
 import random
 
@@ -49,13 +45,11 @@ def a1(taskid, DisplayUrl):
 # P2spTask._connection.debug = True
 
 
-
-
 def a2(taskid, Url, save_path, Name):
     TaskBase(
         TaskId=taskid,
         Type=1,
-        Status=5,  # 3 排队. 5 开始. 7暂停. 8完成
+        Status=7,  # 3 排队. 5 开始. 7暂停. 8完成
         StatusChangeTime=0,
         # StatusChangeTime = 23284358513164200,
         SavePath=save_path,
@@ -111,68 +105,112 @@ def a2(taskid, Url, save_path, Name):
         AdditionFlag=0, )
 
 
+def get_failed_task(downlist_dir):
+    failed_task = set()
+    for downlist_file in os.listdir(downlist_dir):
+        if not re.match('.+\.downlist', downlist_file):
+            continue
+        print(downlist_file)
+        with open(downlist_dir + '/' + downlist_file) as f:
+            for line in f.readlines():
+                line = line.strip().replace('\n', '')
+                if line == '':
+                    continue
+                failed_task.add(line)
+            f.close()
+    return failed_task
+
+
 def get_collection_names(db_name):
     db = mongo_cli.get_database(db_name)
-    return [name for name in db.collection_names() if re.match('\d{6}', name)]
+    return [name for name in db.collection_names() if re.match('^\d{6}$', name)]
 
 
-def split_url(url):
-    i = url.rindex('.')
+def split_url(url, filename):
     sha1 = hashlib.sha1()
-    sha1.update(url[:i].encode('utf-8'))
-    return sha1.hexdigest(), url[i:]
+    if filename is not None and re.match('.+\.(pdf|PDF|doc|DOC|docx|DOCX)$', filename):
+        e = filename[filename.rindex('.'):]
+        sha1.update(url.encode('utf-8'))
+    elif re.match('.+\.(pdf|PDF|doc|DOC|docx|DOCX)$', url):
+        e = url[url.rindex('.'):]
+        sha1.update(url[:url.rindex('.')].encode('utf-8'))
+    else:
+        e = None
 
-
-def write_error(message):
-    with open('download_error.txt', 'a') as f:
-        f.write('%s\t%s\t%s\t%s\n' % message)
-        f.close()
-
-
-def get_proxies(file=''):
-    q = queue.Queue()
-    with open(file) as f:
-        for line in f.readlines():
-            line = line.strip().replace('\n', '')
-            if line == '' or line.startswith('#'):
-                continue
-            sp = line.split(',')
-            q.put({
-                'http': 'http://%s:%s@%s:%s' % tuple(sp)
-            })
-        f.close()
-    return q
+    return sha1.hexdigest(), e
 
 
 if __name__ == '__main__':
+    failed_urls_set = get_failed_task('/media/hoyoung/win7 home/compage/000000')
     taskid = int(random.randint(10000009937, 99999819937))
-    logger = log.get_logger('doc_downloader', 'downloader.log', level=logging.INFO)
+    logger = log.get_logger('pdf_export', 'pdf_export.log', level=logging.INFO)
     db_name = 'wfp_com_page'
     db = mongo_cli.get_database(db_name)
+    batch_num = 0
     for collection_name in get_collection_names(db_name):
         filter = {
-            'url': {
-                '$regex': '\.(pdf|PDF|doc|DOC|docx|DOCX)$'
-            }
+            '$and': [
+                {
+                    'xunlei': {'$exists': False}
+                }, {
+                    '$or': [{'url': {
+                        '$regex': '\.(pdf|PDF|doc|DOC|docx|DOCX)$'
+                    }}, {'contentType': {
+                        '$in': ['pdf', 'msword']
+                    }}]
+                }
+            ]
         }
         collection = db.get_collection(collection_name)
         total = collection.count(filter)
+        # print(total)
+        # exit(0)
         if total == 0:
             continue
         logger.info('%s\t%d' % (collection_name, total))
         save_dir = 'D:\\compage\\' + collection_name + '\\'
-        if collection_name=='000060':
+        exists_dir = '/media/hoyoung/win7 home/compage/' + collection_name + '/'
+        if collection_name == '000060':
             continue
-        for d in collection.find(filter, projection=['url']):
+        cnt = 0
+        for d in collection.find(filter, projection=['url', 'contentType', 'filename']):
             url = d['url']
-            name, ext = split_url(url)
+            contentType = d['contentType']
+            # 如果在失败列表中,删除
+            if url in failed_urls_set:
+                collection.delete_one({'_id': d['_id']})
+                continue
+
+            if 'filename' in d:
+                filename = d['filename']
+            else:
+                filename = None
+            name, ext = split_url(url, filename)
+            if ext is None:
+                if contentType == 'pdf':
+                    ext = '.pdf'
+                elif contentType == 'msword':
+                    ext = '.doc'
+                else:
+                    collection.delete_one({'_id': d['_id']})
+                    continue
+            # 判断是否已经下载
+            if os.path.exists(exists_dir + name + ext.lower()) or os.path.exists(exists_dir + name + ext):
+                collection.update_one({'_id': d['_id']}, {'$set': {'xunlei': 1}})
+                continue
             taskid += 1
+            fail_num = 0
+            cnt += 1
+            print('\r%s\t%d/%d' % (collection_name, cnt, total), end='')
             try:
                 a1(taskid, url)
             except:
-                pass
+                fail_num += 1
             try:
                 a2(taskid, url, save_dir, name + ext)
             except:
-                pass
+                fail_num += 1
+            batch_num += 1
         # break
+        if batch_num > 2000:
+            break
