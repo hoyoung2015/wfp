@@ -1,6 +1,8 @@
 import sys
 import os
 import re
+import sqlite3
+import shutil
 
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
@@ -105,6 +107,20 @@ def a2(taskid, Url, save_path, Name):
         AdditionFlag=0, )
 
 
+def read_failed_url(db_file):
+    failed_task = set()
+    conn = sqlite3.connect(db_file)
+    cursor = conn.execute("""
+    SELECT a.DisplayUrl FROM P2spTask a
+    LEFT JOIN TaskBase b ON a.TaskId=b.TaskId
+    WHERE b.Status!=8
+    """)
+    for row in cursor:
+        failed_task.add(row[0])
+    conn.close()
+    return failed_task
+
+
 def get_failed_task(downlist_dir):
     failed_task = set()
     for downlist_file in os.listdir(downlist_dir):
@@ -141,7 +157,15 @@ def split_url(url, filename):
 
 
 if __name__ == '__main__':
-    failed_urls_set = get_failed_task('/media/hoyoung/win7 home/compage/000000')
+
+    if os.path.exists('TaskDb.dat'):
+        os.remove('TaskDb.dat')
+    # exit(0)
+    shutil.copyfile('/home/hoyoung/tmp/TaskDb.dat', 'TaskDb.dat')
+
+    # failed_urls_set = get_failed_task('/media/hoyoung/win7 home/compage/000000')
+    failed_urls_set = read_failed_url(
+        '/media/hoyoung/win7 home/Program Files/Thunder Network/Thunder9/Profiles/TaskDb.dat')
     taskid = int(random.randint(10000009937, 99999819937))
     logger = log.get_logger('pdf_export', 'pdf_export.log', level=logging.INFO)
     db_name = 'wfp_com_page'
@@ -170,8 +194,8 @@ if __name__ == '__main__':
         logger.info('%s\t%d' % (collection_name, total))
         save_dir = 'D:\\compage\\' + collection_name + '\\'
         exists_dir = '/media/hoyoung/win7 home/compage/' + collection_name + '/'
-        if collection_name == '000060':
-            continue
+        # if collection_name == '000060':
+        #     continue
         cnt = 0
         for d in collection.find(filter, projection=['url', 'contentType', 'filename']):
             url = d['url']

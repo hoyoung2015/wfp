@@ -1,6 +1,3 @@
-"""
-Converts PDF text content (though not images containing text) to plain text, html, xml or "tags".
-"""
 import sys
 import pdfminer.settings
 import re
@@ -9,7 +6,6 @@ pdfminer.settings.STRICT = False
 import pdfminer.high_level
 import pdfminer.layout
 from pdfminer.image import ImageWriter
-import os
 
 
 def extract_text(files=[], outfile='-',
@@ -59,25 +55,3 @@ def extract_text(files=[], outfile='-',
         with open(fname, "rb") as fp:
             pdfminer.high_level.extract_text_to_fp(fp, **locals())
     return outfp
-
-
-if __name__ == '__main__':
-    pdf_dir = '/Users/baidu/tmp/zrbg_pdf_2010'
-    txt_dir = '/Users/baidu/tmp/zrbg_txt_2010'
-    pdf_filenames = [f for f in os.listdir(pdf_dir) if re.match('.+\.(pdf|PDF)$', f)]
-    total = len(pdf_filenames)
-
-    exit(0)
-
-    cnt = 0
-    for filename in pdf_filenames:
-        out_put_file = txt_dir + '/' + filename[:-3] + 'txt'
-        cnt += 1
-        print('\r%d/%d\t%s' % (cnt, total, out_put_file), end='')
-        if os.path.exists(out_put_file):
-            continue
-        try:
-            extract_text(files=[pdf_dir + '/' + filename], outfile=out_put_file)
-        except:
-            print('%s extract error' % filename)
-        # break
