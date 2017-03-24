@@ -22,8 +22,9 @@ def load_green_patents(file='patents.json'):
 
 
 if __name__ == "__main__":
+    db_name = sys.argv[1]
     green_patents_set = load_green_patents('patents.json')
-    db = mongo_cli.get_database('wfp_com_patent_test')
+    db = mongo_cli.get_database(db_name)
     collection_names = [name for name in db.collection_names(include_system_collections=False) if
                         re.match('^\d+$', name)]
     total_collection = len(collection_names)
