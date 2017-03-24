@@ -14,3 +14,4 @@ proxy.txt
 tmpfile_*
 mail.properties
 weihao_gri.xlsx
+*.pyc
