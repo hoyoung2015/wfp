@@ -5,7 +5,6 @@ curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
 
-
 from common.mongo import mongo_cli
 import re
 import json
@@ -22,7 +21,8 @@ def load_green_patents(file='patents.json'):
 
 
 if __name__ == "__main__":
-    db_name = sys.argv[1]
+    # db_name = sys.argv[1]
+    db_name = 'wfp_com_patent'
     green_patents_set = load_green_patents('patents.json')
     db = mongo_cli.get_database(db_name)
     collection_names = [name for name in db.collection_names(include_system_collections=False) if
@@ -32,9 +32,17 @@ if __name__ == "__main__":
     for collection_name in collection_names:
         cnt_collection += 1
         collection = db.get_collection(collection_name)
-        total_patent = collection.count()
+
+        filters = {
+            'green_num': {
+                '$exists': False
+            }
+        }
+        total_patent = collection.count(filters)
+        if total_patent == 0:
+            continue
         cnt_patent = 0
-        for patent in collection.find(projection={'classId': 1}):
+        for patent in collection.find(filters, projection={'classId': 1}):
             cnt_patent += 1
             print('\r%d-%s\t%d/%d' % (cnt_collection, collection_name, cnt_patent, total_patent), end='')
             if 'classId' not in patent or patent['classId'] == '':

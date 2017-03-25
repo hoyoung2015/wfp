@@ -24,31 +24,33 @@ import us.codecraft.webmagic.downloader.ProxyHttpClientDownloader;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.utils.UrlUtils;
 
-public class QuanZhongPageProcessor implements PageProcessor {
+public class RankPageProcessor implements PageProcessor {
 	private static final String URL_PATTERN = "http://seo.chinaz.com/?q=%s";
 
 	// http://seo.chinaz.com/?q=dongeejiao.com
 	private Pattern rankPattern = Pattern.compile(".+/baiduapp/(\\d+)\\.gif$");
 
 	private AtomicInteger count = new AtomicInteger(0);
+	private static final String COLUNM_NAME = "rank";
 
 	@Override
 	public void process(Page page) {
-		String src = page.getHtml()
-				.$("#seoinfo > div > ul > li:nth-child(2) > div.SeoMaWr01Right > div:nth-child(1) > p > a > img", "src")
-				.get();
+
+		// #seoinfo > div > ul > li:nth-child(1) > div.SeoMaWr01Right >
+		// div:nth-child(1) > p > a > img
+		String src = page.getHtml().$("div.SeoMaWr01Right > div:nth-child(1) > p > a > img", "src").get();
 		if (StringUtils.isEmpty(src)) {
 			return;
 		}
 		Matcher matcher = rankPattern.matcher(src);
 		if (matcher.find()) {
-			page.putField("document", new Document("stockCode", page.getRequest().getExtra("stockCode")).append("rank",
-					Integer.valueOf(matcher.group(1))));
+			page.putField("document", new Document("stockCode", page.getRequest().getExtra("stockCode"))
+					.append(COLUNM_NAME, Integer.valueOf(matcher.group(1))));
 			System.out.println(count.incrementAndGet());
 		}
 	}
 
-	private static final int SLEEP_TIME = 500;
+	private static final int SLEEP_TIME = 400;
 	private Site site = Site.me().setSleepTime(SLEEP_TIME).setRetryTimes(3).setTimeOut(50000).setCycleRetryTimes(3)
 			.addHeader("User-Agent",
 					"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36")
@@ -71,22 +73,22 @@ public class QuanZhongPageProcessor implements PageProcessor {
 			while (iterator.hasNext()) {
 				Document doc = iterator.next();
 				String stockCode = doc.getString("stockCode");
-				if (footPrint.count(Filters.and(Filters.eq("stockCode", stockCode), Filters.exists("rank"))) > 0) {
+				if (footPrint.count(Filters.and(Filters.eq("stockCode", stockCode), Filters.exists(COLUNM_NAME))) > 0) {
 					continue;
 				}
 				String webSite = doc.getString("webSite");
 				requests.add(
 						new Request(String.format(URL_PATTERN, UrlUtils.getDomain(webSite).replaceAll("^www\\.", "")))
 								.putExtra("stockCode", stockCode));
-				// break;
+//				break;
 			}
 		} finally {
 			iterator.close();
 		}
-		QuanZhongPageProcessor processor = new QuanZhongPageProcessor();
+		RankPageProcessor processor = new RankPageProcessor();
 		processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
-		Spider.create(processor).setDownloader(new ProxyHttpClientDownloader()).addPipeline(new FootprintPipeline()).addRequest(requests.toArray(new Request[] {}))
-				.thread(5).run();
+		Spider.create(processor).setDownloader(new ProxyHttpClientDownloader()).addPipeline(new FootprintPipeline())
+				.addRequest(requests.toArray(new Request[] {})).thread(5).run();
 	}
 
 }

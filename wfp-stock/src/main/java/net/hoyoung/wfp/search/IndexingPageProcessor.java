@@ -2,7 +2,6 @@ package net.hoyoung.wfp.search;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.bson.Document;
@@ -35,14 +34,17 @@ public class IndexingPageProcessor implements PageProcessor {
 		System.out.println(">>\t" + count.incrementAndGet());
 		String src = page.getHtml().$("div.op_site_domain.c-row > div > p:nth-child(3) > span > b", "text").get();
 		if (StringUtils.isEmpty(src)) {
+			src = page.getHtml().$("#content_left > div.c-border.c-row.site_tip > div > p:nth-child(1) > b", "text").get();
+		}
+		if (StringUtils.isEmpty(src)) {
 			return;
 		}
-
-		if (Pattern.matches("[\\d,]+", src)) {
-			page.putField("document", new Document("stockCode", page.getRequest().getExtra("stockCode"))
-					.append(COLUNM_NAME, Integer.valueOf(src.replace(",", ""))));
-			System.out.println(src);
+		src = src.replaceAll("[\\u4e00-\\u9fa5,]", "");
+		if(StringUtils.isEmpty(src)){
+			return;
 		}
+		page.putField("document", new Document("stockCode", page.getRequest().getExtra("stockCode"))
+				.append(COLUNM_NAME, Integer.valueOf(src)));
 	}
 
 	private static final int SLEEP_TIME = 500;

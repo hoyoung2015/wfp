@@ -51,7 +51,7 @@ public class FootprintPipeline implements Pipeline {
 				}
 			}
 		} catch (Exception e) {
-
+			System.out.println(e.getMessage());
 		}
 	}
 
