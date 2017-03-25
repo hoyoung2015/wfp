@@ -20,6 +20,7 @@ import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
 import us.codecraft.webmagic.proxy.ComWebProxyPool;
+import us.codecraft.webmagic.utils.UrlUtils;
 
 public class TestComWebSpider {
 
@@ -67,10 +68,10 @@ public class TestComWebSpider {
 //		Request request = new Request("http://www.sanju.cn/Home/Index/downFiles/newsid/395.html");// download 反射修改content-encoding
 //		Request request = new Request("http://www.hybio.com.cn/ajax/file/id/353.php");//
 //		Request request = new Request("http://www.loncinindustries.com/motocycle/TopicActive.aspx?catid=9-706-463554675-1374275421");//
-		Request request = new Request("http://www.ceepower.com/");//
+		Request request = new Request("http://www.dongfangelec.com/");//
 
 		request.putExtra(ComPage.STOCK_CODE, "111111");
-		request.putExtra("domain", "ceepower.com");
+		request.putExtra("domain", UrlUtils.getDomain(request.getUrl()).replaceAll("^www\\.", ""));
 		ComWebProcessor processor = new ComWebProcessor();
 		
 //		processor.getSite().setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36");

@@ -164,7 +164,7 @@ http://www\.cqzskj\.com/(eng|jp)_dindex\.aspx.*
 http://www\.thslhg\.com/yw/.*
 
 [bosuntools.com]
-http://www\.bosuntools\.com/theme/(zch|fr|ptt|en)/.*
+http://www\.bosuntools\.com/theme/(ru|fr|ptt|en|es)/.*
 
 [ceepower.com]
 http://www\.ceepower\.com/(zndqen|zndqspain)/.*

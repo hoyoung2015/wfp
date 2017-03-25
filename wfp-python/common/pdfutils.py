@@ -1,6 +1,5 @@
 import sys
 import pdfminer.settings
-import re
 
 pdfminer.settings.STRICT = False
 import pdfminer.high_level

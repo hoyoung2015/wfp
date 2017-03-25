@@ -238,3 +238,4 @@ if __name__ == '__main__':
         # break
         if batch_num > 2000:
             break
+    print(batch_num)
