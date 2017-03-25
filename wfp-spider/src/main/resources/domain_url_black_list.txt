@@ -241,3 +241,6 @@ http://www.tech-long.com/.+&page=(\-)?\d{3,}.*
 
 [copton.com.cn]
 .+\.copton\.com\.cn/.+/\[field:arcurl/\]
+
+[tianke.com]
+http://trade.tianke.com/.*

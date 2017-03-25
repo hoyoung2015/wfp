@@ -256,7 +256,7 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 			}
 			try {
 				if (httpResponse != null) {
-					httpResponse.close();
+//					httpResponse.close();
 					EntityUtils.consume(httpResponse.getEntity());
 				}
 			} catch (IOException e) {

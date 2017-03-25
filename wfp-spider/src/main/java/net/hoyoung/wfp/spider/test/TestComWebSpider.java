@@ -67,10 +67,10 @@ public class TestComWebSpider {
 //		Request request = new Request("http://www.sanju.cn/Home/Index/downFiles/newsid/395.html");// download 反射修改content-encoding
 //		Request request = new Request("http://www.hybio.com.cn/ajax/file/id/353.php");//
 //		Request request = new Request("http://www.loncinindustries.com/motocycle/TopicActive.aspx?catid=9-706-463554675-1374275421");//
-		Request request = new Request("http://www.600780.com.cn/news_263/hydt/");//
+		Request request = new Request("http://www.lantaicn.com/docc/newsdetail.asp?auto_id=1703&sort=%E5%85%AC%E5%8F%B8%E6%96%B0%E9%97%BB");//
 
 		request.putExtra(ComPage.STOCK_CODE, "111111");
-		request.putExtra("domain", "600780.com.cn");
+		request.putExtra("domain", "lantaicn.com");
 		ComWebProcessor processor = new ComWebProcessor();
 		
 //		processor.getSite().setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36");
