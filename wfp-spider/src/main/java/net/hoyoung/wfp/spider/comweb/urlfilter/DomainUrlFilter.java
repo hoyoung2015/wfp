@@ -70,7 +70,7 @@ public class DomainUrlFilter {
 	}
 
 	public boolean isRejectFileUrl(String url) {
-		System.out.println(".+\\.(" + EXCEPT_SUFFIX + ")$");
+//		System.out.println(".+\\.(" + EXCEPT_SUFFIX + ")$");
 		if (Pattern.matches(".+(\\.|/)(" + EXCEPT_SUFFIX + ")\\?.*", url) // 排除非html文件
 				|| Pattern.matches(".+\\.(" + EXCEPT_SUFFIX + ")$", url)) { // 排除非html文件后缀
 			return true;
