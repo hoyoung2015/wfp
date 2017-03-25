@@ -27,6 +27,7 @@ import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Selectable;
+import us.codecraft.webmagic.utils.UrlUtils;
 
 public class ComWebProcessor implements PageProcessor {
 	private Logger logger = LoggerFactory.getLogger(getClass());
@@ -34,24 +35,24 @@ public class ComWebProcessor implements PageProcessor {
 	private DomainUrlFilter urlFilter = new DomainUrlFilter();
 
 	private PageFilter pageFilter = new PageFilter();
-	
+
 	private Pattern beachPattern = Pattern.compile("return jump_([a-zA-Z0-9]+)\\((\\d+),(\\d+)\\);");
 	private Pattern currentNoPattern = Pattern.compile("var current_no=\"(.*?)\"");
 	private Pattern currentSizePattern = Pattern.compile("var current_size=\"(.*?)\"");
+
 	private List<String> beachUrlProcess(Page page) {
 		Matcher matcher = currentSizePattern.matcher(page.getRawText());
 		String currentSize = null;
 		if (matcher.find()) {
 			currentSize = matcher.group(1);
 		}
-		
+
 		matcher = currentNoPattern.matcher(page.getRawText());
 		String currentNo = null;
-		if(matcher.find()){
+		if (matcher.find()) {
 			currentNo = matcher.group(1);
 		}
-		
-		
+
 		List<String> list = Lists.newArrayList();
 		for (Selectable e : page.getHtml().$("a", "onclick").nodes()) {
 			if (StringUtils.isEmpty(e.get())) {
@@ -66,7 +67,7 @@ public class ComWebProcessor implements PageProcessor {
 			if (!matcher.find()) {
 				continue;
 			}
-//			String key = matcher.group(1);
+			// String key = matcher.group(1);
 			String pageNo = matcher.group(2);
 			String pageSize = matcher.group(3);
 			if (page.getRequest().getUrl().indexOf(currentNo) != -1) {
@@ -84,7 +85,7 @@ public class ComWebProcessor implements PageProcessor {
 
 		return list;
 	}
-	
+
 	@Override
 	public void process(Page page0) {
 		if (page0.getResultItems().isSkip()) {
@@ -157,6 +158,9 @@ public class ComWebProcessor implements PageProcessor {
 					}
 					data.add(doc);
 				} else {
+					if (UrlUtils.getDomain(url).equals("www.xintaidianqi.com")) {
+						url = url.replace("\\", "/");
+					}
 					Request request = new Request(url);
 					request.putExtra(ComPage.STOCK_CODE, page.getRequest().getExtra(ComPage.STOCK_CODE));
 					request.putExtra("domain", page.getRequest().getExtra("domain"));
@@ -179,7 +183,6 @@ public class ComWebProcessor implements PageProcessor {
 		}
 		return list;
 	}
-
 
 	private List<String> urlFilter(Page page) {
 		List<String> all = page.getHtml().links().all();

@@ -176,7 +176,7 @@ http://www.chinasti.com/new/.*
 http://www.scggic.com/ggwm/.*
 
 [xintaidianqi.com]
-http://www.xintaidianqi.com/xintaidianqi/.*
+http://www.xintaidianqi.com/xintaidianqi/chn/chanpinfuwu/.*
 
 [fangda.com]
 http://export.fangda.com/.*
