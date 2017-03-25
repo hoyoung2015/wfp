@@ -177,7 +177,9 @@ public class ComWebSpiderJs {
 			}
 			request.putExtra(ComPage.STOCK_CODE, com.getStockCode());
 			request.putExtra("domain", UrlUtils.getDomain(com.getWebSite()).replaceAll("^www\\.", ""));
-			spider.addRequest(request).setDownloader(new FuckDownloader()).addPipeline(new ComWebPipeline())
+			
+			
+			spider.addRequest(request).setDownloader(new ComWebHttpClientDownloader()).addPipeline(new ComWebPipeline())
 					.run();
 			
 			long llen = collectionTmp.count(Filters.eq(ComPage.STOCK_CODE, com.getStockCode()));

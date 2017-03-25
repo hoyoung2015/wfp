@@ -250,3 +250,9 @@ http://www.eastups.com/cn_php/products_.*
 
 [julong.cc]
 http://www.julong.cc/shfw.aspx.*
+
+[beilu.com.cn]
+http://www.beilu.com.cn/beilu-(tc|en)/.*
+
+[ceepower.com]
+http://www.ceepower.com/products.*

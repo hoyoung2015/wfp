@@ -3,13 +3,13 @@ from common.mongo import copy_collection
 
 if __name__ == '__main__':
     copy_collection(src={
-        'db': 'wfp',
-        'host': '10.173.184.94',
+        'db': 'wfp_com_page',
+        'host': '127.0.0.1',
         'port': 27017
     }, dist={
-        'db': 'wfp',
-        'host': '10.173.184.94',
+        'db': 'wfp_com_page',
+        'host': '10.170.46.85',
         'port': 27017
     }, collection={
-        'footprint': 'footprint_bak'
+        '600062': '300062'
     })
