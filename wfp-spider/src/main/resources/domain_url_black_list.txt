@@ -244,3 +244,9 @@ http://www.tech-long.com/.+&page=(\-)?\d{3,}.*
 
 [tianke.com]
 http://trade.tianke.com/.*
+
+[eastups.com]
+http://www.eastups.com/cn_php/products_.*
+
+[julong.cc]
+http://www.julong.cc/shfw.aspx.*

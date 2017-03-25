@@ -188,7 +188,7 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 					}
 				}
 
-				if (contentTypeValue != null && !Pattern.matches("(msword|pdf|html|octet-stream)", contentTypeValue)) {
+				if (contentTypeValue != null && !Pattern.matches("(msword|MSWORD|pdf|PDF|html|HTML|octet-stream)", contentTypeValue)) {
 					page.setSkip(true);
 					return page;
 				}
