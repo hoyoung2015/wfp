@@ -36,6 +36,7 @@ public class MongoWebSourceReader implements WebSourceReader {
 				Document document = iterator.next();
 				ComVo vo = new ComVo(document.getString(ComPage.STOCK_CODE), document.getString("sname"),
 						document.getString("webSite"), document.getInteger("sleepTime"));
+				vo.setUserAgent(document.getString("userAgent"));
 				rs.add(vo);
 			}
 		} finally {
