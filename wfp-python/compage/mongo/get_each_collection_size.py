@@ -14,11 +14,12 @@ df = pd.DataFrame(columns=['stockCode', 'pageCount'])
 for i in range(len(collection_names)):
     collection_name = collection_names[i]
     df.loc[i] = [collection_name, db.get_collection(collection_name).count()]
-    if db.get_collection(collection_name).count() < 100:
+    total = db.get_collection(collection_name).count()
+    if total < 100:
         # db.drop_collection(collection_name)
-        print('drop %s' % collection_name)
+        print('drop %s\t%d' % (collection_name, total))
         # break
-
+exit(0)
 df = df.sort_values(by='pageCount', ascending=False)
 
 source_df = pd.read_csv('../web_source/web_source.txt', names=['stockCode', 'sname', 'webSite', 'sleepTime'],

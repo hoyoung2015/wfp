@@ -256,3 +256,22 @@ http://www.beilu.com.cn/beilu-(tc|en)/.*
 
 [ceepower.com]
 http://www.ceepower.com/products.*
+
+[jingxinpharm.com]
+http://www.jingxinpharm.com/cn/product.asp.*
+http://www.jingxinpharm.com/cn/xswl.asp.*
+
+[donly.com.cn]
+http://www.donly.com.cn/[pP]ro.+
+
+[liande-china.com]
+http://www.liande-china.com/products.*
+
+[huazhongcnc.com]
+http://www.huazhongcnc.com/product.*
+
+[nthcl.com]
+http://www.nthcl.com/product.*
+
+[jscq.com]
+http://www.jscq.com/product.*

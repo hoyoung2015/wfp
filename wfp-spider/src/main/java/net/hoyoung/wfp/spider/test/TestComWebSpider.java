@@ -68,7 +68,7 @@ public class TestComWebSpider {
 //		Request request = new Request("http://www.sanju.cn/Home/Index/downFiles/newsid/395.html");// download 反射修改content-encoding
 //		Request request = new Request("http://www.hybio.com.cn/ajax/file/id/353.php");//
 //		Request request = new Request("http://www.loncinindustries.com/motocycle/TopicActive.aspx?catid=9-706-463554675-1374275421");//
-		Request request = new Request("http://www.dongfangelec.com/");//
+		Request request = new Request("http://www.hac.com.cn/");//
 
 		request.putExtra(ComPage.STOCK_CODE, "111111");
 		request.putExtra("domain", UrlUtils.getDomain(request.getUrl()).replaceAll("^www\\.", ""));

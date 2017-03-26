@@ -205,6 +205,7 @@ public class ComWebProcessor implements PageProcessor {
 			.setRetryTimes(3).setTimeOut(WFPContext.getProperty("compage.spider.sleepTime", Integer.class))
 			.setCycleRetryTimes(WFPContext.getProperty("compage.spider.retryTime", Integer.class))
 			.addHeader("Accept-Language", "zh-CN,zh;q=0.8")// 有的server需要这个
+//			.addHeader("Accept-Encoding", "GZIP")
 			.addHeader("User-Agent", UserAgentUtil.getRandomAgent());
 
 	// .addHeader("User-Agent", "Sogou web

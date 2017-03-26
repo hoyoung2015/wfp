@@ -151,6 +151,7 @@ def split_url(url, filename):
         e = url[url.rindex('.'):]
         sha1.update(url[:url.rindex('.')].encode('utf-8'))
     else:
+        sha1.update(url.encode('utf-8'))
         e = None
 
     return sha1.hexdigest(), e
@@ -158,10 +159,10 @@ def split_url(url, filename):
 
 if __name__ == '__main__':
 
-    if os.path.exists('TaskDb.dat'):
-        os.remove('TaskDb.dat')
-    # exit(0)
-    shutil.copyfile('/home/hoyoung/tmp/TaskDb.dat', 'TaskDb.dat')
+    # if os.path.exists('TaskDb.dat'):
+    #     os.remove('TaskDb.dat')
+    # # exit(0)
+    # shutil.copyfile('/home/hoyoung/tmp/TaskDb.dat', 'TaskDb.dat')
 
     # failed_urls_set = get_failed_task('/media/hoyoung/win7 home/compage/000000')
     failed_urls_set = read_failed_url(
@@ -225,17 +226,19 @@ if __name__ == '__main__':
             taskid += 1
             fail_num = 0
             cnt += 1
-            print('\r%s\t%d/%d' % (collection_name, cnt, total), end='')
+            print('\r%s\t%d/%d\t%d' % (collection_name, cnt, total, batch_num), end='')
             try:
                 a1(taskid, url)
-            except:
+            except Exception as e:
+                # print(e)
                 fail_num += 1
             try:
                 a2(taskid, url, save_dir, name + ext)
-            except:
+            except Exception as e:
+                # print(e)
                 fail_num += 1
             batch_num += 1
-        # break
-        if batch_num > 2000:
+        if batch_num > 1200:
             break
+    print()
     print(batch_num)

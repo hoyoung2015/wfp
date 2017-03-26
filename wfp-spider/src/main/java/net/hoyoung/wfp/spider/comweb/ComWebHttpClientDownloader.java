@@ -194,9 +194,9 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 				}
 				if (contentTypeValue != null) {
 					page.setContentLength(httpResponse.getEntity().getContentLength());
-					page.setContentType(contentTypeValue);
+					page.setContentType(contentTypeValue.toLowerCase());
 				}
-				if (page.getContentLength() == -1 || Pattern.matches("html", contentTypeValue)) {// html
+				if (page.getContentLength() == -1 || Pattern.matches("html", contentTypeValue.toLowerCase())) {// html
 					page.setContentType("html");
 					String content = getContent(charset, httpResponse);
 					page.setRawText(content);
@@ -357,8 +357,8 @@ public class ComWebHttpClientDownloader extends AbstractDownloader {
 				}
 				return new String(contentBytes, htmlCharset);
 			} else {
-				logger.warn("Charset autodetect failed, use {} as charset. Please specify charset in Site.setCharset()",
-						Charset.defaultCharset());
+//				logger.warn("Charset autodetect failed, use {} as charset. Please specify charset in Site.setCharset()",
+//						Charset.defaultCharset());
 				return new String(contentBytes);
 			}
 		} else {

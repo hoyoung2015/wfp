@@ -1,6 +1,8 @@
 import os
 import re
 from common.pdfutils import extract_text
+from common.mongo import mongo_cli
+import pymongo
 
 """
 将下载的pdf转为txt
@@ -8,6 +10,9 @@ from common.pdfutils import extract_text
 """
 
 if __name__ == '__main__':
+    pdf_errors = mongo_cli.get_database('tmp').get_collection('pdf_errors')
+    pdf_errors.create_index([('pdf_path', pymongo.ASCENDING)], unique=True)
+
     pdf_path = '/media/hoyoung/win7 home/compage'
     txt_path = '/home/hoyoung/tmp/compage_txt'
 
@@ -27,16 +32,24 @@ if __name__ == '__main__':
         cnt_pdf_files = 0
         for pdf in stock_pdf_files:
             cnt_pdf_files += 1
-            print('%d-%s\t%d/%d' % (cnt_stock, stock, cnt_pdf_files, total_pdf_files))
+            print('\r%d-%s\t%d/%d' % (cnt_stock, stock, cnt_pdf_files, total_pdf_files), end='')
             name = pdf[:pdf.rindex('.')]
             out_file = stock_txt_dir + '/' + name + '.txt'
             # print(stock_pdf_dir + '/' + pdf, out_file)
             if os.path.exists(out_file) and os.path.getsize(out_file) > 0:
                 continue
+            if pdf_errors.count({'pdf_path': stock_pdf_dir + '/' + pdf}) > 0:
+                continue
             try:
                 extract_text(files=[stock_pdf_dir + '/' + pdf], outfile=out_file)
-            except:
-                pass
-            # break
+            except Exception as e:
+                try:
+                    pdf_errors.insert_one({'stockCode': stock, 'pdf_path': stock_pdf_dir + '/' + pdf})
+                except:
+                    pass
+                print(e)
+                # break
         print()
-        break
+        if os.path.exists('STOP'):
+            break
+            # break

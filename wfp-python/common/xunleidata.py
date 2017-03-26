@@ -102,5 +102,5 @@ class TaskBase(sqlobject.SQLObject):
         # idName = 'TaskId'
 
 
-P2spTask.createTable(ifNotExists=True)
-TaskBase.createTable(ifNotExists=True)
+# P2spTask.createTable(ifNotExists=True)
+# TaskBase.createTable(ifNotExists=True)

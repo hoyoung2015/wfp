@@ -32,13 +32,13 @@ public class SHA1Extractor {
 
 	public static String getContent(String html) {
 		org.jsoup.nodes.Document doc = Jsoup.parse(html);
-		doc.getElementsByTag("a").remove();
+//		doc.getElementsByTag("a").remove();
 		doc.getElementsByTag("button").remove();
 		doc.getElementsByTag("input").remove();
 		doc.getElementsByTag("header").remove();
 		doc.getElementsByTag("textarea").remove();
 		doc.getElementsByTag("script").remove();
-		doc.getElementsByTag("form").remove();
+//		doc.getElementsByTag("form").remove();
 		return doc.getElementsByTag("body").text();
 	}
 
@@ -52,13 +52,13 @@ public class SHA1Extractor {
 		}
 		int cnt = 0;
 		for (String collectionName : list) {
-			if (++cnt > 400)
-				break;
+//			if (++cnt > 400)
+//				break;
 			MongoCollection<Document> collection = MongoUtil.getCollection(dbName, collectionName);
 			Bson filters = Filters.and(Filters.exists(ComPage.HTML), Filters.exists(ComPage.CONTENT_SHA1, false),
 					Filters.eq(ComPage.CONTENT_TYPE, "html"));
 			long total = collection.count(filters);
-			System.out.println(String.format("%d\tprocess collection %s,total=%d", cnt, collectionName, total));
+			System.out.println(String.format("%d\tprocess collection %s,total=%d", ++cnt, collectionName, total));
 			MongoCursor<Document> iterator = collection.find(filters)
 					.projection(Projections.include(ComPage.HTML, ComPage.URL)).iterator();
 			try {
@@ -68,12 +68,12 @@ public class SHA1Extractor {
 //							document.get(ComPage.URL)));
 					String html = document.getString(ComPage.HTML);
 					String content = null;
-					try {
-						content = ContentExtractor.getContentByHtml(html);
-					} catch (Exception e) {
+//					try {
+//						content = ContentExtractor.getContentByHtml(html);
+//					} catch (Exception e) {
 						// e.printStackTrace();
 						content = getContent(html);
-					}
+//					}
 					if (content == null) {
 						content = "";
 					}
