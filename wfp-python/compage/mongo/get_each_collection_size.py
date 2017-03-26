@@ -16,7 +16,7 @@ for i in range(len(collection_names)):
     df.loc[i] = [collection_name, db.get_collection(collection_name).count()]
     total = db.get_collection(collection_name).count()
     if total < 100:
-        # db.drop_collection(collection_name)
+        db.drop_collection(collection_name)
         print('drop %s\t%d' % (collection_name, total))
         # break
 exit(0)
