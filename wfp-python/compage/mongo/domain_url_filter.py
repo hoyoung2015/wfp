@@ -26,6 +26,8 @@ if __name__ == '__main__':
     regex_map = read_regex('../../../wfp-spider/src/main/resources/domain_url_black_list.txt')
     web_source_collection = mongo_cli.get_database('wfp').get_collection('web_source')
     for stock_code in mongo_cli.get_database('wfp_com_page').collection_names(include_system_collections=False):
+        stock_code = '600877'
+
         if re.match('^\d{6}$', stock_code) is False:
             continue
         doc = web_source_collection.find_one({'stockCode': stock_code})
@@ -44,7 +46,8 @@ if __name__ == '__main__':
         regex = regex_map[domain]
         com_page_collection = mongo_cli.get_database('wfp_com_page').get_collection(stock_code)
         del_list = []
-        filters = {'contentType': {'$exists': True, '$regex': '(html|HTML)'}}
+        # filters = {'contentType': {'$exists': True, '$regex': '(html|HTML)'}}
+        filters = {}
         total = com_page_collection.count(filters)
         cnt = 0
         for d in com_page_collection.find(filters, projection={'url': 1}):
@@ -59,4 +62,5 @@ if __name__ == '__main__':
         if len(del_list) > 0:
             print('will del %d' % len(del_list))
             com_page_collection.delete_many({'_id': {'$in': del_list}})
+        break
     mongo_cli.close()

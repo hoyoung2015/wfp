@@ -15,6 +15,8 @@ for i in range(len(collection_names)):
     collection_name = collection_names[i]
     df.loc[i] = [collection_name, db.get_collection(collection_name).count()]
     total = db.get_collection(collection_name).count()
+    if total > 8000 and total <= 10000:
+        print(collection_name, total)
     if total < 100:
         db.drop_collection(collection_name)
         print('drop %s\t%d' % (collection_name, total))

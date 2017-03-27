@@ -24,7 +24,7 @@ http(s?)://www\.sanjin\.com\.cn/trade/.*
 
 [xsmd.com.cn]
 http://msxh\.xsmd\.com\.cn/.*
-#http://gysy\.xsmd\.com\.cn/download/\d+\.html
+http://vod.xsmd.com.cn/.*
 
 [shanghaipower.com]
 http://www\.shanghaipower\.com/power/company/.*
@@ -275,3 +275,37 @@ http://www.nthcl.com/product.*
 
 [jscq.com]
 http://www.jscq.com/product.*
+
+[longlive.cn]
+http://www.longlive.cn/products.*
+http://www.longlive.cn/job_.*
+http://www.longlive.cn/public_recommend_news.*
+http://oa1.longlive.cn.*
+http://www.longlive.cn/maps/.*
+
+[sgmg.com.cn]
+http://www.sgmg.com.cn/boker/.*
+
+[tasly.com]
+http://www.tasly.com/search.aspx.*
+http://www.tasly.com/remark.aspx.*
+http://www.tasly.com/imgList.aspx.*
+http://www.tasly.com/thesisdata/.*
+http://www.tasly.com/product.*
+http://ina.tasly.com/.*
+http://www.tasly.com/fan_web/.*
+
+[600795.com.cn]
+http://www.600795.com.cn/publish/english/.*
+http://www.600795.com.cn/sites/main/.*
+
+[sxjh.com.cn]
+http://www.sxjh.com.cn/product.*
+http://www.sxjh.com.cn/guangyingshanjiao.*
+http://www.sxjh.com.cn/order_group.*
+http://www.sxjh.com.cn/guifanxingwenjian.*
+
+[jialing.com.cn]
+http://www.jialing.com.cn/\d{4}.html
+http://www.jialing.com.cn/s/1802-.*
+http://www.jialing.com.cn/1812.html.*
