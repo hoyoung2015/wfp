@@ -26,7 +26,7 @@ if __name__ == '__main__':
     regex_map = read_regex('../../../wfp-spider/src/main/resources/domain_url_black_list.txt')
     web_source_collection = mongo_cli.get_database('wfp').get_collection('web_source')
     for stock_code in mongo_cli.get_database('wfp_com_page').collection_names(include_system_collections=False):
-        stock_code = '600877'
+        stock_code = '600979'
 
         if re.match('^\d{6}$', stock_code) is False:
             continue

@@ -3,6 +3,7 @@ import os
 import re
 import sqlite3
 import shutil
+import pandas
 
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]

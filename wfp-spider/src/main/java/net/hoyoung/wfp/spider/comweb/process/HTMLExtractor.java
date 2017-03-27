@@ -35,7 +35,7 @@ public class HTMLExtractor {
 	public static String getContentAll(String html) {
 		org.jsoup.nodes.Document doc = Jsoup.parse(html);
 
-		String[] excludeTags = { "a", "button", "input", "header", "textarea", "script"};
+		String[] excludeTags = { "a", "button", "input", "header", "textarea", "script" };
 		for (String tag : excludeTags) {
 			doc.getElementsByTag(tag).remove();
 		}
@@ -47,11 +47,11 @@ public class HTMLExtractor {
 			return null;
 		}
 		String content = null;
-		// try {
-		// content = ContentExtractor.getContentByHtml(html);
-		// } catch (Exception e) {
-		content = getContentAll(html);
-		// }
+		try {
+			content = ContentExtractor.getContentByHtml(html);
+		} catch (Exception e) {
+			content = getContentAll(html);
+		}
 		return content;
 	}
 
@@ -73,15 +73,16 @@ public class HTMLExtractor {
 			try {
 				while (iterator.hasNext()) {
 					Document document = iterator.next();
-					LOG.info(String.format("process collection %s_%d\t%s", collectionName, total--,
-							document.get(ComPage.URL)));
+					String url = document.getString(ComPage.URL);
+					LOG.info(String.format("process collection %s_%d\t%s", collectionName, total--, url));
 					String html = document.getString(ComPage.HTML);
 					String content = getContent(html);
 					if (content == null) {
 						content = "";
 					}
 					Bson updates = Updates.combine(Updates.set(ComPage.CONTENT, content));
-					collection.updateOne(eq("_id", document.get("_id")), updates);
+					 collection.updateOne(eq("_id", document.get("_id")),
+					 updates);
 				}
 			} finally {
 				iterator.close();

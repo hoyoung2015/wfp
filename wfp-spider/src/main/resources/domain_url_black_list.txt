@@ -9,6 +9,9 @@ http://www\.ieslab\.com\.cn/sitefiles/services/cms/utils\.aspx\?type=Download&.*
 
 [jac.com.cn]
 http://jac(en|fr|sp|ar|pro|vie).jac.com.cn/.*
+http://(mall|wap|gift).jac.com.cn/.*
+http://www.jac.com.cn/jacweb/prod.*
+http://www.jac.com.cn/jac_activity/.*
 
 [conch.cn]
 http(s?)://ygcg.conch.cn/.*
@@ -53,12 +56,16 @@ http://www\.chasesun\.cn/infor/en/.*
 http://www\.token-ito\.com/yp_add_list\.asp\?id=\d+
 http://www\.token-ito\.com/sca_list\.asp\?id=\d+
 http://www\.token-ito\.com/sca_view\.asp\?id=\d+
+http://www.token-ito.com/cn/\?pid=\d+
+http://www.token-ito.com/search_.*
+http://www.token-ito.com/help.asp.*
+http://www.token-ito.com/(yp|cp|sca|job)_.*
 
 #[zdjt.com]
 #http://(www\.)?zdjt\.com/index\.php\?m=download&catid=\d+&id=\d+&f=download
 
-#[ggec.com.cn]
-#http://www\.ggec\.com\.cn/downFile/\?fn=http://www\.cninfo\.com\.cn/cninfo-new/disclosure/szse_sme/download/.*
+[ggec.com.cn]
+http://www\.ggec\.com\.cn/downFile/.*
 
 #[goertek.com]
 #http://www\.goertek\.com/ajax/download\.aspx\?id=\d+&name=.*
@@ -296,7 +303,7 @@ http://ina.tasly.com/.*
 http://www.tasly.com/fan_web/.*
 
 [600795.com.cn]
-http://www.600795.com.cn/publish/english/.*
+http://www.600795.com.cn/publish/(english|fanti)/.*
 http://www.600795.com.cn/sites/main/.*
 
 [sxjh.com.cn]
@@ -309,3 +316,30 @@ http://www.sxjh.com.cn/guifanxingwenjian.*
 http://www.jialing.com.cn/\d{4}.html
 http://www.jialing.com.cn/s/1802-.*
 http://www.jialing.com.cn/1812.html.*
+
+[jereh.com]
+http://go.jereh.com/.*
+
+[lqpccp.com]
+http://www.lqpccp.com/mapall/.*
+
+[baose.com]
+http://www.baose.com/Product.aspx.*
+http://www.baose.com/show_product.aspx.*
+
+[weldatlantic.com]
+http://www.weldatlantic.com/product_.*
+
+[aysteel.com.cn]
+http://www.aysteel.com.cn/Services/AttachDownLoad.jsp.*
+
+[hayao.com]
+http://www.hayao.com/product/.*
+
+[triangle.com.cn]
+http://(www|na|eu|chn)\.triangle\.com\.cn/(en/|cn/|es/)?Product/.*
+http://(chn|na|ap|la|eu|mea)\.triangle\.com\.cn/.*
+http://www.triangle.com.cn/en/.*
+
+[sc-aaa.com]
+http://www.sc-aaa.com/reds/video_.*
