@@ -40,9 +40,9 @@ public class FootprintPipeline implements Pipeline {
 					if ("stockCode".equals(k)) {
 						continue;
 					}
-					if (doc.keySet().contains(k)) {
-						continue;
-					}
+//					if (doc.keySet().contains(k)) {
+//						continue;
+//					}
 					updates.add(Updates.set(k, document.get(k)));
 				}
 				if (CollectionUtils.isNotEmpty(updates)) {

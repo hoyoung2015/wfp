@@ -25,29 +25,29 @@ import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.utils.UrlUtils;
 
 public class RankPageProcessor implements PageProcessor {
-	private static final String URL_PATTERN = "http://seo.chinaz.com/?q=%s";
+	private static final String URL_PATTERN = "http://pr.seowhy.com/%s";
 
 	// http://seo.chinaz.com/?q=dongeejiao.com
-	private Pattern rankPattern = Pattern.compile(".+/baiduapp/(\\d+)\\.gif$");
+	private Pattern rankPattern = Pattern.compile(".+/ranks/(\\d+)\\.gif$");
 
 	private AtomicInteger count = new AtomicInteger(0);
-	private static final String COLUNM_NAME = "rank";
+	private static final String COLUNM_NAME = "page_rank";
 
 	@Override
 	public void process(Page page) {
 
-		// #seoinfo > div > ul > li:nth-child(1) > div.SeoMaWr01Right >
-		// div:nth-child(1) > p > a > img
-		String src = page.getHtml().$("div.SeoMaWr01Right > div:nth-child(1) > p > a > img", "src").get();
-		if (StringUtils.isEmpty(src)) {
+		String s = page.getHtml().$("#data-prNow > em", "text").get();
+		if (StringUtils.isEmpty(s)) {
 			return;
 		}
-		Matcher matcher = rankPattern.matcher(src);
-		if (matcher.find()) {
-			page.putField("document", new Document("stockCode", page.getRequest().getExtra("stockCode"))
-					.append(COLUNM_NAME, Integer.valueOf(matcher.group(1))));
-			System.out.println(count.incrementAndGet());
+		int rs = 0;
+		if (Pattern.matches("\\d", s)) {
+			rs = Integer.valueOf(s);
 		}
+		String stockCode = (String) page.getRequest().getExtra("stockCode");
+		page.putField("document", new Document("stockCode", stockCode).append(COLUNM_NAME, rs));
+		System.out.println(count.incrementAndGet() + "-" + stockCode + "-" + rs);
+
 	}
 
 	private static final int SLEEP_TIME = 400;
@@ -73,20 +73,21 @@ public class RankPageProcessor implements PageProcessor {
 			while (iterator.hasNext()) {
 				Document doc = iterator.next();
 				String stockCode = doc.getString("stockCode");
-				if (footPrint.count(Filters.and(Filters.eq("stockCode", stockCode), Filters.exists(COLUNM_NAME))) > 0) {
-					continue;
-				}
+				// if (footPrint.count(Filters.and(Filters.eq("stockCode",
+				// stockCode), Filters.exists(COLUNM_NAME))) > 0) {
+				// continue;
+				// }
 				String webSite = doc.getString("webSite");
 				requests.add(
 						new Request(String.format(URL_PATTERN, UrlUtils.getDomain(webSite).replaceAll("^www\\.", "")))
 								.putExtra("stockCode", stockCode));
-//				break;
+				break;
 			}
 		} finally {
 			iterator.close();
 		}
 		RankPageProcessor processor = new RankPageProcessor();
-		processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
+		// processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
 		Spider.create(processor).setDownloader(new ProxyHttpClientDownloader()).addPipeline(new FootprintPipeline())
 				.addRequest(requests.toArray(new Request[] {})).thread(5).run();
 	}

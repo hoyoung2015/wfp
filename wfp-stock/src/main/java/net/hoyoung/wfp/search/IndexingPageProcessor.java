@@ -63,20 +63,21 @@ public class IndexingPageProcessor implements PageProcessor {
 	public static void main(String[] args) {
 		MongoCollection<Document> collection = MongoUtil.getClient().getDatabase("wfp").getCollection("web_source");
 		MongoCollection<Document> footPrint = MongoUtil.getClient().getDatabase("wfp").getCollection("footprint");
-		MongoCursor<Document> iterator = collection.find().projection(Projections.include("stockCode", "webSite"))
+		MongoCursor<Document> iterator = collection.find(/*Filters.eq("stockCode", "600378")*/).projection(Projections.include("stockCode", "webSite"))
 				.iterator();
 		List<Request> requests = Lists.newArrayList();
 		try {
 			while (iterator.hasNext()) {
 				Document doc = iterator.next();
 				String stockCode = doc.getString("stockCode");
-				if (footPrint.count(Filters.and(Filters.eq("stockCode", stockCode), Filters.exists(COLUNM_NAME))) > 0) {
-					continue;
-				}
+				
+//				if (footPrint.count(Filters.and(Filters.eq("stockCode", stockCode), Filters.exists(COLUNM_NAME))) > 0) {
+//					continue;
+//				}
 				String webSite = doc.getString("webSite");
 				requests.add(new Request(URL_PATTERN + UrlUtils.getDomain(webSite).replaceAll("^www\\.", ""))
 						.putExtra("stockCode", stockCode));
-				// break;
+//				 break;
 			}
 		} finally {
 			iterator.close();

@@ -1,6 +1,4 @@
 from common.mongo import mongo_cli
-from common import log
-import logging
 import re
 import xlrd
 
@@ -18,60 +16,62 @@ def read_regex_from_excel(filename):
     for i in range(nrows):  # 循环逐行打印
         word = table.row_values(i)[4]
         word = word.replace(',', '|')
-        m[table.row_values(i)[2]] = word
+        m[str(int(table.row_values(i)[1]))] = word
     return m
 
 
-def read_stopwords(filename):
-    words = set()
-    with open(filename) as f:
-        for s in f.readlines():
-            s = s.strip().replace('\n', '')
-            words.add(s)
-        f.close()
-    return words
+def join_keyword(map1={}, map2={}):
+    for _k, _v in map2.items():
+        for _m, _n in _v.items():
+            if _m in map1[_k]:
+                # 该指标下，关键词存在
+                map1[_k][_m] += map2[_k][_m]
+            else:
+                map1[_k][_m] = map2[_k][_m]
+    return map1
 
 
 if __name__ == '__main__':
-    logger = log.get_logger(name='word_find', filename='word_find.log', level=logging.INFO)
     dbname = 'wfp_com_page'
     db = mongo_cli.get_database(dbname)
-    stopwords = read_stopwords('../data/stopwords.txt')
+    word_vars_collection = mongo_cli.get_database('wfp').get_collection('word_vars')
     word_vars = read_regex_from_excel('../data/word_meta.xlsx')
-
+    num = 0
     for collection_name in get_collection_names(dbname):
+        num += 1
         collection = db.get_collection(collection_name)
-        filter = {
-            'content': {
-                '$exists': True
-            }
-        }
-        count = collection.count(filter)
-        logger.info('start to process collection %s, count %d', collection_name, count)
-        for doc in collection.find(filter, projection=['content']):
+        filters = {}
+        total = collection.count(filters)
+        word_result = {}
+        for var_num in word_vars.keys():
+            word_result[var_num] = {}
+        cnt = 0
+        green_doc_num = 0
+        for doc in collection.find(filters, projection=['content']):
+            cnt += 1
             content = doc['content']
+            content = content.strip().replace('\n', '').replace(' ', '')
             # content = '废品回收是我们的义务，灰渣采集。废品'
-            good = 0
             tmp_vars = {}
-            for k, v in word_vars.items():
-                if v == '':
+            for var_num, regex in word_vars.items():
+                if regex == '':
                     continue
-                wdl = re.findall('(' + v + ')', content)
+                wdl = re.findall('(' + regex + ')', content)
                 if len(wdl) > 0:
-                    good = 1
                     word_map = {}
                     for x in wdl:
                         if x in word_map:
                             word_map[x] += 1
                         else:
                             word_map[x] = 1
-                    tmp_vars[k] = word_map
-
-            update_data = {
-                'good': good
-            }
-            if good == 1:
-                update_data['vars'] = tmp_vars
-            collection.update_one({'_id': doc['_id']}, {'$set': update_data})
-
-        # break  # collection_name
+                    tmp_vars[var_num] = word_map
+            if len(tmp_vars.keys()) > 0:
+                green_doc_num += 1
+            join_keyword(word_result, tmp_vars)
+            print('\r%d\t%s\t%d/%d\t%d' % (num, collection_name, cnt, total, green_doc_num), end='')
+        print()
+        # print(word_result)
+        word_vars_collection.update_one({'stockCode': collection_name},
+                                        {'$set': {'vars': word_result, 'pageSize': total,
+                                                  'greenDocNum': green_doc_num}}, upsert=True)
+        # break

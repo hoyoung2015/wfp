@@ -1,13 +1,20 @@
 package net.hoyoung.wfp.stock;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.bson.Document;
 
-import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
@@ -23,13 +30,14 @@ import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.ProxyHttpClientDownloader;
 import us.codecraft.webmagic.processor.PageProcessor;
+import us.codecraft.webmagic.selector.Selectable;
 
-public class FinancePageProcessor implements PageProcessor {
+public class AssetsPageProcessor implements PageProcessor {
 	private static final String URL_PATTERN = "http://stockpage.10jqka.com.cn/%s/finance/";
 
 	private AtomicInteger count = new AtomicInteger(0);
 
-	private static final String COLUNM_NAME = "fuzhaibi";
+	private static final String COLUNM_NAME = "assets";
 
 	static class FinanceVo {
 		Object title;
@@ -57,17 +65,49 @@ public class FinancePageProcessor implements PageProcessor {
 		}
 	}
 
+	private ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
+
 	@Override
 	public void process(Page page) {
-		System.out.println(">>\t" + count.incrementAndGet());
-		String src = page.getHtml().$("#main", "text").get();
-		if (StringUtils.isEmpty(src)) {
-			return;
+		List<Selectable> nodes = page.getHtml()
+				.$("#assetdebt > div.bd.clearfix > div.flashbox.first > table > tbody > tr").nodes();
+		String jinrong = page.getHtml()
+				.$("#assetdebt > div.bd.clearfix > div.flashbox.first > table > thead > tr > th:nth-child(2)", "text")
+				.get();
+		int danwei = 1;
+		if (jinrong.contains("万元")) {
+			danwei = 10000;
 		}
-		FinanceVo vo = JSON.parseObject(src, FinanceVo.class);
-		Document document = new Document("stockCode", page.getRequest().getExtra("stockCode")).append(COLUNM_NAME,
-				Float.valueOf(vo.report[10][0]) / 100);
-		page.putField("document", document);
+		String stockCode = (String) page.getRequest().getExtra("stockCode");
+		float f = 0f;
+		for (Selectable selectable : nodes) {
+			String th = selectable.$("th", "text").get();
+			if (StringUtils.isNotEmpty(th)) {
+				th = th.replace(" ", "");
+			}
+			if ("资产总计".equals(th)) {
+				Matcher matcher = Pattern.compile("[\\d\\.]+").matcher(selectable.$("td", "text").get());
+				if (matcher.find()) {
+					String s = selectable.$("td", "text").get().replaceAll("(\\d|\\.)", "");
+					if ("万元".equals(s)) {
+						danwei = 10000;
+					} else if ("亿元".equals(s)) {
+						danwei = 1;
+					}
+					f = Float.valueOf(matcher.group()) / danwei;
+					page.putField("document",
+							new Document("stockCode", page.getRequest().getExtra("stockCode")).append(COLUNM_NAME, f));
+				} else {
+					try {
+						FileUtils.writeStringToFile(new File(stockCode), "没找到资产");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+
+			}
+		}
+		System.out.println(count.incrementAndGet() + "-" + stockCode + "-" + f);
 	}
 
 	private static final int SLEEP_TIME = 500;
@@ -84,27 +124,28 @@ public class FinancePageProcessor implements PageProcessor {
 	}
 
 	public static void main(String[] args) {
-		MongoCollection<Document> collection = MongoUtil.getClient().getDatabase("wfp").getCollection("web_source");
+		MongoCollection<Document> collection = MongoUtil.getClient().getDatabase("wfp").getCollection("footprint");
 		MongoCollection<Document> footPrint = MongoUtil.getClient().getDatabase("wfp").getCollection("footprint");
-		MongoCursor<Document> iterator = collection.find().projection(Projections.include("stockCode")).iterator();
+		MongoCursor<Document> iterator = collection.find(/*Filters.eq("stockCode", "300361")*/).projection(Projections.include("stockCode")).iterator();
 		List<Request> requests = Lists.newArrayList();
 		try {
 			while (iterator.hasNext()) {
 				Document doc = iterator.next();
 				String stockCode = doc.getString("stockCode");
-				if (footPrint.count(Filters.and(Filters.eq("stockCode", stockCode), Filters.exists(COLUNM_NAME))) > 0) {
-					continue;
-				}
+				// if (footPrint.count(Filters.and(Filters.eq("stockCode",
+				// stockCode), Filters.exists(COLUNM_NAME))) > 0) {
+				// continue;
+				// }
 				requests.add(new Request(String.format(URL_PATTERN, stockCode)).putExtra("stockCode", stockCode));
-//				break;
+//				 break;
 			}
 		} finally {
 			iterator.close();
 		}
-		FinancePageProcessor processor = new FinancePageProcessor();
+		AssetsPageProcessor processor = new AssetsPageProcessor();
 		processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
 		Spider.create(processor).setDownloader(new ProxyHttpClientDownloader()).addPipeline(new FootprintPipeline())
-				.addRequest(requests.toArray(new Request[] {})).thread(3).run();
+				.addRequest(requests.toArray(new Request[] {})).thread(4).run();
 	}
 
 }

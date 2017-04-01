@@ -1,6 +1,9 @@
 import sys
 import os
 
+"""
+标注企业绿色专利
+"""
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
@@ -14,8 +17,8 @@ def load_green_patents(file='patents.json'):
     _green_patents_set = set()
     with open(file) as fp:
         for k, v in json.load(fp).items():
-            if '/' not in k:
-                continue
+            # if '/' not in k:
+            #     continue
             _green_patents_set.add(k)
     return _green_patents_set
 
@@ -26,7 +29,7 @@ if __name__ == "__main__":
     green_patents_set = load_green_patents('patents.json')
     db = mongo_cli.get_database(db_name)
     collection_names = [name for name in db.collection_names(include_system_collections=False) if
-                        re.match('^\d+$', name)]
+                        re.match('^\d{6}$', name)]
     total_collection = len(collection_names)
     cnt_collection = 0
     for collection_name in collection_names:
@@ -34,9 +37,9 @@ if __name__ == "__main__":
         collection = db.get_collection(collection_name)
 
         filters = {
-            'green_num': {
-                '$exists': False
-            }
+            # 'green_num': {
+            #     '$exists': False
+            # }
         }
         total_patent = collection.count(filters)
         if total_patent == 0:
@@ -50,7 +53,9 @@ if __name__ == "__main__":
             patents_set = set()
             green_num = 0
             for pid in patent['classId'].split(','):
-                if '/' not in pid or pid in patents_set:
+                # if '/' not in pid or pid in patents_set:
+                #     continue
+                if pid in patents_set:
                     continue
                 patents_set.add(pid)
                 if pid in green_patents_set:

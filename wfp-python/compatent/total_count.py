@@ -1,13 +1,14 @@
-from pymongo import MongoClient
+from common.mongo import mongo_cli
 import re
 
-client = MongoClient(host='10.170.29.80', port=27017)
-db = client.get_database('wfp_com_patent')
+stocks = [x for x in mongo_cli.get_database('wfp_com_patent').collection_names(include_system_collections=False) if
+          re.match('^\d{6}$', x)]
 
-collection = db.get_collection('description')
+db = mongo_cli.get_database('wfp_com_patent')
 
-sum = 0
-for x in collection.find():
-    sum += x['total']
+sum_green = 0
+for stock in stocks:
+    num = db.get_collection(stock).count({'green_num': {'$gt': 0}})
+    sum_green += num
 
-print(sum)
+print(sum_green)

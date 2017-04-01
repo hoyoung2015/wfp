@@ -1,40 +1,12 @@
-import sys
-import os
+from common.mongo import mongo_cli
 
-curPath = os.path.abspath(os.path.dirname(__file__))
-rootPath = os.path.split(curPath)[0]
-print(rootPath)
-sys.path.append(rootPath)
-
-
-from redis import Redis
-import re
-from common import url_utils
-
-'''
-处理抓取过程中发现的大量的不需要的页面
-比如企业自建的discuz论坛，商城页面，这些页面量非常大，但是不需要
-'''
-
-rds = Redis(host='127.0.0.1', port=6379, db=0, decode_responses=True)
-
-url = 'http://www.minfenggroup.com/'
-regex = 'http://zb.minfenggroup.com/.*'
-domain = url_utils.get_domain(url)
-# exit(-1)
-
-key = 'queue_' + domain
-
-total = rds.llen(key)
-while total > 0:
-    total -= 1
-    url = rds.lpop(key)
-    if url is None:
-        break
-    # print(total,'\t',url)
-    if total % 100 == 0:
-        print(total)
-    if re.match(regex, url):
-        pass
+com_money = {}
+for x in mongo_cli.get_database('wfp').get_collection('company_info').find():
+    if 'shareholders' in x:
+        com_money[x['stockCode']] = x['shareholders']
     else:
-        rds.rpush(key, url)
+        com_money[x['stockCode']] = 0
+
+collection = mongo_cli.get_database('wfp').get_collection('footprint')
+for x in collection.find():
+    collection.update_one({'_id': x['_id']}, {'$set': {'shareholders': com_money[x['stockCode']]}})
