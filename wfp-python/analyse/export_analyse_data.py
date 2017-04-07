@@ -2,7 +2,18 @@ from common.mongo import mongo_cli
 import pandas as pd
 import numpy as np
 import math
+from common.url_utils import get_domain
+import re
 
+stocks = [stock for stock in mongo_cli.get_database('wfp_com_page').collection_names(include_system_collections=False)
+          if re.match('\d+', stock)]
+
+web_source = {}
+for d in mongo_cli.get_database('wfp').get_collection('web_source').find():
+    web_source[d['stockCode']] = get_domain(d['webSite'])
+
+
+# 只是用来读取总页面数量
 bigram_collection = mongo_cli.get_database('wfp').get_collection('bigram_words')
 all_data = []
 all_index = []
@@ -23,11 +34,11 @@ df = df.join(df_total_words_num.set_index('stockCode'))
 
 # print(df.head())
 # exit(0)
-
+# k:stockCode,v:网页数
 stock_pagesize_map = df['total'].to_dict()
 
 df_y = pd.DataFrame({
-    'score': df['double_words_num'] / df['total_words_num']
+    'EDI': df['double_words_num'] / df['total_words_num']
 })
 
 # df_y = df_y.applymap(lambda x: math.log(x + 1, math.e))
@@ -37,18 +48,22 @@ index_list = []
 all_xdata = []
 for d in mongo_cli.get_database('wfp').get_collection('footprint').find({}, projection={'_id': 0}):
     """
-    x1:股权分配，前十大股东持股比例
-    x2:股权制衡，第二到第五大股东持股比例
-    x3:资产负债比
-    x4:公司规模，市值，取了自然对数
-    x5:网站权重
-    x6:搜索引擎收录网页数，取了自然对数
-    x7:绿色专利数量，取了自然对数
-    x8:企业收益率
-    x9:新闻曝光数，取了自然对数
+    FIRST:股权分配，前十大股东持股比例
+    CP:股权制衡，第二到第五大股东持股比例
+    LEV:资产负债比
+    SIZE:公司规模，市值，取了自然对数
+    RANK:网站权重
+    INDEX:搜索引擎收录网页数，取了自然对数
+    PAT:绿色专利数量，取了自然对数
+    ROA:企业收益率
+    NEWS:新闻曝光数，取了自然对数
 
-    c1:是否为环保业务，控制变量，取0和1
+    CTRL:是否为环保业务，控制变量，取0和1
     """
+
+    if d['stockCode'] not in stocks:
+        continue
+
     index_list.append(d['stockCode'])
     stock_percent = list(map(lambda x: float(x) / 100, d['ten_stock'].split(',')))
     if 'green_business' in d:
@@ -68,22 +83,24 @@ for d in mongo_cli.get_database('wfp').get_collection('footprint').find({}, proj
         green_patent_percent = d['green_patent_num'] / d['patent_num']
     try:
         row_data = {
-            'x1': sum(stock_percent),
-            'x2': sum(list(map(lambda x: math.sqrt(x), stock_percent[1:5]))),  # 开根号处理右偏
-            'x3': d['fuzhaibi'],
-            'x4': math.sqrt(d['assets']),
-            'x5': d['rank'],
+            'FIRST': sum(list(map(math.sqrt, stock_percent))),
+            'CB': sum(list(map(math.sqrt, stock_percent[1:5]))),  # 开根号处理右偏
+            'LEV': d['fuzhaibi'],
+            'SIZE': d['assets'],
+            'RANK': d['rank'],
             'indexing': d['indexing'],
-            'indexing_www': d['indexing_www'],
+            'INDEX': d['indexing_www'],
+            'outlink_az': d['outlink_num_az'],
+            'outlink': d['outlink_num'],
             'green_patent_percent': green_patent_percent,
-            'x8': d['shouyi'],
-            'x9': news_num,
+            'ROA': d['shouyi'],
+            'NEWS': news_num,
             'patent_num': d['patent_num'],
-            'green_patent_num': d['green_patent_num'],
-            'c1': green_business
+            'PAT': d['green_patent_num'],
+            'CTRL': green_business
         }
     except Exception as e:
-        print(d['stockCode'])
+        print(d['stockCode'], web_source[d['stockCode']])
     all_xdata.append(row_data)
 
 df_x = pd.DataFrame(all_xdata, index=index_list)
@@ -92,11 +109,11 @@ df_x = pd.DataFrame(all_xdata, index=index_list)
 
 df = df_y.join(df_x)
 
-print(df.sort_values(by='indexing_www', ascending=False).head())
+# print(df.sort_values(by='outlink', ascending=False).head())
 
 # indexing_www
-all_index.remove('600352')
-all_index.remove('000570')
+# all_index.remove('600352')
+# all_index.remove('000570')
 
 # x3资产负债比太大
 
@@ -130,7 +147,45 @@ all_index.remove('000570')
 # df.loc[df['x7'] > 0, 'x7'] = 1
 # df.loc[df['x7'] == 0, 'x7'] = 0
 
-df = df.loc[all_index]
-df = df.sort_values(by='score', ascending=False)
 
-df.to_excel('web_green_data.xlsx', sheet_name='Sheet1')
+df = df.loc[all_index]
+df = df.sort_values(by='EDI', ascending=False)
+
+# 因为几乎有一半的企业是没有绿色专利的，所以这里只取0和1
+df.loc[df['PAT'] == 0, 'PAT'] = 0
+df.loc[df['PAT'] > 0, 'PAT'] = 1
+
+# df = df.loc[df['green_patent_percent'] < 0.8]
+df['green_patent_percent'] = df['green_patent_percent'].apply(lambda x: math.sqrt(x))
+
+df = df.loc[df['RANK'] < 6]
+
+df = df.loc[df['NEWS'] < 4500]
+# df = df.loc[df['news_num'] > 20]
+df['NEWS'] = df['NEWS'].apply(lambda x: math.sqrt(x))
+
+
+df = df.loc[df['EDI'] < 1]
+df['EDI'] = df['EDI'].apply(lambda x: math.sqrt(x))
+
+df = df.loc[df['INDEX'] < 7000]
+df = df.loc[df['INDEX'] > 20]
+df['INDEX'] = df['INDEX'].apply(lambda x: math.log(x, math.e))
+
+df = df.loc[df['SIZE'] < 400]
+df['SIZE'] = df['SIZE'].apply(lambda x: math.log(x + 1, math.e))
+
+df = df.loc[df['ROA'] > -0.35]
+
+df = df.loc[df['outlink_az'] < 70]
+# 偏分处理
+df['outlink_az'] = df['outlink_az'].apply(lambda x: math.log(x + 1, math.e))
+
+
+# print(df.loc[df['green_patent_percent']==0].shape)
+
+# df = df.loc[df['CTRL'] == 0]
+
+print(df.shape)
+
+df.to_excel('web_green_data.xlsx')

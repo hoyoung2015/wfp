@@ -101,7 +101,7 @@ public class BaiduNewsPageProcessor implements PageProcessor {
 		Set<String> set = new HashSet<>();
 		MongoCollection<Document> collection = MongoUtil.getClient().getDatabase("wfp").getCollection("footprint");
 		MongoCursor<Document> iterator = collection
-				.find(Filters.and(Filters.eq("news_num", 0), Filters.exists("news_num")))
+				.find(Filters.and(Filters.eq("news_num", 0), Filters.exists("news_num"), Filters.gt("news_num", 0)))
 				.projection(Projections.include("stockCode")).iterator();
 
 		try {
@@ -134,7 +134,7 @@ public class BaiduNewsPageProcessor implements PageProcessor {
 				e.printStackTrace();
 			}
 
-//			break;
+			// break;
 		}
 		BaiduNewsPageProcessor processor = new BaiduNewsPageProcessor();
 		processor.getSite().setHttpProxyPool(ProxyReader.read(), false);

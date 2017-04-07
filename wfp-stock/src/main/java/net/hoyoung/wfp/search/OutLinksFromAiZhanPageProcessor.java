@@ -3,9 +3,9 @@ package net.hoyoung.wfp.search;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.commons.lang.StringUtils;
 import org.bson.Document;
 
+import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
@@ -22,29 +22,53 @@ import us.codecraft.webmagic.downloader.ProxyHttpClientDownloader;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.utils.UrlUtils;
 
-public class IndexingWWWPageProcessor implements PageProcessor {
-	private static final String URL_PATTERN = "https://www.baidu.com/s?ie=utf-8&tn=baidu&wd=site%3A";
+public class OutLinksFromAiZhanPageProcessor implements PageProcessor {
+	private static final String URL_PATTERN = "http://link.aizhan.com/index.php?r=ajax/get-out-link&id=%s&t=1491073002&cc=8e1fe1ee74e1373a1285869f941f1707";
 
 	private AtomicInteger count = new AtomicInteger(0);
 
-	private static final String COLUNM_NAME = "indexing_www";
+	private static final String COLUNM_NAME = "outlink_num_az";
+
+	static class JsonData {
+		private String state;
+		private Integer count;
+
+		public String getState() {
+			return state;
+		}
+
+		public void setState(String state) {
+			this.state = state;
+		}
+
+		public Integer getCount() {
+			return count;
+		}
+
+		public void setCount(Integer count) {
+			this.count = count;
+		}
+
+	}
 
 	@Override
 	public void process(Page page) {
-		System.out.println(">>\t" + count.incrementAndGet());
-		String src = page.getHtml().$("div.op_site_domain.c-row > div > p:nth-child(3) > span > b", "text").get();
-		if (StringUtils.isEmpty(src)) {
-			src = page.getHtml().$("#content_left > div.c-border.c-row.site_tip > div > p:nth-child(1) > b", "text").get();
+		String rawText = page.getRawText();
+		String stockCode = (String) page.getRequest().getExtra("stockCode");
+
+		int outlinkNum = 0;
+		try {
+			JsonData jsonData = JSON.parseObject(rawText, JsonData.class);
+			if (!"1".equals(jsonData.getState())) {
+				throw new Exception("");
+			}
+			outlinkNum = jsonData.getCount();
+			page.putField("document", new Document("stockCode", stockCode).append(COLUNM_NAME, outlinkNum)
+					.append(COLUNM_NAME, outlinkNum));
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		if (StringUtils.isEmpty(src)) {
-			return;
-		}
-		src = src.replaceAll("[\\u4e00-\\u9fa5,]", "");
-		if(StringUtils.isEmpty(src)){
-			return;
-		}
-		page.putField("document", new Document("stockCode", page.getRequest().getExtra("stockCode"))
-				.append(COLUNM_NAME, Integer.valueOf(src)));
+		System.out.println(count.incrementAndGet() + "-" + outlinkNum);
 	}
 
 	private static final int SLEEP_TIME = 500;
@@ -63,30 +87,32 @@ public class IndexingWWWPageProcessor implements PageProcessor {
 	public static void main(String[] args) {
 		MongoCollection<Document> collection = MongoUtil.getClient().getDatabase("wfp").getCollection("web_source");
 		MongoCollection<Document> footPrint = MongoUtil.getClient().getDatabase("wfp").getCollection("footprint");
-		MongoCursor<Document> iterator = collection.find(/*Filters.eq("stockCode", "600378")*/).projection(Projections.include("stockCode", "webSite"))
+		MongoCursor<Document> iterator = collection
+				.find(/* Filters.eq("stockCode", "600378") */).projection(Projections.include("stockCode", "webSite"))
 				.iterator();
 		List<Request> requests = Lists.newArrayList();
 		try {
 			while (iterator.hasNext()) {
 				Document doc = iterator.next();
 				String stockCode = doc.getString("stockCode");
-				
-				if (footPrint.count(Filters.and(Filters.eq("stockCode", stockCode), Filters.exists(COLUNM_NAME),
-						Filters.gt(COLUNM_NAME, 0))) > 0) {
+
+				if (footPrint.count(Filters.and(Filters.eq("stockCode", stockCode), Filters.exists(COLUNM_NAME))) > 0) {
 					continue;
 				}
 				String webSite = doc.getString("webSite");
-				requests.add(new Request(URL_PATTERN + UrlUtils.getDomain(webSite))
-						.putExtra("stockCode", stockCode));
-//				 break;
+				String domain = UrlUtils.getDomain(webSite);
+				Request request = new Request(String.format(URL_PATTERN, domain)).putExtra("stockCode", stockCode)
+						.putExtra("domain", domain);
+				requests.add(request);
+//				break;
 			}
 		} finally {
 			iterator.close();
 		}
-		IndexingWWWPageProcessor processor = new IndexingWWWPageProcessor();
-		processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
+		OutLinksFromAiZhanPageProcessor processor = new OutLinksFromAiZhanPageProcessor();
+//		 processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
 		Spider.create(processor).setDownloader(new ProxyHttpClientDownloader()).addPipeline(new FootprintPipeline())
-				.addRequest(requests.toArray(new Request[] {})).thread(2).run();
+				.addRequest(requests.toArray(new Request[] {})).thread(4).run();
 	}
 
 }
