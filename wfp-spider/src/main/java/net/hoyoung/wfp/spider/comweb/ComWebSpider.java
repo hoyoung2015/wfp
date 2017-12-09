@@ -106,7 +106,6 @@ public class ComWebSpider {
 					com.getStockCode() + "_tmp");
 			String indexTmp = collectionTmp.createIndex(Indexes.ascending(ComPage.STOCK_CODE, ComPage.URL),
 					new IndexOptions().unique(true));
-			// sha1 去重
 			collectionTmp.createIndex(Indexes.ascending(ComPage.CONTENT_SHA1));
 			LOG.info("{} create index {}", collectionTmp.getNamespace(), indexTmp);
 			ComWebProcessor processor = new ComWebProcessor();
@@ -148,7 +147,6 @@ public class ComWebSpider {
 				}
 
 			} else {
-				// 成功的话重命名com_page_000000_tmp -> com_page_000000
 				collectionTmp.renameCollection(new MongoNamespace(ComWebConstant.DB_NAME + "." + com.getStockCode()));
 				LOG.info("finish " + com.getStockCode() + " " + com.getStockCode());
 				// 删除redisSchedule

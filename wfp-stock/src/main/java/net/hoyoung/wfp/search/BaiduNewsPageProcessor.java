@@ -1,5 +1,6 @@
 package net.hoyoung.wfp.search;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -14,12 +15,14 @@ import java.util.regex.Pattern;
 
 import org.bson.Document;
 
+import com.google.common.collect.Lists;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
-import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Projections;
 
+import net.hoyoung.wfp.FileStockCodeReader;
+import net.hoyoung.wfp.MongoStockCodeReader;
 import net.hoyoung.wfp.core.utils.MongoUtil;
 import net.hoyoung.wfp.core.utils.ProxyReader;
 import us.codecraft.webmagic.Page;
@@ -31,7 +34,7 @@ import us.codecraft.webmagic.processor.PageProcessor;
 
 public class BaiduNewsPageProcessor implements PageProcessor {
 
-	static final String URL_PATTERN = "http://news.baidu.com/ns?word=%2B{keyword}&tn=news&from=news&cl=2&rn=20&ct=0";
+	static final String URL_PATTERN = "http://news.baidu.com/ns?word={keyword}&tn=news&from=news&cl=2&rn=20&ct=0";
 	AtomicInteger counter = new AtomicInteger(0);
 
 	@Override
@@ -60,7 +63,7 @@ public class BaiduNewsPageProcessor implements PageProcessor {
 	public Site getSite() {
 		return site;
 	}
-
+/*
 	static List<String> getStockNames() {
 		List<String> list = new ArrayList<>();
 		MongoDatabase db = MongoUtil.getClient().getDatabase("wfp_com_page");
@@ -76,6 +79,17 @@ public class BaiduNewsPageProcessor implements PageProcessor {
 			iterator.close();
 		}
 		return list;
+	}
+	*/
+	static List<String> getStockNames() {
+		List<String> stockCodes = Lists.newArrayList();
+		try {
+			stockCodes = new FileStockCodeReader(
+					"/Users/baidu/workspace/wfp/wfp-python/analyse/stock_gri.csv").getStockCodes();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return stockCodes;
 	}
 
 	static final String STOCK_CODE = "stockCode";
@@ -101,7 +115,7 @@ public class BaiduNewsPageProcessor implements PageProcessor {
 		Set<String> set = new HashSet<>();
 		MongoCollection<Document> collection = MongoUtil.getClient().getDatabase("wfp").getCollection("footprint");
 		MongoCursor<Document> iterator = collection
-				.find(Filters.and(Filters.eq("news_num", 0), Filters.exists("news_num"), Filters.gt("news_num", 0)))
+				.find(Filters.and(Filters.exists("news_num"), Filters.gt("news_num", 0)))
 				.projection(Projections.include("stockCode")).iterator();
 
 		try {
@@ -115,29 +129,28 @@ public class BaiduNewsPageProcessor implements PageProcessor {
 		return set;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		Map<String, String> nameMap = getStockNameMap();
-		List<String> stocks = getStockNames();
+		List<String> stocks = new FileStockCodeReader("/Users/baidu/workspace/wfp/wfp-python/analyse/stock_gri.csv").getStockCodes();
 		List<Request> requests = new ArrayList<>();
 		Set<String> crawedStockSet = getCrawedStockSet();
 		for (String stock : stocks) {
-			if (crawedStockSet.contains(stock) == false) {
+			if (crawedStockSet.contains(stock)) {
 				continue;
 			}
 			String fullName = nameMap.get(stock);
 			String url;
 			try {
-				url = URL_PATTERN.replace("{keyword}", URLEncoder.encode(fullName, "utf-8"));
+				url = URL_PATTERN.replace("{keyword}", URLEncoder.encode("\""+fullName+"\"", "utf-8"));
 				requests.add(new Request(url).putExtra(STOCK_CODE, stock));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-
-			// break;
+//			 break;
 		}
 		BaiduNewsPageProcessor processor = new BaiduNewsPageProcessor();
-		processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
+//		processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
 		Spider.create(processor).addPipeline(new FootprintPipeline()).addRequest(requests.toArray(new Request[] {}))
 				.setDownloader(new ProxyHttpClientDownloader()).thread(2).run();
 	}

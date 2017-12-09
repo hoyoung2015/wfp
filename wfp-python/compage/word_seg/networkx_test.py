@@ -29,16 +29,6 @@ pos_labels = {}
 offset = 0.08
 for k, v in pos.items():
     x, y = pos[k]
-    # offset_x = abs(x) * offset
-    # offset_y = abs(y) * offset
-    # if x < 0:
-    #     x -= offset_y
-    # else:
-    #     x += offset_y
-    # if y < 0:
-    #     y -= offset_y
-    # else:
-    #     y += offset_y
     pos_labels[k] = (x + offset, y)
     print(k, v)
 
@@ -47,7 +37,6 @@ for k, v in pos.items():
 nx.draw_networkx_labels(g, pos=pos_labels, font_size=14)
 
 nx.draw_networkx_edge_labels(g, pos, edge_labels=labels, font_size=7)
-# plt.show()
 
 fig = plt.gcf()
 fig.set_size_inches(14, 10)

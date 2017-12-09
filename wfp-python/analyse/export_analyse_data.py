@@ -51,14 +51,14 @@ for d in mongo_cli.get_database('wfp').get_collection('footprint').find({}, proj
     FIRST:股权分配，前十大股东持股比例
     CP:股权制衡，第二到第五大股东持股比例
     LEV:资产负债比
-    SIZE:公司规模，市值，取了自然对数
+    SIZE:公司规模，总资产
     RANK:网站权重
-    INDEX:搜索引擎收录网页数，取了自然对数
-    PAT:绿色专利数量，取了自然对数
+    INDEX:搜索引擎收录网页数
+    PAT:是否拥有绿色专利，取0和1
     ROA:企业收益率
-    NEWS:新闻曝光数，取了自然对数
+    NEWS:新闻聚合平台新闻曝光数
 
-    CTRL:是否为环保业务，控制变量，取0和1
+    CTRL:是否为环保业务（比如环保设备制造），控制变量，取0和1
     """
 
     if d['stockCode'] not in stocks:
@@ -154,30 +154,34 @@ df = df.sort_values(by='EDI', ascending=False)
 # 因为几乎有一半的企业是没有绿色专利的，所以这里只取0和1
 df.loc[df['PAT'] == 0, 'PAT'] = 0
 df.loc[df['PAT'] > 0, 'PAT'] = 1
+# df['PAT'] = df['PAT'] / df['SIZE']
 
 # df = df.loc[df['green_patent_percent'] < 0.8]
 df['green_patent_percent'] = df['green_patent_percent'].apply(lambda x: math.sqrt(x))
 
-df = df.loc[df['RANK'] < 6]
-
+# df = df.loc[df['RANK'] < 6]
+#
 df = df.loc[df['NEWS'] < 4500]
-# df = df.loc[df['news_num'] > 20]
+df = df.loc[df['NEWS'] > 20]
 df['NEWS'] = df['NEWS'].apply(lambda x: math.sqrt(x))
-
-
+#
+#
 df = df.loc[df['EDI'] < 1]
 df['EDI'] = df['EDI'].apply(lambda x: math.sqrt(x))
-
+#
 df = df.loc[df['INDEX'] < 7000]
 df = df.loc[df['INDEX'] > 20]
 df['INDEX'] = df['INDEX'].apply(lambda x: math.log(x, math.e))
-
-df = df.loc[df['SIZE'] < 400]
+#
+df = df.loc[df['SIZE'] < 900]
 df['SIZE'] = df['SIZE'].apply(lambda x: math.log(x + 1, math.e))
-
-df = df.loc[df['ROA'] > -0.35]
+#
+# df = df.loc[df['ROA'] > -0.35]
 
 df = df.loc[df['outlink_az'] < 70]
+
+
+
 # 偏分处理
 df['outlink_az'] = df['outlink_az'].apply(lambda x: math.log(x + 1, math.e))
 

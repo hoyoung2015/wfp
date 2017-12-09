@@ -3,10 +3,7 @@ package net.hoyoung.wfp.stock;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,10 +14,10 @@ import org.bson.Document;
 
 import com.google.common.collect.Lists;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Projections;
 
+import net.hoyoung.wfp.FileStockCodeReader;
+import net.hoyoung.wfp.StockCodeReader;
 import net.hoyoung.wfp.core.utils.MongoUtil;
 import net.hoyoung.wfp.core.utils.ProxyReader;
 import net.hoyoung.wfp.search.FootprintPipeline;
@@ -65,7 +62,6 @@ public class AssetsPageProcessor implements PageProcessor {
 		}
 	}
 
-	private ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
 
 	@Override
 	public void process(Page page) {
@@ -124,26 +120,27 @@ public class AssetsPageProcessor implements PageProcessor {
 	}
 
 	public static void main(String[] args) {
-		MongoCollection<Document> collection = MongoUtil.getClient().getDatabase("wfp").getCollection("footprint");
 		MongoCollection<Document> footPrint = MongoUtil.getClient().getDatabase("wfp").getCollection("footprint");
-		MongoCursor<Document> iterator = collection.find(/*Filters.eq("stockCode", "300361")*/).projection(Projections.include("stockCode")).iterator();
-		List<Request> requests = Lists.newArrayList();
+		StockCodeReader stockCodeReader = new FileStockCodeReader("/Users/baidu/workspace/wfp/wfp-python/analyse/stock_gri.csv");
+		List<String> stockCodes = null;
 		try {
-			while (iterator.hasNext()) {
-				Document doc = iterator.next();
-				String stockCode = doc.getString("stockCode");
-				// if (footPrint.count(Filters.and(Filters.eq("stockCode",
-				// stockCode), Filters.exists(COLUNM_NAME))) > 0) {
-				// continue;
-				// }
-				requests.add(new Request(String.format(URL_PATTERN, stockCode)).putExtra("stockCode", stockCode));
-//				 break;
-			}
-		} finally {
-			iterator.close();
+			stockCodes = stockCodeReader.getStockCodes();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(-1);
 		}
+		
+		List<Request> requests = Lists.newArrayList();
+		for (String stockCode : stockCodes) {
+			if (footPrint.count(Filters.and(Filters.eq("stockCode", stockCode), Filters.exists(COLUNM_NAME))) > 0) {
+				continue;
+			}
+			requests.add(new Request(String.format(URL_PATTERN, stockCode)).putExtra("stockCode", stockCode));
+//			break;
+		}
+		
 		AssetsPageProcessor processor = new AssetsPageProcessor();
-		processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
+//		processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
 		Spider.create(processor).setDownloader(new ProxyHttpClientDownloader()).addPipeline(new FootprintPipeline())
 				.addRequest(requests.toArray(new Request[] {})).thread(4).run();
 	}

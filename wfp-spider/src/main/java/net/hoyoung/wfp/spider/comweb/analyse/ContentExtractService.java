@@ -20,7 +20,6 @@ public class ContentExtractService {
 	public static void main(String[] args) {
 		MongoCollection<Document> collection = MongoUtil.getCollection(ComWebConstant.DB_NAME,
 				ComWebConstant.COLLECTION_NAME);
-		long total = collection.count();
 		/**
 		 * content不存在 html存在
 		 */
@@ -29,8 +28,6 @@ public class ContentExtractService {
 		try {
 			while (iterator.hasNext()) {
 				Document document = iterator.next();
-				String url = document.getString(ComPage.URL);
-				System.out.println(total-- + ":" + url);
 				String html = document.getString(ComPage.HTML);
 				String content = null;
 				try {

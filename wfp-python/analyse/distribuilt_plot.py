@@ -18,7 +18,7 @@ score
 """
 sns.set(color_codes=True)
 
-df = pd.read_excel('web_green_data.xlsx')
+df = pd.read_excel('web_green_data_gri.xlsx')
 
-sns.distplot(df['EDI'])
+sns.distplot(df['总分'])
 plt.show()

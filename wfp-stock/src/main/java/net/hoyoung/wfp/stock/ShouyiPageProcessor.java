@@ -1,5 +1,6 @@
 package net.hoyoung.wfp.stock;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -11,11 +12,12 @@ import org.bson.Document;
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Projections;
 
+import net.hoyoung.wfp.FileStockCodeReader;
+import net.hoyoung.wfp.StockCodeReader;
 import net.hoyoung.wfp.core.utils.MongoUtil;
+import net.hoyoung.wfp.core.utils.ProxyReader;
 import net.hoyoung.wfp.search.FootprintPipeline;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
@@ -82,11 +84,16 @@ public class ShouyiPageProcessor implements PageProcessor {
 
 		FinanceVo vo = JSON.parseObject(src, FinanceVo.class);
 		Float value = null;
-		if (StringUtils.isEmpty(vo.report[8][0])) {
-			value = Float.valueOf(vo.report[8][1]);
-		} else {
-			value = Float.valueOf(vo.report[8][0]);
+		try {
+			if (StringUtils.isEmpty(vo.report[8][0])) {
+				value = Float.valueOf(vo.report[8][1]);
+			} else {
+				value = Float.valueOf(vo.report[8][0]);
+			}
+		} catch (Exception e) {
+			System.out.println(page.getRequest());
 		}
+		
 
 		Document document = new Document("stockCode", page.getRequest().getExtra("stockCode")).append(COLUNM_NAME,
 				value / 100);
@@ -107,25 +114,26 @@ public class ShouyiPageProcessor implements PageProcessor {
 	}
 
 	public static void main(String[] args) {
-		MongoCollection<Document> collection = MongoUtil.getClient().getDatabase("wfp").getCollection("footprint");
 		MongoCollection<Document> footPrint = MongoUtil.getClient().getDatabase("wfp").getCollection("footprint");
-		MongoCursor<Document> iterator = collection.find().projection(Projections.include("stockCode")).iterator();
+		StockCodeReader stockCodeReader = new FileStockCodeReader("/Users/baidu/workspace/wfp/wfp-python/analyse/stock_gri.csv");
 		List<Request> requests = Lists.newArrayList();
+		List<String> stockCodes = null;
 		try {
-			while (iterator.hasNext()) {
-				Document doc = iterator.next();
-				String stockCode = doc.getString("stockCode");
-				if (footPrint.count(Filters.and(Filters.eq("stockCode", stockCode), Filters.exists(COLUNM_NAME))) > 0) {
-					continue;
-				}
-				requests.add(new Request(String.format(URL_PATTERN, stockCode)).putExtra("stockCode", stockCode));
-				// break;
-			}
-		} finally {
-			iterator.close();
+			stockCodes = stockCodeReader.getStockCodes();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(-1);
 		}
+		for (String stockCode : stockCodes) {
+			if (footPrint.count(Filters.and(Filters.eq("stockCode", stockCode), Filters.exists(COLUNM_NAME))) > 0) {
+				continue;
+			}
+			requests.add(new Request(String.format(URL_PATTERN, stockCode)).putExtra("stockCode", stockCode));
+			// break;
+		}
+		
 		ShouyiPageProcessor processor = new ShouyiPageProcessor();
-		// processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
+//		 processor.getSite().setHttpProxyPool(ProxyReader.read(), false);
 		Spider.create(processor).setDownloader(new ProxyHttpClientDownloader()).addPipeline(new FootprintPipeline())
 				.addRequest(requests.toArray(new Request[] {})).thread(1).run();
 	}
